@@ -1,0 +1,39 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.BswM
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmarbitration.bswmmoderequestport.bswmrequestprocessing.EBswMRequestProcessing
+import com.vector.cfg.automation.model.ecuc.microsar.ecuc.EcuC
+import com.vector.cfg.automation.model.ecuc.microsar.ecuc.ecucpartitioncollection.ecucpartition.asil.EASIL
+import com.vector.cfg.automation.model.ecuc.microsar.ecum.EcuM
+
+daVinci {
+    scriptDescription "Fill the parameters that blocked BswM, EcuM and EcuC generation"
+
+    scriptTask("FixBswMAndPartitions", DV_PROJECT) {
+        taskDescription "Set deferred mode requests, GoDown user id, and QM partitions"
+        code {
+            transaction {
+                def bswM = bswmdModel(BswM.DefRef).single
+                def cfg = bswM.bswMConfig.byName("BswMConfig")
+                def ports = cfg.bswMArbitrationOrCreate.bswMModeRequestPort
+                ports.byName("MRP_EcuMIndication").bswMRequestProcessingOrCreate.value = EBswMRequestProcessing.BSWM_DEFERRED
+                ports.byName("MRP_DcmApplicationUpdated").bswMRequestProcessingOrCreate.value = EBswMRequestProcessing.BSWM_FORCED_IMMEDIATE
+                scriptLogger.info("EcuM request deferred, Dcm application-updated forced immediate")
+
+                def ecuM = bswmdModel(EcuM.DefRef).single
+                def user = ecuM.ecuMConfigurationOrCreate.ecuMFlexConfigurationOrCreate.ecuMFlexUserConfig.byName("EcuMUser_BswM")
+                user.ecuMGoDownRequestIDOrCreate.value = 1
+                scriptLogger.info("EcuMUser_BswM GoDown request id 1")
+
+                def parts = bswmdModel(EcuC.DefRef).single.ecucPartitionCollectionOrCreate.ecucPartition
+                (0..3).each { i ->
+                    def part = parts.byName("EcucPartition_Core${i}")
+                    part.ASILOrCreate.value = EASIL.QM
+                    scriptLogger.info(part.shortname + " ASIL QM")
+                }
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

@@ -1,0 +1,72 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.api.project.EEcucFileStructure
+
+daVinci {
+    scriptDescription "Create an IEM project on CBD2000642 and activate vBRS, vLinkGen and vBaseEnv"
+
+    scriptTask("CreateIemBrsProject", DV_APPLICATION) {
+        taskDescription "Create IEM_TC387_BRS with one ECUC file per module"
+        code {
+            def folder = "c:/wk_manu/xinyu/03_Project/IEM_TC387_BRS"
+            def devExe = "C:/Program Files (x86)/Vector DaVinci Developer 4.7/Bin/DaVinciDEV.exe"
+
+            def theProject = projects.createProject {
+                projectName "IEM_TC387_BRS"
+                projectFolder folder
+
+                general {
+                    description "IEM TC387 board on SIP CBD2000642. Tool derivative TC397, cores 0-3 only. Startup uses vBRS, vLinkGen and vBaseEnv."
+                    author "IEM"
+                    createStartMenuEntries false
+                }
+
+                def tgt = getTarget()
+                def derivs = tgt.getAvailableDerivatives()
+                scriptLogger.info("Available derivatives: " + derivs.collect { it.name }.sort().join(", "))
+                def deriv = derivs.find { it.name.contains("TC397") }
+                if (deriv == null) {
+                    deriv = derivs.find { it.name.contains("TC387") }
+                }
+                if (deriv == null) {
+                    throw new IllegalStateException("No TC397 or TC387 derivative in CBD2000642")
+                }
+                scriptLogger.info("Selected derivative: " + deriv.name)
+                tgt.setDerivative(deriv)
+
+                def comps = tgt.getAvailableCompilers()
+                scriptLogger.info("Available compilers: " + comps.collect { it.toString() }.join(", "))
+                def comp = comps.find { it.toString().toLowerCase().contains("tasking") }
+                if (comp == null) {
+                    throw new IllegalStateException("No Tasking compiler")
+                }
+                scriptLogger.info("Selected compiler: " + comp)
+                tgt.setCompiler(comp)
+
+                folders {
+                    ecucFileStructure EEcucFileStructure.ONE_FILE_PER_MODULE
+                }
+
+                daVinciDeveloper {
+                    createDaVinciDeveloperWorkspace true
+                    daVinciDeveloperExecutable devExe
+                }
+            }
+
+            theProject.openProject {
+                transaction {
+                    operations.activateModuleConfiguration(sipDefRef.vBRS)
+                    operations.activateModuleConfiguration(sipDefRef.vLinkGen)
+                    operations.activateModuleConfiguration(sipDefRef.vBaseEnv)
+                    operations.activateModuleConfiguration(sipDefRef.EcuC)
+                    operations.activateModuleConfiguration(sipDefRef.vSet)
+                    operations.activateModuleConfiguration(sipDefRef.Det)
+                }
+                saveProject()
+                scriptLogger.info("Activated vBRS, vLinkGen, vBaseEnv, EcuC, vSet and Det")
+            }
+
+            scriptLogger.info("Project created: " + theProject)
+        }
+    }
+}

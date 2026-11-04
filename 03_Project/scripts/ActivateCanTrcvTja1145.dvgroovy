@@ -1,0 +1,296 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.spi.Spi
+import com.vector.cfg.automation.model.ecuc.microsar.canif.CanIf
+import com.vector.cfg.automation.model.ecuc.microsar.cansm.CanSM
+import com.vector.cfg.automation.model.ecuc.microsar.ecum.EcuM
+import com.vector.cfg.automation.model.ecuc.microsar.cantrcv_tja1145.cantrcv.CanTrcv as CanTrcvTja1145
+
+daVinci {
+    scriptDescription "Activate CanTrcv_Tja1145 and wire Spi/CanIf/CanSM/EcuM for IEM DCAN TJA1145"
+    scriptTask("ActivateCanTrcvTja1145", DV_PROJECT) {
+        taskDescription "SPI REG0-3 + L/M/N sequences, CanTrcv channel, CanIf/CanSM mapping"
+        code {
+            def CANTRCV_DEF = CanTrcvTja1145.DefRef
+
+            def unwrap = { obj ->
+                if (obj == null) return null
+                if (obj.getClass().simpleName.contains("Optional") || obj.respondsTo("isPresent")) {
+                    if (obj.respondsTo("isPresent") && !obj.isPresent()) return null
+                    if (obj.respondsTo("get")) return obj.get()
+                }
+                return obj
+            }
+            def prop = { String name -> name.substring(0, 1).toLowerCase() + name.substring(1) }
+            def ensure = { list, String name ->
+                list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+            }
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) throw new IllegalStateException("No ${literal} in ${enumClass.name}")
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name.endsWith("_${paramName}OrCreate") }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                def parameter = unwrap(getter.invoke(owner))
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum") || parameter.getClass().simpleName.startsWith("GIEnum")) {
+                    setEnum(parameter, value.toString())
+                } else if (value instanceof Boolean) {
+                    setter.invoke(parameter, value)
+                } else if (value instanceof CharSequence || typeName.contains("String")) {
+                    setter.invoke(parameter, value.toString())
+                } else if (value instanceof Double || value instanceof BigDecimal) {
+                    setter.invoke(parameter, value as Double)
+                } else {
+                    try {
+                        setter.invoke(parameter, value as Long)
+                    } catch (IllegalArgumentException ignored) {
+                        setter.invoke(parameter, new java.math.BigInteger(value.toString()))
+                    }
+                }
+            }
+            def setRef = { owner, String paramName, target ->
+                def getter = owner.getClass().methods.find {
+                    it.parameterTypes.length == 0 && (it.name == "get${paramName}OrCreate" || it.name.endsWith("_${paramName}OrCreate"))
+                }
+                if (getter == null) throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                unwrap(getter.invoke(owner)).setRefTarget(target)
+            }
+            def clearJobAssignments = { sequence ->
+                def list = sequence."${prop('SpiJobAssignment')}"
+                def stale = []
+                list.each { stale.add(it) }
+                stale.each { it.moRemove() }
+            }
+            def addJobAssignment = { sequence, job ->
+                def list = sequence."${prop('SpiJobAssignment')}"
+                def item = list.createAndAdd()
+                item.setRefTarget(job)
+            }
+
+            // --- 1) SPI: TJA1145 REG0..3 + sequences L/M/N (keep TLF) ---
+            transaction {
+                def spi = bswmdModel(Spi.DefRef).single
+                def driver = spi.spiDriverOrCreate
+
+                [
+                    [driver.spiSequence, ["SpiSequence_Tja1145", "SpiSequence_TJA1145_L", "SpiSequence_TJA1145_M", "SpiSequence_TJA1145_N"]],
+                    [driver.spiJob, ["SpiJob_Tja1145", "SpiJob_TJA1145_REG0", "SpiJob_TJA1145_REG1", "SpiJob_TJA1145_REG2", "SpiJob_TJA1145_REG3"]],
+                    [driver.spiChannel, ["SpiChannel_Tja1145", "SpiChannel_TJA1145_REG0", "SpiChannel_TJA1145_REG1", "SpiChannel_TJA1145_REG2", "SpiChannel_TJA1145_REG3"]],
+                    [driver.spiExternalDevice, ["SpiExternalDevice_Tja1145", "TJA1145"]]
+                ].each { pair ->
+                    def list = pair[0]
+                    pair[1].each { name ->
+                        if (list.exists(name)) list.byName(name).moRemove()
+                    }
+                }
+
+                def tjaDev = ensure(driver.spiExternalDevice, "TJA1145")
+                assign(tjaDev, "SpiAutoCalcBaudParams", true)
+                assign(tjaDev, "SpiAutoCalcDelayParams", true)
+                assign(tjaDev, "SpiBaudrate", 2000000.0d)
+                assign(tjaDev, "SpiCsIdentifier", "CHANNEL8")
+                assign(tjaDev, "SpiCsPolarity", "LOW")
+                assign(tjaDev, "SpiCsSelection", "CS_VIA_PERIPHERAL_ENGINE")
+                assign(tjaDev, "SpiDataShiftEdge", "LEADING")
+                assign(tjaDev, "SpiEnableCs", true)
+                assign(tjaDev, "SpiHwUnit", "QSPI3")
+                assign(tjaDev, "SpiIdleTime", 0.00000128d)
+                assign(tjaDev, "SpiParitySupport", "UNUSED")
+                assign(tjaDev, "SpiShiftClockIdleLevel", "LOW")
+                assign(tjaDev, "SpiTimeClk2Cs", 0.00000512d)
+                assign(tjaDev, "SpiTrailingTime", 0.00000128d)
+
+                def channels = [:]
+                def jobs = [:]
+                (0..3).each { idx ->
+                    def ch = ensure(driver.spiChannel, "SpiChannel_TJA1145_REG${idx}")
+                    assign(ch, "SpiChannelId", (idx as Long))
+                    assign(ch, "SpiChannelType", "EB")
+                    assign(ch, "SpiDataWidth", 8L)
+                    assign(ch, "SpiEbMaxLength", 4L)
+                    assign(ch, "SpiIbNBuffers", 10L)
+                    assign(ch, "SpiTransferStart", "MSB")
+                    channels[idx] = ch
+
+                    def job = ensure(driver.spiJob, "SpiJob_TJA1145_REG${idx}")
+                    assign(job, "SpiJobId", (idx as Long))
+                    assign(job, "SpiJobPriority", 0L)
+                    assign(job, "SpiHwUnitSynchronous", "SYNCHRONOUS")
+                    setRef(job, "SpiDeviceAssignment", tjaDev)
+                    def chList = ensure(job.spiChannelList, "SpiChannelList_0")
+                    assign(chList, "SpiChannelIndex", 0L)
+                    setRef(chList, "SpiChannelAssignment", ch)
+                    jobs[idx] = job
+                }
+
+                // Re-id TLF if present to avoid collision
+                if (driver.spiChannel.exists("SpiChannel_Tlf35584")) {
+                    assign(driver.spiChannel.byName("SpiChannel_Tlf35584"), "SpiChannelId", 10L)
+                }
+                if (driver.spiJob.exists("SpiJob_Tlf35584")) {
+                    assign(driver.spiJob.byName("SpiJob_Tlf35584"), "SpiJobId", 10L)
+                }
+
+                def seqL = ensure(driver.spiSequence, "SpiSequence_TJA1145_L")
+                assign(seqL, "SpiSequenceId", 0L)
+                assign(seqL, "SpiInterruptibleSequence", false)
+                clearJobAssignments(seqL)
+                (0..3).each { addJobAssignment(seqL, jobs[it]) }
+
+                def seqM = ensure(driver.spiSequence, "SpiSequence_TJA1145_M")
+                assign(seqM, "SpiSequenceId", 1L)
+                assign(seqM, "SpiInterruptibleSequence", false)
+                clearJobAssignments(seqM)
+                (0..2).each { addJobAssignment(seqM, jobs[it]) }
+
+                def seqN = ensure(driver.spiSequence, "SpiSequence_TJA1145_N")
+                assign(seqN, "SpiSequenceId", 2L)
+                assign(seqN, "SpiInterruptibleSequence", false)
+                clearJobAssignments(seqN)
+                addJobAssignment(seqN, jobs[0])
+
+                if (driver.spiSequence.exists("SpiSequence_Tlf35584")) {
+                    assign(driver.spiSequence.byName("SpiSequence_Tlf35584"), "SpiSequenceId", 10L)
+                }
+                scriptLogger.info("SPI TJA1145 REG0-3 / L/M/N configured")
+            }
+
+            // --- 2) Activate + configure CanTrcv_Tja1145 ---
+            transaction {
+                def present = activeEcuc.modules(CANTRCV_DEF)
+                if (present == null || present.isEmpty()) {
+                    operations.activateModuleConfiguration(CANTRCV_DEF)
+                    scriptLogger.info("CanTrcv_Tja1145 activated")
+                } else {
+                    scriptLogger.info("CanTrcv_Tja1145 already active")
+                }
+            }
+
+            transaction {
+                def spi = bswmdModel(Spi.DefRef).single
+                def seqL = spi.spiDriver.spiSequence.byName("SpiSequence_TJA1145_L")
+                def seqM = spi.spiDriver.spiSequence.byName("SpiSequence_TJA1145_M")
+                def seqN = spi.spiDriver.spiSequence.byName("SpiSequence_TJA1145_N")
+
+                def ecuM = bswmdModel(EcuM.DefRef).single
+                def common = ecuM.ecuMConfigurationOrCreate.ecuMCommonConfigurationOrCreate
+                def wk = common.ecuMWakeupSource.byName("ECUM_WKSOURCE_POWER")
+                def extWdg = common.ecuMWakeupSource.byName("ECUM_WKSOURCE_EXTERNAL_WDG")
+
+                def trcv = bswmdModel(CANTRCV_DEF).single
+                def g = trcv.canTrcvGeneralOrCreate
+                g.canTrcvDevErrorDetectOrCreate.value = false
+                g.canTrcvGetVersionInfoOrCreate.value = false
+                assign(g, "CanTrcvWakeUpSupport", "CANTRCV_WAKEUP_BY_POLLING")
+                g.canTrcvIndexOrCreate.value = 0L
+                g.canTrcvMainFunctionPeriodOrCreate.value = 0.005d
+                g.canTrcvSafeBswChecksOrCreate.value = false
+                try { assign(g, "CanTrcvTimerType", "None") } catch (ignored) {}
+                try { g.canTrcvWaitTimeOrCreate.value = 220L } catch (ignored) {}
+
+                def cs = trcv.canTrcvConfigSetOrCreate
+                cs.canTrcvSPICommRetriesOrCreate.value = 5L
+                cs.canTrcvSPICommTimeoutOrCreate.value = 100L
+                def ch = cs.canTrcvChannel.exists("CanTrcvChannel_Tja1145") ? cs.canTrcvChannel.byName("CanTrcvChannel_Tja1145") : cs.canTrcvChannel.createAndAdd("CanTrcvChannel_Tja1145")
+                assign(ch, "CanTrcvInitState", "CANTRCV_OP_MODE_NORMAL")
+                ch.canTrcvChannelIdOrCreate.value = 0L
+                ch.canTrcvChannelUsedOrCreate.value = true
+                ch.canTrcvControlsPowerSupplyOrCreate.value = true
+                ch.canTrcvHwPnSupportOrCreate.value = true
+                ch.canTrcvMaxBaudrateOrCreate.value = 1000L
+                ch.canTrcvWakeupByBusUsedOrCreate.value = false
+                try { ch.canTrcvEnablePNMDOrCreate.value = true } catch (ignored) {}
+                try { ch.canTrcvFdToleranceOrCreate.value = false } catch (ignored) {}
+                ch.canTrcvWakeupSourceRefOrCreate.setRefTarget(wk)
+                try { ch.canTrcvPorWakeupSourceRefOrCreate.setRefTarget(wk) } catch (ignored) {}
+                try { ch.canTrcvSyserrWakeupSourceRefOrCreate.setRefTarget(extWdg) } catch (ignored) {}
+
+                def pn = ch.canTrcvPartialNetworkOrCreate
+                pn.canTrcvBusErrFlagOrCreate.value = false
+                pn.canTrcvBaudRateOrCreate.value = 500L
+                pn.canTrcvPnCanIdIsExtendedOrCreate.value = false
+                pn.canTrcvPnEnabledOrCreate.value = false
+                pn.canTrcvPnFrameCanIdOrCreate.value = 0L
+                pn.canTrcvPnFrameCanIdMaskOrCreate.value = 0L
+                pn.canTrcvPnFrameDlcOrCreate.value = 8L
+                pn.canTrcvPowerOnFlagOrCreate.value = true
+
+                def access = ch.canTrcvAccessOrCreate
+                def spiSeq = access.canTrcvSpiSequenceOrCreate
+                spiSeq.canTrcvSpiAccessSynchronousOrCreate.value = false
+                def nameList = spiSeq.canTrcvSpiSequenceName
+                def staleRefs = []
+                nameList.each { staleRefs.add(it) }
+                staleRefs.each { it.moRemove() }
+                [seqL, seqM, seqN].each { s ->
+                    nameList.createAndAdd().setRefTarget(s)
+                }
+                [
+                    ["SeqRWDataLarge", "SeqRWDataLarge", seqL],
+                    ["SeqRWDataMedium", "SeqRWDataMedium", seqM],
+                    ["SeqRWDataNormal", "SeqRWDataNormal", seqN]
+                ].each { row ->
+                    def acc = spiSeq.canTrcvSpiSequenceAccess.exists(row[0]) ? spiSeq.canTrcvSpiSequenceAccess.byName(row[0]) : spiSeq.canTrcvSpiSequenceAccess.createAndAdd(row[0])
+                    acc.canTrcvSpiSequenceIdentifierOrCreate.value = row[1]
+                    acc.canTrcvSpiAccessSynchronousOrCreate.value = true
+                    acc.canTrcvSpiSequenceNameOrCreate.setRefTarget(row[2])
+                }
+                scriptLogger.info("CanTrcv_Tja1145 configured via typed model")
+            }
+
+            // --- 3) CanIf transceiver mapping ---
+            transaction {
+                def canIf = bswmdModel(CanIf.DefRef).single
+                // CanIfTransceiverHandling/Mapping are derived by CanIfTrcvHandlingSupportValidator — do not set manually
+
+                def dispatch = canIf.canIfDispatchCfgOrCreate
+                assign(dispatch, "CanIfDispatchUserTrcvModeIndicationUL", "CAN_SM")
+                assign(dispatch, "CanIfDispatchUserTrcvModeIndicationName", "CanSM_TransceiverModeIndication")
+                try { assign(dispatch, "CanIfDispatchUserClearTrcvWufFlagIndicationUL", "CAN_SM") } catch (ignored) {}
+                try { assign(dispatch, "CanIfDispatchUserClearTrcvWufFlagIndicationName", "CanSM_ClearTrcvWufFlagIndication") } catch (ignored) {}
+                try { assign(dispatch, "CanIfDispatchUserCheckTrcvWakeFlagIndicationUL", "CAN_SM") } catch (ignored) {}
+                try { assign(dispatch, "CanIfDispatchUserCheckTrcvWakeFlagIndicationName", "CanSM_CheckTransceiverWakeFlagIndication") } catch (ignored) {}
+                try { assign(dispatch, "CanIfDispatchUserConfirmPnAvailabilityUL", "CAN_SM") } catch (ignored) {}
+                try { assign(dispatch, "CanIfDispatchUserConfirmPnAvailabilityName", "CanSM_ConfirmPnAvailability") } catch (ignored) {}
+
+                def trcvDrv = canIf.canIfTrcvDrvCfg.isEmpty() ? canIf.canIfTrcvDrvCfg.createAndAdd("CanIfTrcvDrvCfg") : canIf.canIfTrcvDrvCfg.iterator().next()
+                def trcvCfg = trcvDrv.canIfTrcvCfg.exists("CanIfTrcvCfg_Tja1145") ? trcvDrv.canIfTrcvCfg.byName("CanIfTrcvCfg_Tja1145") : trcvDrv.canIfTrcvCfg.createAndAdd("CanIfTrcvCfg_Tja1145")
+                trcvCfg.canIfTrcvIdOrCreate.value = 0L
+                trcvCfg.canIfTrcvWakeupSupportOrCreate.value = false
+
+                def trcvTyped = bswmdModel(CANTRCV_DEF).single
+                def trcvCh = trcvTyped.canTrcvConfigSet.canTrcvChannel.byName("CanTrcvChannel_Tja1145")
+                trcvCfg.canIfTrcvCanTrcvRefOrCreate.setRefTargetMdf(trcvCh.mdfObject)
+
+                // Ctrl -> Trcv ref
+                def ctrlDrv = canIf.canIfCtrlDrvCfg.iterator().next()
+                def ctrl = ctrlDrv.canIfCtrlCfg.iterator().next()
+                ctrl.canIfCtrlTrcvCfgRefOrCreate.setRefTargetMdf(trcvCfg.mdfObject)
+                scriptLogger.info("CanIf transceiver mapping configured")
+            }
+
+            // --- 4) CanSM TransceiverId ---
+            transaction {
+                def canSm = bswmdModel(CanSM.DefRef).single
+                def net = canSm.canSMConfiguration.canSMManagerNetwork.iterator().next()
+                def canIf = bswmdModel(CanIf.DefRef).single
+                def trcvDrv = canIf.canIfTrcvDrvCfg.iterator().next()
+                def trcvCfg = trcvDrv.canIfTrcvCfg.byName("CanIfTrcvCfg_Tja1145")
+                net.canSMTransceiverIdOrCreate.setRefTargetMdf(trcvCfg.mdfObject)
+                scriptLogger.info("CanSM TransceiverId set")
+            }
+
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

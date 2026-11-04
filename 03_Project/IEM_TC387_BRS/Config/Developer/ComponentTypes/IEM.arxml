@@ -1,0 +1,2916 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This file was saved with a tool from Vector Informatik GmbH-->
+<AUTOSAR xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00044.xsd" xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="325a51b0-67ac-47a5-b793-55abd97e675f-SwComponentType">
+      <SHORT-NAME>SwComponentType</SHORT-NAME>
+      <ELEMENTS>
+        <COMPOSITION-SW-COMPONENT-TYPE UUID="DCE:ffe98c01-fbc3-6f47-9bb3-d2bd4e8abffb">
+          <SHORT-NAME>IEM</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <PORTS>
+            <P-PORT-PROTOTYPE UUID="DCE:1c69ef0b-2f8d-6867-a666-479797a43372">
+              <SHORT-NAME>DmcStsRearToEsc</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DmcStsRearToEsc_2/DmcStsRearToEsc</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/DmcStsRearToEsc_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/DmcStsRearToEsc_2</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:165a7ebf-0c18-6171-80c7-61e90fb189fc">
+              <SHORT-NAME>ImobEngChk2</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/ImobEngChk2_4/ImobEngChk2</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/ImobEngChk2_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/ImobEngChk2_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:5a6d9d0d-a978-6ee8-93cc-94895c4db2a3">
+              <SHORT-NAME>ImobEngSts2</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/ImobEngSts2_4/ImobEngSts2</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/ImobEngSts2_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/ImobEngSts2_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:1e921e30-619f-667f-ba6f-e7f79b9e0b74">
+              <SHORT-NAME>IEMTestFr1</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IEMTestFr1_1/IEMTestFr1</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/IEMTestFr1_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/IEMTestFr1_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:66ffaf06-4714-6b35-8439-ffd3fccc97cd">
+              <SHORT-NAME>IEMTestFr2</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IEMTestFr2_1/IEMTestFr2</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/IEMTestFr2_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/IEMTestFr2_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:2379abde-4fbe-668d-a218-d0fedd749145">
+              <SHORT-NAME>IEMTestFr3</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IEMTestFr3_3/IEMTestFr3</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/IEMTestFr3_3</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/IEMTestFr3_3</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:07ebafbf-8f3f-6c4d-ae3d-2fd095be6502">
+              <SHORT-NAME>WhlMotSysCoolgReq</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysCoolgReq_4/WhlMotSysCoolgReq</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysCoolgReq_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysCoolgReq_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:3ce3a492-9d7d-6010-8e33-f1e026a76537">
+              <SHORT-NAME>WhlMotSysInvrT</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysInvrT_4/WhlMotSysInvrT</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysInvrT_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysInvrT_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:babd1518-384b-68f6-aeed-20ec95183268">
+              <SHORT-NAME>WhlMotSysMotT</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysMotT_3/WhlMotSysMotT</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysMotT_3</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysMotT_3</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:ca653a02-6fe8-6ca2-aaae-e2e49e05c490">
+              <SHORT-NAME>WhlMotSysCooltT</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysCooltT_4/WhlMotSysCooltT</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysCooltT_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysCooltT_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:66894970-1c55-6b5c-8b0c-6c9096a9089a">
+              <SHORT-NAME>WhlMotSysHeatPwrMax</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatPwrMax_1/WhlMotSysHeatPwrMax</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysHeatPwrMax_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysHeatPwrMax_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:24566f9a-7552-6606-8d18-b961b135c353">
+              <SHORT-NAME>WhlMotSysHeatFdBck</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatFdBck_1/WhlMotSysHeatFdBck</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysHeatFdBck_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysHeatFdBck_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:7aed3515-e937-6cf3-a424-25e28d9f49fe">
+              <SHORT-NAME>WhlMotSysHeatPwrAct</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatPwrAct_1/WhlMotSysHeatPwrAct</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysHeatPwrAct_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysHeatPwrAct_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:78c9a341-f504-6959-9ce6-c8a03e89da36">
+              <SHORT-NAME>WhlMotSysModSts</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysModSts_5/WhlMotSysModSts</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysModSts_5</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysModSts_5</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:940f37ea-6e27-66d8-8cf5-2ba86c041e67">
+              <SHORT-NAME>WhlMotSysLimnIndcn</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysLimnIndcn_3/WhlMotSysLimnIndcn</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysLimnIndcn_3</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysLimnIndcn_3</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:72748305-f7ff-688e-92f7-84b004e2af75">
+              <SHORT-NAME>WhlMotClrRdyReq</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotClrRdyReq_4/WhlMotClrRdyReq</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotClrRdyReq_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotClrRdyReq_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:8c121596-7d3d-6cac-9b73-f33b2abf73e2">
+              <SHORT-NAME>WhlMotSysErrIndcnReq</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysErrIndcnReq_4/WhlMotSysErrIndcnReq</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysErrIndcnReq_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysErrIndcnReq_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:82f649db-088b-659b-ad69-0c957d742c45">
+              <SHORT-NAME>IemGeneric</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IemGeneric_12/IemGeneric</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/IemGeneric_12</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/IemGeneric_12</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:9f07fbbf-5d77-6b6a-be1b-b01993da65b8">
+              <SHORT-NAME>WhlMotSysIdc</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysIdc_5/WhlMotSysIdc</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysIdc_5</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysIdc_5</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:acd7015a-66d7-6c71-883d-96f357831f2c">
+              <SHORT-NAME>WhlMotSysUdc</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysUdc_3/WhlMotSysUdc</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysUdc_3</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysUdc_3</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:4c47d79e-91e2-6f95-9229-5bd5202df455">
+              <SHORT-NAME>WhlMotCooltFlowMinReq</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotCooltFlowMinReq_2/WhlMotCooltFlowMinReq</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotCooltFlowMinReq_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotCooltFlowMinReq_2</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:ecdbe83a-63df-684c-99c6-71075c42fe58">
+              <SHORT-NAME>WhlMotSysSpdAct</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysSpdAct_4/WhlMotSysSpdAct</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysSpdAct_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysSpdAct_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:bd5a2264-2174-6fa9-9133-3993033ad53e">
+              <SHORT-NAME>WhlMotSysTqAvl</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqAvl_4/WhlMotSysTqAvl</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysTqAvl_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysTqAvl_4</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:c1bf1eb3-d9d0-654d-9f24-ae508dca1895">
+              <SHORT-NAME>WhlMotSysTqEst</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqEst_10/WhlMotSysTqEst</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysTqEst_10</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysTqEst_10</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:23fd7d27-54b8-62b7-8123-dfeaa57e8f7e">
+              <SHORT-NAME>WhlMotSysSpdActSafe</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysSpdActSafe_1/WhlMotSysSpdActSafe</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysSpdActSafe_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysSpdActSafe_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:9601fa86-a131-60b8-91c3-6a8ab85ca308">
+              <SHORT-NAME>PLockParkStsRe</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockParkStsRe_1/PLockParkStsRe</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/PLockParkStsRe_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockParkStsRe_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:23b4ddcf-e045-6e85-b6d5-ff336dfb63f3">
+              <SHORT-NAME>PLockFltIndcRe</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockFltIndcRe_1/PLockFltIndcRe</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/PLockFltIndcRe_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockFltIndcRe_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE UUID="DCE:673ced2b-9c82-6b0d-8f75-72be96a92b74">
+              <SHORT-NAME>PLockFltLvlRe</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockFltLvlRe_1/PLockFltLvlRe</DATA-ELEMENT-REF>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/PLockFltLvlRe_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockFltLvlRe_1</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:3c87b8c8-d9ba-633f-a23a-aab1136c787f">
+              <SHORT-NAME>WhlMotSysTqReq</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqReq_2/WhlMotSysTqReq</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0.5</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysTqReq_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysTqReq_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:4d863735-3b04-6ae7-b117-edf74cee71fd">
+              <SHORT-NAME>GearLvrIndcn</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/GearLvrIndcn_6/GearLvrIndcn</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/GearLvrIndcn_6</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/GearLvrIndcn_6</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:09d0c20e-cff6-6029-9348-42e342ec9fba">
+              <SHORT-NAME>StcStsToDmc</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/StcStsToDmc_3/StcStsToDmc</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/StcStsToDmc_3</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/StcStsToDmc_3</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:2fb64d2e-2e6f-657f-bc86-5e1f0b24a518">
+              <SHORT-NAME>EscVariantToDmc</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/EscVariantToDmc_1/EscVariantToDmc</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/EscVariantToDmc_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/EscVariantToDmc_1</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:7e126406-b36d-6d01-ae84-b5b00f701341">
+              <SHORT-NAME>CarTiGlb</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CarTiGlb_5/CarTiGlb</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/CarTiGlb_5</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/CarTiGlb_5</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:1c733b23-8c93-6740-8184-cd61d0e4c038">
+              <SHORT-NAME>VehModMngtGlbSafe1</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehModMngtGlbSafe1_7/VehModMngtGlbSafe1</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/VehModMngtGlbSafe1_7</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/VehModMngtGlbSafe1_7</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:74fd98af-85db-645a-b9a7-3f6db8bd7b47">
+              <SHORT-NAME>VehBattU</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehBattU_8/VehBattU</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/VehBattU_8</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/VehBattU_8</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:defd5d94-41b0-6db2-bc78-586a9479bfc2">
+              <SHORT-NAME>BkpOfDstTrvld</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/BkpOfDstTrvld_7/BkpOfDstTrvld</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/BkpOfDstTrvld_7</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/BkpOfDstTrvld_7</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:b24995fa-baf0-6ea5-8fac-c0da118d9e88">
+              <SHORT-NAME>VehCfgPrm</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehCfgPrm_5/VehCfgPrm</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/VehCfgPrm_5</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/VehCfgPrm_5</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:8267a4bf-cb6a-603c-ba65-4961ed5ec538">
+              <SHORT-NAME>VehCfgPrmExt</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehCfgPrmExt_2/VehCfgPrmExt</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/VehCfgPrmExt_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/VehCfgPrmExt_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:10bb357d-c460-6472-9503-ef7abfc21025">
+              <SHORT-NAME>ImobEngMgrReq2</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/ImobEngMgrReq2_4/ImobEngMgrReq2</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/ImobEngMgrReq2_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/ImobEngMgrReq2_4</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:720d355e-da00-6ca5-b121-5d1d0eb8218e">
+              <SHORT-NAME>EngSt1WdSts</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/EngSt1WdSts_4/EngSt1WdSts</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/EngSt1WdSts_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/EngSt1WdSts_4</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:e7ca7d7d-6374-66f8-b238-61e886838856">
+              <SHORT-NAME>VehSpdLgt</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehSpdLgt_15/VehSpdLgt</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/VehSpdLgt_15</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/VehSpdLgt_15</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:e1497cf8-a48a-62b8-816f-c7c32ea9afb0">
+              <SHORT-NAME>HvSysRlySts</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvSysRlySts_8/HvSysRlySts</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0.35</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/HvSysRlySts_8</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvSysRlySts_8</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:6e8da6eb-4a02-650c-b5b0-d4d7008f2d60">
+              <SHORT-NAME>CooltFlowForDtElec</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CooltFlowForDtElec_5/CooltFlowForDtElec</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/CooltFlowForDtElec_5</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/CooltFlowForDtElec_5</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:7b4d8a11-7265-6442-b63e-336727cd4191">
+              <SHORT-NAME>CooltTSigForDtElec</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CooltTSigForDtElec_5/CooltTSigForDtElec</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/CooltTSigForDtElec_5</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/CooltTSigForDtElec_5</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:9edbdf51-ec83-6e33-a744-355dd13b68a9">
+              <SHORT-NAME>WhlMotSysModReq</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysModReq_2/WhlMotSysModReq</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0.5</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysModReq_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysModReq_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:638ec211-ba42-6b76-adf8-d20bd7727433">
+              <SHORT-NAME>WhlMotSysActvDampgModReq</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysActvDampgModReq_2/WhlMotSysActvDampgModReq</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysActvDampgModReq_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysActvDampgModReq_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:a4cce566-31d9-625b-b0b1-93a935053504">
+              <SHORT-NAME>WhlMotSysPwrLimMax</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysPwrLimMax_2/WhlMotSysPwrLimMax</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysPwrLimMax_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysPwrLimMax_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:9b772a19-9a68-6520-9c2d-419f2c668961">
+              <SHORT-NAME>WhlMotSysPwrLimMin</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysPwrLimMin_2/WhlMotSysPwrLimMin</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysPwrLimMin_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysPwrLimMin_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:c1ab936f-be48-66d6-acca-77caf668b048">
+              <SHORT-NAME>PrpsnFbLimnIndcn</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PrpsnFbLimnIndcn_2/PrpsnFbLimnIndcn</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/PrpsnFbLimnIndcn_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PrpsnFbLimnIndcn_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:297da638-990d-6296-af1e-55e39e023bcf">
+              <SHORT-NAME>DrvgCyc</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DrvgCyc_3/DrvgCyc</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/DrvgCyc_3</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/DrvgCyc_3</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:8b158b71-1257-6381-9abd-5db7caf9972a">
+              <SHORT-NAME>RearHeatModEnad</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/RearHeatModEnad_2/RearHeatModEnad</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/RearHeatModEnad_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/RearHeatModEnad_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:b0ce35a1-2f79-6711-9cc7-116edd1f5685">
+              <SHORT-NAME>RearHeatPwrAllwd</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/RearHeatPwrAllwd_1/RearHeatPwrAllwd</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/RearHeatPwrAllwd_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/RearHeatPwrAllwd_1</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:77bc76b4-da0f-61b6-b65f-1b783b402c05">
+              <SHORT-NAME>PtTqAtAxleMaxReq</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PtTqAtAxleMaxReq_2/PtTqAtAxleMaxReq</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0.5</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/PtTqAtAxleMaxReq_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PtTqAtAxleMaxReq_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:f726cedb-de95-6e00-9be6-766867f0dad8">
+              <SHORT-NAME>VehMtnSt</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehMtnSt_10/VehMtnSt</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/VehMtnSt_10</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/VehMtnSt_10</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:a1b43c4d-6d9f-6053-ad0e-8f55930421b6">
+              <SHORT-NAME>CrashStsSafe</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CrashStsSafe_2/CrashStsSafe</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>1</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/CrashStsSafe_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/CrashStsSafe_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:15a59763-d6d3-6087-b2fe-b7d00125e298">
+              <SHORT-NAME>WhlMotSysTqAllwd</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqAllwd_7/WhlMotSysTqAllwd</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>true</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0.5</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/WhlMotSysTqAllwd_7</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysTqAllwd_7</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:d261d7b3-7042-676d-bc22-344cb3607b40">
+              <SHORT-NAME>HvBattSoc</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattSoc_2/HvBattSoc</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/HvBattSoc_2</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattSoc_2</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:806d629a-5365-6c6e-80ab-20d9fa53fe1f">
+              <SHORT-NAME>HvBattUDynMinLim</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDynMinLim_4/HvBattUDynMinLim</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/HvBattUDynMinLim_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattUDynMinLim_4</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:6a13113d-a38f-6145-8263-56247ee21c0b">
+              <SHORT-NAME>HvBattUDynMaxLim</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDynMaxLim_4/HvBattUDynMaxLim</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/HvBattUDynMaxLim_4</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattUDynMaxLim_4</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:1cc8f0be-f9db-664e-bcdc-dafa9c143548">
+              <SHORT-NAME>HvBattUDc</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDc_3/HvBattUDc</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/HvBattUDc_3</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattUDc_3</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:9457373b-e608-63c3-a132-54b96c08fbbe">
+              <SHORT-NAME>SpdRotlForWhlsAtAxleRe</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/SpdRotlForWhlsAtAxleRe_7/SpdRotlForWhlsAtAxleRe</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/SpdRotlForWhlsAtAxleRe_7</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/SpdRotlForWhlsAtAxleRe_7</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:1b0cdbf9-ab9c-60e3-a2ba-0e7c5e4e718f">
+              <SHORT-NAME>PLockParkReq</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockParkReq_1/PLockParkReq</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/PLockParkReq_1</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockParkReq_1</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:d5111f32-3f2c-677e-88ef-c7b3556cd08e">
+              <SHORT-NAME>DCChrgnHndlSts</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DCChrgnHndlSts_5/DCChrgnHndlSts</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/DCChrgnHndlSts_5</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/DCChrgnHndlSts_5</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="DCE:a173e92f-135b-6573-a299-6ea15925d531">
+              <SHORT-NAME>OnBdChrgrHndlSts1</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/OnBdChrgrHndlSts1_8/OnBdChrgrHndlSts1</DATA-ELEMENT-REF>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/ConstantSpecifications/OnBdChrgrHndlSts1_8</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/OnBdChrgrHndlSts1_8</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+          </PORTS>
+          <PORT-GROUPS>
+            <PORT-GROUP UUID="2C9B628A-2FBD-4842-86D1-16C01DEA7C68">
+              <SHORT-NAME>PropulsionStart</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngChk2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngSts2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotClrRdyReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAvl</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkStsRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltIndcRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltLvlRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngMgrReq2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="1D818DB6-9B31-4958-BF09-1351F37C9695">
+              <SHORT-NAME>Immobilizer</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngChk2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngSts2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngMgrReq2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehMtnSt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehSpdLgt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/SpdRotlForWhlsAtAxleRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="672AD427-54D9-455E-8473-8218A8EF6B92">
+              <SHORT-NAME>Diagnostics</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngChk2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngSts2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCoolgReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatFdBck</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotClrRdyReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotCooltFlowMinReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAvl</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkStsRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltIndcRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltLvlRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngMgrReq2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehSpdLgt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltFlowForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltTSigForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatModEnad</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatPwrAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PtTqAtAxleMaxReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehMtnSt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CrashStsSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/SpdRotlForWhlsAtAxleRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="BBC57E19-BE5F-4478-8F56-A1C69AE59B3A">
+              <SHORT-NAME>VehicleModeManagement</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngChk2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngSts2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCoolgReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatFdBck</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotClrRdyReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotCooltFlowMinReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAvl</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkStsRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltIndcRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltLvlRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngMgrReq2</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehSpdLgt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltFlowForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltTSigForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatModEnad</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatPwrAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PtTqAtAxleMaxReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehMtnSt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CrashStsSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/SpdRotlForWhlsAtAxleRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="4EB1584A-1F78-46C4-B121-E7818BB55DA4">
+              <SHORT-NAME>ChargingHV</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAvl</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkStsRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltIndcRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltLvlRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="6FCE3582-092A-47F2-8C75-C8183428BD3F">
+              <SHORT-NAME>ParkingDrivingClimatization</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCoolgReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatFdBck</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotClrRdyReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotCooltFlowMinReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAvl</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltFlowForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltTSigForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatModEnad</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatPwrAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehMtnSt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CrashStsSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehSpdLgt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/SpdRotlForWhlsAtAxleRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="02E201B3-E1F6-4369-96D3-743647A5CBEF">
+              <SHORT-NAME>TelematicsConnectivity</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="CAC1072D-2319-4AF4-9FC2-63C8A91E70C8">
+              <SHORT-NAME>VehicleDriving</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCoolgReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatFdBck</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotClrRdyReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotCooltFlowMinReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAvl</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkStsRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltIndcRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltLvlRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltFlowForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltTSigForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatModEnad</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatPwrAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PtTqAtAxleMaxReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehMtnSt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CrashStsSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehSpdLgt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/SpdRotlForWhlsAtAxleRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="17CC0241-2680-47A8-867A-D361BD0EA1E3">
+              <SHORT-NAME>GlobalShortDuration</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehMtnSt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CrashStsSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehSpdLgt</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/SpdRotlForWhlsAtAxleRe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="D43A3EE5-20D3-4AAA-8100-F4B8B939A9D1">
+              <SHORT-NAME>HVEnergyStorage</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCoolgReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotCooltFlowMinReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltFlowForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltTSigForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="11D7B167-18B0-49F1-81AE-792C8B1FF599">
+              <SHORT-NAME>Crash</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCoolgReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotClrRdyReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotCooltFlowMinReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltFlowForDtElec</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PtTqAtAxleMaxReq</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CrashStsSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="E05DCA3C-406C-46E9-A587-28CA7DF52627">
+              <SHORT-NAME>InfotainmentPush</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+            <PORT-GROUP UUID="52FC343B-A5E8-45E4-BB0A-10E6AC33087B">
+              <SHORT-NAME>Brake</SHORT-NAME>
+              <CATEGORY>PARTIAL_NETWORKING</CATEGORY>
+              <OUTER-PORTS>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+                <PORT-PROTOTYPE-REF-CONDITIONAL>
+                  <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</PORT-PROTOTYPE-REF>
+                </PORT-PROTOTYPE-REF-CONDITIONAL>
+              </OUTER-PORTS>
+            </PORT-GROUP>
+          </PORT-GROUPS>
+          <COMPONENTS>
+            <SW-COMPONENT-PROTOTYPE UUID="91178ED0-6AC2-4EB4-9251-E7C05A6D3566">
+              <SHORT-NAME>IEMDTCS</SHORT-NAME>
+              <TYPE-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/SwComponentType/IEMDTCS</TYPE-TREF>
+            </SW-COMPONENT-PROTOTYPE>
+            <SW-COMPONENT-PROTOTYPE UUID="21779CE9-F6DA-43DC-B218-A56BE5412C3F">
+              <SHORT-NAME>IEMHOST</SHORT-NAME>
+              <TYPE-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/SwComponentType/IEMHOST</TYPE-TREF>
+            </SW-COMPONENT-PROTOTYPE>
+          </COMPONENTS>
+          <CONNECTORS>
+            <DELEGATION-SW-CONNECTOR UUID="5C946BEC-246D-4830-A6B8-9783F9F8A3ED">
+              <SHORT-NAME>DmcStsRearToEsc_IEM_IEMDTCS</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMDTCS</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMDTCS/DmcStsRearToEsc</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/DmcStsRearToEsc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="81861B14-FC79-4E4A-8A8E-A81E3FA4141F">
+              <SHORT-NAME>ImobEngChk2_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/ImobEngChk2</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngChk2</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="19E8C3E8-3E07-4F00-B06A-5DC79474CC13">
+              <SHORT-NAME>ImobEngSts2_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/ImobEngSts2</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngSts2</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="CDF58671-A7B2-44C1-BEE9-D4C6EA81FAD4">
+              <SHORT-NAME>IEMTestFr1_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/IEMTestFr1</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IEMTestFr1</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="AFB0F5D3-3B8E-4AFB-8B58-12E65E6885E7">
+              <SHORT-NAME>IEMTestFr2_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/IEMTestFr2</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IEMTestFr2</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="6DC89327-F75B-4206-8118-0621F3D06D8C">
+              <SHORT-NAME>IEMTestFr3_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/IEMTestFr3</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IEMTestFr3</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="22E4ABA1-EFC7-4CFD-8CC4-97D0BD142AE4">
+              <SHORT-NAME>WhlMotSysCoolgReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysCoolgReq</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCoolgReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="63E48B07-1621-451B-93B8-CDAA5FE14361">
+              <SHORT-NAME>WhlMotSysInvrT_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysInvrT</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysInvrT</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="5AAA5FAB-D451-41DE-B4C7-D7D411247DAC">
+              <SHORT-NAME>WhlMotSysMotT_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysMotT</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysMotT</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="0DD0F179-D0F2-4CDC-841F-84604F5B9377">
+              <SHORT-NAME>WhlMotSysCooltT_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysCooltT</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysCooltT</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="C31E2515-0426-492A-AD4D-D0656A467181">
+              <SHORT-NAME>WhlMotSysHeatPwrMax_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysHeatPwrMax</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrMax</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="0B8F0B06-90AA-4F76-8B45-1837B7DCB192">
+              <SHORT-NAME>WhlMotSysHeatFdBck_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysHeatFdBck</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatFdBck</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="F1E14990-ACE1-4F44-AEB8-4E3B4EF59D81">
+              <SHORT-NAME>WhlMotSysHeatPwrAct_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysHeatPwrAct</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysHeatPwrAct</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="77508549-F3E0-44C6-83F9-399EF14F4F5C">
+              <SHORT-NAME>WhlMotSysModSts_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysModSts</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModSts</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="CE8AD78E-2167-4CE1-AD20-B0E08739DB9A">
+              <SHORT-NAME>WhlMotSysLimnIndcn_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysLimnIndcn</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysLimnIndcn</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="64297C79-2E76-42D2-9A11-CAE697A6FCCB">
+              <SHORT-NAME>WhlMotClrRdyReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotClrRdyReq</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotClrRdyReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="E66E5E06-32E5-4372-B6F6-7E6C1EFC7DAA">
+              <SHORT-NAME>WhlMotSysErrIndcnReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysErrIndcnReq</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysErrIndcnReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="75DB451B-3465-4805-8138-1EABD041B5E0">
+              <SHORT-NAME>IemGeneric_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/IemGeneric</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/IemGeneric</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="00358AE0-7FBB-4035-A515-05C0A1098335">
+              <SHORT-NAME>WhlMotSysIdc_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysIdc</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysIdc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="EAA62DB6-0C94-4F22-B59E-2AA6B64E6475">
+              <SHORT-NAME>WhlMotSysUdc_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysUdc</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysUdc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="332978FF-23CC-4BF5-9EBA-0A96E8205176">
+              <SHORT-NAME>WhlMotCooltFlowMinReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotCooltFlowMinReq</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotCooltFlowMinReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="14E1728C-C79E-4549-BBC7-DD9722EFC4BF">
+              <SHORT-NAME>WhlMotSysSpdAct_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysSpdAct</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdAct</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="ED0D992B-DC72-49A7-8C85-4157C423180E">
+              <SHORT-NAME>WhlMotSysTqAvl_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysTqAvl</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAvl</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="8898DD70-EAF3-4E35-A996-EF37F1DB732E">
+              <SHORT-NAME>WhlMotSysTqEst_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysTqEst</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqEst</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="0BD252B2-B085-4D1E-A732-BB63BE8186FD">
+              <SHORT-NAME>WhlMotSysSpdActSafe_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysSpdActSafe</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysSpdActSafe</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="4B1A7B0F-F199-42C4-A675-A7D928B6C0EF">
+              <SHORT-NAME>PLockParkStsRe_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/PLockParkStsRe</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkStsRe</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="C7EF0372-D1B0-4761-984B-35324CADD351">
+              <SHORT-NAME>PLockFltIndcRe_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/PLockFltIndcRe</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltIndcRe</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="D778A4CD-408A-4E40-957A-1263BF73CE2D">
+              <SHORT-NAME>PLockFltLvlRe_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/PLockFltLvlRe</TARGET-P-PORT-REF>
+                </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEM/PLockFltLvlRe</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="2D8DCBB1-531F-4811-9326-01958A27EACE">
+              <SHORT-NAME>WhlMotSysTqReq_IEM_IEMDTCS</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMDTCS</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMDTCS/WhlMotSysTqReq</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="6E4824BC-5688-4807-A9BE-3FC126ACCCC1">
+              <SHORT-NAME>WhlMotSysTqReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysTqReq</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="E46019FE-A1E0-46A8-A081-0AD8661D9DF3">
+              <SHORT-NAME>GearLvrIndcn_IEM_IEMDTCS</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMDTCS</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMDTCS/GearLvrIndcn</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="C71E8C5E-4C6F-4B47-9F9F-615662000B26">
+              <SHORT-NAME>GearLvrIndcn_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/GearLvrIndcn</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/GearLvrIndcn</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="D6E80744-72BB-4A76-94BE-7CE3C69A4D71">
+              <SHORT-NAME>StcStsToDmc_IEM_IEMDTCS</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMDTCS</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMDTCS/StcStsToDmc</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/StcStsToDmc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="C64EBCE8-2AF8-4B9D-AC54-7F8BCBFEE59A">
+              <SHORT-NAME>EscVariantToDmc_IEM_IEMDTCS</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMDTCS</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMDTCS/EscVariantToDmc</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EscVariantToDmc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="DCF83AA5-B2C2-45FF-9E75-44DD4B7CE9A8">
+              <SHORT-NAME>CarTiGlb_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/CarTiGlb</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CarTiGlb</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="DB546C29-F13B-4E3F-9E57-C2F945C13BCF">
+              <SHORT-NAME>VehModMngtGlbSafe1_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/VehModMngtGlbSafe1</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehModMngtGlbSafe1</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="A11E0F73-5375-4C6A-BDC7-F886D165032E">
+              <SHORT-NAME>VehBattU_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/VehBattU</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehBattU</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="04EA74E7-02A1-4B66-A241-2F758B5AD190">
+              <SHORT-NAME>BkpOfDstTrvld_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/BkpOfDstTrvld</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/BkpOfDstTrvld</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="4A157466-FBCC-4E16-9CB9-38CE4FD15080">
+              <SHORT-NAME>VehCfgPrm_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/VehCfgPrm</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehCfgPrm</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="572A38C6-1488-4CF3-AB9C-9768F7426BF7">
+              <SHORT-NAME>VehCfgPrmExt_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/VehCfgPrmExt</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehCfgPrmExt</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="DC3DB6E9-9606-43FF-BDC2-5BEF8A8CFC2D">
+              <SHORT-NAME>ImobEngMgrReq2_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/ImobEngMgrReq2</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/ImobEngMgrReq2</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="64D10732-1CC3-4DFA-BF58-E526F1669A07">
+              <SHORT-NAME>EngSt1WdSts_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/EngSt1WdSts</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/EngSt1WdSts</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="287E5E1D-A637-4F18-BC15-B31264D49BAF">
+              <SHORT-NAME>VehSpdLgt_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/VehSpdLgt</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehSpdLgt</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="EF5D17D2-D2E7-49E5-AF22-315C7F722A28">
+              <SHORT-NAME>HvSysRlySts_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/HvSysRlySts</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvSysRlySts</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="09C36A7E-1BD6-4041-BD2D-2C95DC0D21B0">
+              <SHORT-NAME>CooltFlowForDtElec_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/CooltFlowForDtElec</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltFlowForDtElec</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="51D95832-E663-4E2B-9F3E-2F666DBFDE64">
+              <SHORT-NAME>CooltTSigForDtElec_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/CooltTSigForDtElec</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CooltTSigForDtElec</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="059A16A2-E90A-46E8-9A02-0DC0E3BF94A4">
+              <SHORT-NAME>WhlMotSysModReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysModReq</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysModReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="7554E2D4-47B2-4299-A8B8-E897C9BAABFB">
+              <SHORT-NAME>WhlMotSysActvDampgModReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysActvDampgModReq</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysActvDampgModReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="4BF18F04-27E7-4568-92B4-7C61D5741C77">
+              <SHORT-NAME>WhlMotSysPwrLimMax_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysPwrLimMax</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMax</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="E0CE5090-3F7B-41BD-A836-BC2FD8AE4BC6">
+              <SHORT-NAME>WhlMotSysPwrLimMin_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysPwrLimMin</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysPwrLimMin</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="25BB8FC1-1EC3-43D6-9DBA-975AB272D3B3">
+              <SHORT-NAME>PrpsnFbLimnIndcn_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/PrpsnFbLimnIndcn</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PrpsnFbLimnIndcn</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="BC2BC826-A8D7-4977-A2F1-32FAB1A88EAB">
+              <SHORT-NAME>DrvgCyc_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/DrvgCyc</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DrvgCyc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="FE5C225B-8E43-489C-A1FF-8B1239EC7530">
+              <SHORT-NAME>RearHeatModEnad_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/RearHeatModEnad</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatModEnad</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="528605ED-CBA9-44A0-8424-CCFCBCE2C182">
+              <SHORT-NAME>RearHeatPwrAllwd_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/RearHeatPwrAllwd</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/RearHeatPwrAllwd</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="141DFFEF-F75B-4F72-B625-2FCFA4F36A39">
+              <SHORT-NAME>PtTqAtAxleMaxReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/PtTqAtAxleMaxReq</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PtTqAtAxleMaxReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="53AE04B1-E1FC-49B0-A7E9-B6C3C724D275">
+              <SHORT-NAME>VehMtnSt_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/VehMtnSt</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/VehMtnSt</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="29E8C0F6-F000-401C-A3B6-96F65A43DD63">
+              <SHORT-NAME>CrashStsSafe_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/CrashStsSafe</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/CrashStsSafe</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="75E8B735-0511-43BC-A4F7-96056D862C6A">
+              <SHORT-NAME>WhlMotSysTqAllwd_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysTqAllwd</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/WhlMotSysTqAllwd</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="FDDCCB8F-F935-4138-B161-661196BB8EA7">
+              <SHORT-NAME>HvBattSoc_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/HvBattSoc</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattSoc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="E41CADC6-F7C9-4E20-B80C-10F86CD67C8B">
+              <SHORT-NAME>HvBattUDynMinLim_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/HvBattUDynMinLim</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMinLim</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="973F7066-68ED-4389-8878-378C964E093A">
+              <SHORT-NAME>HvBattUDynMaxLim_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/HvBattUDynMaxLim</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDynMaxLim</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="E7015702-BB93-4528-B7C1-919115BF5847">
+              <SHORT-NAME>HvBattUDc_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/HvBattUDc</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/HvBattUDc</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="610E5516-9B73-4BC0-9FC3-E106D27642B6">
+              <SHORT-NAME>SpdRotlForWhlsAtAxleRe_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/SpdRotlForWhlsAtAxleRe</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/SpdRotlForWhlsAtAxleRe</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="2BCFC591-A946-4076-89B3-B48C0B159F4F">
+              <SHORT-NAME>PLockParkReq_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/PLockParkReq</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/PLockParkReq</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="0E6D8D18-81EE-4D0B-A1CA-9F280617F95C">
+              <SHORT-NAME>DCChrgnHndlSts_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/DCChrgnHndlSts</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/DCChrgnHndlSts</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <DELEGATION-SW-CONNECTOR UUID="1BC7083F-9CFF-48B4-9AFC-1196AB7A4FED">
+              <SHORT-NAME>OnBdChrgrHndlSts1_IEM_IEMHOST</SHORT-NAME>
+              <INNER-PORT-IREF>
+                <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMHOST/OnBdChrgrHndlSts1</TARGET-R-PORT-REF>
+                </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+              </INNER-PORT-IREF>
+              <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEM/OnBdChrgrHndlSts1</OUTER-PORT-REF>
+            </DELEGATION-SW-CONNECTOR>
+            <ASSEMBLY-SW-CONNECTOR UUID="0AD9EE5F-0C4B-4963-AEE4-5597D4C7B9A5">
+              <SHORT-NAME>WhlMotSysSpdActSafe_IEMHOST_IEMDTCS</SHORT-NAME>
+              <PROVIDER-IREF>
+                <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMHOST</CONTEXT-COMPONENT-REF>
+                <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SwComponentType/IEMHOST/WhlMotSysSpdActSafe</TARGET-P-PORT-REF>
+              </PROVIDER-IREF>
+              <REQUESTER-IREF>
+                <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponentType/IEM/IEMDTCS</CONTEXT-COMPONENT-REF>
+                <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SwComponentType/IEMDTCS/WhlMotSysSpdActSafe</TARGET-R-PORT-REF>
+              </REQUESTER-IREF>
+            </ASSEMBLY-SW-CONNECTOR>
+          </CONNECTORS>
+        </COMPOSITION-SW-COMPONENT-TYPE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

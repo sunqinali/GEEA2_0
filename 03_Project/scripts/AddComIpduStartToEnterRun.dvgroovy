@@ -1,0 +1,47 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.BswM
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmmodecontrol.bswmactionlist.bswmactionlistexecution.EBswMActionListExecution
+
+/**
+ * Optional durable wiring: AL_EnterRun += UserCallout Appl_Com_StartIpduGroups_ForBswM.
+ * Appl already starts IPDU groups after Com_Init; this makes BswM own the same call.
+ *
+ * Run in DaVinci Script Console / DVCfgCmd --script, then Generate.
+ */
+daVinci {
+    scriptDescription "BswM AL_EnterRun: add Com I-PDU group start UserCallout"
+
+    scriptTask("AddComIpduStartToEnterRun", DV_PROJECT) {
+        taskDescription "Add ACT_ComIpduStart UserCallout to AL_EnterRun"
+        code {
+            transaction {
+                def bswM = bswmdModel(BswM.DefRef).single
+                def cfg = bswM.bswMConfig.byName("BswMConfig")
+                def ctrl = cfg.bswMModeControlOrCreate
+
+                def ensure = { list, String name ->
+                    list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+                }
+
+                def act = ensure(ctrl.bswMAction, "ACT_ComIpduStart")
+                def callout = act.bswMAvailableActionsOrCreate.bswMUserCalloutOrCreate
+                // Include (): Vector emits the string verbatim (no auto parentheses).
+                callout.bswMUserCalloutFunctionOrCreate.value = "Appl_Com_StartIpduGroups_ForBswM()"
+                callout.bswMCreateCalloutOrCreate.value = false
+
+                def listRun = ensure(ctrl.bswMActionList, "AL_EnterRun")
+                listRun.bswMActionListExecutionOrCreate.value = EBswMActionListExecution.BSWM_TRIGGER
+
+                def item = ensure(listRun.bswMActionListItem, "AL_EnterRun_ComIpdu")
+                item.bswMActionListItemIndexOrCreate.value = 2
+                item.bswMAbortOnFailOrCreate.value = false
+                item.bswMActionListItemRefOrCreate.setRefTargetMdf(act.mdfObject)
+
+                scriptLogger.info("AL_EnterRun += ACT_ComIpduStart (Appl_Com_StartIpduGroups_ForBswM)")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved — run Generate next")
+        }
+    }
+}

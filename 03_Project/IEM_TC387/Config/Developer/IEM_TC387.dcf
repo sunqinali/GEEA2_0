@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DCF ARSCHEMA="431_DEV">
+	<Version>1.0</Version>
+	<PROFILESETTINGS>ProfileSettings.xml</PROFILESETTINGS>
+	<ADMINDATATEMPLATES>AdminDataTemplates.xml</ADMINDATATEMPLATES>
+	<PROJECTASSISTANT>..\..\IEM_TC387.dpa</PROJECTASSISTANT>
+	<FILEREF>
+		<ARXML>Packages.arxml</ARXML>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>DataTypes.arxml</ARXML>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>PortInterfaces.arxml</ARXML>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>ECUProjects\IEM_TC387.arxml</ARXML>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>.\Constants.arxml</ARXML>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>.\ComponentTypes\IEMDTCS.arxml</ARXML>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>.\ComponentTypes\IEMHOST.arxml</ARXML>
+	</FILEREF>
+	<FILEREF>
+		<ARXML>.\ComponentTypes\IEM.arxml</ARXML>
+	</FILEREF>
+</DCF>

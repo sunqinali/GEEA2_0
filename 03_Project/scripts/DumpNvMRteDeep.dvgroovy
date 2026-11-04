@@ -1,0 +1,60 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+daVinci {
+    scriptDescription "Deep dump NvM Rte EventRef and all SWC timers"
+    scriptTask("DumpNvMRteDeep", DV_PROJECT) {
+        taskDescription "Inspect NvM EventRef resolution and SWC list"
+        code {
+            def rte = bswmdModel(Rte.DefRef).single
+            def nvm = rte.rteBswModuleInstance.byName("NvM")
+            scriptLogger.info("NvM instance OK")
+            nvm.rteBswEventToTaskMapping.each { ev ->
+                scriptLogger.info("EV name=" + ev.shortname)
+                try {
+                    def p = ev.rteCyclicTriggerImplementation
+                    scriptLogger.info("  trig raw=" + p + " val=" + (p.respondsTo("getValue") ? p.value : p))
+                } catch (Exception e) { scriptLogger.warn("  trig: " + e.message) }
+                try {
+                    def r = ev.rteBswEventRef
+                    scriptLogger.info("  eventRef param=" + r)
+                    try { scriptLogger.info("  eventRef.target=" + r.refTarget) } catch (Exception e2) {
+                        scriptLogger.warn("  eventRef.refTarget: " + e2.message)
+                    }
+                    try { scriptLogger.info("  eventRef.has=" + r.hasRefTarget()) } catch (Exception ignored) {}
+                } catch (Exception e) { scriptLogger.warn("  eventRef: " + e.message) }
+                try {
+                    scriptLogger.info("  task=" + ev.rteBswMappedToTaskRef.refTarget.shortname)
+                } catch (Exception e) { scriptLogger.warn("  task: " + e.message) }
+                try {
+                    scriptLogger.info("  alarm=" + ev.rteBswUsedOsAlarmRef.refTarget.shortname)
+                } catch (Exception e) { scriptLogger.warn("  alarm: " + e.message) }
+            }
+            nvm.rteBswExclusiveAreaImpl.each { ea ->
+                scriptLogger.info("EA " + ea.shortname)
+                try { scriptLogger.info("  mech=" + ea.rteExclusiveAreaImplMechanism.value) } catch (Exception e) {}
+                try { scriptLogger.info("  ref=" + ea.rteBswExclusiveAreaRef.refTarget) } catch (Exception e) {
+                    scriptLogger.warn("  eaRef: " + e.message)
+                }
+            }
+            scriptLogger.info("=== ALL SWC shortnames ===")
+            rte.rteSwComponentInstance.each { inst ->
+                scriptLogger.info("SWC " + inst.shortname)
+                try {
+                    inst.rteEventToTaskMapping.each { ev ->
+                        def n = ev.shortname.toString()
+                        if (n.toLowerCase().contains("nvm") || n.toLowerCase().contains("timer_")) {
+                            def trig = "?"
+                            try { trig = ev.rteCyclicTriggerImplementation.value } catch (Exception ignored) {}
+                            def task = "?"
+                            try { task = ev.rteMappedToTaskRef.refTarget.shortname } catch (Exception ignored) {}
+                            scriptLogger.info("  " + n + " trig=" + trig + " task=" + task)
+                        }
+                    }
+                } catch (Exception ignored) {}
+            }
+            scriptLogger.info("DumpNvMRteDeep done")
+        }
+    }
+}

@@ -1,0 +1,145 @@
+/**********************************************************************************************************************
+ *  AUTHOR IDENTITY
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  Name                          Initials      Company
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  Andreas Turban                virtu         Vector Informatik GmbH
+ *  Andreas Bachl                 virban        Vector Informatik GmbH
+ *  Manfred Duschinger            virdu         Vector Informatik GmbH
+ *  Christian Kaiser              virck         Vector Informatik GmbH
+ *  Tomas Ondrovic                viroto        Vector Informatik GmbH
+ *  Sebastian Reischl             virsrl        Vector Informatik GmbH
+ *  Tobias Schwindl               virstl        Vector Informatik GmbH
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  REVISION HISTORY
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  Version   Date        Author  Change Id     Description
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  1.00.00  2011-05-16  virtu   EVAL00079445  NvM generator created
+ *  1.01.00  2012-03-27  virban  EVAL00088468  Supply SW-C Description of the NVRAM Service
+ *  2.00.00  2012-07-16  virban  EVAL00090649  Adapt NvM Generator to ASR4 Version
+ *  2.00.01  2012-09-07  virban  ESCAN00061226 Adapt NvM Generator to ASR4 Version
+ *                               ESCAN00061236 NVM's Port Interface does not match clients' expected interfaces
+ *  2.00.02  2012-09-07  virban                accepted BSWMD Version adapted
+ *  2.00.03  2012-11-27  virdu   ESCAN00061442 Multiple inclusion protection for NvM.h in NvM_Cfg.c added
+ *                               ESCAN00062274 Extended live validation rules 1005 and 1006
+ *                               ESCAN00060640 In case a Ram-/Rom-buffer or callback is empty, NULL_PTR is generated
+ *  2.01.00  2012-11-30  virdu   ESCAN00063443 Feature AR4-80 New Pointer data type DATA_REFERENCE used from GenDevKit
+ *                               ESCAN00063249 AR4-98: NvMBswMBlockStatusInformation added
+ *                               ESCAN00063242 AR4-98: NvMBswMMultiBlockJobStatusInformation added
+ *                               ESCAN00063347 Validations added regarding 'Explicit Synchronization Mechanism'
+ *                               ESCAN00063821 Corrected Interface Oparations'  Parameter Names
+ *                               ESCAN00064612  Enabling MultiBlockJobStatusInformation resulted in wrong BswM notification
+ *  2.01.01  2013-02-05  virdu   ESCAN00064744  Single Block Notifications and BswM_NvM_CurrentBlockMode() are called 
+ *                                              in NvM_BlockNotification() 
+ *                               ESCAN00063758  Setting of "Strict Block Length Check" has correct result
+ *                               ESCAN00063655  CrcIntBuffer must be enabled for explicit synchronization mechanism
+ *                               ESCAN00064447  ValRule for correct configuring if SelectBlockForWriteAll moved from Domain Mem to Generator
+ *                               ESCAN00063604  ValRule for correct configuring if SelectBlockForWriteAll available since ESCAN00064447
+ *                               ESCAN00060635  ErrorHandlingContexts at custom model generation added
+ *  3.00.00  2013-07-05  virdu   ESCAN00068751  Update to GenDevKit 8.00.00 witch CFg 5.5 and Java 7
+ *                               ESCAN00068609  AR4-346: Improve compatibility check for generators 
+ *                               ESCAN00068276  AR4-312: Move validation rules from domain Memory to generator
+ *                               ESCAN00069035  Empty RamBlocks can be configured without empty edit fields
+ *                               ESCAN00068247  Rte_Type.h (included via Rte_NvM.h) is included in NvM_Cfg.c right after Std_Types.h
+ *                               ESCAN00067096  Synchronisation mecahnism callback function pointer types corrected
+ *                               ESCAN00067017  NvMSizeImmediateJobQueue is chekced for availability in case JobPrioritization is enabled. 
+ *                               ESCAN00064845  ValRules for empty Det Include File and empty Det Errorhook added
+ *                               ESCAN00069391  NvM_GetErrorStatus is only generated in SWC if at least one block is configured as Use Service Ports TRUE
+ *                               ESCAN00069463  InitBlockCallback of RTE was not called when UseServicePort was enabled and InitBlockCallback was called as NULL_PTR 
+ *                               ESCAN00068816  JobEndNotification is also called during NvMReadAll. Internal Cbk Function not necessary any more
+ *                               ESCAN00070217  Use Service Ports for config Block allowed without warnings
+ *                               ESCAN00070234  Invalid NULL_PTR cast in case no RomBlokc and no InitCbk eliminated
+ *                               ESCAN00070375  MISRA deviations justified
+ *  3.00.01  2013-11-28  virdu   ESCAN00072320  BlockManagementType changeable
+ *                               ESCAN00072204  NVM updates MICROSAR FEE's / EA's "Datasets" Fields correct
+ *                               ESCAN00070406  Possibility to configure CRC8 removed
+ *                               ESCAN00072188  Validation Rule NVM01023: Add "Erroneous CE", provide Solving Action
+ *                               ESCAN00072201  Compiler warning / error: Redeclaration of typedef
+ *                               ESCAN00070209  Include of Rte_NvM_Type.h always at the beginning of NvM_cfg.h
+ *                               ESCAN00072222  Rte_NvM.h is also included in case Use Service Ports and Init Block Callback is enabled
+ *  3.01.00  2013-12-05  virdu   ESCAN00067784  AR4-599: Export BSW Debug Data
+ *                               ESCAN00073280  Add validation rule RedundantBlocksCrcCheck
+ *  3.01.01  2014-03-18  virdu   ESCAN00074357  Rebuild of jetclasses
+ *  3.01.02  2014-04-03  virck   ESCAN00073247  fixed NvM_MultiBlockCbk (Jet Template) 
+ *                               ESCAN00072874  massive changes generation of RAM and ROM pointers - consider empty strings
+ *                                              and even leading/trailing spaces 
+ *                               ESCAN00074860  generation of "SelectForWriteAll" (NvmBlockDescriptionFactory)
+ *  3.02.00  2014-05-16  virck   ESCAN00074354  MainFunction cycle based new on parameter NvMMainFunctionPeriod
+ *                                               re-generation of BSWMD model
+ *  3.02.01  2014-08-05  virck   ESCAN00076822  Corrected generated files' names 
+ *                               ESCAN00075140  Removed unnecessary function calls
+ *                               ESCAN00076493  Corrected ValRule NVM1023 (InitCbk & ServicePorts)
+ *  3.03.00  2014-08-28  virck               -  BSWMD-Model Generation controlled by config file; referencing actual components' Bswmds.
+ *                               ESCAN00078119  Removed ASR3 relevant code; simplifications
+                                 ESCAN00076078  Removed references to DefRefs in dom.mem.shared
+ *                               ESCAN00076970  Added initialization for EcuM information to GeneratorPackage
+ *                               ESCAN00078383  Removed validation/HwAbRefCheck.java, after refactoring it (making FeeRefCheck.java, EaRefCheck.java obsolete)
+ *                               ESCAN00078204  use NvMMainFunctionPeriod in SWC-D generation 
+ *  3.03.01  2014-11-28  viroto  ESCAN00072874  and
+ *                               ESCAN00077920  Splitted ROM and InitCallback in two pointer and removed flag
+ *                               ESCAN00072877  improved generation to check what shall be used - ROM or Init callback
+ *                               ESCAN00073110  Corrected Explicit Synchronzation callbacks generation
+ *                               ESCAN00078968  updated MISRA justifications in jet templates to newest format
+ * 3.03.02   2015-01-13  viroto  ESCAN00080526  change init callback pointer return type from void to Std_Returntype
+ * 3.04.00   2015-01-15  viroto  ESCAN00077949  changed the runtime RAM- and ROM-Length DET checks to compile time 
+ *                               ESCAN00080059  add switch to include Block Id and Dataindex to Crc calculation
+ *                               ESCAN00080961  job end callback invoking for blocks with enabled Service Ports
+ *                               ESCAN00081017  init block callback invoking for block with enabled Service Ports
+ *                               ESCAN00077978  automatic Crc queue disabling
+ *                               FEAT-1465      removed "UseServicePortsCheck" live validation (rule 1006)
+ *                               ESCAN00083145  removed leading &-operators in RAM or ROM blocks
+ *                               ESCAN00082184  multi block job end notification can be used in parallel with multi block BswM callback
+ *                               ESCAN00084251  RAM and ROM block length failed check shall use -1 instead of 0
+ * 3.04.01   2015-09-28          -              no functionality changes, only internal improvements
+ * 4.00.00   2015-09-08  viroto  ESCAN00085031  update to Java 8 (GenDevKit 14.00.00)
+ *                               ESCAN00085159  removed DET error switches
+ *                               ESCAN00081556  added auto solving action to set the number of datasets for NvM blocks automatically to correct value
+ *                               ESCAN00085506  upgrade validation using the MCA to ModelTraverser
+ *                               ESCAN00086377  removed BlockCrcTypeMissingCheck from NvM GenTool_GeneratorMsr (same validation exists within memory domain too)
+ *                               ESCAN00085091  added Automatic Block Length functionality
+ *                               ESCAN00085140  extended Block Length Check feature
+ * 4.01.00   2016-02-12  viroto  ESCAN00088233  removed NvMDevErrorChecks and included parameter validations
+ * 4.02.00   2016-04-18  viroto  ESCAN00088780  extended BswmdMigration with parameter creation
+ *                               FEAT-1942      provide internal buffer length
+ *                               ESCAN00063341  improved/extended/added validations
+ *                               FEAT-1888      reworked single and init block callback invoking during ReadAll
+ *                               ESCAN00063552  redesigned SWC generation
+ *                               ESCAN00090817  updated block device ID creation
+ * 4.02.01   2016-09-27  viroto  ESCAN00070637  added validation to check DemEventParameterRefs container and its parameter existence
+ *                               FEAT-2018      implemented validations from MemDomain in NvM GenTool_GeneratorMsr
+ *                               ESCAN00089556  moved static code from generated files to static files
+ * 4.02.02   2016-12-12  viroto  ESCAN00093257  Compiler error/warning: double slash comment in NvM_Cfg.c
+ * 4.03.00   2017-01-31  viroto  FEATC-478      Support a component-specific SafeBSW configuration switch
+ *                               FEATC-881      Implement derive annotation to SWC ports
+ *                               ESCAN00093787  NvM GenTool_GeneratorMsr does not sync block length between NvM und underlying modules
+ *                               ESCAN00093734  NvM allows to generate NULL_PTR for explicit synchronization callbacks for blocks with enabled NvMBlockUseSyncMechanism and NvMUseServicePorts
+ *                               ESCAN00094128  DEM error reporting shall be configurable
+ *                               ESCAN00094503  Update source identification define symbols to component template
+ * 4.03.01   2017-06-12  viroto  ESCAN00094527  Compiler/Linker error: undefined reference to 'Rte_Call_NvM_RpNotifyInit_<BlockName>_InitBlock' or/and `Rte_Call_NvM_RpNotifyJobEnd_<BlockName>_JobFinished'
+ *                               ESCAN00095723  NvMNvBlockNum won't be synchronized to Fee_30_SmallSector's FeeNumberOfDatasets
+ * 4.04.00               viroto  FEAT-2914      Support CRC Compare Mechanism in NvM
+ *                               -              Added SolvingActionGroups to validations
+ *                               FEAT-2967      Architecture rework: move the validation of the NvM ServiceNeeds from DEV to CFG5
+ * 4.05.00   2018-10-05  viroto  STORY-6224/ STORYC-5670  Provide an interface to protect and validate NV data.
+ * 4.06.00   2019-03-27  viroto  STORY-8865/ STORYC-6996  NvM shall provide a service to abort an ongoing ReadAll in a save way.
+ * 4.06.01   2019-04-23  viroto  ESCAN00102760  NvM sets a write once block not selected for Read All to NVM_REQ_OK during Read All
+ *                               -              Some improvements in generated configuration files.
+ * 4.07.00   2019-05-16  viroto  STORY-6093/ STORYC-5564  MISRA-C:2012: MemService_AsrNvM
+ *           2019-06-19  virsrl  STORY-9044/ STORYC-7105  NvM shall pass the processed block Id to the single block callback.
+ * 4.08.00   2019-07-18  virsrl  MWDG-108  NvM shall detect unchanged data and skip writing to NV RAM.
+ *           2019-07-29  virsrl  ESCAN00103849  Compiler error: NvM_Cfg.c error: identifier ...ROM... is undefined.
+ * 4.09.00   2019-08-07  viroto  MWDG-36        NvM shall encrypt and decrypt data via synchronous CSM interfaces.
+ * 4.09.01   2019-09-03  viroto  ESCAN00104007  Compiler error: NvM_Cfg.c  Rte_Call_NvM_RpNotifyJobEnd_<NvMBlockDescriptor short name>_JobFinished undeclared here
+ * 4.10.00   2019-09-11  virsrl  MWDG-2         NvM shall retry a unsuccessful CSM encrypt and decrypt.
+ * 5.00.00   2019-10-10  virstl  MWDG-86        Provide the request result NVM_REQ_RESTORED_FROM_ROM in case the default data was loaded during a read request.
+ * 5.00.01   2019-11-11  virsrl  ESCAN00098584  NvM NVM01036 validation does not clearly describe the problem
+ * 5.01.00   2019-11-18  virsrl  MWDG-2245      NvM shall support NvMBlockUseSetRamBlockStatus configuration.
+ * 5.01.01   2020-01-21  virsrl  MWDG-2579      Make NvM_Types.h standalone includable.
+                         viroto  ESCAN00105284  Compiler error: <NvMCommonVendorParams/NvMMultiblockId> undefined 
+ * 5.02.00   2020-01-31  virsrl  MWDG-2303      NvM lets the user configure single block callback invocation during ReadAll.
+             2020-02-05  virsrl  MWDG-2305      NvM invokes initialization callback according to single block callback configuration.
+             2020-02-19  virsrl  MWDG-2301      NvM lets the user configure single block callback invocation during WriteAll.
+ * 5.02.01   2020-03-17  virsrl  ESCAN00104259  Configuring DATASET block with one single dataset not possible.
+ * 6.00.00   2020-08-04  viroto  MWDG-3657      NvM shall provide a (hidden) backwards compatible CRC32 calculation
+ *********************************************************************************************************************/

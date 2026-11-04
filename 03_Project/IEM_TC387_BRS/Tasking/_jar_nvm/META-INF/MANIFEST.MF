@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.6
+Created-By: 1.8.0_131-b11 (Oracle Corporation)
+Implementation-Vendor: Vector Informatik GmbH
+Implementation-Version: 6.00.00.206175
+DvCfg-BuildEnvironment-Version: 19.00.50
+DvCfg-GeneratorInterfaceJars-Compile-Version: 19.00.50
+Svn-Repository-Information: trunk/com.vector.cfg.gen.MemService_AsrNvM
+ ?p=206175
+Generator-Componentname: MemService_AsrNvM
+Generator-Packagename: com.vector.cfg.gen.MemService_AsrNvM
+Dependencies:  DVCfg_GeneratorInterface?p=67401[5.5.0], DVCfg_Generato
+ rInterfaceInternalAddons?p=67401[5.5.0], DVCfg_ModelInterface?p=67401
+ [67401],DVCfg_TargetPlatform?p=67401[67401]
+

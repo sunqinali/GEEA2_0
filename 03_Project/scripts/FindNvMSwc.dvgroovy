@@ -1,0 +1,122 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+daVinci {
+    scriptDescription "Find NvM SWC prototypes and create/map Timer like Dem"
+    scriptTask("FindNvMSwc", DV_PROJECT) {
+        taskDescription "Locate NvM SWC; create RteSwComponentInstance + Timer map"
+        code {
+            def unwrap = { obj ->
+                if (obj == null) return null
+                if (obj.getClass().simpleName.contains("Optional") || obj.respondsTo("isPresent")) {
+                    if (obj.respondsTo("isPresent") && !obj.isPresent()) return null
+                    if (obj.respondsTo("get")) return obj.get()
+                }
+                return obj
+            }
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) throw new IllegalStateException("No ${literal}")
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum") || parameter.getClass().simpleName.startsWith("GIEnum") || typeName.contains("ERte") || typeName.startsWith("com.vector.cfg.automation.model")) {
+                    try { setEnum(parameter, value.toString()); return } catch (Throwable ignored) {}
+                }
+                if (value instanceof Boolean) setter.invoke(parameter, value)
+                else if (value instanceof Long || value instanceof Integer) setter.invoke(parameter, value as Long)
+                else setter.invoke(parameter, value)
+            }
+            def setRef = { owner, String paramName, target ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ref ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                if (parameter.respondsTo("setRefTarget")) {
+                    try { parameter.setRefTarget(target); return } catch (Throwable ignored) {}
+                }
+                if (parameter.respondsTo("setRefTargetMdf")) {
+                    parameter.setRefTargetMdf(target.mdfObject != null ? target.mdfObject : target)
+                    return
+                }
+                throw new IllegalStateException("Cannot setRef ${paramName}")
+            }
+
+            // Search mdf model for NvM-related referrables
+            def ma = activeProject().getInstance(com.vector.cfg.model.access.IModelAccess)
+            scriptLogger.info("modelAccess=${ma}")
+
+            // List Dem SWC as template
+            def rte = bswmdModel(Rte.DefRef).single
+            def demSwc = rte.rteSwComponentInstance.byName("DemMaster_0_EcuSwComposition")
+            scriptLogger.info("Dem SWC ref:")
+            try {
+                def pref = demSwc.rteSoftwareComponentInstanceRef
+                scriptLogger.info("  pref=${pref} mdf=${pref.refTargetMdf}")
+            } catch (Exception e) { scriptLogger.warn(e.message) }
+
+            // Try to find NvM prototype via known path patterns
+            def paths = [
+                "/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/NvM",
+                "/MICROSAR/NvM_swc/ComponentTypes/NvM",
+                "/MICROSAR/NvM/ComponentTypes/NvM",
+            ]
+            paths.each { p ->
+                try {
+                    def ra = activeProject().getInstance(com.vector.cfg.model.access.IReferrableAccess)
+                    def r = ra.getReferrableByPath(null, p)
+                    scriptLogger.info("path ${p} => ${r}")
+                } catch (Exception e) {
+                    scriptLogger.info("path ${p} fail: ${e.message}")
+                }
+            }
+
+            // Broader: search all ARElements named NvM
+            try {
+                def project = activeProject()
+                // use script API search if available
+                scriptLogger.info("Trying aswmd / bswmd for NvM swc...")
+            } catch (Exception e) {}
+
+            // Map existing: if NvM SWC appears after create from Dem pattern
+            // First list ALL composition prototypes under SYNC
+            try {
+                def ra = activeProject().getInstance(com.vector.cfg.model.access.IReferrableAccess)
+                def root = ra.getReferrableByPath(null, "/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE")
+                scriptLogger.info("COMPOSITIONTYPE=${root}")
+                if (root != null && root.respondsTo("getElements")) {
+                    root.elements.each { el ->
+                        try {
+                            def n = el.name
+                            if (n.toString().toLowerCase().contains("nvm") || n.toString().toLowerCase().contains("dem") || n.toString().toLowerCase().contains("fee")) {
+                                scriptLogger.info("  elem ${n} class=${el.getClass().simpleName}")
+                            }
+                        } catch (Exception ignored) {}
+                    }
+                }
+                // package children
+                if (root != null) {
+                    root.getClass().methods.findAll { it.parameterTypes.length == 0 && it.name.toLowerCase().contains("element") }.each {
+                        scriptLogger.info("root method ${it.name}")
+                    }
+                }
+            } catch (Exception e) {
+                scriptLogger.warn("COMPOSITIONTYPE walk: " + e.message)
+            }
+
+            scriptLogger.info("FindNvMSwc done")
+        }
+    }
+}

@@ -1,0 +1,181 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.fee.Fee
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+/**
+ * Clear regen15 blockers: Fls Rte instance+EA+Main, Fee Dem container,
+ * NvM SWC Timer (RTE01065 Auto vs None).
+ */
+daVinci {
+    scriptDescription "Map Fls/NvM Rte and fix Fee DemEvent refs"
+    scriptTask("MapNvMFlsRte", DV_PROJECT) {
+        taskDescription "Fls EA+Main, FeeDemEventParameterRefs, NvM SWC timer"
+        code {
+            def unwrap = { obj ->
+                if (obj == null) return null
+                if (obj.getClass().simpleName.contains("Optional") || obj.respondsTo("isPresent")) {
+                    if (obj.respondsTo("isPresent") && !obj.isPresent()) return null
+                    if (obj.respondsTo("get")) return obj.get()
+                }
+                return obj
+            }
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) throw new IllegalStateException("No ${literal}")
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                def parameter = unwrap(getter.invoke(owner))
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum") || parameter.getClass().simpleName.startsWith("GIEnum") || typeName.contains("ERte") || typeName.startsWith("com.vector.cfg.automation.model")) {
+                    try { setEnum(parameter, value.toString()); return } catch (Throwable ignored) {}
+                }
+                if (value instanceof Boolean) setter.invoke(parameter, value)
+                else if (value instanceof Long || value instanceof Integer) setter.invoke(parameter, value as Long)
+                else setter.invoke(parameter, value)
+            }
+            def setRef = { owner, String paramName, target ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ref ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                if (parameter.respondsTo("setRefTarget")) {
+                    try { parameter.setRefTarget(target); return } catch (Throwable ignored) {}
+                }
+                if (parameter.respondsTo("setRefTargetMdf")) {
+                    parameter.setRefTargetMdf(target.mdfObject != null ? target.mdfObject : target)
+                    return
+                }
+                throw new IllegalStateException("Cannot setRef ${paramName}")
+            }
+
+            transaction {
+                def fee = bswmdModel(Fee.DefRef).single
+                def gen = fee.feeGeneralOrCreate
+                try { assign(gen, "FeeSafetyEnable", false) } catch (Exception e) {
+                    scriptLogger.warn("FeeSafetyEnable: " + e.message)
+                }
+                try {
+                    def demRefs = fee.feeDemEventParameterRefsOrCreate
+                    scriptLogger.info("FeeDemEventParameterRefs present: " + demRefs)
+                } catch (Exception e) {
+                    scriptLogger.warn("FeeDemEventParameterRefs: " + e.message)
+                }
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def rte = bswmdModel(Rte.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+                def taskBsw = os.osTask.byName("Task_Bsw_10ms")
+                def taskCom = os.osTask.byName("Task_Com_5ms")
+                def alarmBsw = os.osAlarm.byName("Alarm_Bsw_10ms")
+                def alarmCom = os.osAlarm.byName("Alarm_Com_5ms")
+
+                // Ensure Fls BswModuleInstance exists (RTE01005)
+                def flsInst
+                if (rte.rteBswModuleInstance.exists("Fls")) {
+                    flsInst = rte.rteBswModuleInstance.byName("Fls")
+                } else {
+                    flsInst = rte.rteBswModuleInstance.createAndAdd("Fls")
+                    scriptLogger.info("Created Rte Fls instance")
+                }
+
+                // Exclusive areas Init/Erase/Write/Main/ResumeErase/UserContentCount
+                def eaNames = ["Init", "Erase", "Write", "Main", "ResumeErase", "UserContentCount"]
+                eaNames.each { String eaName ->
+                    def ea = flsInst.rteBswExclusiveAreaImpl.exists(eaName) ?
+                            flsInst.rteBswExclusiveAreaImpl.byName(eaName) :
+                            flsInst.rteBswExclusiveAreaImpl.createAndAdd(eaName)
+                    assign(ea, "RteExclusiveAreaImplMechanism", "ALL_INTERRUPT_BLOCKING")
+                    // Ref to IB exclusive area — try common path
+                    try {
+                        def mdf = activeProject().mdfModel
+                        // leave Ref to solver if setRef fails
+                    } catch (Exception ignored) {}
+                    scriptLogger.info("Fls EA ${eaName} mechanism set")
+                }
+
+                def flsEvName = "Fls_17_Dmu_MainFunctionTimingEvent0"
+                def flsEv = flsInst.rteBswEventToTaskMapping.exists(flsEvName) ?
+                        flsInst.rteBswEventToTaskMapping.byName(flsEvName) :
+                        flsInst.rteBswEventToTaskMapping.createAndAdd(flsEvName)
+                setRef(flsEv, "RteBswMappedToTaskRef", taskCom)
+                try { setRef(flsEv, "RteBswUsedOsAlarmRef", alarmCom) } catch (Exception ignored) {}
+                assign(flsEv, "RteBswPositionInTask", 19L)
+                assign(flsEv, "RteBswImmediateRestart", false)
+                assign(flsEv, "RteCyclicTriggerImplementation", "None")
+                scriptLogger.info("Mapped ${flsEvName} → Task_Com_5ms")
+
+                // NvM BSW map reinforce
+                if (rte.rteBswModuleInstance.exists("NvM")) {
+                    def nvmInst = rte.rteBswModuleInstance.byName("NvM")
+                    if (!nvmInst.rteBswExclusiveAreaImpl.exists("NVM_EXCLUSIVE_AREA_0")) {
+                        def ea = nvmInst.rteBswExclusiveAreaImpl.createAndAdd("NVM_EXCLUSIVE_AREA_0")
+                        assign(ea, "RteExclusiveAreaImplMechanism", "ALL_INTERRUPT_BLOCKING")
+                    }
+                    def nvmEv = nvmInst.rteBswEventToTaskMapping.exists("NvM_MainFunctionTimingEvent0") ?
+                            nvmInst.rteBswEventToTaskMapping.byName("NvM_MainFunctionTimingEvent0") :
+                            nvmInst.rteBswEventToTaskMapping.createAndAdd("NvM_MainFunctionTimingEvent0")
+                    setRef(nvmEv, "RteBswMappedToTaskRef", taskBsw)
+                    try { setRef(nvmEv, "RteBswUsedOsAlarmRef", alarmBsw) } catch (Exception ignored) {}
+                    assign(nvmEv, "RteBswPositionInTask", 21L)
+                    assign(nvmEv, "RteBswImmediateRestart", false)
+                    assign(nvmEv, "RteCyclicTriggerImplementation", "None")
+                    scriptLogger.info("NvM BSW Main mapped")
+                }
+
+                // NvM SWC timer (RTE01065 Auto vs None) if composition exists
+                def swcNames = ["NvM_EcuSwComposition", "NvM"]
+                def timerNames = ["Timer_NvM_MainFunction", "NvM_MainFunction"]
+                swcNames.each { String swcName ->
+                    try {
+                        if (!rte.rteSwComponentInstance.exists(swcName)) {
+                            scriptLogger.info("No SWC instance ${swcName}")
+                            return
+                        }
+                        def swc = rte.rteSwComponentInstance.byName(swcName)
+                        timerNames.each { String tName ->
+                            try {
+                                def tev = swc.rteEventToTaskMapping.exists(tName) ?
+                                        swc.rteEventToTaskMapping.byName(tName) :
+                                        swc.rteEventToTaskMapping.createAndAdd(tName)
+                                setRef(tev, "RteMappedToTaskRef", taskBsw)
+                                try { setRef(tev, "RteUsedOsAlarmRef", alarmBsw) } catch (Exception ignored) {}
+                                assign(tev, "RtePositionInTask", 21L)
+                                assign(tev, "RteImmediateRestart", false)
+                                assign(tev, "RteCyclicTriggerImplementation", "None")
+                                scriptLogger.info("Mapped SWC ${swcName}/${tName}")
+                            } catch (Exception e) {
+                                scriptLogger.warn("SWC timer ${tName}: " + e.message)
+                            }
+                        }
+                    } catch (Exception e) {
+                        scriptLogger.warn("SWC ${swcName}: " + e.message)
+                    }
+                }
+
+                // Dump all RteSwComponentInstance names for diagnosis
+                try {
+                    rte.rteSwComponentInstance.each { inst ->
+                        scriptLogger.info("SWC inst: " + inst.shortName)
+                    }
+                } catch (Exception e) {
+                    scriptLogger.warn("list SWC: " + e.message)
+                }
+            }
+            activeProject().saveProject()
+            scriptLogger.info("MapNvMFlsRte done")
+        }
+    }
+}

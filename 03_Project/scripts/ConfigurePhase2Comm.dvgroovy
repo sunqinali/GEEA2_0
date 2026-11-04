@@ -1,0 +1,317 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.Mcu
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.port.Port
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.resourcem.ResourceM
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.spi.Spi
+import com.vector.cfg.automation.model.ecuc.microsar.can_mpc5700mcan.can.Can
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+
+daVinci {
+    scriptDescription "Configure DCAN, TJA1145 QSPI3 and TLF35584 QSPI4"
+    scriptTask("ConfigurePhase2Comm", DV_PROJECT) {
+        taskDescription "Port pins, two SPI devices, and CAN11 at 500 kbit/s"
+        code {
+            transaction {
+                [Port, Spi, ResourceM].each { moduleClass ->
+                    def present = activeEcuc.modules(moduleClass.DefRef)
+                    if (present == null || present.isEmpty()) {
+                        operations.activateModuleConfiguration(moduleClass.DefRef)
+                        scriptLogger.info("Activated " + moduleClass.simpleName)
+                    }
+                }
+            }
+
+            transaction {
+                def prop = { String name ->
+                    name.substring(0, 1).toLowerCase() + name.substring(1)
+                }
+                def ensure = { list, String name ->
+                    list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+                }
+                def setEnum = { parameter, String literal ->
+                    def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                    def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                    def match = enumClass.enumConstants.find { it.name() == literal }
+                    if (match == null) {
+                        throw new IllegalStateException("No ${literal} in ${enumClass.name}")
+                    }
+                    setter.invoke(parameter, match)
+                }
+                def assign = { owner, String paramName, value ->
+                    def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                    def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                    if (getter == null) {
+                        getter = methods.find { it.name.endsWith("_${paramName}OrCreate") }
+                    }
+                    if (getter == null) {
+                        throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                    }
+                    def parameter = getter.invoke(owner)
+                    def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                    def typeName = setter.parameterTypes[0].name
+                    if (typeName.contains("GIEnum")) {
+                        setEnum(parameter, value.toString())
+                    } else if (value instanceof Boolean) {
+                        setter.invoke(parameter, value)
+                    } else if (value instanceof CharSequence || typeName.contains("String")) {
+                        setter.invoke(parameter, value.toString())
+                    } else if (value instanceof Double || value instanceof BigDecimal) {
+                        setter.invoke(parameter, value as Double)
+                    } else {
+                        try {
+                            setter.invoke(parameter, value as Long)
+                        } catch (IllegalArgumentException ignored) {
+                            setter.invoke(parameter, new java.math.BigInteger(value.toString()))
+                        }
+                    }
+                }
+                def setListEnum = { owner, String listName, String literal ->
+                    def list = owner."${prop(listName)}"
+                    def item = list.isEmpty() ? list.createAndAdd() : list.iterator().next()
+                    if (item.getClass().methods.any { it.name == "setValue" && it.parameterTypes.length == 1 }) {
+                        setEnum(item, literal)
+                    } else {
+                        assign(item, listName, literal)
+                    }
+                }
+                def setRef = { owner, String paramName, target ->
+                    def getter = owner.getClass().methods.find {
+                        it.parameterTypes.length == 0 && (it.name == "get${paramName}OrCreate" || it.name.endsWith("_${paramName}OrCreate"))
+                    }
+                    if (getter == null) {
+                        throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                    }
+                    getter.invoke(owner).setRefTarget(target)
+                }
+                def setRefList = { owner, String listName, target ->
+                    def list = owner."${prop(listName)}"
+                    def item = list.isEmpty() ? list.createAndAdd() : list.iterator().next()
+                    item.setRefTarget(target)
+                }
+
+                def ports = [
+                    0 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                    1 : [3, 4, 5, 6, 7],
+                    2 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                    10: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    11: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                    12: [0, 1],
+                    13: [0, 1, 2, 3],
+                    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    15: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                    20: [0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+                    21: [0, 1, 2, 3, 4, 5, 6, 7],
+                    22: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                    23: [0, 1, 2, 3, 4, 5, 6, 7],
+                    32: [0, 1, 2, 3, 4, 5, 6, 7],
+                    33: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                    34: [1, 2, 3, 4, 5],
+                    40: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                ]
+                def pinSetup = { String key ->
+                    switch (key) {
+                        case "11.0": return [direction: "PORT_PIN_OUT", initial: "ALT5", level: "PORT_PIN_LEVEL_HIGH", pull: "PORT_PIN_IN_NO_PULL"]
+                        case "10.8":
+                        case "10.6":
+                        case "22.3":
+                        case "22.0": return [direction: "PORT_PIN_OUT", initial: "ALT3", level: "PORT_PIN_LEVEL_LOW", pull: "PORT_PIN_IN_NO_PULL"]
+                        case "10.5":
+                        case "22.2": return [direction: "PORT_PIN_OUT", initial: "ALT3", level: "PORT_PIN_LEVEL_HIGH", pull: "PORT_PIN_IN_NO_PULL"]
+                        case "32.5":
+                        case "22.4":
+                        case "22.11": return [direction: "PORT_PIN_OUT", initial: "GPIO", level: "PORT_PIN_LEVEL_LOW", pull: "PORT_PIN_IN_NO_PULL"]
+                        case "14.2": return [direction: "PORT_PIN_IN", initial: "GPIO", level: "PORT_PIN_LEVEL_LOW", pull: "PORT_PIN_IN_PULL_DOWN"]
+                        default: return [direction: "PORT_PIN_IN", initial: "GPIO", level: "PORT_PIN_LEVEL_LOW", pull: "PORT_PIN_IN_PULL_UP"]
+                    }
+                }
+
+                def port = bswmdModel(Port.DefRef).single
+                def configSet = port.portConfigSetOrCreate
+                def stalePorts = []
+                configSet.portContainer.each { item ->
+                    def name = item.getShortname()
+                    if (name == "PortContainer" || name.startsWith("PortContainer_")) {
+                        stalePorts.add(item)
+                    }
+                }
+                stalePorts.each { it.moRemove() }
+                ports.each { portNumber, pins ->
+                    def container = ensure(configSet.portContainer, "Port_" + portNumber)
+                    assign(container, "PortNumber", portNumber as Long)
+                    assign(container, "PortNumberOfPortPins", pins.size() as Long)
+                    pins.each { pinNumber ->
+                        def pin = ensure(container.portPin, "P${portNumber}_${pinNumber}")
+                        def setup = pinSetup("${portNumber}.${pinNumber}".toString())
+                        assign(pin, "PortPinId", (portNumber * 16 + pinNumber) as Long)
+                        assign(pin, "PortPinSymbolicName", "P${portNumber}_${pinNumber}")
+                        assign(pin, "PortPinDirection", setup.direction)
+                        assign(pin, "PortPinDirectionChangeable", false)
+                        assign(pin, "PortPinInitialMode", setup.initial)
+                        assign(pin, "PortPinLevelValue", setup.level)
+                        assign(pin, "PortPinInputPullResistor", setup.pull)
+                        assign(pin, "PortPinInputPadLevel", "PORT_INPUT_LEVEL_CMOS_AUTOMOTIVE")
+                        assign(pin, "PortPinEnableAnalogInputOnly", "PORT_PIN_ANALOG_INPUT_DISABLE")
+                        assign(pin, "PortPinControllerSelect", "DISABLE")
+                        assign(pin, "PortPinEmergencyStop", false)
+                        assign(pin, "PortPinModeChangeable", false)
+                        assign(pin, "PortPinOutputPadDriveStrength", "PORT_PIN_DEFAULT_DRIVER")
+                        assign(pin, "PortPinOutputPinDriveMode", "PORT_PIN_OUT_PUSHPULL")
+                        setListEnum(pin, "PortPinMode", "PORT_PIN_MODE_ALL")
+                    }
+                }
+                scriptLogger.info("Port pins configured")
+                def addLvds = { container, List<String> pairs ->
+                    pairs.eachWithIndex { pair, index ->
+                        def lvds = ensure(container.portLVDS, "PortLVDS_" + index)
+                        assign(lvds, "PortLVDSMode", "LVDSH")
+                        assign(lvds, "PortLVDSPadSupply", "V3_3")
+                        assign(lvds, "PortLVDSPinPair", pair)
+                        assign(lvds, "PortLVDSRxEnController", "PORT_CONTROLLED")
+                        assign(lvds, "PortLVDSRxPathEnable", false)
+                        assign(lvds, "PortLVDSRxTerminationMode", "INTERNAL_TERMINATION")
+                        assign(lvds, "PortLVDSTxEnController", "PORT_CONTROLLED")
+                        assign(lvds, "PortLVDSTxPathEnable", false)
+                        assign(lvds, "PortLVDSTxPowerDownPullDown", "DISABLE")
+                    }
+                }
+                addLvds(configSet.portContainer.byName("Port_13"), ["Pin_0_Pin_1", "Pin_2_Pin_3"])
+                addLvds(configSet.portContainer.byName("Port_14"), ["Pin_10_Pin_9"])
+                addLvds(configSet.portContainer.byName("Port_21"), ["Pin_0_Pin_1", "Pin_2_Pin_3", "Pin_4_Pin_5"])
+                addLvds(configSet.portContainer.byName("Port_22"), ["Pin_0_Pin_1", "Pin_2_Pin_3"])
+
+                def mcu = bswmdModel(Mcu.DefRef).single
+                def clockSetting = mcu.mcuModuleConfiguration.mcuClockSettingConfig.byName("McuClockSettingConfig_0")
+                def clockPoint = clockSetting.mcuClockReferencePointConfig
+
+                def spi = bswmdModel(Spi.DefRef).single
+                def driver = spi.spiDriverOrCreate
+                ["SpiSequence", "SpiJob", "SpiExternalDevice", "SpiChannel"].each { staleName ->
+                    def list = driver."${prop(staleName)}"
+                    if (list.exists(staleName)) {
+                        list.byName(staleName).moRemove()
+                    }
+                }
+                def general = spi.spiGeneralOrCreate
+                assign(general, "SpiSafetyEnable", false)
+                assign(general, "SpiLevelDelivered", 0L)
+                assign(general, "SpiChannelBuffersAllowed", 1L)
+                assign(general, "SpiInterruptibleSeqAllowed", false)
+                setRef(driver, "SpiSystemClock", clockPoint)
+
+                def tjaChannel = ensure(driver.spiChannel, "SpiChannel_Tja1145")
+                assign(tjaChannel, "SpiChannelId", 0L)
+                assign(tjaChannel, "SpiChannelType", "EB")
+                assign(tjaChannel, "SpiDataWidth", 8L)
+                assign(tjaChannel, "SpiEbMaxLength", 32L)
+                assign(tjaChannel, "SpiIbNBuffers", 1L)
+                assign(tjaChannel, "SpiTransferStart", "MSB")
+                def tlfChannel = ensure(driver.spiChannel, "SpiChannel_Tlf35584")
+                assign(tlfChannel, "SpiChannelId", 1L)
+                assign(tlfChannel, "SpiChannelType", "EB")
+                assign(tlfChannel, "SpiDataWidth", 16L)
+                assign(tlfChannel, "SpiEbMaxLength", 4L)
+                assign(tlfChannel, "SpiIbNBuffers", 1L)
+                assign(tlfChannel, "SpiTransferStart", "MSB")
+
+                def addDevice = { String name, double baud, String edge, String chipSelect, String hwUnit ->
+                    def device = ensure(driver.spiExternalDevice, name)
+                    assign(device, "SpiAutoCalcBaudParams", true)
+                    assign(device, "SpiAutoCalcDelayParams", true)
+                    assign(device, "SpiBaudrate", baud as Double)
+                    assign(device, "SpiCsIdentifier", chipSelect)
+                    assign(device, "SpiCsPolarity", "LOW")
+                    assign(device, "SpiCsSelection", "CS_VIA_PERIPHERAL_ENGINE")
+                    assign(device, "SpiDataShiftEdge", edge)
+                    assign(device, "SpiEnableCs", true)
+                    assign(device, "SpiHwUnit", hwUnit)
+                    assign(device, "SpiIdleTime", 0.00000128d)
+                    assign(device, "SpiParitySupport", "UNUSED")
+                    assign(device, "SpiShiftClockIdleLevel", "LOW")
+                    assign(device, "SpiTimeClk2Cs", 0.00000128d)
+                    assign(device, "SpiTrailingTime", 0.00000128d)
+                    return device
+                }
+                def tjaDevice = addDevice("SpiExternalDevice_Tja1145", 2000000.0d, "TRAILING", "CHANNEL8", "QSPI3")
+                def tlfDevice = addDevice("SpiExternalDevice_Tlf35584", 5000000.0d, "LEADING", "CHANNEL3", "QSPI4")
+
+                def addJob = { String name, long id, device, channel ->
+                    def job = ensure(driver.spiJob, name)
+                    assign(job, "SpiJobId", id)
+                    assign(job, "SpiJobPriority", 0L)
+                    assign(job, "SpiHwUnitSynchronous", "SYNCHRONOUS")
+                    setRef(job, "SpiDeviceAssignment", device)
+                    def list = ensure(job.spiChannelList, "SpiChannelList_0")
+                    assign(list, "SpiChannelIndex", 0L)
+                    setRef(list, "SpiChannelAssignment", channel)
+                    return job
+                }
+                def tjaJob = addJob("SpiJob_Tja1145", 0L, tjaDevice, tjaChannel)
+                def tlfJob = addJob("SpiJob_Tlf35584", 1L, tlfDevice, tlfChannel)
+
+                def addSequence = { String name, long id, job ->
+                    def sequence = ensure(driver.spiSequence, name)
+                    assign(sequence, "SpiSequenceId", id)
+                    assign(sequence, "SpiInterruptibleSequence", false)
+                    setRefList(sequence, "SpiJobAssignment", job)
+                }
+                addSequence("SpiSequence_Tja1145", 0L, tjaJob)
+                addSequence("SpiSequence_Tlf35584", 1L, tlfJob)
+
+                def hw = spi.spiHwConfigurationOrCreate
+                if (hw.spiHwConfigurationQspi.exists("SpiHwConfigurationQspi")) {
+                    hw.spiHwConfigurationQspi.byName("SpiHwConfigurationQspi").moRemove()
+                }
+                def addKernel = { String name, String kernel, String mris ->
+                    def qspi = ensure(hw.spiHwConfigurationQspi, name)
+                    assign(qspi, "SpiExternalDemux", false)
+                    assign(qspi, "SpiHWPinMRSTQspix", mris)
+                    assign(qspi, "SpiHwConfigKernel", kernel)
+                    assign(qspi, "SpiJobQueueLengthQspix", 2L)
+                    assign(qspi, "SpiSLSO0StrobeDelay", 2L)
+                    assign(qspi, "SpiSleepEnableQspix", false)
+                }
+                addKernel("QSPI3", "QSPI3", "MRST3B_PORT10_PIN7")
+                addKernel("QSPI4", "QSPI4", "MRST4B_PORT22_PIN1")
+                def resource = bswmdModel(ResourceM.DefRef).single
+                def resourceConfig = resource.resourceMMcalConfigOrCreate
+                assign(resourceConfig, "ResourceMMasterCore", "CORE0")
+                def resourceCore = ensure(resourceConfig.resourceMMcalCore, "ResourceMMcalCore_0")
+                assign(resourceCore, "ResourceMCoreID", "CORE0")
+                def addAllocation = { String name, String moduleName, target ->
+                    def allocation = ensure(resourceCore.resourceMAllocation, name)
+                    assign(allocation, "ResourceMModuleName", moduleName)
+                    def getter = allocation.getClass().methods.find {
+                        it.parameterTypes.length == 0 && it.name == "getResourceMResourceRefOrCreate"
+                    }
+                    getter.invoke(allocation).setRefTargetMdf(target.mdfObject)
+                }
+                addAllocation("SPI_QSPI3", "SPI", hw.spiHwConfigurationQspi.byName("QSPI3"))
+                addAllocation("SPI_QSPI4", "SPI", hw.spiHwConfigurationQspi.byName("QSPI4"))
+                scriptLogger.info("Spi devices configured")
+
+                def can = bswmdModel(Can.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+                def controller = can.canConfigSet.canController.byName("PropulsionCAN_6c6185ef")
+                assign(controller, "CanBasisAddressEnum", "M_CAN5")
+                assign(controller, "CanIOPort", "b_011")
+                setRef(controller, "CanCpuClockRef", clockSetting.mcuClockReferencePoint.byName("McuClockReferencePoint_0"))
+                setRef(can.canGeneral, "CanCounterRef", os.osCounter.byName("SystemTimer"))
+                def baud = ensure(controller.canControllerBaudrateConfig, "CanControllerBaudrateConfig")
+                assign(baud, "CanControllerBaudRate", 500L)
+                assign(baud, "CanControllerBaudRateConfigID", 0L)
+                assign(baud, "CanControllerPropSeg", 1L)
+                assign(baud, "CanControllerSeg1", 14L)
+                assign(baud, "CanControllerSeg2", 4L)
+                assign(baud, "CanControllerSyncJumpWidth", 3L)
+                assign(baud, "CanBaudratePrescaler", 2L)
+                if (can.canGeneral.getClass().methods.any { it.name == "getCanFdSupportOrCreate" }) {
+                    assign(can.canGeneral, "CanFdSupport", "NONE")
+                }
+                scriptLogger.info("CAN11 configured")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

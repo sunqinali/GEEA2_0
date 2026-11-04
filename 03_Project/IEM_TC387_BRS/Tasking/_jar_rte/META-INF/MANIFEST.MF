@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.6
+Created-By: 1.8.0_232-b09 (Amazon.com Inc.)
+Implementation-Title: RteModelJUNITTestAI
+Implementation-Version: 4.23.00.32813
+DvCfg-AutomationInterface-AllowBetaApiUsage: false
+DvCfg-AutomationInterface-GeneratorsToLoad: com.vector.cfg.gen.Rte
+DvCfg-AutomationInterface-ProductType: MSR
+Automation-Classes: MyScript
+DvCfg-AutomationInterfaceJars-Compile-Version: 1.6.0
+Implementation-Vendor: Vector Informatik GmbH
+DvCfg-BuildEnvironment-Version: 25.00.40
+DvCfg-GeneratorInterfaceJars-Minimal-Version: 14.00.00
+DvCfg-GeneratorInterfaceJars-Compile-Version: 25.00.40
+Svn-Repository-Information: trunk/com.vector.cfg.gen.Rte?p=32813
+Generator-Componentname: Rte
+Generator-Packagename: com.vector.cfg.gen.Rte
+Dependencies:  DVCfg_GeneratorInterface.jar, DVCfg_GeneratorInterfaceI
+ nternalAddons.jar, DVCfg_ModelInterface.jar,DVCfg_TargetPlatform.jar
+

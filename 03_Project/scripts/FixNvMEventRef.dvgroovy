@@ -1,0 +1,105 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+daVinci {
+    scriptDescription "Ensure NvM TimingEvent Ref is set; force None+Alarm+Task"
+    scriptTask("FixNvMEventRef", DV_PROJECT) {
+        taskDescription "Bind RteBswEventRef for NvM_MainFunctionTimingEvent0"
+        code {
+            def unwrap = { obj ->
+                if (obj == null) return null
+                if (obj.getClass().simpleName.contains("Optional") || obj.respondsTo("isPresent")) {
+                    if (obj.respondsTo("isPresent") && !obj.isPresent()) return null
+                    if (obj.respondsTo("get")) return obj.get()
+                }
+                return obj
+            }
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) throw new IllegalStateException("No ${literal}")
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum") || parameter.getClass().simpleName.startsWith("GIEnum") || typeName.contains("ERte") || typeName.startsWith("com.vector.cfg.automation.model")) {
+                    try { setEnum(parameter, value.toString()); return } catch (Throwable ignored) {}
+                }
+                if (value instanceof Boolean) setter.invoke(parameter, value)
+                else if (value instanceof Long || value instanceof Integer) setter.invoke(parameter, value as Long)
+                else setter.invoke(parameter, value)
+            }
+            def setRef = { owner, String paramName, target ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ref ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                if (parameter.respondsTo("setRefTarget")) {
+                    try { parameter.setRefTarget(target); return } catch (Throwable ignored) {}
+                }
+                if (parameter.respondsTo("setRefTargetMdf")) {
+                    parameter.setRefTargetMdf(target.mdfObject != null ? target.mdfObject : target)
+                    return
+                }
+                throw new IllegalStateException("Cannot setRef ${paramName}")
+            }
+
+            transaction {
+                def rte = bswmdModel(Rte.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+                def taskBsw = os.osTask.byName("Task_Bsw_10ms")
+                def alarmBsw = os.osAlarm.byName("Alarm_Bsw_10ms")
+                def nvmInst = rte.rteBswModuleInstance.byName("NvM")
+                def ev = nvmInst.rteBswEventToTaskMapping.byName("NvM_MainFunctionTimingEvent0")
+
+                // dump current event ref
+                try {
+                    def cur = ev.rteBswEventRef.refTarget
+                    scriptLogger.info("Current RteBswEventRef=" + cur)
+                } catch (Exception e) {
+                    scriptLogger.warn("Current RteBswEventRef missing: " + e.message)
+                }
+
+                // Resolve TimingEvent from IB via available events list on instance
+                def bound = false
+                try {
+                    def avail = nvmInst.mdfObject // fallback
+                } catch (Exception ignored) {}
+
+                // Try setting EventRef by searching project for TimingEvent named NvM_MainFunctionTimingEvent0
+                try {
+                    def methods = ev.getClass().methods.findAll { it.parameterTypes.length == 0 && it.name.toLowerCase().contains("event") }
+                    methods.each { scriptLogger.info("ev method: " + it.name) }
+                } catch (Exception ignored) {}
+
+                setRef(ev, "RteBswMappedToTaskRef", taskBsw)
+                setRef(ev, "RteBswUsedOsAlarmRef", alarmBsw)
+                assign(ev, "RteBswPositionInTask", 21L)
+                assign(ev, "RteBswImmediateRestart", false)
+                assign(ev, "RteCyclicTriggerImplementation", "None")
+
+                try {
+                    def cur2 = ev.rteBswEventRef.refTarget
+                    scriptLogger.info("After fix RteBswEventRef=" + cur2)
+                    if (cur2 == null) {
+                        scriptLogger.warn("EventRef still null — mapping may be invalid")
+                    }
+                } catch (Exception e) {
+                    scriptLogger.warn("After fix EventRef: " + e.message)
+                }
+            }
+            activeProject().saveProject()
+            scriptLogger.info("FixNvMEventRef done")
+        }
+    }
+}

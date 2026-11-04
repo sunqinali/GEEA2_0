@@ -1,0 +1,47 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+
+daVinci {
+    scriptDescription "Remove user OsInterruptSupportedType DEFAULT and preferred-solve EcuC"
+
+    scriptTask("FixOsPublishedAndEcuc", DV_PROJECT) {
+        taskDescription "Delete DEFAULT interrupt type then preferred solve"
+        code {
+            transaction {
+                def os = bswmdModel(Os.DefRef).single
+                def doomed = []
+                os.osPublishedInformation.osDerivativeInformation.each { der ->
+                    der.osInterruptSupportedType.each { t ->
+                        if (t.shortname == "DEFAULT") {
+                            doomed << t
+                        }
+                    }
+                }
+                doomed.each {
+                    it.moRemove()
+                    scriptLogger.info("Removed OsInterruptSupportedType DEFAULT")
+                }
+            }
+            activeProject().saveProject()
+
+            (1..6).each { round ->
+                def withPreferred = validation.validationResults.findAll { r ->
+                    try { r.preferredSolvingAction != null } catch (Throwable t) { false }
+                }
+                scriptLogger.info("Solve round ${round}: preferred=${withPreferred.size()}")
+                if (withPreferred.isEmpty()) {
+                    return
+                }
+                try {
+                    validation.solver.solveAllWithPreferredSolvingAction()
+                } catch (Throwable t) {
+                    scriptLogger.warn("Solve failed: " + t.message)
+                    return
+                }
+                activeProject().saveProject()
+            }
+            scriptLogger.info("FixOsPublishedAndEcuc done")
+        }
+    }
+}

@@ -1,0 +1,81 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.os.ostask.ostasktype.EOsTaskType
+
+daVinci {
+    scriptDescription "Set solver-owned idle task and counter ISR fields while they are detached"
+
+    scriptTask("FixOsSolverFields", DV_PROJECT) {
+        taskDescription "Write idle priority, idle type and counter ISR enable, then attach them again"
+        code {
+            def idleTasks = []
+            def core2Isr = null
+            transaction {
+                def os = bswmdModel(Os.DefRef).single
+                def unlinkName = { list, String targetName ->
+                    def doomed = []
+                    list.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == targetName) {
+                            doomed << ref
+                        }
+                    }
+                    doomed.each { it.moRemove() }
+                }
+                unlinkName(os.osApplication.byName("OsApplication").osAppCounterRef, "SystemTimer")
+                unlinkName(os.osApplication.byName("OsApplication_Core2").osAppCounterRef, "SystemTimer_Core2")
+
+                def mpu = [
+                    SystemApplication_OsCore0: 0,
+                    SystemApplication_OsCore1: 1,
+                    SystemApplication_OsCore2: 2,
+                    SystemApplication_OsCore3: 3,
+                    OsApplication: 4,
+                    OsApplication_Core1: 5,
+                    OsApplication_Core2: 4,
+                    OsApplication_Core3: 5
+                ]
+                mpu.each { name, id ->
+                    os.osApplication.byName(name).osAppMemoryProtectionIdentifierOrCreate.value = id
+                }
+
+                (0..3).each { i ->
+                    def core = os.osCore.byName("OsCore${i}")
+                    def idleRef = core.osCoreIdleTaskOrNull
+                    if (idleRef != null) {
+                        idleRef.moRemove()
+                    }
+                    def idle = os.osTask.byName("IdleTask_Core${i}")
+                    idle.osTaskPriorityOrCreate.value = 4294967295L
+                    idle.osTaskTypeOrCreate.value = EOsTaskType.AUTO
+                    idleTasks << idle
+                    scriptLogger.info("Detached " + idle.shortname)
+                }
+
+                def driver = os.osCounter.byName("SystemTimer_Core2").osDriverOrCreate
+                def isrRef = driver.osDriverIsrRefOrNull
+                if (isrRef != null) {
+                    isrRef.moRemove()
+                }
+                core2Isr = os.osIsr.byName("Isr_SystemTimer_Core2")
+                core2Isr.osIsrInitialEnableInterruptSourceOrCreate.value = false
+                scriptLogger.info("Counter ISR initial enable set false")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Detached values saved")
+
+            transaction {
+                def os = bswmdModel(Os.DefRef).single
+                (0..3).each { i ->
+                    def idle = os.osTask.byName("IdleTask_Core${i}")
+                    os.osCore.byName("OsCore${i}").osCoreIdleTaskOrCreate.setRefTarget(idle)
+                }
+                def isr = os.osIsr.byName("Isr_SystemTimer_Core2")
+                os.osCounter.byName("SystemTimer_Core2").osDriverOrCreate.osDriverIsrRefOrCreate.setRefTarget(isr)
+                scriptLogger.info("Idle tasks and Core2 counter ISR attached again")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

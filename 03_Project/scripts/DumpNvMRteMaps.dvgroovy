@@ -1,0 +1,68 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+daVinci {
+    scriptDescription "Dump all Rte mappings touching NvM_MainFunction"
+    scriptTask("DumpNvMRteMaps", DV_PROJECT) {
+        taskDescription "List BSW/SWC NvM MainFunction mappings and triggers"
+        code {
+            def rte = bswmdModel(Rte.DefRef).single
+            scriptLogger.info("=== BSW instances ===")
+            rte.rteBswModuleInstance.each { inst ->
+                def iname = inst.shortname
+                try {
+                    inst.rteBswEventToTaskMapping.each { ev ->
+                        def en = ev.shortname
+                        if (en.toString().toLowerCase().contains("nvm") || iname.toString().toLowerCase().contains("nvm")) {
+                            def trig = "?"
+                            try { trig = ev.rteCyclicTriggerImplementation.value } catch (Exception ignored) {
+                                try { trig = ev.rteCyclicTriggerImplementationOrCreate.value } catch (Exception ignored2) {}
+                            }
+                            def task = "?"
+                            try { task = ev.rteBswMappedToTaskRef.refTarget.shortname } catch (Exception ignored) {}
+                            scriptLogger.info("BSW ${iname}/${en} trig=${trig} task=${task}")
+                        }
+                    }
+                } catch (Exception e) {
+                    scriptLogger.warn("BSW ${iname}: " + e.message)
+                }
+            }
+            scriptLogger.info("=== SWC instances ===")
+            rte.rteSwComponentInstance.each { inst ->
+                def iname = inst.shortname
+                try {
+                    inst.rteEventToTaskMapping.each { ev ->
+                        def en = ev.shortname
+                        def blob = (iname.toString() + "/" + en.toString()).toLowerCase()
+                        if (blob.contains("nvm") || en.toString().toLowerCase().contains("mainfunction")) {
+                            def trig = "?"
+                            try { trig = ev.rteCyclicTriggerImplementation.value } catch (Exception ignored) {}
+                            def task = "?"
+                            try { task = ev.rteMappedToTaskRef.refTarget.shortname } catch (Exception ignored) {}
+                            if (blob.contains("nvm") || trig.toString() != "?" ) {
+                                scriptLogger.info("SWC ${iname}/${en} trig=${trig} task=${task}")
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    // skip
+                }
+            }
+            // specifically search any event whose eventRef path contains NvM_MainFunction
+            scriptLogger.info("=== scan all BSW eventRefs for NvM_MainFunction ===")
+            rte.rteBswModuleInstance.each { inst ->
+                inst.rteBswEventToTaskMapping.each { ev ->
+                    try {
+                        def ref = ev.rteBswEventRef.refTarget
+                        def path = ref != null ? ref.toString() : ""
+                        if (path.toLowerCase().contains("nvm")) {
+                            scriptLogger.info("HIT BSW ${inst.shortname}/${ev.shortname} ref=${path}")
+                        }
+                    } catch (Exception ignored) {}
+                }
+            }
+            scriptLogger.info("DumpNvMRteMaps done")
+        }
+    }
+}

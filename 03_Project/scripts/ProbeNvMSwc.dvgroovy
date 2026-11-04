@@ -1,0 +1,53 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+daVinci {
+    scriptDescription "Probe whether NvM_swc loaded and COMPOSITIONTYPE contents"
+    scriptTask("ProbeNvMSwc", DV_PROJECT) {
+        taskDescription "List NvM_swc / composition prototypes"
+        code {
+            def ra = activeProject().getInstance(com.vector.cfg.model.access.IReferrableAccess)
+            def paths = [
+                "/MICROSAR/NvM_swc",
+                "/MICROSAR/NvM_swc/ComponentTypes",
+                "/MICROSAR/NvM_swc/ComponentTypes/NvM",
+                "/MICROSAR/NvM_swc/ComponentTypes/NvM/NvMInternalBehavior",
+                "/MICROSAR/NvM_swc/ComponentTypes/NvM/NvMInternalBehavior/Timer_NvM_MainFunction",
+                "/MICROSAR/NvM_swc/ComponentTypes/NvM/NvMInternalBehavior/NvM_MainFunction",
+                "/MICROSAR/BswM_swc/ComponentTypes/BswM",
+                "/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE",
+                "/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/BswM",
+                "/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/NvM",
+            ]
+            paths.each { p ->
+                try {
+                    def r = ra.getReferrableByPath(p)
+                    scriptLogger.info("OK ${p} => ${r} class=${r?.getClass()?.simpleName}")
+                } catch (Throwable t) {
+                    scriptLogger.warn("FAIL ${p}: ${t.message}")
+                }
+            }
+
+            // List composition components via Dem prototype parent
+            try {
+                def dem = ra.getReferrableByPath("/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/DemMaster_0")
+                scriptLogger.info("Dem proto=${dem}")
+                def parent = dem.parent
+                scriptLogger.info("parent=${parent} class=${parent?.getClass()?.simpleName}")
+                parent.getClass().methods.findAll { it.parameterTypes.length == 0 && (it.name.toLowerCase().contains("component") || it.name.toLowerCase().contains("element") || it.name == "getChildren") }.each {
+                    scriptLogger.info("parent method ${it.name}")
+                }
+                try {
+                    def comps = parent.components ?: parent.getComponent?.() ?: parent.swComponentPrototype
+                    comps.each { c ->
+                        scriptLogger.info("COMP ${(c.shortName ?: c.name)}")
+                    }
+                } catch (Throwable t) {
+                    scriptLogger.warn("list comps: ${t.message}")
+                }
+            } catch (Throwable t) {
+                scriptLogger.warn("dem parent walk: ${t.message}")
+            }
+            scriptLogger.info("ProbeNvMSwc done")
+        }
+    }
+}

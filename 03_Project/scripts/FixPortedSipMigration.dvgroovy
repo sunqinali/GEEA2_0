@@ -1,0 +1,31 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+daVinci {
+    scriptDescription "Apply preferred solving actions after CBD1900078 -> CBD2000642 ECUC port"
+
+    scriptTask("FixPortedSipMigration", DV_PROJECT) {
+        taskDescription "Loop preferred validation solvers then save"
+        code {
+            def maxRounds = 8
+            (1..maxRounds).each { round ->
+                def results = validation.validationResults
+                def withPreferred = results.findAll { r ->
+                    try {
+                        r.preferredSolvingAction != null
+                    } catch (Throwable t) {
+                        false
+                    }
+                }
+                scriptLogger.info("Round ${round}: ${results.size()} validation results, ${withPreferred.size()} with preferred solve")
+                if (withPreferred.isEmpty()) {
+                    return
+                }
+                def summary = validation.solver.solveAllWithPreferredSolvingAction()
+                scriptLogger.info("Round ${round} solve summary: " + summary)
+                activeProject().saveProject()
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Preferred solves finished")
+        }
+    }
+}

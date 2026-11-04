@@ -1,0 +1,2550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This file was saved with a tool from Vector Informatik GmbH-->
+<AUTOSAR xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00044.xsd" xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="325a51b0-67ac-47a5-b793-55abd97e675f-ConstantSpecifications">
+      <SHORT-NAME>ConstantSpecifications</SHORT-NAME>
+      <ELEMENTS>
+        <CONSTANT-SPECIFICATION UUID="4C8C0D1B-33D6-4ECC-BE5E-FBEC0C355BA6">
+          <SHORT-NAME>DmcStsRearToEsc_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>DmcSts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>DmcActAppTarTq</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Nm_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>DmcSWInfo</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="567CC629-5475-439C-A7F3-A198F061869D">
+          <SHORT-NAME>ImobEngChk2_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngChkSts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataChk0</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataChk1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataChk2</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataChk3</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataChk4</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataChk5</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataChk6</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="326C0CD6-4F12-4B7B-872E-FDE7295A45CA">
+          <SHORT-NAME>ImobEngSts2_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>ImobEngSts2</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="8301FA6D-225C-439A-89A8-332FD328FD3D">
+          <SHORT-NAME>IEMTestFr1_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte0</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte2</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte3</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte4</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte5</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte6</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte7</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="2A6A7C7B-C8E2-4A6B-AF68-7EE920CEA569">
+          <SHORT-NAME>IEMTestFr2_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte0</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte2</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte3</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte4</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte5</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte6</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte7</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="962CE745-0594-4EF9-BD14-E67D81EABDD1">
+          <SHORT-NAME>IEMTestFr3_3</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte0</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte2</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte3</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte4</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte5</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte6</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Byte7</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="F78CBC92-DC99-426F-8695-35005F45EB5B">
+          <SHORT-NAME>WhlMotSysCoolgReq_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysCoolgReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="DF137C62-2E76-4157-B358-11F78A72C2F0">
+          <SHORT-NAME>WhlMotSysInvrT_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysInvrT</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/DegCgrd_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="0FFACEE0-4ED9-4CB4-8135-107257F98040">
+          <SHORT-NAME>WhlMotSysMotT_3</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysMotT</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/DegCgrd_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="0F1ED1AF-D54F-49F7-875C-B800F6B37150">
+          <SHORT-NAME>WhlMotSysCooltT_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysCooltT</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/DegCgrd_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="4A6FE30C-9A0E-4233-9ECD-491A0CF49A93">
+          <SHORT-NAME>WhlMotSysHeatPwrMax_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysHeatPwrMax</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Watt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="4A1A2DF4-28EE-484C-A47F-50F98F62D678">
+          <SHORT-NAME>WhlMotSysHeatFdBck_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysHeatFdBck</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>1</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="596E4306-D6C8-47A8-8599-6EFF5CBC2F9D">
+          <SHORT-NAME>WhlMotSysHeatPwrAct_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysHeatPwrAct</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Watt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="DBF80E20-DAEC-443D-8D35-25A455C873A9">
+          <SHORT-NAME>WhlMotSysModSts_5</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysModSts</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="5A16DF32-DB8C-4477-AA69-04BF3EA322A1">
+          <SHORT-NAME>WhlMotSysLimnIndcn_3</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysLimnIndcn</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="BB2BF3EE-E5A5-450C-9972-1ADFE668FBC0">
+          <SHORT-NAME>WhlMotClrRdyReq_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotClrRdyReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="706FA026-D9AD-4B12-A0FA-9DC4FC1C7545">
+          <SHORT-NAME>WhlMotSysErrIndcnReq_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysErrIndcnReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="0E8A850A-7F9B-44CA-903C-98E106BFB3EC">
+          <SHORT-NAME>IemGeneric_12</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EMQnty</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EMSeqNr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>DTCSts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>DTCLow</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>DTCMid</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>DTCHig</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>TypeInfo</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>MotTAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>InvrtTAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>FltAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>SpdAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>IacAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>UDcAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>RslAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ADAlrmSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ModStatusRms</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>3</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="1D416F7A-EB8A-4D1F-95C0-F73BCCBC8093">
+          <SHORT-NAME>WhlMotSysIdc_5</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysIdc</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Ampr_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="F16D26CB-7C32-41B5-BE0A-6533C78A1DCE">
+          <SHORT-NAME>WhlMotSysUdc_3</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysUdc</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Volt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="D279DA59-A6C8-4339-B597-372D03CE4E9C">
+          <SHORT-NAME>WhlMotCooltFlowMinReq_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotCooltFlowMinReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/LPerMins_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="9F9DBC0E-499C-4519-AFE2-914D9C944643">
+          <SHORT-NAME>WhlMotSysSpdAct_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysSpdAct</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Rpm_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="DB5F477C-14EB-45DF-B29E-9D9D4056ADF1">
+          <SHORT-NAME>WhlMotSysTqAvl_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>TqAvlMax</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Nm_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>TqAvlMin</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Nm_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="B11A127B-9640-4BF5-BF94-20F5D30151DE">
+          <SHORT-NAME>WhlMotSysTqEst_10</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>QualityFactor</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>1</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>IsgTqAct</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Nm_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="C4F1131F-333F-4257-AA33-8ECA1A441AF2">
+          <SHORT-NAME>WhlMotSysSpdActSafe_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>IsgSpdWSgnTyp</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Rpm_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Qf</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>1</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="528C4918-FE29-4CA6-A305-0433A5F54E12">
+          <SHORT-NAME>PLockParkStsRe_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>PLockParkStsRe</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>7</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="8CC7E73D-6CA5-455D-ACC6-5B485B223C9B">
+          <SHORT-NAME>PLockFltIndcRe_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>PLockFltIndcRe</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="33E4182B-F65F-44A4-83FE-684660108564">
+          <SHORT-NAME>PLockFltLvlRe_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>PLockFltLvlRe</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="884AF046-2C42-434C-ACED-25B2577078C8">
+          <SHORT-NAME>WhlMotSysTqReq_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysTqReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Nm_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="8F43C20D-2EA4-4CA5-B804-E702AF76418D">
+          <SHORT-NAME>GearLvrIndcn_6</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>GearLvrIndcn</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>7</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="76F1435B-712D-4F4E-B621-4C0D070B2473">
+          <SHORT-NAME>StcStsToDmc_3</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>StcStsToDmcFrnt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>StcStsToDmcRear</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EngRotTarSpdDMCFrnt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EngRotTarSpdDMCRear</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="94097F7A-C8A3-4796-86F9-75FADD37CBC1">
+          <SHORT-NAME>EscVariantToDmc_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EscVariantToDmc</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="EEF86F49-7E86-4267-9A2D-B526A6D10208">
+          <SHORT-NAME>CarTiGlb_5</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>CarTiGlb</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Sec_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0.0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="F8DD98D4-BEBD-4DA6-86D0-515B110B4223">
+          <SHORT-NAME>VehModMngtGlbSafe1_7</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>UsgModSts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>1</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CarModSts1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CarModSubtypWdCarModSubtyp</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EgyLvlElecMai</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EgyLvlElecSubtyp</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>PwrLvlElecMai</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>PwrLvlElecSubtyp</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>FltEgyCnsWdSts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="B1CEF4EE-B35A-4F6D-8305-30BF1A9EB37C">
+          <SHORT-NAME>VehBattU_8</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>SysU</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Volt_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>SysUQf</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>1</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="E1A26D29-6364-4D48-850E-FDEA61A0E8BB">
+          <SHORT-NAME>BkpOfDstTrvld_7</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>BkpOfDstTrvld</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/km_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="2B2F9EE0-266F-480B-BB5B-3E018049506D">
+          <SHORT-NAME>VehCfgPrm_5</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>BlkIDBytePosn1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn2</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn3</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn4</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn5</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn6</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn7</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn8</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="5F308260-999B-423C-A478-4696F8868356">
+          <SHORT-NAME>VehCfgPrmExt_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>BlkIDBytePosn1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn2</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn3</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn4</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn5</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn6</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn7</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>CCPBytePosn8</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="3BDC7471-AE40-4F1D-AAE1-2C1BD00B2F52">
+          <SHORT-NAME>ImobEngMgrReq2_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngMgrCmdTar1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataMgrReq0</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataMgrReq1</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataMgrReq2</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataMgrReq3</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataMgrReq4</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataMgrReq5</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>ImobEngDataMgrReq6</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="7C247CB7-3ABA-4B7F-A038-A6C9C390383E">
+          <SHORT-NAME>EngSt1WdSts_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>EngSt1WdSts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="922BE08B-F6AC-4682-9E08-F4828326BC33">
+          <SHORT-NAME>VehSpdLgt_15</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>VehSpdLgtA</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/MtrPerSec_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>VehSpdLgtQf</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>1</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>VehSpdLgtCntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>VehSpdLgtChks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="192CAF3F-7DF0-471C-8DE9-7D6048BD9563">
+          <SHORT-NAME>HvSysRlySts_8</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>HvSysRlySts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>2</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="91AC24AF-51DD-4732-B50E-E1A457F1EB98">
+          <SHORT-NAME>CooltFlowForDtElec_5</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>CooltFlowForDtElec</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/LPerMins_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="982886EB-712F-4878-8CC1-394A463FC35F">
+          <SHORT-NAME>CooltTSigForDtElec_5</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>CooltTSigForDtElec</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/DegCgrd_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="9D671039-9FA9-4531-990A-D87B04910A69">
+          <SHORT-NAME>WhlMotSysModReq_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysModReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="06DFBA7D-2BF8-436B-923F-BE4ABFEA8C52">
+          <SHORT-NAME>WhlMotSysActvDampgModReq_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysActvDampgModReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="057CD96E-067B-4C60-90CE-FE48793910D5">
+          <SHORT-NAME>WhlMotSysPwrLimMax_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysPwrLimMax</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/KiloWatt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="D1E3DE7F-B205-42FD-99D3-A2A3B158466D">
+          <SHORT-NAME>WhlMotSysPwrLimMin_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>WhlMotSysPwrLimMin</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/KiloWatt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="1F88FE58-A074-4706-B6EC-45A594297DCD">
+          <SHORT-NAME>PrpsnFbLimnIndcn_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>PrpsnFbLimnIndcn</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="EDA7F8D9-85F7-4F87-B61D-4E24A008B8B9">
+          <SHORT-NAME>DrvgCyc_3</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>DrvgCyc</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="6795CCA1-2C79-44A0-A326-C4C5B1FE614A">
+          <SHORT-NAME>RearHeatModEnad_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>RearHeatModEnad</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>2</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="42412E44-EB08-4FC9-BBA0-91121F5E597C">
+          <SHORT-NAME>RearHeatPwrAllwd_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>RearHeatPwrAllwd</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Watt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="7F5037D8-8641-4E48-A7BF-5AEB5160F4F7">
+          <SHORT-NAME>PtTqAtAxleMaxReq_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>PtTqAtAxleFrntReq</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Nm_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>20000</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>PtTqAtAxleReReq</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/Nm_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>20000</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="B2A105AE-1154-4760-9CCF-FDAC6817CC82">
+          <SHORT-NAME>VehMtnSt_10</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>VehMtnSt</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>VehMtnStChks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>VehMtnStCntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="748FC539-F914-49E3-B520-27FC0D200C4F">
+          <SHORT-NAME>CrashStsSafe_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Sts</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>255</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="B91912B2-22AD-45EA-9F8F-335CEBC051A4">
+          <SHORT-NAME>WhlMotSysTqAllwd_7</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <RECORD-VALUE-SPECIFICATION>
+              <FIELDS>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>WhlMotSysTqAllwd</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Chks</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+                <APPLICATION-VALUE-SPECIFICATION>
+                  <SHORT-LABEL>Cntr</SHORT-LABEL>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <SW-VALUE-CONT>
+                    <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                    <SW-VALUES-PHYS>
+                      <V>0</V>
+                    </SW-VALUES-PHYS>
+                  </SW-VALUE-CONT>
+                </APPLICATION-VALUE-SPECIFICATION>
+              </FIELDS>
+            </RECORD-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="E9029D8D-AE2D-411C-95FB-F2F4F05D2D91">
+          <SHORT-NAME>HvBattSoc_2</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>HvBattSoc</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Perc_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="1B73BC1D-39E0-4DB1-A465-F56E56053A13">
+          <SHORT-NAME>HvBattUDynMinLim_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>HvBattUDynMinLim</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Volt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="670783CE-67FA-440B-BB46-4087DEE2E4E6">
+          <SHORT-NAME>HvBattUDynMaxLim_4</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>HvBattUDynMaxLim</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Volt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="1BAC5DF4-054B-44B6-BA73-D0946E438576">
+          <SHORT-NAME>HvBattUDc_3</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>HvBattUDc</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Volt_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="35D802B6-D50E-4DC8-9B1A-3866EA6C25AF">
+          <SHORT-NAME>SpdRotlForWhlsAtAxleRe_7</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>SpdRotlForWhlsAtAxleRe</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/Rpm_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0.0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="C54A65D1-6072-42D6-BA11-698198B8131C">
+          <SHORT-NAME>PLockParkReq_1</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>PLockParkReq</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="6358F67D-A011-4D03-BC5F-8742DD20F78E">
+          <SHORT-NAME>DCChrgnHndlSts_5</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>DCChrgnHndlSts</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>0</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION UUID="B10A687A-6118-4596-82CE-10F13C27A148">
+          <SHORT-NAME>OnBdChrgrHndlSts1_8</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV_SDG">
+                <SD GID="DV_ReadOnly">1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <VALUE-SPEC>
+            <APPLICATION-VALUE-SPECIFICATION>
+              <SHORT-LABEL>OnBdChrgrHndlSts1</SHORT-LABEL>
+              <SW-VALUE-CONT>
+                <UNIT-REF DEST="UNIT">/Units/NoUnit_1</UNIT-REF>
+                <SW-VALUES-PHYS>
+                  <V>8</V>
+                </SW-VALUES-PHYS>
+              </SW-VALUE-CONT>
+            </APPLICATION-VALUE-SPECIFICATION>
+          </VALUE-SPEC>
+        </CONSTANT-SPECIFICATION>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

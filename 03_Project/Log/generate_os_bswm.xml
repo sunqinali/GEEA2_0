@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DaVinciExecutionReport name="Generation Execution Report">
+    <ValidationResults fatalerrors="0" errors="5" warnings="0" improvements="6" infos="0">
+        <ValidationResultId id="01018" message="Mode Request is invalid!" origin="BSWM">
+            <ValidationResult severity="Error" ondemandresult="false">
+                <Description>Microsar EcuM Flex does not perform a EcuM Mode Indication in its current configuration!</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/BswM/BswMConfig/BswMArbitration/MRP_EcuMIndication/BswMModeRequestSource/BswMEcuMIndication</Object>
+                        <Definition>/MICROSAR/BswM/BswMConfig/BswMArbitration/BswMModeRequestPort/BswMModeRequestSource/BswMEcuMIndication</Definition>
+                        <Type>container</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="00022" message="Missing parameter value" origin="Cfg">
+            <ValidationResult severity="Error" ondemandresult="false">
+                <Description>The value of reference EcuMNormalMcuModeRef is missing or empty.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/EcuM/EcuMConfiguration/EcuMFlexConfiguration[0:EcuMNormalMcuModeRef]</Object>
+                        <Definition>/MICROSAR/EcuM/EcuMConfiguration/EcuMFlexConfiguration/EcuMNormalMcuModeRef</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Error" ondemandresult="false">
+                <Description>The value of reference EcuMOSResource is missing or empty.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/EcuM/EcuMConfiguration/EcuMCommonConfiguration[0:EcuMOSResource]</Object>
+                        <Definition>/MICROSAR/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMOSResource</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="90032" message="Reference has no target" origin="ECUM">
+            <ValidationResult severity="Error" ondemandresult="true">
+                <Description>Reference /ActiveEcuC/EcuM/EcuMConfiguration/EcuMCommonConfiguration[0:EcuMOSResource](value={empty}) has no reference target.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/EcuM/EcuMConfiguration/EcuMCommonConfiguration[0:EcuMOSResource]</Object>
+                        <Definition>/MICROSAR/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMOSResource</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Error" ondemandresult="true">
+                <Description>Reference /ActiveEcuC/EcuM/EcuMConfiguration/EcuMFlexConfiguration[0:EcuMNormalMcuModeRef](value={empty}) has no reference target. Element: /ActiveEcuC/EcuM/EcuMConfiguration/EcuMFlexConfiguration[0:EcuMNormalMcuModeRef](value={empty})</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/EcuM/EcuMConfiguration/EcuMFlexConfiguration[0:EcuMNormalMcuModeRef]</Object>
+                        <Definition>/MICROSAR/EcuM/EcuMConfiguration/EcuMFlexConfiguration/EcuMNormalMcuModeRef</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="02140" message="Configure additional Os-Cores" origin="OS">
+            <ValidationResult severity="Improvement" ondemandresult="false">
+                <Description>Physical core '/ActiveEcuC/Os/OsPublishedInformation/TC39x/Core4' is not referenced by an OS-Core.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/Os/OsPublishedInformation/TC39x/Core4</Object>
+                        <Definition>/MICROSAR/Os/OsPublishedInformation/OsDerivativeInformation/OsPhysicalCore</Definition>
+                        <Type>container</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Improvement" ondemandresult="false">
+                <Description>Physical core '/ActiveEcuC/Os/OsPublishedInformation/TC39x/Core5' is not referenced by an OS-Core.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/Os/OsPublishedInformation/TC39x/Core5</Object>
+                        <Definition>/MICROSAR/Os/OsPublishedInformation/OsDerivativeInformation/OsPhysicalCore</Definition>
+                        <Type>container</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="04310" message="Create X-Signal channels for cross-core API calls" origin="OS">
+            <ValidationResult severity="Improvement" ondemandresult="false">
+                <Description>No channel(s) from /ActiveEcuC/Os/OsCore0 to: OsCore2, OsCore1, OsCore3</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Definition>/MICROSAR/Os/OsCore/OsCoreXSignalChannel</Definition>
+                        <Type></Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Improvement" ondemandresult="false">
+                <Description>No channel(s) from /ActiveEcuC/Os/OsCore1 to: OsCore0, OsCore2, OsCore3</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Definition>/MICROSAR/Os/OsCore/OsCoreXSignalChannel</Definition>
+                        <Type></Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Improvement" ondemandresult="false">
+                <Description>No channel(s) from /ActiveEcuC/Os/OsCore2 to: OsCore0, OsCore1, OsCore3</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Definition>/MICROSAR/Os/OsCore/OsCoreXSignalChannel</Definition>
+                        <Type></Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Improvement" ondemandresult="false">
+                <Description>No channel(s) from /ActiveEcuC/Os/OsCore3 to: OsCore0, OsCore2, OsCore1</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Definition>/MICROSAR/Os/OsCore/OsCoreXSignalChannel</Definition>
+                        <Type></Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+    </ValidationResults>
+    <GenerationProcessResult result="ERROR" lastexecutiontime="2026-10-29 10:58:08" lastexecutionduration="6.013">
+        <GenerationResult generationtype="GENERATOR">
+            <Name>BswM</Name>
+            <State>FAILED</State>
+            <Phases>
+                <Phase type="CALCULATION" state="SUCCESSFUL"/>
+                <Phase type="VALIDATION" state="FAILED"/>
+                <Phase type="GENERATION" state="NONE"/>
+            </Phases>
+            <ErrorMessage>/MICROSAR/BswM Generator could not be started. Corresponding configuration contains errors. The first error is: &#xD;
+[Error] BSWM01018 - Mode Request is invalid! &#xD;
+- Microsar EcuM Flex does not perform a EcuM Mode Indication in its current configuration!</ErrorMessage>
+            <Generator>
+                <Name>MICROSAR BswM Generator</Name>
+                <Version>14.1.1.1</Version>
+                <MSN>BswM</MSN>
+                <Definition>/MICROSAR/BswM</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>BswM</Name>
+                    <Definition>/MICROSAR/BswM</Definition>
+                    <ObjectLink>/ActiveEcuC/BswM</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>EcuC</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL">
+                    <GeneratedFiles>
+                        <File generationinfo="FILE_IS_UP_TO_DATE">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\ComStack_Cfg.h</File>
+                    </GeneratedFiles>
+                </Phase>
+            </Phases>
+            <Generator>
+                <Name>MICROSAR EcuC Generator</Name>
+                <Version>5.1.0</Version>
+                <MSN>EcuC</MSN>
+                <Definition>/MICROSAR/EcuC</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>EcuC</Name>
+                    <Definition>/MICROSAR/EcuC</Definition>
+                    <ObjectLink>/ActiveEcuC/EcuC</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>EcuM</Name>
+            <State>FAILED</State>
+            <Phases>
+                <Phase type="CALCULATION" state="FAILED"/>
+                <Phase type="VALIDATION" state="FAILED"/>
+                <Phase type="GENERATION" state="NONE"/>
+            </Phases>
+            <ErrorMessage>/MICROSAR/EcuM Generator could not be started. Corresponding configuration contains errors. The first error is: &#xD;
+[Error] Cfg00022 - Missing parameter value &#xD;
+- The value of reference EcuMNormalMcuModeRef is missing or empty.</ErrorMessage>
+            <Generator>
+                <Name>MICROSAR EcuM Generator</Name>
+                <Version>10.0.0.0</Version>
+                <MSN>EcuM</MSN>
+                <Definition>/MICROSAR/EcuM</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>EcuM</Name>
+                    <Definition>/MICROSAR/EcuM</Definition>
+                    <ObjectLink>/ActiveEcuC/EcuM</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>Os</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL">
+                    <GeneratedFiles>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Ioc.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_AccessCheck_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_AccessCheck_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_AccessCheck_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Alarm_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Alarm_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Alarm_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Application_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Application_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Application_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Barrier_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Barrier_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Barrier_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\Source\Os_Callout_Stubs.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Compiler_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Core_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Core_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Core_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Counter_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Counter_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Counter_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Error_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Error_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Error_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Context_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Context_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Core_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Core_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Core_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Entry_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Entry_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Entry_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Interrupt_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Interrupt_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Interrupt_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Kernel_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Kernel_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_MemoryProtection_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_MemoryProtection_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_MemoryProtection_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Timer_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hal_Timer_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hook_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hook_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Hook_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Interrupt_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Ioc_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Ioc_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Ioc_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Isr_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Isr_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core0.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core0_Stacks.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core1.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core1_Stacks.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core2.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core2_Stacks.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core3.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Link_Core3_Stacks.lsl</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_MemMap.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_MemMap_OsCodeInt.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_MemMap_OsSectionsInt.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_MemMap_StacksInt.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_MemoryProtection_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_MemoryProtection_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_MemoryProtection_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Peripheral_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Peripheral_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Resource_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Resource_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_ScheduleTable_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_ScheduleTable_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_ScheduleTable_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Scheduler_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Scheduler_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Scheduler_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_ServiceFunction_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_ServiceFunction_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_ServiceFunction_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Spinlock_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Spinlock_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Stack_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Stack_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Stack_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Task_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Task_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_TimingProtection_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_TimingProtection_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_TimingProtection_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Trace_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Trace_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Trace_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_Types_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_XSignal_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_XSignal_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387\Appl\GenData\Os_XSignal_Lcfg.h</File>
+                    </GeneratedFiles>
+                </Phase>
+            </Phases>
+            <Generator>
+                <Name>MICROSAR OS Generator</Name>
+                <Version>2.16.0</Version>
+                <MSN>Os</MSN>
+                <Definition>/MICROSAR/Os</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>Os</Name>
+                    <Definition>/MICROSAR/Os</Definition>
+                    <ObjectLink>/ActiveEcuC/Os</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+    </GenerationProcessResult>
+</DaVinciExecutionReport>

@@ -1,0 +1,52 @@
+# Secrets / local env
+.env
+.env.*
+*.pem
+*.pfx
+*.p12
+*credentials*
+*secret*
+*.key
+
+# Logs
+*.log
+DVCfgCmd.log
+
+# Tasking / Eclipse build outputs
+03_Project/IEM_TC387_BRS/Tasking/Debug/
+03_Project/IEM_TC387_BRS/Tasking/.metadata/
+03_Project/**/Debug/
+**/*.o
+**/*.elf
+**/*.map
+**/*.mapxml
+**/*.abs
+**/*.hex
+**/*.srec
+**/*.lst
+**/*.src
+**/*.d
+**/*.opt
+**/*.dep
+
+# Tasking workspace scratch
+_tasking_ws_*/
+
+# Python / editor
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# DaVinci / temp
+**/~*
+**/*.bak
+**/.backup/
+**/Backups/

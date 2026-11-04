@@ -1,0 +1,99 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.Mcu
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.mcuhardwareresourceallocationconf.mcugtmallocationconf.mcugtmatomallocationconf.mcugtmatomchannelallocationconf.mcugtmatomchannelallocationconf.EMcuGtmAtomChannelAllocationConf
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.mcuhardwareresourceallocationconf.mcugtmallocationconf.mcugtmtimallocationconf.mcugtmtimchannelallocationconf.mcugtmtimchannelallocationconf.EMcuGtmTimChannelAllocationConf
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.mcuhardwareresourceallocationconf.mcugtmallocationconf.mcugtmtomallocationconf.mcugtmtomchannelallocationconf.mcugtmtomchannelallocationconf.EMcuGtmTomChannelAllocationConf
+import com.vector.cfg.automation.model.ecuc.microsar.ecum.EcuM
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.os.osresource.osresourceproperty.EOsResourceProperty
+
+daVinci {
+    scriptDescription "Minimum Mcu mode and unused GTM allocation, plus the EcuM OS resource"
+
+    scriptTask("ConfigureMcuMinimum", DV_PROJECT) {
+        taskDescription "Create the normal MCU mode, mark GTM channels unused, and bind EcuM"
+        code {
+            transaction {
+                def mcu = bswmdModel(Mcu.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+                def ecuM = bswmdModel(EcuM.DefRef).single
+
+                def ensure = { list, String name ->
+                    list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+                }
+                def linkOnce = { list, target ->
+                    boolean linked = false
+                    list.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == target.shortname) {
+                            linked = true
+                        }
+                    }
+                    if (!linked) {
+                        list.createAndAdd().setRefTarget(target)
+                    }
+                }
+
+                def gtm = mcu.mcuHardwareResourceAllocationConf.mcuGtmAllocationConf
+                def fill = { modules, int moduleCount, int channelCount, String modulePrefix, String kind, setter ->
+                    (0..<moduleCount).each { moduleIndex ->
+                        def module = ensure(modules, modulePrefix + moduleIndex)
+                        def channels
+                        if (kind == "TIM") {
+                            channels = module.mcuGtmTimChannelAllocationConf
+                        } else if (kind == "ATOM") {
+                            channels = module.mcuGtmAtomChannelAllocationConf
+                        } else {
+                            channels = module.mcuGtmTomChannelAllocationConf
+                        }
+                        (0..<channelCount).each { channelIndex ->
+                            def channelName = modulePrefix + moduleIndex + "_Ch" + channelIndex
+                            if (!channels.exists(channelName)) {
+                                setter(channels.createAndAdd(channelName))
+                            }
+                        }
+                    }
+                    scriptLogger.info(modulePrefix + " modules " + moduleCount + " channels " + channelCount)
+                }
+                fill(gtm.mcuGtmTomAllocationConf, 5, 16, "McuGtmTom", "TOM") { channel ->
+                    channel.getMcu_McuHardwareResourceAllocationConf_McuGtmAllocationConf_McuGtmTomAllocationConf_McuGtmTomChannelAllocationConf_McuGtmTomChannelAllocationConfOrCreate().value = EMcuGtmTomChannelAllocationConf.GTM_TOM_CHANNEL_NOT_USED
+                }
+                fill(gtm.mcuGtmTimAllocationConf, 7, 8, "McuGtmTim", "TIM") { channel ->
+                    channel.getMcu_McuHardwareResourceAllocationConf_McuGtmAllocationConf_McuGtmTimAllocationConf_McuGtmTimChannelAllocationConf_McuGtmTimChannelAllocationConfOrCreate().value = EMcuGtmTimChannelAllocationConf.GTM_TIM_CHANNEL_NOT_USED
+                }
+                fill(gtm.mcuGtmAtomAllocationConf, 9, 8, "McuGtmAtom", "ATOM") { channel ->
+                    channel.getMcu_McuHardwareResourceAllocationConf_McuGtmAllocationConf_McuGtmAtomAllocationConf_McuGtmAtomChannelAllocationConf_McuGtmAtomChannelAllocationConfOrCreate().value = EMcuGtmAtomChannelAllocationConf.GTM_ATOM_CHANNEL_NOT_USED
+                }
+
+                def moduleCfg = mcu.mcuModuleConfiguration
+                def mode = ensure(moduleCfg.mcuModeSettingConf, "McuModeSettingConf_0")
+                mode.mcuModeOrCreate.value = 1
+                def clock = ensure(moduleCfg.mcuClockSettingConfig, "McuClockSettingConfig_0")
+                clock.mcuClockSettingIdOrCreate.value = 0
+                scriptLogger.info("MCU mode 1 and clock setting 0, oscillator stays 20 MHz")
+
+                def resource = ensure(os.osResource, "EcuM_OsResource")
+                resource.osResourcePropertyOrCreate.value = EOsResourceProperty.STANDARD
+                os.osApplication.each { app ->
+                    linkOnce(resource.osResourceAccessingApplication, app)
+                }
+                scriptLogger.info("EcuM_OsResource created")
+
+                def flex = ecuM.ecuMConfigurationOrCreate.ecuMFlexConfigurationOrCreate
+                flex.ecuMNormalMcuModeRefOrCreate.setRefTarget(mode)
+                def common = ecuM.ecuMConfigurationOrCreate.ecuMCommonConfigurationOrCreate
+                def resourceRefs = common.ecuMOSResource
+                if (resourceRefs.isEmpty()) {
+                    resourceRefs.createAndAdd().setRefTarget(resource)
+                } else {
+                    resourceRefs.each { ref ->
+                        ref.setRefTarget(resource)
+                    }
+                }
+                scriptLogger.info("EcuM normal mode and OS resource linked")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

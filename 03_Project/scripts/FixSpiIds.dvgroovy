@@ -1,0 +1,34 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.spi.Spi
+
+daVinci {
+    scriptDescription "Make Spi Channel/Job/Sequence IDs contiguous 0..N-1"
+    scriptTask("FixSpiIds", DV_PROJECT) {
+        code {
+            transaction {
+                def driver = bswmdModel(Spi.DefRef).single.spiDriverOrCreate
+                // Channels
+                def chOrder = ["SpiChannel_TJA1145_REG0","SpiChannel_TJA1145_REG1","SpiChannel_TJA1145_REG2","SpiChannel_TJA1145_REG3","SpiChannel_Tlf35584"]
+                chOrder.eachWithIndex { name, idx ->
+                    if (driver.spiChannel.exists(name)) {
+                        driver.spiChannel.byName(name).spiChannelIdOrCreate.value = idx as Long
+                    }
+                }
+                def jobOrder = ["SpiJob_TJA1145_REG0","SpiJob_TJA1145_REG1","SpiJob_TJA1145_REG2","SpiJob_TJA1145_REG3","SpiJob_Tlf35584"]
+                jobOrder.eachWithIndex { name, idx ->
+                    if (driver.spiJob.exists(name)) {
+                        driver.spiJob.byName(name).spiJobIdOrCreate.value = idx as Long
+                    }
+                }
+                def seqOrder = ["SpiSequence_TJA1145_L","SpiSequence_TJA1145_M","SpiSequence_TJA1145_N","SpiSequence_Tlf35584"]
+                seqOrder.eachWithIndex { name, idx ->
+                    if (driver.spiSequence.exists(name)) {
+                        driver.spiSequence.byName(name).spiSequenceIdOrCreate.value = idx as Long
+                    }
+                }
+                scriptLogger.info("Spi IDs renumbered contiguous")
+            }
+            activeProject().saveProject()
+        }
+    }
+}

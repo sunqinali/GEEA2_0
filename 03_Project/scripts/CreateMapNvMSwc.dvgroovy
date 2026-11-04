@@ -1,0 +1,229 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+/**
+ * After NvM_swc.arxml is present, sync adds COMPOSITIONTYPE/NvM.
+ * Create RteSwComponentInstance + Timer_NvM_MainFunction map (None + Task_Bsw_10ms)
+ * aligned with BSW NvM_MainFunctionTimingEvent0 to clear RTE01056/01065/13009.
+ */
+daVinci {
+    scriptDescription "Create and map NvM SWC Timer like Dem/BswM"
+    scriptTask("CreateMapNvMSwc", DV_PROJECT) {
+        taskDescription "RteSwComponentInstance NvM_EcuSwComposition → Task_Bsw_10ms"
+        code {
+            def unwrap = { obj ->
+                if (obj == null) return null
+                if (obj.getClass().simpleName.contains("Optional") || obj.respondsTo("isPresent")) {
+                    if (obj.respondsTo("isPresent") && !obj.isPresent()) return null
+                    if (obj.respondsTo("get")) return obj.get()
+                }
+                return obj
+            }
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) throw new IllegalStateException("No ${literal}")
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum") || parameter.getClass().simpleName.startsWith("GIEnum") || typeName.contains("ERte") || typeName.startsWith("com.vector.cfg.automation.model")) {
+                    try { setEnum(parameter, value.toString()); return } catch (Throwable ignored) {}
+                }
+                if (value instanceof Boolean) setter.invoke(parameter, value)
+                else if (value instanceof Long || value instanceof Integer) setter.invoke(parameter, value as Long)
+                else setter.invoke(parameter, value)
+            }
+            def setRef = { owner, String paramName, target ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ref ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                if (parameter.respondsTo("setRefTarget")) {
+                    try { parameter.setRefTarget(target); return } catch (Throwable ignored) {}
+                }
+                if (parameter.respondsTo("setRefTargetMdf")) {
+                    def mdf = target
+                    try { if (target.mdfObject != null) mdf = target.mdfObject } catch (Throwable ignored) {}
+                    parameter.setRefTargetMdf(mdf)
+                    return
+                }
+                throw new IllegalStateException("Cannot setRef ${paramName}")
+            }
+            def findMdf = { String path ->
+                def ra = activeProject().getInstance(com.vector.cfg.model.access.IReferrableAccess)
+                // Try with AUTOSAR root
+                def candidates = [null]
+                try {
+                    def ma = activeProject().getInstance(com.vector.cfg.model.access.IModelAccess)
+                    candidates.add(ma)
+                } catch (Throwable ignored) {}
+                for (c in candidates) {
+                    try {
+                        def r = ra.getReferrableByPath(c, path)
+                        if (r != null) return r
+                    } catch (Throwable t) {
+                        scriptLogger.info("getReferrable ${path} via ${c}: ${t.message}")
+                    }
+                }
+                // Fallback: walk packages by name segments
+                try {
+                    def ma = activeProject().getInstance(com.vector.cfg.model.access.IModelAccess)
+                    def autosar = ma.autosarModel
+                    def parts = path.split("/").findAll { it }
+                    def cur = autosar
+                    for (p in parts) {
+                        def next = null
+                        if (cur.respondsTo("getArPackage")) {
+                            next = cur.getArPackage().find { it.shortName == p || it.name == p }
+                        }
+                        if (next == null && cur.respondsTo("getElement")) {
+                            next = cur.getElement().find { (it.shortName ?: it.name) == p }
+                        }
+                        if (next == null && cur.respondsTo("arPackages")) {
+                            next = cur.arPackages.find { (it.shortName ?: it.name) == p }
+                        }
+                        if (next == null && cur.respondsTo("elements")) {
+                            next = cur.elements.find { (it.shortName ?: it.name) == p }
+                        }
+                        if (next == null) {
+                            // try getSubPackage / components
+                            cur.getClass().methods.findAll { it.parameterTypes.length == 0 }.each { m ->
+                                if (next != null) return
+                                try {
+                                    def v = m.invoke(cur)
+                                    if (v instanceof Collection) {
+                                        next = v.find { (it.shortName ?: it.name)?.toString() == p }
+                                    }
+                                } catch (Throwable ignored) {}
+                            }
+                        }
+                        if (next == null) throw new IllegalStateException("Cannot walk to ${p} under ${cur}")
+                        cur = next
+                    }
+                    return cur
+                } catch (Throwable t) {
+                    scriptLogger.warn("walk fail ${path}: ${t.message}")
+                    return null
+                }
+            }
+
+            transaction {
+                def rte = bswmdModel(Rte.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+                def taskBsw = os.osTask.byName("Task_Bsw_10ms")
+                def alarmBsw = os.osAlarm.byName("Alarm_Bsw_10ms")
+
+                // Ensure BSW EA + map still None
+                if (rte.rteBswModuleInstance.exists("NvM")) {
+                    def nvmInst = rte.rteBswModuleInstance.byName("NvM")
+                    if (!nvmInst.rteBswExclusiveAreaImpl.exists("NVM_EXCLUSIVE_AREA_0")) {
+                        def ea = nvmInst.rteBswExclusiveAreaImpl.createAndAdd("NVM_EXCLUSIVE_AREA_0")
+                        assign(ea, "RteExclusiveAreaImplMechanism", "ALL_INTERRUPT_BLOCKING")
+                        scriptLogger.info("Created NVM_EXCLUSIVE_AREA_0")
+                    }
+                    def nvmEv = nvmInst.rteBswEventToTaskMapping.exists("NvM_MainFunctionTimingEvent0") ?
+                            nvmInst.rteBswEventToTaskMapping.byName("NvM_MainFunctionTimingEvent0") :
+                            nvmInst.rteBswEventToTaskMapping.createAndAdd("NvM_MainFunctionTimingEvent0")
+                    setRef(nvmEv, "RteBswMappedToTaskRef", taskBsw)
+                    try { setRef(nvmEv, "RteBswUsedOsAlarmRef", alarmBsw) } catch (Throwable ignored) {}
+                    assign(nvmEv, "RteBswPositionInTask", 21L)
+                    assign(nvmEv, "RteBswImmediateRestart", false)
+                    assign(nvmEv, "RteCyclicTriggerImplementation", "None")
+                    scriptLogger.info("NvM BSW map reinforced None")
+                }
+
+                // Resolve composition prototype NvM
+                def protoPaths = [
+                    "/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/NvM",
+                ]
+                def proto = null
+                protoPaths.each { p ->
+                    if (proto != null) return
+                    proto = findMdf(p)
+                    if (proto != null) scriptLogger.info("Found proto at ${p}: ${proto}")
+                }
+                if (proto == null) {
+                    // List composition children for diagnosis
+                    def comp = findMdf("/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE")
+                    scriptLogger.warn("COMPOSITIONTYPE=${comp}")
+                    if (comp != null) {
+                        try {
+                            def kids = null
+                            if (comp.respondsTo("getComponent")) kids = comp.getComponent()
+                            else if (comp.respondsTo("components")) kids = comp.components
+                            else if (comp.respondsTo("getElements")) kids = comp.getElements()
+                            kids?.each { k ->
+                                try { scriptLogger.info("  child ${(k.shortName ?: k.name)}") } catch (Throwable ignored) {}
+                            }
+                        } catch (Throwable t) {
+                            scriptLogger.warn("list children: ${t.message}")
+                        }
+                    }
+                    // Also try type path
+                    def typ = findMdf("/MICROSAR/NvM_swc/ComponentTypes/NvM")
+                    scriptLogger.warn("NvM type=${typ}")
+                    throw new IllegalStateException("COMPOSITIONTYPE/NvM missing — NvM_swc sync did not instantiate")
+                }
+
+                def swcName = "NvM_EcuSwComposition"
+                def swc = rte.rteSwComponentInstance.exists(swcName) ?
+                        rte.rteSwComponentInstance.byName(swcName) :
+                        rte.rteSwComponentInstance.createAndAdd(swcName)
+                try {
+                    setRef(swc, "RteSoftwareComponentInstanceRef", proto)
+                    scriptLogger.info("Set RteSoftwareComponentInstanceRef → NvM")
+                } catch (Throwable t) {
+                    scriptLogger.warn("set proto ref: ${t.message}")
+                    // try mdf directly
+                    try {
+                        def pref = unwrap(swc.rteSoftwareComponentInstanceRef)
+                        pref.setRefTargetMdf(proto)
+                    } catch (Throwable t2) {
+                        scriptLogger.warn("setRefTargetMdf: ${t2.message}")
+                    }
+                }
+
+                def tevName = "Timer_NvM_MainFunction"
+                def tev = swc.rteEventToTaskMapping.exists(tevName) ?
+                        swc.rteEventToTaskMapping.byName(tevName) :
+                        swc.rteEventToTaskMapping.createAndAdd(tevName)
+                setRef(tev, "RteMappedToTaskRef", taskBsw)
+                try { setRef(tev, "RteUsedOsAlarmRef", alarmBsw) } catch (Throwable ignored) {}
+                assign(tev, "RtePositionInTask", 21L)
+                assign(tev, "RteImmediateRestart", false)
+                assign(tev, "RteCyclicTriggerImplementation", "None")
+
+                // EventRef to Timer
+                def timer = findMdf("/MICROSAR/NvM_swc/ComponentTypes/NvM/NvMInternalBehavior/Timer_NvM_MainFunction")
+                if (timer == null) {
+                    throw new IllegalStateException("Timer_NvM_MainFunction not found in NvM_swc")
+                }
+                try {
+                    setRef(tev, "RteEventRef", timer)
+                } catch (Throwable t) {
+                    scriptLogger.warn("setRef RteEventRef: ${t.message}")
+                    try {
+                        def pref = unwrap(tev.rteEventRef)
+                        pref.setRefTargetMdf(timer)
+                    } catch (Throwable t2) {
+                        throw new IllegalStateException("Cannot set RteEventRef: ${t2.message}")
+                    }
+                }
+                scriptLogger.info("Mapped ${swcName}/${tevName} → Task_Bsw_10ms None")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("CreateMapNvMSwc done")
+        }
+    }
+}

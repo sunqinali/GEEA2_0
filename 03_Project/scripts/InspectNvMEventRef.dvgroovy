@@ -1,0 +1,59 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+daVinci {
+    scriptDescription "Inspect NvM EventRef MDF target and trig enum name"
+    scriptTask("InspectNvMEventRef", DV_PROJECT) {
+        taskDescription "Print refTargetMdf and enum constant for NvM map"
+        code {
+            def rte = bswmdModel(Rte.DefRef).single
+            def nvm = rte.rteBswModuleInstance.byName("NvM")
+            def fee = rte.rteBswModuleInstance.byName("Fee")
+            def dumpEv = { inst, name ->
+                def ev = inst.rteBswEventToTaskMapping.byName(name)
+                def trigParam = ev.rteCyclicTriggerImplementation
+                def trig = trigParam.value
+                scriptLogger.info("${inst.shortname}/${name}")
+                scriptLogger.info("  trig.class=${trig?.getClass()?.name} trig=${trig}")
+                if (trig instanceof Collection || trig?.getClass()?.name?.contains("List")) {
+                    trig.each { scriptLogger.info("  trigItem=${it} name=${it?.respondsTo('name') ? it.name() : it}") }
+                } else {
+                    try { scriptLogger.info("  trigName=${trig.name()}") } catch (Exception e) {
+                        scriptLogger.info("  trig.toString=${trig}")
+                    }
+                }
+                // check multiplicity - maybe duplicate param values in model
+                try {
+                    def all = ev.mdfObject
+                    scriptLogger.info("  mdfEvent=${all}")
+                } catch (Exception e) {}
+                def fr = ev.rteBswEventRef
+                def mdf = fr.refTargetMdf
+                scriptLogger.info("  refTargetMdf=${mdf}")
+                if (mdf != null) {
+                    try { scriptLogger.info("  mdf.name=${mdf.name}") } catch (Exception e) {}
+                    try { scriptLogger.info("  mdf.aqn=${mdf.absoluteQualifiedName}") } catch (Exception e) {
+                        try { scriptLogger.info("  mdf.qn=${mdf.qualifiedName}") } catch (Exception e2) {}
+                    }
+                    try { scriptLogger.info("  mdf.class=${mdf.getClass().simpleName}") } catch (Exception e) {}
+                }
+            }
+            dumpEv(nvm, "NvM_MainFunctionTimingEvent0")
+            dumpEv(fee, "Fee_MainFunctionTimingEvent0")
+
+            // Count how many RteCyclicTriggerImplementation params exist under NvM event in raw model
+            scriptLogger.info("=== raw XML-like: list all child params of NvM event via API ===")
+            def ev = nvm.rteBswEventToTaskMapping.byName("NvM_MainFunctionTimingEvent0")
+            ev.getClass().methods.findAll { it.parameterTypes.length == 0 && (it.name.startsWith("get") || it.name.startsWith("is")) }.each { m ->
+                try {
+                    def v = m.invoke(ev)
+                    if (v != null && m.name.toLowerCase().contains("cyclic")) {
+                        scriptLogger.info("method ${m.name} => ${v} class=${v.getClass().name}")
+                    }
+                } catch (Exception ignored) {}
+            }
+            scriptLogger.info("InspectNvMEventRef done")
+        }
+    }
+}

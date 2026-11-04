@@ -1,0 +1,25 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.Mcu
+
+daVinci {
+    scriptDescription "Turn off Mcu safety checks until MCAL DEM events exist"
+    scriptTask("DisableMcuSafety", DV_PROJECT) {
+        taskDescription "Set McuSafetyEnable to false"
+        code {
+            transaction {
+                def mcu = bswmdModel(Mcu.DefRef).single
+                def general = mcu.mcuGeneralConfiguration
+                def getter = general.getClass().methods.find {
+                    it.parameterTypes.length == 0 && it.name == "getMcuSafetyEnableOrCreate"
+                }
+                def parameter = getter.invoke(general)
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                setter.invoke(parameter, false)
+                scriptLogger.info("McuSafetyEnable set to false")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

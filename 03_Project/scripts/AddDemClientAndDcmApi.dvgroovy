@@ -1,0 +1,106 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.dcm.Dcm
+import com.vector.cfg.automation.model.ecuc.microsar.dem.Dem
+
+daVinci {
+    scriptDescription "Add DemClient and switch Dcm Dem API to AR 4.3.0 for CBD2000642 Dem"
+    scriptTask("AddDemClientAndDcmApi", DV_PROJECT) {
+        taskDescription "Ensure one DemClient exists; set DcmDemApiVersion to 4.3.0"
+        code {
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) {
+                    def names = enumClass.enumConstants.collect { it.name() }
+                    throw new IllegalStateException("No ${literal} in ${enumClass.name}; available=${names}")
+                }
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) {
+                    getter = methods.find { it.name.endsWith("_${paramName}OrCreate") }
+                }
+                if (getter == null) {
+                    throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                }
+                def parameter = getter.invoke(owner)
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum")) {
+                    setEnum(parameter, value.toString())
+                } else if (value instanceof Boolean) {
+                    setter.invoke(parameter, value)
+                } else if (value instanceof CharSequence || typeName.contains("String")) {
+                    setter.invoke(parameter, value.toString())
+                } else {
+                    try {
+                        setter.invoke(parameter, value as Long)
+                    } catch (IllegalArgumentException ignored) {
+                        setter.invoke(parameter, new java.math.BigInteger(value.toString()))
+                    }
+                }
+            }
+            def setRef = { owner, String paramName, target ->
+                def getter = owner.getClass().methods.find {
+                    it.parameterTypes.length == 0 && (it.name == "get${paramName}OrCreate" || it.name.endsWith("_${paramName}OrCreate"))
+                }
+                if (getter == null) {
+                    throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                }
+                def ref = getter.invoke(owner)
+                try {
+                    ref.setRefTarget(target)
+                } catch (groovy.lang.MissingMethodException ignored) {
+                    ref.setRefTargetMdf(target.mdfObject)
+                }
+            }
+
+            transaction {
+                def dem = bswmdModel(Dem.DefRef).single
+                def clients = dem.demGeneral.demClient
+                def clientName = "DemClient_Dcm"
+                def client = clients.exists(clientName) ? clients.byName(clientName) : clients.createAndAdd(clientName)
+                assign(client, "DemClientId", 0L)
+                scriptLogger.info("DemClient ready: ${clientName} id=0")
+
+                def dcm = bswmdModel(Dcm.DefRef).single
+                def apiLiterals = [
+                    "DCM_DEM_API_4_03_00",
+                    "DCM_DEM_API_430",
+                    "DEM_AR_430",
+                    "DCM_DEM_API_4_3_0"
+                ]
+                def set = false
+                for (lit in apiLiterals) {
+                    try {
+                        assign(dcm.dcmConfigSet.dcmGeneral, "DcmDemApiVersion", lit)
+                        scriptLogger.info("DcmDemApiVersion set to ${lit}")
+                        set = true
+                        break
+                    } catch (Exception ex) {
+                        scriptLogger.info("DcmDemApiVersion literal ${lit} failed: ${ex.message}")
+                    }
+                }
+                if (!set) {
+                    // Dump available enum values for diagnosis
+                    def p = dcm.dcmConfigSet.dcmGeneral.getDcmDemApiVersionOrCreate()
+                    def enumClass = p.getClass().classLoader.loadClass(p.getClass().package.name + ".E" + p.getClass().simpleName)
+                    scriptLogger.info("Available DcmDemApiVersion: " + enumClass.enumConstants.collect { it.name() })
+                    throw new IllegalStateException("Could not set DcmDemApiVersion to AR 4.3.0")
+                }
+
+                def rows = dcm.dcmConfigSet.dcmDsl.dcmDslProtocol.dcmDslProtocolRow
+                rows.each { row ->
+                    setRef(row, "DcmDemClientRef", client)
+                    scriptLogger.info("DcmDemClientRef set on protocol row ${row.shortname}")
+                }
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

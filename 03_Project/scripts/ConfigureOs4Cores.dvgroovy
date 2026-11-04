@@ -1,0 +1,223 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.ecuc.EcuC
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.os.ostask.ostaskschedule.EOsTaskSchedule
+import com.vector.cfg.automation.model.ecuc.microsar.os.ostask.ostasktype.EOsTaskType
+import com.vector.cfg.automation.model.ecuc.microsar.os.osalarm.osalarmautostart.osalarmautostarttype.EOsAlarmAutostartType
+import com.vector.cfg.automation.model.ecuc.microsar.os.oscounter.oscountertype.EOsCounterType
+import com.vector.cfg.automation.model.ecuc.microsar.os.osisr.osisrcategory.EOsIsrCategory
+
+daVinci {
+    scriptDescription "Enable OS Core 0-3 only and create the Base Tech cyclic tasks"
+
+    scriptTask("ConfigureOs4Cores", DV_PROJECT) {
+        taskDescription "Create EcucCore 0-3, OsCore 0-3, idle tasks and cyclic tasks"
+        code {
+            transaction {
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+
+                def coreDefs = ecuC.ecucHardwareOrCreate.ecucCoreDefinition
+                (0..3).each { i ->
+                    def name = "EcucCore${i}"
+                    def core = coreDefs.exists(name) ? coreDefs.byName(name) : coreDefs.createAndAdd(name)
+                    core.ecucCoreIdOrCreate.value = i
+                    scriptLogger.info("EcuC core " + name + " id " + i)
+                }
+
+                def deriv = os.osPublishedInformation.osDerivativeInformation.byName("TC39x")
+                def physCores = deriv.osPhysicalCore
+
+                def osCores = os.osCore
+                (0..3).each { i ->
+                    def name = "OsCore${i}"
+                    def osCore = osCores.exists(name) ? osCores.byName(name) : osCores.createAndAdd(name)
+                    osCore.osCoreIsAutosarOrCreate.value = true
+                    osCore.osCoreIsAutostartOrCreate.value = true
+                    osCore.osCorePhysicalCoreRefOrCreate.setRefTarget(physCores.byName("Core${i}"))
+                    osCore.osCoreEcucCoreRefOrCreate.setRefTarget(coreDefs.byName("EcucCore${i}"))
+                    scriptLogger.info("OS core " + name + " bound to physical Core" + i)
+                }
+
+                os.osOS.osMasterCoreOrCreate.setRefTarget(osCores.byName("OsCore0"))
+
+                def appNames = ["OsApplication", "OsApplication_Core1", "OsApplication_Core2", "OsApplication_Core3"]
+                def apps = (0..3).collect { i ->
+                    def name = appNames[i]
+                    def app = os.osApplication.exists(name) ? os.osApplication.byName(name) : os.osApplication.createAndAdd(name)
+                    app.osTrustedOrCreate.value = true
+                    app.osTrustedApplicationWithProtectionOrCreate.value = false
+                    app.osApplicationIsPrivilegedOrCreate.value = true
+                    app.osApplicationCoreRefOrCreate.setRefTarget(coreDefs.byName("EcucCore${i}"))
+                    app
+                }
+
+                def tasks = os.osTask
+                def ensureTask = { String name, int prio, int stack ->
+                    def task = tasks.exists(name) ? tasks.byName(name) : tasks.createAndAdd(name)
+                    task.osTaskActivationOrCreate.value = 1
+                    task.osTaskPriorityOrCreate.value = prio
+                    task.osTaskScheduleOrCreate.value = EOsTaskSchedule.FULL
+                    task.osTaskStackSizeOrCreate.value = stack
+                    task.osTaskTypeOrCreate.value = EOsTaskType.BASIC
+                    task.osTaskUsesFpuOrCreate.value = false
+                    task
+                }
+
+                def linkRef = { list, target ->
+                    boolean linked = false
+                    list.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == target.shortname) {
+                            linked = true
+                        }
+                    }
+                    if (!linked) {
+                        list.createAndAdd().setRefTarget(target)
+                    }
+                }
+                def unlinkName = { list, String targetName ->
+                    def doomed = []
+                    list.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == targetName) {
+                            doomed << ref
+                        }
+                    }
+                    doomed.each { it.moRemove() }
+                }
+
+                def anyMode = os.osAppMode.byName("OS_APPMODE_ANY")
+                def sysAppNames = ["SystemApplication_OsCore0", "SystemApplication_OsCore1", "SystemApplication_OsCore2", "SystemApplication_OsCore3"]
+                (0..3).each { i ->
+                    def idleName = "IdleTask_Core${i}"
+                    def idle = tasks.exists(idleName) ? tasks.byName(idleName) : tasks.createAndAdd(idleName)
+                    idle.osTaskActivationOrCreate.value = 1
+                    idle.osTaskScheduleOrCreate.value = EOsTaskSchedule.FULL
+                    idle.osTaskStackSizeOrCreate.value = 1024
+                    idle.osTaskUsesFpuOrCreate.value = false
+                    def idleStart = idle.osTaskAutostartOrCreate
+                    boolean hasAny = false
+                    idleStart.osTaskAppModeRef.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == anyMode.shortname) {
+                            hasAny = true
+                        }
+                    }
+                    if (!hasAny) {
+                        idleStart.osTaskAppModeRef.createAndAdd().setRefTarget(anyMode)
+                    }
+                    osCores.byName("OsCore${i}").osCoreIdleTaskOrCreate.setRefTarget(idle)
+                    unlinkName(apps[i].osAppTaskRef, idle.shortname)
+                    if (os.osApplication.exists(sysAppNames[i])) {
+                        linkRef(os.osApplication.byName(sysAppNames[i]).osAppTaskRef, idle)
+                    }
+                }
+
+                def taskCom = ensureTask("Task_Com_5ms", 40, 2048)
+                def taskBsw = ensureTask("Task_Bsw_10ms", 20, 4096)
+                def taskAppl10 = ensureTask("Task_Appl_10ms", 15, 2048)
+                def taskAppl100 = ensureTask("Task_Appl_100ms", 10, 2048)
+                linkRef(apps[0].osAppTaskRef, taskCom)
+                linkRef(apps[0].osAppTaskRef, taskBsw)
+                linkRef(apps[2].osAppTaskRef, taskAppl10)
+                linkRef(apps[2].osAppTaskRef, taskAppl100)
+
+                def modeName = "OSDEFAULTAPPMODE"
+                def mode = os.osAppMode.exists(modeName) ? os.osAppMode.byName(modeName) : os.osAppMode.createAndAdd(modeName)
+
+                def ensureIsr = { String name, int source, int priority ->
+                    def isr = os.osIsr.exists(name) ? os.osIsr.byName(name) : os.osIsr.createAndAdd(name)
+                    isr.osIsrCategoryOrCreate.value = EOsIsrCategory.CATEGORY_2
+                    isr.osIsrInterruptSourceOrCreate.value = source
+                    isr.osIsrInterruptPriorityOrCreate.value = priority
+                    isr.osIsrStackSizeOrCreate.value = 1024
+                    isr.osIsrEnableNestingOrCreate.value = false
+                    isr.osIsrUsesFpuOrCreate.value = false
+                    isr
+                }
+                def systemTimer = os.osCounter.byName("SystemTimer")
+                if (os.osIsr.exists("CounterIsr_SystemTimer")) {
+                    systemTimer.osDriverOrCreate.osDriverIsrRefOrCreate.setRefTarget(os.osIsr.byName("CounterIsr_SystemTimer"))
+                }
+                if (os.osIsr.exists("Isr_SystemTimer")) {
+                    os.osApplication.each { app -> unlinkName(app.osAppIsrRef, "Isr_SystemTimer") }
+                    os.osIsr.byName("Isr_SystemTimer").moRemove()
+                    scriptLogger.info("Removed duplicate user ISR Isr_SystemTimer")
+                }
+                if (os.osApplication.exists("SystemApplication_OsCore0")) {
+                    linkRef(os.osApplication.byName("SystemApplication_OsCore0").osAppCounterRef, systemTimer)
+                }
+                unlinkName(apps[0].osAppCounterRef, systemTimer.shortname)
+
+                def timerCore2Name = "SystemTimer_Core2"
+                def timerCore2 = os.osCounter.exists(timerCore2Name) ? os.osCounter.byName(timerCore2Name) : os.osCounter.createAndAdd(timerCore2Name)
+                timerCore2.osCounterTypeOrCreate.value = EOsCounterType.HARDWARE
+                timerCore2.osCounterMaxAllowedValueOrCreate.value = 2147483647
+                timerCore2.osCounterMinCycleOrCreate.value = 1
+                timerCore2.osCounterTicksPerBaseOrCreate.value = 1
+                timerCore2.osSecondsPerTickOrCreate.value = 0.001
+                def stm2ch0 = deriv.osHardwareTimer.byName("STM2").osHardwareTimerChannel.byName("STM2_Ch0")
+                def driver2 = timerCore2.osDriverOrCreate
+                driver2.osDriverHighResolutionOrCreate.value = false
+                driver2.osDriverHardwareTimerChannelRefOrCreate.setRefTarget(stm2ch0)
+                def isrCore2 = ensureIsr("Isr_SystemTimer_Core2", 784, 20)
+                driver2.osDriverIsrRefOrCreate.setRefTarget(isrCore2)
+                unlinkName(apps[2].osAppIsrRef, isrCore2.shortname)
+                if (os.osApplication.exists("SystemApplication_OsCore2")) {
+                    def sys2 = os.osApplication.byName("SystemApplication_OsCore2")
+                    linkRef(sys2.osAppIsrRef, isrCore2)
+                    linkRef(sys2.osAppCounterRef, timerCore2)
+                }
+                unlinkName(apps[2].osAppCounterRef, timerCore2.shortname)
+                scriptLogger.info("Core2 counter bound to STM2_Ch0")
+
+                def ensureAlarm = { String name, task, counter, int cycle, app ->
+                    def alarm = os.osAlarm.exists(name) ? os.osAlarm.byName(name) : os.osAlarm.createAndAdd(name)
+                    alarm.osAlarmCounterRefOrCreate.setRefTarget(counter)
+                    alarm.osAlarmActionOrCreate.osAlarmActivateTaskOrCreate.osAlarmActivateTaskRefOrCreate.setRefTarget(task)
+                    def autostart = alarm.osAlarmAutostartOrCreate
+                    autostart.osAlarmAutostartTypeOrCreate.value = EOsAlarmAutostartType.RELATIVE
+                    autostart.osAlarmAlarmTimeOrCreate.value = cycle
+                    linkRef(app.osAppAlarmRef, alarm)
+                    autostart.osAlarmCycleTimeOrCreate.value = cycle
+                    boolean hasMode = false
+                    autostart.osAlarmAppModeRef.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == mode.shortname) {
+                            hasMode = true
+                        }
+                    }
+                    if (!hasMode) {
+                        autostart.osAlarmAppModeRef.createAndAdd().setRefTarget(mode)
+                    }
+                    scriptLogger.info("Alarm " + name + " cycle " + cycle + " ms")
+                }
+
+                ensureAlarm("Alarm_Com_5ms", taskCom, systemTimer, 5, apps[0])
+                ensureAlarm("Alarm_Bsw_10ms", taskBsw, systemTimer, 10, apps[0])
+                ensureAlarm("Alarm_Appl_10ms", taskAppl10, timerCore2, 10, apps[2])
+                ensureAlarm("Alarm_Appl_100ms", taskAppl100, timerCore2, 100, apps[2])
+
+                def mpuNames = sysAppNames + ["OsApplication", "OsApplication_Core1", "OsApplication_Core2", "OsApplication_Core3"]
+                def mpuIds = [0, 1, 2, 3, 4, 5, 4, 5]
+                mpuNames.eachWithIndex { name, idx ->
+                    if (os.osApplication.exists(name)) {
+                        os.osApplication.byName(name).osAppMemoryProtectionIdentifierOrCreate.value = mpuIds[idx]
+                    }
+                }
+                def regions = os.osMemoryProtectionOrCreate.osMemoryRegion
+                def dropRegions = []
+                regions.each { region ->
+                    def regionName = region.getShortname()
+                    if (regionName.endsWith("Core4") || regionName.endsWith("Core5")) {
+                        dropRegions << region
+                    }
+                }
+                dropRegions.each {
+                    scriptLogger.info("Remove unused MPU region " + it.shortname)
+                    it.moRemove()
+                }
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

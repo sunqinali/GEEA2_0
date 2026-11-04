@@ -1,0 +1,85 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.Mcu
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+
+daVinci {
+    scriptDescription "Fix Os/Mcu after IEM_TC387 -> IEM_TC387_BRS port"
+
+    scriptTask("FixPortedRemaining", DV_PROJECT) {
+        taskDescription "Assign init tasks and trim MCU by numeric index to SIP limits"
+        code {
+            transaction {
+                def os = bswmdModel(Os.DefRef).single
+
+                def appMap = [
+                    "Default_Init_Task"               : "SystemApplication_OsCore0",
+                    "Default_Init_Task_Trusted"       : "SystemApplication_OsCore0",
+                    "Default_Init_Task_Core1"         : "SystemApplication_OsCore1",
+                    "Default_Init_Task_Core1_Trusted" : "SystemApplication_OsCore1",
+                    "Default_Init_Task_Core2"         : "SystemApplication_OsCore2",
+                    "Default_Init_Task_Core2_Trusted" : "SystemApplication_OsCore2",
+                    "Default_Init_Task_Core3"         : "SystemApplication_OsCore3",
+                    "Default_Init_Task_Core3_Trusted" : "SystemApplication_OsCore3"
+                ]
+                appMap.each { taskName, appName ->
+                    if (!os.osTask.exists(taskName) || !os.osApplication.exists(appName)) {
+                        scriptLogger.warn("Skip ${taskName} / ${appName}")
+                        return
+                    }
+                    def app = os.osApplication.byName(appName)
+                    def task = os.osTask.byName(taskName)
+                    def already = false
+                    app.osAppTaskRef.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == taskName) {
+                            already = true
+                        }
+                    }
+                    if (!already) {
+                        app.osAppTaskRef.createAndAdd().setRefTarget(task)
+                        scriptLogger.info("Assigned ${taskName} -> ${appName}")
+                    }
+                }
+
+                def mcu = bswmdModel(Mcu.DefRef).single
+                def indexOf = { item ->
+                    def m = (item.shortname =~ /(\d+)$/)
+                    return m ? (m[0][1] as int) : 9999
+                }
+                def trimList = { list, int keep, String label ->
+                    def items = []
+                    try {
+                        list.each { items << it }
+                    } catch (Throwable ignore) {
+                        return
+                    }
+                    items.sort { a, b -> indexOf(a) <=> indexOf(b) }
+                    if (items.size() > keep) {
+                        items.drop(keep).each {
+                            scriptLogger.info("Removing excess ${label}: ${it.shortname}")
+                            it.moRemove()
+                        }
+                    }
+                }
+
+                def hw = mcu.mcuHardwareResourceAllocationConfOrCreate
+                trimList(hw.mcuAscLinAllocationConf, 12, "AscLin")
+                trimList(hw.mcuStmAllocationConf, 3, "Stm")
+                def gtmAlloc = hw.mcuGtmAllocationConfOrCreate
+                trimList(gtmAlloc.mcuGtmAtomAllocationConf, 6, "GtmAtomAlloc")
+                trimList(gtmAlloc.mcuGtmTomAllocationConf, 3, "GtmTomAlloc")
+                trimList(gtmAlloc.mcuGtmTimAllocationConf, 6, "GtmTimAlloc")
+
+                def mod = mcu.mcuModuleConfigurationOrCreate
+                def gtmGlob = mod.gtmGlobalConfigurationOrCreate
+                trimList(gtmGlob.gtmAtomGlobalConf, 6, "GtmAtomGlobal")
+                trimList(gtmGlob.gtmTomGlobalConf, 3, "GtmTomGlobal")
+                trimList(gtmGlob.gtmTimGlobalConf, 6, "GtmTimGlobal")
+                trimList(gtmGlob.gtmClusterConf, 6, "GtmCluster")
+            }
+
+            activeProject().saveProject()
+            scriptLogger.info("FixPortedRemaining saved")
+        }
+    }
+}

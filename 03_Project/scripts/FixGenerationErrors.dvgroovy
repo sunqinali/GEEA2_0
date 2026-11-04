@@ -1,0 +1,498 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.canif.CanIf
+import com.vector.cfg.automation.model.ecuc.microsar.cannm.CanNm
+import com.vector.cfg.automation.model.ecuc.microsar.cantp.CanTp
+import com.vector.cfg.automation.model.ecuc.microsar.com.Com
+import com.vector.cfg.automation.model.ecuc.microsar.comm.ComM
+import com.vector.cfg.automation.model.ecuc.microsar.dcm.Dcm
+import com.vector.cfg.automation.model.ecuc.microsar.dem.Dem
+import com.vector.cfg.automation.model.ecuc.microsar.ecuc.EcuC
+import com.vector.cfg.automation.model.ecuc.microsar.nm.Nm
+import com.vector.cfg.automation.model.ecuc.microsar.nvm.NvM
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.os.ostask.ostaskschedule.EOsTaskSchedule
+import com.vector.cfg.automation.model.ecuc.microsar.os.ostask.ostasktype.EOsTaskType
+import com.vector.cfg.automation.model.ecuc.microsar.pdur.PduR
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+daVinci {
+    scriptDescription "Clear the full-project generation errors found on 2026-10-30"
+    scriptTask("FixGenerationErrors", DV_PROJECT) {
+        taskDescription "Map BSW tasks, fix NM EIRA, Com, CanTp, PduR, Dcm and Dem Nv blocks"
+        code {
+            def prop = { String name ->
+                name.substring(0, 1).toLowerCase() + name.substring(1)
+            }
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) {
+                    throw new IllegalStateException("No ${literal} in ${enumClass.name}")
+                }
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) {
+                    getter = methods.find { it.name.endsWith("_${paramName}OrCreate") }
+                }
+                if (getter == null) {
+                    throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                }
+                def parameter = getter.invoke(owner)
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum")) {
+                    setEnum(parameter, value.toString())
+                } else if (value instanceof Boolean) {
+                    setter.invoke(parameter, value)
+                } else if (value instanceof CharSequence || typeName.contains("String")) {
+                    setter.invoke(parameter, value.toString())
+                } else if (value instanceof Double || value instanceof BigDecimal) {
+                    setter.invoke(parameter, value as Double)
+                } else {
+                    try {
+                        setter.invoke(parameter, value as Long)
+                    } catch (IllegalArgumentException ignored) {
+                        setter.invoke(parameter, new java.math.BigInteger(value.toString()))
+                    }
+                }
+            }
+            def ensure = { list, String name ->
+                list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+            }
+            def setRef = { owner, String paramName, target ->
+                def getter = owner.getClass().methods.find {
+                    it.parameterTypes.length == 0 && (it.name == "get${paramName}OrCreate" || it.name.endsWith("_${paramName}OrCreate"))
+                }
+                if (getter == null) {
+                    throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                }
+                def ref = getter.invoke(owner)
+                try {
+                    ref.setRefTarget(target)
+                } catch (groovy.lang.MissingMethodException ignored) {
+                    ref.setRefTargetMdf(target.mdfObject)
+                }
+            }
+            def linkRef = { list, target ->
+                boolean linked = false
+                list.each { ref ->
+                    try {
+                        if (ref.refTarget != null && ref.refTarget.shortname == target.shortname) {
+                            linked = true
+                        }
+                    } catch (RuntimeException ignored) {
+                    }
+                }
+                if (!linked) {
+                    def created = list.createAndAdd()
+                    try {
+                        created.setRefTarget(target)
+                    } catch (groovy.lang.MissingMethodException ignored) {
+                        created.setRefTargetMdf(target.mdfObject)
+                    }
+                }
+            }
+            def refMissing = { ref ->
+                try {
+                    return ref.refTarget == null
+                } catch (RuntimeException ignored) {
+                    return true
+                }
+            }
+
+            transaction {
+                scriptLogger.info("NvM stays inactive until Fee and Fls exist")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def os = bswmdModel(Os.DefRef).single
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def resource = os.osResource.byName("EcuM_OsResource")
+                def taskBsw = os.osTask.byName("Task_Bsw_10ms")
+                linkRef(taskBsw.osTaskResourceRef, resource)
+
+                def ensureTask = { String name, int prio ->
+                    def task = ensure(os.osTask, name)
+                    assign(task, "OsTaskActivation", 1L)
+                    assign(task, "OsTaskPriority", prio as Long)
+                    task.osTaskScheduleOrCreate.value = EOsTaskSchedule.FULL
+                    assign(task, "OsTaskStackSize", 1024L)
+                    task.osTaskTypeOrCreate.value = EOsTaskType.BASIC
+                    assign(task, "OsTaskUsesFpu", false)
+                    task
+                }
+                def taskCore1 = ensureTask("Task_EcuM_Core1", 5)
+                def taskCore3 = ensureTask("Task_EcuM_Core3", 5)
+                linkRef(os.osApplication.byName("OsApplication_Core1").osAppTaskRef, taskCore1)
+                linkRef(os.osApplication.byName("OsApplication_Core3").osAppTaskRef, taskCore3)
+
+                def parts = ecuC.ecucPartitionCollectionOrCreate.ecucPartition
+                ["EcucPartition_SystemCore0", "EcucPartition_SystemCore2"].each { name ->
+                    def part = ensure(parts, name)
+                    assign(part, "EcucPartitionBswModuleExecution", false)
+                    assign(part, "PartitionCanBeRestarted", false)
+                    assign(part, "ASIL", "QM")
+                }
+                setRef(os.osApplication.byName("SystemApplication_OsCore0"), "OsAppEcucPartitionRef", parts.byName("EcucPartition_SystemCore0"))
+                setRef(os.osApplication.byName("SystemApplication_OsCore2"), "OsAppEcucPartitionRef", parts.byName("EcucPartition_SystemCore2"))
+                scriptLogger.info("Os resource, slave EcuM tasks and system partitions updated")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def rte = bswmdModel(Rte.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+                def taskCom = os.osTask.byName("Task_Com_5ms")
+                def taskBsw = os.osTask.byName("Task_Bsw_10ms")
+                def taskAppl10 = os.osTask.byName("Task_Appl_10ms")
+                def taskCore1 = os.osTask.byName("Task_EcuM_Core1")
+                def taskCore3 = os.osTask.byName("Task_EcuM_Core3")
+                def alarmCom = os.osAlarm.byName("Alarm_Com_5ms")
+                def alarmBsw = os.osAlarm.byName("Alarm_Bsw_10ms")
+                def alarmAppl10 = os.osAlarm.byName("Alarm_Appl_10ms")
+                def mapEvent = { String moduleName, String eventName, task, alarm, long position ->
+                    def event = rte.rteBswModuleInstance.byName(moduleName).rteBswEventToTaskMapping.byName(eventName)
+                    setRef(event, "RteBswMappedToTaskRef", task)
+                    assign(event, "RteBswPositionInTask", position)
+                    assign(event, "RteCyclicTriggerImplementation", "None")
+                    if (alarm != null) {
+                        setRef(event, "RteBswUsedOsAlarmRef", alarm)
+                    }
+                }
+                mapEvent("CanTp", "CanTp_MainFunctionTimingEvent0", taskCom, alarmCom, 0L)
+                mapEvent("CanNm", "CanNm_MainFunctionTimingEvent0", taskCom, alarmCom, 1L)
+                mapEvent("Com", "Com_MainFunctionRxTimingEvent0", taskCom, alarmCom, 2L)
+                mapEvent("Com", "Com_MainFunctionTxTimingEvent0", taskCom, alarmCom, 3L)
+                mapEvent("Rte", "Rte_ComSendSignalProxyPeriodicTimingEvent0", taskCom, alarmCom, 4L)
+                mapEvent("EcuM", "EcuM_MainFunctionTimingEvent0", taskBsw, alarmBsw, 0L)
+                mapEvent("BswM", "BswM_MainFunctionTimingEvent0", taskBsw, alarmBsw, 1L)
+                mapEvent("Can", "Can_MainFunction_BusOffTimingEvent0", taskBsw, alarmBsw, 2L)
+                mapEvent("Can", "Can_MainFunction_WakeupTimingEvent0", taskBsw, alarmBsw, 3L)
+                mapEvent("Can", "Can_MainFunction_ModeTimingEvent0", taskBsw, alarmBsw, 4L)
+                mapEvent("CanSM", "CanSM_MainFunctionTimingEvent0", taskBsw, alarmBsw, 5L)
+                mapEvent("ComM", "ComM_MainFunction_0TimingEvent0", taskBsw, alarmBsw, 6L)
+                mapEvent("Dcm", "Dcm_MainFunctionTimingEvent0", taskBsw, alarmBsw, 7L)
+                mapEvent("Dem", "Dem_MasterMainFunctionTimingEvent0", taskBsw, alarmBsw, 8L)
+                mapEvent("Dem", "Dem_SatelliteMainFunctionTimingEvent0", taskBsw, alarmBsw, 9L)
+                mapEvent("EcuM", "EcuM_MainFunctionTimingEvent1", taskCore1, null, 0L)
+                mapEvent("EcuM", "EcuM_MainFunctionTimingEvent2", taskAppl10, alarmAppl10, 0L)
+                mapEvent("EcuM", "EcuM_MainFunctionTimingEvent3", taskCore3, null, 0L)
+                scriptLogger.info("BSW main functions mapped")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def com = bswmdModel(Com.DefRef).single
+                def comm = bswmdModel(ComM.DefRef).single
+                def canNm = bswmdModel(CanNm.DefRef).single
+                def nm = bswmdModel(Nm.DefRef).single
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def rxSignal = com.comConfig.comSignal.byName("PropulsionCAN_db9c2837_Rx")
+                assign(rxSignal, "ComSignalInitValue", "0 0 0 0 0 0")
+
+                def pduCollection = ecuC.ecucPduCollectionOrCreate
+                def userPdu = ensure(pduCollection.getPdu(), "PropulsionCAN_EiraUserData_Tx")
+                assign(userPdu, "PduLength", 6L)
+                assign(userPdu, "J1939Requestable", false)
+
+                def txSignal = ensure(com.comConfig.comSignal, "PropulsionCAN_EiraSignal_Tx")
+                assign(txSignal, "ComSignalLength", 6L)
+                assign(txSignal, "ComSignalType", "UINT8_N")
+                assign(txSignal, "ComBitPosition", 0L)
+                assign(txSignal, "ComSignalEndianness", "OPAQUE")
+                assign(txSignal, "ComSignalInitValue", "0 0 0 0 0 0")
+                assign(txSignal, "ComTransferProperty", "PENDING")
+
+                def txPdu = ensure(com.comConfig.comIPdu, "PropulsionCAN_EiraIpdu_Tx")
+                assign(txPdu, "ComIPduDirection", "SEND")
+                assign(txPdu, "ComIPduType", "NORMAL")
+                assign(txPdu, "ComIPduSignalProcessing", "DEFERRED")
+                assign(txPdu, "ComIPduCancellationSupport", false)
+                setRef(txPdu, "ComPduIdRef", userPdu)
+                linkRef(txPdu.comIPduSignalRef, txSignal)
+                def txMode = txPdu.comTxIPduOrCreate.comTxModeTrueOrCreate.comTxModeOrCreate
+                assign(txMode, "ComTxModeMode", "NONE")
+
+                def channel = comm.comMConfigSet.comMChannel.byName("PropulsionCAN_IEM_19020f5a")
+                comm.comMConfigSet.comMPnc.each { pnc ->
+                    def eira = ensure(pnc.comMPncComSignal, "PropulsionCAN_Eira_Tx")
+                    assign(eira, "ComMPncComSignalDirection", "TX")
+                    assign(eira, "ComMPncComSignalKind", "EIRA")
+                    setRef(eira, "ComMPncComSignalChannelRef", channel)
+                    setRef(eira, "ComMPncComSignalRef", txSignal)
+                }
+
+                def canNmGlobal = canNm.canNmGlobalConfig
+                assign(canNmGlobal, "CanNmPnResetTime", 2.0d)
+                def cluster = canNmGlobal.canNmChannelConfig.byName("PropulsionCanNmCluster_99dff440")
+                assign(cluster, "CanNmNodeDetectionEnabled", true)
+                assign(cluster, "CanNmNodeIdEnabled", true)
+
+                def features = nm.nmGlobalConfig.nmGlobalFeatures
+                assign(features, "NmComUserDataSupport", true)
+                scriptLogger.info("Com EIRA, CanNm and Nm aligned")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def canTp = bswmdModel(CanTp.DefRef).single
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def pdus = ecuC.ecucPduCollectionOrCreate.getPdu()
+                int index = 1
+                canTp.canTpConfig.canTpChannel.each { channel ->
+                    if (!channel.shortname.toString().contains("UUDT")) {
+                        return
+                    }
+                    channel.canTpTxNSdu.each { tx ->
+                        def fcPdu = ensure(pdus, "UudtFcNPdu" + index)
+                        assign(fcPdu, "PduLength", 8L)
+                        def fc = tx.canTpRxFcNPduOrCreate
+                        setRef(fc, "CanTpRxFcNPduRef", fcPdu)
+                        def dcmPdu = ensure(pdus, "UudtDcmRx" + index)
+                        assign(dcmPdu, "PduLength", 8L)
+                        def rxSdu = channel.canTpRxNSduOrCreate
+                        assign(rxSdu, "CanTpBs", 0L)
+                        assign(rxSdu, "CanTpNar", 1.0d)
+                        assign(rxSdu, "CanTpNbr", 0.9d)
+                        assign(rxSdu, "CanTpNcr", 1.0d)
+                        assign(rxSdu, "CanTpRxAddressingFormat", "CANTP_STANDARD")
+                        assign(rxSdu, "CanTpRxTaType", "CANTP_PHYSICAL")
+                        assign(rxSdu, "CanTpRxDl", 8L)
+                        assign(rxSdu, "CanTpRxPaddingActivation", "CANTP_ON")
+                        assign(rxSdu, "CanTpRxWftMax", 255L)
+                        assign(rxSdu, "CanTpSTmin", 0.005d)
+                        setRef(rxSdu, "CanTpRxNSduRef", dcmPdu)
+                        def nPdu = rxSdu.canTpRxNPduOrCreate
+                        setRef(nPdu, "CanTpRxNPduRef", fcPdu)
+                        def txFcNames = ["UudtIemNPdu1_4b1dfe9b_Tx", "UudtIemNPdu2_06f5fefc_Tx", "UudtIemNPdu3_8b7d031e_Tx"]
+                        def txFc = rxSdu.canTpTxFcNPduOrCreate
+                        setRef(txFc, "CanTpTxFcNPduRef", pdus.byName(txFcNames[index - 1]))
+                        index++
+                    }
+                }
+                scriptLogger.info("UUDT CanTp flow-control N-PDUs ensured")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def pdur = bswmdModel(PduR.DefRef).single
+                def tables = pdur.pduRRoutingTables
+                def lock = tables.pduRLock.byName("PduRLock_PduRExclusiveArea")
+                def dcmModule = pdur.pduRBswModules.byName("Dcm")
+                def canTpModule = pdur.pduRBswModules.byName("CanTp")
+                tables.pduRRoutingTable.each { table ->
+                    table.pduRRoutingPath.each { path ->
+                        def lockRef = path.pduRLockRef
+                        if (refMissing(lockRef)) {
+                            setRef(path, "PduRLockRef", lock)
+                        }
+                        if (path.shortname == "VgmToAllFuncDiagDcmIpdu_030e2fcd_Rx") {
+                            setRef(path.pduRSrcPdu, "PduRSrcPduPduRBswModulesRef", canTpModule)
+                            path.pduRDestPdu.each { dest ->
+                                setRef(dest, "PduRDestPduPduRBswModulesRef", dcmModule)
+                            }
+                        }
+                    }
+                }
+                scriptLogger.info("PduR lock and functional diagnostic modules set")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def dcm = bswmdModel(Dcm.DefRef).single
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def comm = bswmdModel(ComM.DefRef).single
+                assign(dcm.dcmConfigSet.dcmGeneral, "DcmDemApiVersion", "DCM_DEM_API_4_02_01")
+                def dsl = dcm.dcmConfigSet.dcmDsl
+                def rxBuf = ensure(dsl.dcmDslBuffer, "DcmDslBuffer_Rx")
+                assign(rxBuf, "DcmDslBufferSize", 4095L)
+                def serviceTable = dcm.dcmConfigSet.dcmDsd.dcmDsdServiceTable.byName("DcmDsdServiceTable")
+                def channel = comm.comMConfigSet.comMChannel.byName("PropulsionCAN_IEM_19020f5a")
+                def pduCollection = ecuC.ecucPduCollectionOrCreate
+                def functional = pduCollection.getPdu().byName("VgmToAllFuncDiagDcmIpdu_89c72e24_Rx")
+                dcm.dcmConfigSet.dcmDsl.dcmDslProtocol.dcmDslProtocolRow.each { row ->
+                    setRef(row, "DcmDslProtocolRxBufferID", rxBuf)
+                    setRef(row, "DcmDslProtocolTxBufferID", rxBuf)
+                    setRef(row, "DcmDslProtocolSIDTable", serviceTable)
+                    assign(row, "DcmDslProtocolMaximumResponseSize", 4095L)
+                    row.dcmDslConnection.each { connection ->
+                        def main = connection.dcmDslMainConnectionOrCreate
+                        def rxList = main.getDcmDslProtocolRx()
+                        boolean hasFunc = false
+                        boolean physical = false
+                        boolean hasRx = false
+                        rxList.each { rx ->
+                            hasRx = true
+                            def name = rx.shortname.toString()
+                            if (name == "DcmDslProtocolRx_Func") {
+                                hasFunc = true
+                            }
+                            if (name.contains("VgmToIemDiag")) {
+                                physical = true
+                            }
+                        }
+                        if (physical && !hasFunc && functional != null) {
+                            def rx = rxList.createAndAdd("DcmDslProtocolRx_Func")
+                            assign(rx, "DcmDslProtocolRxAddrType", "DCM_FUNCTIONAL_TYPE")
+                            assign(rx, "DcmDslProtocolRxPduId", 50L)
+                            assign(rx, "DcmDslProtocolRxChannelId", 0L)
+                            setRef(rx, "DcmDslProtocolRxComMChannelRef", channel)
+                            setRef(rx, "DcmDslProtocolRxPduRef", functional)
+                        }
+                        def uudtRx = [
+                            "DcmDslConnection_a514db1e": 1,
+                            "DcmDslConnection_eb9dd0b7": 2,
+                            "DcmDslConnection_138b1ed2": 3
+                        ]
+                        def uudtIndex = uudtRx[connection.shortname.toString()]
+                        if (uudtIndex != null) {
+                            def rxName = "DcmDslProtocolRx_Uudt" + uudtIndex
+                            def exists = false
+                            rxList.each { rx ->
+                                if (rx.shortname.toString() == rxName) {
+                                    exists = true
+                                }
+                            }
+                            if (!exists) {
+                                def rxPdu = pduCollection.getPdu().byName("UudtDcmRx" + uudtIndex)
+                                def rx = rxList.createAndAdd(rxName)
+                                assign(rx, "DcmDslProtocolRxAddrType", "DCM_PHYSICAL_TYPE")
+                                assign(rx, "DcmDslProtocolRxPduId", (60L + uudtIndex))
+                                assign(rx, "DcmDslProtocolRxChannelId", 0L)
+                                setRef(rx, "DcmDslProtocolRxComMChannelRef", channel)
+                                setRef(rx, "DcmDslProtocolRxPduRef", rxPdu)
+                            }
+                        }
+                    }
+                }
+                scriptLogger.info("Dcm buffers, functional Rx and UUDT connections updated")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def dem = bswmdModel(Dem.DefRef).single
+                assign(dem.demGeneral, "DemUseNvm", false)
+                def doomed = []
+                dem.demGeneral.demNvRamBlockId.each { doomed << it }
+                doomed.each { it.moRemove() }
+                scriptLogger.info("Dem non-volatile storage disabled until Fee exists")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def present = activeEcuc.modules(NvM.DefRef)
+                if (present != null && !present.isEmpty()) {
+                    operations.deactivateModuleConfiguration(present.iterator().next())
+                    scriptLogger.info("NvM deactivated")
+                }
+                def rte = bswmdModel(Rte.DefRef).single
+                if (rte.rteBswModuleInstance.exists("NvM")) {
+                    rte.rteBswModuleInstance.byName("NvM").moRemove()
+                }
+                def os = bswmdModel(Os.DefRef).single
+                def taskBsw = os.osTask.byName("Task_Bsw_10ms")
+                def alarmBsw = os.osAlarm.byName("Alarm_Bsw_10ms")
+                def mapSwc = { String instanceName, String eventName, long position ->
+                    def instance = rte.rteSwComponentInstance.byName(instanceName)
+                    def event = instance.rteEventToTaskMapping.byName(eventName)
+                    setRef(event, "RteMappedToTaskRef", taskBsw)
+                    assign(event, "RtePositionInTask", position)
+                    assign(event, "RteCyclicTriggerImplementation", "None")
+                    setRef(event, "RteUsedOsAlarmRef", alarmBsw)
+                }
+                mapSwc("BswM_EcuSwComposition", "Timer_BswM_MainFunction", 1L)
+                mapSwc("ComM_EcuSwComposition", "Timer_ComM_MainFunction_0", 6L)
+                mapSwc("DemMaster_0_EcuSwComposition", "Timer_Dem_MasterMainFunction", 8L)
+                mapSwc("DemSatellite_0_EcuSwComposition", "Timer_Dem_SatelliteMainFunction", 9L)
+                mapSwc("EcuM_EcuSwComposition", "Timer_EcuM_MainFunction", 0L)
+                scriptLogger.info("Service component main functions mapped")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def canNm = bswmdModel(CanNm.DefRef).single
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def cluster = canNm.canNmGlobalConfig.canNmChannelConfig.byName("PropulsionCanNmCluster_99dff440")
+                def userPdu = ecuC.ecucPduCollectionOrCreate.getPdu().byName("PropulsionCAN_EiraUserData_Tx")
+                def userData = cluster.canNmUserDataTxPduOrCreate
+                assign(userData, "CanNmTxUserDataPduId", 0L)
+                setRef(userData, "CanNmTxUserDataPduRef", userPdu)
+                scriptLogger.info("CanNm user-data PDU linked")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                scriptLogger.info("Spi implementation reference is maintained in the ECUC")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def canIf = bswmdModel(CanIf.DefRef).single
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def pdur = bswmdModel(PduR.DefRef).single
+                def pdus = ecuC.ecucPduCollectionOrCreate.getPdu()
+                def hrh = null
+                canIf.canIfInitCfg.canIfInitHohCfg.canIfHrhCfg.each { candidate ->
+                    if (candidate.shortname.toString().contains("751e9595")) {
+                        hrh = candidate
+                    }
+                }
+                (1..3).each { index ->
+                    def fcPdu = pdus.byName("UudtFcNPdu" + index)
+                    def rx = ensure(canIf.canIfInitCfg.canIfRxPduCfg, "UudtFcNPdu" + index)
+                    assign(rx, "CanIfRxPduCanId", (2032L + index))
+                    assign(rx, "CanIfRxPduCanIdType", "STANDARD_NO_FD_CAN")
+                    assign(rx, "CanIfRxPduDlc", 8L)
+                    assign(rx, "CanIfRxPduUserRxIndicationName", "CanTp_RxIndication")
+                    assign(rx, "CanIfRxPduUserRxIndicationType", "PDUID_PDUINFOPTR")
+                    assign(rx, "CanIfRxPduUserRxIndicationUL", "CAN_TP")
+                    assign(rx, "CanIfRxPduReadData", false)
+                    assign(rx, "CanIfRxPduReadNotifyStatus", false)
+                    assign(rx, "CanIfRxPduDlcCheck", true)
+                    setRef(rx, "CanIfRxPduHrhIdRef", hrh)
+                    setRef(rx, "CanIfRxPduRef", fcPdu)
+                }
+                def tables = pdur.pduRRoutingTables
+                def table = tables.pduRRoutingTable.iterator().next()
+                def lock = tables.pduRLock.byName("PduRLock_PduRExclusiveArea")
+                def comModule = pdur.pduRBswModules.byName("Com")
+                def canNmModule = pdur.pduRBswModules.byName("CanNm")
+                def canTpModule = pdur.pduRBswModules.byName("CanTp")
+                def dcmModule = pdur.pduRBswModules.byName("Dcm")
+                assign(comModule, "PduRTriggertransmit", true)
+                assign(canNmModule, "PduRTriggertransmit", true)
+                (1..3).each { index ->
+                    def dcmPdu = pdus.byName("UudtDcmRx" + index)
+                    def uudtPath = ensure(table.pduRRoutingPath, "UudtDcmRx" + index)
+                    setRef(uudtPath, "PduRLockRef", lock)
+                    def uudtSrc = uudtPath.pduRSrcPduOrCreate
+                    setRef(uudtSrc, "PduRSrcPduRef", dcmPdu)
+                    setRef(uudtSrc, "PduRSrcPduPduRBswModulesRef", canTpModule)
+                    def uudtDest = ensure(uudtPath.pduRDestPdu, "UudtDcmRx" + index + "_Dest")
+                    setRef(uudtDest, "PduRDestPduRef", dcmPdu)
+                    setRef(uudtDest, "PduRDestPduPduRBswModulesRef", dcmModule)
+                }
+                def userPdu = pdus.byName("PropulsionCAN_EiraUserData_Tx")
+                def path = ensure(table.pduRRoutingPath, "PropulsionCAN_EiraUserData")
+                setRef(path, "PduRLockRef", lock)
+                def src = path.pduRSrcPduOrCreate
+                setRef(src, "PduRSrcPduRef", userPdu)
+                setRef(src, "PduRSrcPduPduRBswModulesRef", comModule)
+                def dest = ensure(path.pduRDestPdu, "PropulsionCAN_EiraUserData_Dest")
+                setRef(dest, "PduRDestPduRef", userPdu)
+                setRef(dest, "PduRDestPduPduRBswModulesRef", canNmModule)
+                assign(dest, "PduRDestPduDataProvision", "PDUR_TRIGGERTRANSMIT")
+                assign(dest, "PduRTransmissionConfirmation", false)
+                scriptLogger.info("UUDT routing removed and EIRA user-data path completed")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Generation error fixes saved")
+        }
+    }
+}

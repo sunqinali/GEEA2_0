@@ -1,0 +1,21 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+import com.vector.cfg.automation.model.ecuc.microsar.cantrcv_tja1145.cantrcv.CanTrcv as CanTrcvTja1145
+
+daVinci {
+    scriptDescription "Remove default unused CanTrcvChannel left by activateModule"
+    scriptTask("CleanupCanTrcvChannel", DV_PROJECT) {
+        code {
+            transaction {
+                def trcv = bswmdModel(CanTrcvTja1145.DefRef).single
+                def cs = trcv.canTrcvConfigSetOrCreate
+                if (cs.canTrcvChannel.exists("CanTrcvChannel")) {
+                    cs.canTrcvChannel.byName("CanTrcvChannel").moRemove()
+                    scriptLogger.info("Removed unused CanTrcvChannel")
+                } else {
+                    scriptLogger.info("No default CanTrcvChannel")
+                }
+            }
+            activeProject().saveProject()
+        }
+    }
+}

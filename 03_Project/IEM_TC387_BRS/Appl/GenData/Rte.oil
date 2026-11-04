@@ -1,0 +1,156 @@
+/**********************************************************************************************************************
+ *  COPYRIGHT
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  \verbatim
+ *
+ *                This software is copyright protected and proprietary to Vector Informatik GmbH.
+ *                Vector Informatik GmbH grants to you only those rights as set out in the license conditions.
+ *                All other rights remain with Vector Informatik GmbH.
+ *  \endverbatim
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  FILE DESCRIPTION
+ *  -------------------------------------------------------------------------------------------------------------------
+ *             File:  Rte.oil
+ *           Config:  IEM_TC387_BRS.dpa
+ *      ECU-Project:  IEM_TC387_BRS
+ *
+ *        Generator:  MICROSAR RTE Generator Version 4.23.0
+ *                    RTE Core Version 1.23.0
+ *          License:  CBD2000642
+ *
+ *      Description:  OIL-File containing project specific OS definitions for the MICROSAR RTE
+ *********************************************************************************************************************/
+
+/**********************************************************************************************************************
+ *                                              P L E A S E   N O T E
+ *
+ * The attributes in this file must not be changed. Missing mandatory attributes must be set in the including file.
+ * They are presented as a comment in the corresponding object definition containing a list of all legal values.
+ *********************************************************************************************************************/
+
+   TASK Task_Appl_10ms {
+      ACTIVATION = 1:"@RO@";
+      PRIORITY = 15:"@RO@";
+      SCHEDULE = FULL:"@RO@";
+// TIMING_PROTECTION = FALSE|TRUE; (AUTOSAR OS only)
+      AUTOSTART = FALSE:"@RO@";
+      ACCESSING_APPLICATION = OsApplication;
+      ACCESSING_APPLICATION = OsApplication_Core1;
+      ACCESSING_APPLICATION = OsApplication_Core3;
+   }:"@RO@@NR@";
+
+   TASK Task_Bsw_10ms {
+      ACTIVATION = 1:"@RO@";
+      PRIORITY = 20:"@RO@";
+      SCHEDULE = FULL:"@RO@";
+// TIMING_PROTECTION = FALSE|TRUE; (AUTOSAR OS only)
+      AUTOSTART = FALSE:"@RO@";
+      ACCESSING_APPLICATION = OsApplication_Core1;
+      ACCESSING_APPLICATION = OsApplication_Core2;
+      ACCESSING_APPLICATION = OsApplication_Core3;
+   }:"@RO@@NR@";
+
+   TASK Task_Com_5ms {
+      ACTIVATION = 1:"@RO@";
+      PRIORITY = 40:"@RO@";
+      SCHEDULE = FULL:"@RO@";
+// TIMING_PROTECTION = FALSE|TRUE; (AUTOSAR OS only)
+      AUTOSTART = FALSE:"@RO@";
+      ACCESSING_APPLICATION = OsApplication_Core1;
+      ACCESSING_APPLICATION = OsApplication_Core2;
+      ACCESSING_APPLICATION = OsApplication_Core3;
+   }:"@RO@@NR@";
+
+   TASK Task_EcuM_Core1 {
+      ACTIVATION = 1:"@RO@";
+      PRIORITY = 5:"@RO@";
+      SCHEDULE = FULL:"@RO@";
+// TIMING_PROTECTION = FALSE|TRUE; (AUTOSAR OS only)
+      AUTOSTART = FALSE:"@RO@";
+      ACCESSING_APPLICATION = OsApplication;
+      ACCESSING_APPLICATION = OsApplication_Core2;
+      ACCESSING_APPLICATION = OsApplication_Core3;
+   }:"@RO@@NR@";
+
+   TASK Task_EcuM_Core3 {
+      ACTIVATION = 1:"@RO@";
+      PRIORITY = 5:"@RO@";
+      SCHEDULE = FULL:"@RO@";
+// TIMING_PROTECTION = FALSE|TRUE; (AUTOSAR OS only)
+      AUTOSTART = FALSE:"@RO@";
+      ACCESSING_APPLICATION = OsApplication;
+      ACCESSING_APPLICATION = OsApplication_Core1;
+      ACCESSING_APPLICATION = OsApplication_Core2;
+   }:"@RO@@NR@";
+
+
+   APPLICATION OsApplication {
+      TRUSTED = TRUE;
+// Add the following four attributes according to your needs.
+// Note: They do not have a default value and are therefore necessary in the configuration.
+//      STARTUPHOOK = FALSE;
+//      SHUTDOWNHOOK = FALSE;
+//      ERRORHOOK = FALSE;
+//      HAS_RESTARTTASK = FALSE;
+      TASK = Task_Bsw_10ms;
+      TASK = Task_Com_5ms;
+      CORE = 0;
+  };
+
+   APPLICATION OsApplication_Core1 {
+      TRUSTED = TRUE;
+// Add the following four attributes according to your needs.
+// Note: They do not have a default value and are therefore necessary in the configuration.
+//      STARTUPHOOK = FALSE;
+//      SHUTDOWNHOOK = FALSE;
+//      ERRORHOOK = FALSE;
+//      HAS_RESTARTTASK = FALSE;
+      TASK = Task_EcuM_Core1;
+      CORE = 1;
+  };
+
+   APPLICATION OsApplication_Core2 {
+      TRUSTED = TRUE;
+// Add the following four attributes according to your needs.
+// Note: They do not have a default value and are therefore necessary in the configuration.
+//      STARTUPHOOK = FALSE;
+//      SHUTDOWNHOOK = FALSE;
+//      ERRORHOOK = FALSE;
+//      HAS_RESTARTTASK = FALSE;
+      TASK = Task_Appl_10ms;
+      CORE = 2;
+  };
+
+   APPLICATION OsApplication_Core3 {
+      TRUSTED = TRUE;
+// Add the following four attributes according to your needs.
+// Note: They do not have a default value and are therefore necessary in the configuration.
+//      STARTUPHOOK = FALSE;
+//      SHUTDOWNHOOK = FALSE;
+//      ERRORHOOK = FALSE;
+//      HAS_RESTARTTASK = FALSE;
+      TASK = Task_EcuM_Core3;
+      CORE = 3;
+  };
+
+   APPLICATION SystemApplication_OsCore0 {
+      TRUSTED = TRUE;
+// Add the following four attributes according to your needs.
+// Note: They do not have a default value and are therefore necessary in the configuration.
+//      STARTUPHOOK = FALSE;
+//      SHUTDOWNHOOK = FALSE;
+//      ERRORHOOK = FALSE;
+//      HAS_RESTARTTASK = FALSE;
+      CORE = 0;
+  };
+
+   APPLICATION SystemApplication_OsCore2 {
+      TRUSTED = TRUE;
+// Add the following four attributes according to your needs.
+// Note: They do not have a default value and are therefore necessary in the configuration.
+//      STARTUPHOOK = FALSE;
+//      SHUTDOWNHOOK = FALSE;
+//      ERRORHOOK = FALSE;
+//      HAS_RESTARTTASK = FALSE;
+      CORE = 2;
+  };

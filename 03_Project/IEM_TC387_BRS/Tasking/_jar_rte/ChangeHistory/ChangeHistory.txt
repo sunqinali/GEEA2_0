@@ -1,0 +1,91 @@
+/**********************************************************************************************************************
+ *  AUTHOR IDENTITY
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  Name                          Initials      Company
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  Sascha Sommer                 visso         Vector Informatik GmbH
+ *  Bernd Sigle                   vissi         Vector Informatik GmbH
+ *  Patrick Alschbach             vispah        Vector Informatik GmbH
+ *  Katharina Benkert             viskba        Vector Informatik GmbH
+ *  Siegfried Derksen             visdes        Vector Informatik GmbH
+ *  Philipp Niethammer            vispnr        Vector Informatik GmbH
+ *  Christian Fischer             viscfr        Vector Informatik GmbH
+ *  George Mesieha                visgme        Vector Informatik GmbH
+ *  Tobias Fuchs                  visfus        Vector Informatik GmbH
+ *  Michael Salmen                vislsa        Vector Informatik GmbH
+ *  Veronika Hoetzer              visvrn        Vector Informatik GmbH
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  REVISION HISTORY
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  Version   Date        Author  Change Id     Description
+ *  -------------------------------------------------------------------------------------------------------------------
+ *  3.90.00   2012-10-23  visso                 initial version
+ *  4.00.00   2012-11-27  visso                 ESCAN00062100, ESCAN00062102, ESCAN00063003, ESCAN00062831,
+ *                                              ESCAN00062525, ESCAN00061694, ESCAN00061972
+ *  4.01.00   2013-03-13  visso                 ESCAN00064868, ESCAN00065736, ESCAN00065829, ESCAN00063401,
+ *                                              ESCAN00065475, ESCAN00065847, ESCAN00065845, ESCAN00064021
+ *                                              ESCAN00065852, ESCAN00065848
+ *  4.01.01   2013-06-10  visso                 ESCAN00067753
+ *  4.02.00   2013-07-13  visso                 ESCAN00068058, ESCAN00060486
+ *  4.02.01   2013-11-24  vissi                 only version number increased
+ *  4.03.00   2013-12-16  vissi                 only version number increased
+ *            2014-01-20  vispah                style formatter / autosave actions updated and moved to project settings
+ *  4.04.00   2014-05-06  visso                 ESCAN00074046
+ *  4.05.00   2014-07-11  visso                 ESCAN00076519, ESCAN00077004, ESCAN00076666
+ *            2014-09-09  vissi                 ESCAN00077473
+ *  4.06.00   2014-11-24  visso                 ESCAN00079780
+ *            2014-12-11  vissi                 ESCAN00079526
+ *            2014-12-12  visso                 ESCAN00080227
+ *  4.07.00   2015-02-19  visso                 ESCAN00080138, ESCAN00077963
+ *  4.08.00   2015-05-11  visso                 ESCAN00082401, ESCAN00083581, ESCAN00074112, ESCAN00083901,
+ *                                              ESCAN00084292
+ *  4.09.00   2015-11-12  vispah                ESCAN00084664, ESCAN00084978, ESCAN00084277, ESCAN00085015,
+ *                                              ESCAN00083283, ESCAN00087288
+ *  4.10.00   2016-02-19  vissi                 ESCAN00087470, ESCAN00087532, ESCAN00087287, ESCAN00086698,
+ *                                              ESCAN00087744, ESCAN00085072, ESCAN00087838, ESCAN00088174,
+ *                                              ESCAN00088060, ESCAN00088528, ESCAN00088626, ESCAN00088866
+ *  4.11.00   2016-04-19  vissi                 ESCAN00089166, ESCAN00089322, ESCAN00089236, ESCAN00089165
+ *  4.12.00   2016-06-15  visso                 ESCAN00089322, ESCAN00090386, ESCAN00090604, ESCAN00090217
+ *  4.13.00   2016-09-22  vissi                 ESCAN00091477, ESCAN00091221, ESCAN00091621, ESCAN00091872
+ *            2016-10-14  vissi                 ESCAN00091781
+ *  4.14.00   2016-12-01  vispah                ESCAN00091161, ESCAN00091373, FEAT-1520
+ *            2016-10-42  viskba                ESCAN00092977
+ *            2017-01-17  visdes                ESCAN00093562, ESCAN00093722, ESCAN00094164
+ *  4.15.00   2017-04-18  vispah                ESCAN00094781, ESCAN00094440
+ *            2017-05-11  viskba                ESCAN00094733
+ *  4.16.00   2017-06-26  vispah                ESCAN00095854, STORY-331
+ *            2017-07-17  visso                 ESCAN00095892
+ *            2017-07-20  vispnr                ESCAN00095978, ESCAN00096005
+ *            2017-08-10  visso                 ESCAN00090998
+ *            2017-08-10  viscfr                ESCAN00096217
+ *  4.17.00   2017-09-14  visgme                ESCAN00096649, ESCAN00095236, ESCAN00095493
+ *            2017-09-18  vispnr                STORY-684
+ *            2017-10-18  visso                 ESCAN00097087, ESCAN00097126, ESCAN00097190
+ *  4.18.00   2017-11-20  vissi                 ESCAN00097271, STORYC-244, ESCAN00097457, STORYC-2385
+ *            2017-11-24  visso                 ESCAN00097434, ESCAN00097968, ESCAN00098068, ESCAN00098167
+ *            2017-11-27  viscfr                ESCAN00097476
+ *            2018-02-09  viskba                ESCAN00098347
+ *            2018-03-14  viscfr                STORYC-4583
+ *  4.19.00   2018-04-26  viscfr                ESCAN00099245
+ *            2018-05-02  visso                 ESCAN00099274, ESCAN00100354
+ *            2018-05-08  visfus                STORYC-5270
+ *            2018-07-31  viskba                ESCAN00099984
+ *  4.20.00   2018-09-24  visso                 ESCAN00100828, ESCAN00100931, ESCAN00101129, ESCAN00101736, ESCAN00101870
+ *            2018-09-24  visfus                STORYC-6317, STORYC-6522, ESCAN00101129, ESCAN00101086, STORYC-7398
+ *            2018-09-24  viscfr                STORYC-6320, STORYC-6787
+ *            2018-10-25  visdes                STORYC-6318
+ *            2018-02-07  visgme                FEAT-3352, ESCAN00095326, ESCAN00101684, STORYC-7478, ESCAN00102335
+ *  4.21.00   2019-04-04  visso                 STORYC-8086, STORYC-8227, STORYC-8484, ESCAN00103403, ESCAN00103680, RTE-2799
+ *            2019-07-04  visgme                STORYC-8822, ESCAN00103844
+ *            2019-08-05  visdes                STORYC-8472
+ *  4.22.00   2019-08-15  visgme                ESCAN00104020, ESCAN00102608, ESCAN00096060, ESCAN00105715
+ *            2019-08-21  visso                 RTE-2906, RTE-2974, RTE-2920, RTE-2948, RTE-3036, ESCAN00105012, ESCAN00105013, RTE-3082
+ *            2020-01-30  visso                 RTE-2865, RTE-2894, RTE-3198, RTE-11
+ *            2019-09-25  visdes                RTE-2937, ESCAN00104998
+ *            2019-09-27  vislsa                RTE-2912, RTE-2910, RTE-3178
+ *  4.23.00   2020-04-06  visso                 RTE-3804, RTE-3806, RTE-3837, ESCAN00107129, RTE-3839, RTE-3692
+ *            2020-07-10  vislsa                ESCAN00106822
+ *            2020-08-05  vislsa                RTE-3802
+ *            2020-08-06  visvrn                RTE-3623
+ *            2020-08-18  visdes                RTE-3561
+ *********************************************************************************************************************/

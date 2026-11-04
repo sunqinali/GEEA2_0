@@ -1,0 +1,58 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.vbrs.VBRS
+
+daVinci {
+    scriptDescription "IEM_TC387_BRS: enable vBRS CAN+PLL (core count overridden in GenData/compiler)"
+    scriptTask("FixVbrsFourCoresAndCan", DV_PROJECT) {
+        taskDescription "Enable PLL and full DriverHandlingCAN; CpuCoreAmount is SIP-preconfigured"
+        code {
+            def unwrap = { obj ->
+                if (obj == null) return null
+                if (obj.getClass().simpleName.contains("Optional") || obj.respondsTo("isPresent")) {
+                    if (obj.respondsTo("isPresent") && !obj.isPresent()) return null
+                    if (obj.respondsTo("get")) return obj.get()
+                }
+                return obj
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) {
+                    throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                }
+                def parameter = unwrap(getter.invoke(owner))
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                if (setter == null) {
+                    throw new IllegalStateException("${paramName} => ${parameter?.getClass()?.simpleName} has no setValue")
+                }
+                if (value instanceof Boolean) {
+                    setter.invoke(parameter, value)
+                } else {
+                    try {
+                        setter.invoke(parameter, value as Long)
+                    } catch (IllegalArgumentException ignored) {
+                        setter.invoke(parameter, new java.math.BigInteger(value.toString()))
+                    }
+                }
+            }
+
+            transaction {
+                def vBrs = bswmdModel(VBRS.DefRef).single
+                def hw = unwrap(vBrs.VBRSHwConfig)
+                assign(hw, "VBRSEnablePLLClocksHandling", true)
+                assign(hw, "VBRSEnablePortHandling", false)
+
+                def can = unwrap(hw.getVBRSDriverHandlingCANOrCreate())
+                assign(can, "VBRSEnableDriverHandlingCAN", true)
+                assign(can, "VBRSDriverHandlingCAN_PeripheralClock", true)
+                assign(can, "VBRSDriverHandlingCAN_channel0", true)
+                (1..19).each { n -> assign(can, "VBRSDriverHandlingCAN_channel${n}", false) }
+                scriptLogger.info("DriverHandlingCAN + PLL configured")
+            }
+            saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

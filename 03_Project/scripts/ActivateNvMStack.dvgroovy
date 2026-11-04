@@ -1,0 +1,206 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.fee.Fee
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.fls.Fls
+import com.vector.cfg.automation.model.ecuc.microsar.memif.MemIf
+import com.vector.cfg.automation.model.ecuc.microsar.nvm.NvM
+
+/**
+ * Activate MCAL Fls + Fee + MemIf + NvM with a minimal bring-up layout.
+ * DFLASH base 0xAF000000 (TC3xx DF0). Two 32 KiB sectors for Fee.
+ * NvM: one Appl ProgRequest block (RAM handover → NV later wiring).
+ *
+ * Run:
+ *   DVCfgCmd --project ...\IEM_TC387_BRS.dpa --scriptLocations ...\scripts
+ *            --scriptTask ActivateNvMStack --logfile ...\script_nvm_stack.log
+ * Then Generate; expect more Fls/Fee/tresos fixes iteratively.
+ */
+daVinci {
+    scriptDescription "Activate Fls/Fee/MemIf/NvM minimal stack for IEM_TC387_BRS"
+    scriptTask("ActivateNvMStack", DV_PROJECT) {
+        taskDescription "Fls→Fee→MemIf→NvM activate + minimal ProgRequest block"
+        code {
+            def prop = { String name ->
+                name.substring(0, 1).toLowerCase() + name.substring(1)
+            }
+            def ensure = { list, String name ->
+                list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) {
+                    getter = methods.find { it.name.endsWith("_${paramName}OrCreate") }
+                }
+                if (getter == null) {
+                    throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                }
+                def parameter = getter.invoke(owner)
+                if (value instanceof String && parameter.hasProperty("value") == false) {
+                    // fall through
+                }
+                try {
+                    parameter.value = value
+                } catch (Exception e1) {
+                    try {
+                        def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                        if (setter != null) {
+                            setter.invoke(parameter, value)
+                        } else {
+                            throw e1
+                        }
+                    } catch (Exception e2) {
+                        // enum literal
+                        def enumClass = parameter.getClass().classLoader.loadClass(
+                            parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                        def match = enumClass.enumConstants.find { it.name() == value.toString() }
+                        if (match == null) {
+                            throw new IllegalStateException("assign ${paramName}=${value}: ${e2.message}")
+                        }
+                        def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                        setter.invoke(parameter, match)
+                    }
+                }
+            }
+            def linkRef = { refOwner, target ->
+                // refOwner is GOptional/list style .xxxRefOrCreate or list
+                if (refOwner.respondsTo("setRefTargetMdf")) {
+                    refOwner.setRefTargetMdf(target.mdfObject)
+                } else if (refOwner.respondsTo("createAndAdd")) {
+                    // shouldn't happen
+                } else {
+                    try {
+                        refOwner.value = target
+                    } catch (Exception ignored) {
+                        refOwner.setRefTargetMdf(target.mdfObject)
+                    }
+                }
+            }
+
+            // --- 1) Activate modules ---
+            transaction {
+                [Fls, Fee, MemIf, NvM].each { moduleClass ->
+                    def present = activeEcuc.modules(moduleClass.DefRef)
+                    if (present == null || present.isEmpty()) {
+                        operations.activateModuleConfiguration(moduleClass.DefRef)
+                        scriptLogger.info("Activated " + moduleClass.simpleName)
+                    } else {
+                        scriptLogger.info(moduleClass.simpleName + " already active")
+                    }
+                }
+            }
+            activeProject().saveProject()
+
+            // --- 2) Fls minimal (TC3xx DF0 @ 0xAF000000, 2x32KiB) ---
+            transaction {
+                def fls = bswmdModel(Fls.DefRef).single
+                def cfg = fls.flsConfigSetOrCreate
+                assign(cfg, "FlsBaseAddress", 2936012800L) // 0xAF000000
+                assign(cfg, "FlsTotalSize", 65536L)
+                assign(cfg, "FlsCallCycle", 0.01d)
+                assign(cfg, "FlsDefaultMode", "MEMIF_MODE_FAST")
+                assign(cfg, "FlsMaxReadFastMode", 512L)
+                assign(cfg, "FlsMaxReadNormalMode", 256L)
+                assign(cfg, "FlsMaxWriteFastMode", 32L)
+                assign(cfg, "FlsMaxWriteNormalMode", 32L)
+                // Access code placeholders — generator/tresos may recalculate
+                assign(cfg, "FlsAcErase", 0L)
+                assign(cfg, "FlsAcWrite", 0L)
+
+                // Notifications → Fee
+                try {
+                    def endList = cfg.flsJobEndNotificationOrCreate
+                    if (endList.respondsTo("clear")) { endList.clear() }
+                    // some models use createAndAdd of FUNCTION-NAME
+                    assign(cfg, "FlsJobEndNotification", "Fee_JobEndNotification")
+                } catch (Exception e) {
+                    scriptLogger.warn("FlsJobEndNotification: " + e.message)
+                }
+                try {
+                    assign(cfg, "FlsJobErrorNotification", "Fee_JobErrorNotification")
+                } catch (Exception e) {
+                    scriptLogger.warn("FlsJobErrorNotification: " + e.message)
+                }
+
+                def sectorList = ensure(cfg.flsSectorList, "FlsSectorList_0")
+                def s0 = ensure(sectorList.flsSector, "FlsSector_0")
+                assign(s0, "FlsNumberOfSectors", 1L)
+                assign(s0, "FlsPageSize", 8L)
+                assign(s0, "FlsSectorSize", 32768L)
+                assign(s0, "FlsSectorStartaddress", 0L)
+                def s1 = ensure(sectorList.flsSector, "FlsSector_1")
+                assign(s1, "FlsNumberOfSectors", 1L)
+                assign(s1, "FlsPageSize", 8L)
+                assign(s1, "FlsSectorSize", 32768L)
+                assign(s1, "FlsSectorStartaddress", 32768L)
+                scriptLogger.info("Fls DF0 64KiB (2x32KiB) configured")
+            }
+            activeProject().saveProject()
+
+            // --- 3) Fee: ProgRequest + spare small blocks ---
+            transaction {
+                def fee = bswmdModel(Fee.DefRef).single
+                assign(fee, "FeeVirtualPageSize", 8L)
+                def b0 = ensure(fee.feeBlockConfiguration, "FeeBlock_ProgRequest")
+                assign(b0, "FeeBlockNumber", 1L)
+                assign(b0, "FeeBlockSize", 32L)
+                def b1 = ensure(fee.feeBlockConfiguration, "FeeBlock_DemAdmin")
+                assign(b1, "FeeBlockNumber", 2L)
+                assign(b1, "FeeBlockSize", 64L)
+                def b2 = ensure(fee.feeBlockConfiguration, "FeeBlock_DemStatus")
+                assign(b2, "FeeBlockNumber", 3L)
+                assign(b2, "FeeBlockSize", 256L)
+                scriptLogger.info("Fee blocks ProgRequest/DemAdmin/DemStatus")
+            }
+            activeProject().saveProject()
+
+            // --- 4) MemIf → Fee ---
+            transaction {
+                def memIf = bswmdModel(MemIf.DefRef).single
+                def dev = ensure(memIf.memIfDevice, "Fee")
+                try {
+                    // MemIfUnderlyingDriver / choice Fee
+                    def ud = dev.memIfUnderlyingDriverOrCreate
+                    def feeChoice = ud.feeOrCreate
+                    scriptLogger.info("MemIf device Fee choice created")
+                } catch (Exception e) {
+                    scriptLogger.warn("MemIf Fee link: " + e.message)
+                    try {
+                        assign(dev, "MemIfDriverName", "Fee")
+                    } catch (Exception e2) {
+                        scriptLogger.warn("MemIfDriverName: " + e2.message)
+                    }
+                }
+            }
+            activeProject().saveProject()
+
+            // --- 5) NvM ProgRequest block ---
+            transaction {
+                def nvm = bswmdModel(NvM.DefRef).single
+                try {
+                    assign(nvm, "NvMApiEnabled", true)
+                } catch (Exception ignored) {}
+                def blk = ensure(nvm.nvMBlockDescriptor, "NvMBlock_ProgRequest")
+                assign(blk, "NvMNvBlockLength", 32L)
+                try { assign(blk, "NvMBlockJobPriority", 1L) } catch (Exception ignored) {}
+                try { assign(blk, "NvMBlockUseCrc", false) } catch (Exception ignored) {}
+                try { assign(blk, "NvMResistantToChangedSw", true) } catch (Exception ignored) {}
+                try { assign(blk, "NvMSelectBlockForReadAll", true) } catch (Exception ignored) {}
+                try { assign(blk, "NvMSelectBlockForWriteAll", true) } catch (Exception ignored) {}
+                try {
+                    // Target Fee block 1
+                    def fee = bswmdModel(Fee.DefRef).single
+                    def feeBlk = fee.feeBlockConfiguration.byName("FeeBlock_ProgRequest")
+                    def tgt = blk.nvMTargetBlockReferenceOrCreate
+                    def feeRef = tgt.nvMFeeRefOrCreate
+                    feeRef.nvMNameOfFeeBlockOrCreate.setRefTargetMdf(feeBlk.mdfObject)
+                } catch (Exception e) {
+                    scriptLogger.warn("NvM→Fee ref: " + e.message)
+                }
+                scriptLogger.info("NvMBlock_ProgRequest created")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("ActivateNvMStack done — run Generate next; expect Fls/Fee tresos follow-ups")
+        }
+    }
+}

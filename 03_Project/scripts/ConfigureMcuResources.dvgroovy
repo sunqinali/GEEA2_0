@@ -1,0 +1,190 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcu.Mcu
+import com.vector.cfg.automation.model.ecuc.microsar.ecum.EcuM
+
+daVinci {
+    scriptDescription "Fill the Mcu containers required by TC387 multiplicity, leaving timers unused"
+    scriptTask("ConfigureMcuResources", DV_PROJECT) {
+        taskDescription "Create unused ASCLIN, CCU6, GPT12, STM, ERU, GTM and reset-reason containers"
+        code {
+            transaction {
+                def mcu = bswmdModel(Mcu.DefRef).single
+                def ecuM = bswmdModel(EcuM.DefRef).single
+
+                def prop = { String name ->
+                    name.substring(0, 1).toLowerCase() + name.substring(1)
+                }
+                def ensure = { list, String name ->
+                    list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+                }
+                def one = { owner, String name ->
+                    owner."${prop(name)}OrCreate"
+                }
+                def many = { owner, String name ->
+                    owner."${prop(name)}"
+                }
+                def assign = { owner, String paramName, value ->
+                    def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                    def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                    if (getter == null) {
+                        getter = methods.find { it.name.endsWith("_${paramName}OrCreate") }
+                    }
+                    if (getter == null) {
+                        def known = owner.getClass().methods.findAll {
+                            it.parameterTypes.length == 0 && it.name.contains("OrCreate")
+                        }.collect { it.name }
+                        throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}: ${known}")
+                    }
+                    def parameter = getter.invoke(owner)
+                    def setters = parameter.getClass().methods.findAll { it.name == "setValue" && it.parameterTypes.length == 1 }
+                    def setter = setters[0]
+                    def typeName = setter.parameterTypes[0].name
+                    if (typeName.contains("GIEnum")) {
+                        def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                        def match = enumClass.enumConstants.find { it.name() == value.toString() }
+                        if (match == null) {
+                            throw new IllegalStateException("No ${value} in ${enumClass.name}: ${enumClass.enumConstants.collect { it.name() }}")
+                        }
+                        setter.invoke(parameter, match)
+                    } else if (value instanceof Boolean) {
+                        setter.invoke(parameter, value)
+                    } else if (value instanceof Double || value instanceof BigDecimal) {
+                        setter.invoke(parameter, value as Double)
+                    } else {
+                        try {
+                            setter.invoke(parameter, value as Long)
+                        } catch (IllegalArgumentException ignored) {
+                            setter.invoke(parameter, new java.math.BigInteger(value.toString()))
+                        }
+                    }
+                }
+
+                def hw = mcu.mcuHardwareResourceAllocationConf
+                def asclin = many(hw, "McuAscLinAllocationConf")
+                (0..<24).each { index ->
+                    def channel = one(ensure(asclin, "McuAscLinAllocationConf_" + index), "McuAscLinChannelAllocationConf")
+                    assign(channel, "McuAscLinChannelAllocationConf", "ASCLIN_CH_NOT_USED")
+                    assign(channel, "McuAscLinKernelId", "ASCLIN" + index)
+                }
+                def ccu6 = many(hw, "McuCcu6ModuleAllocationConf")
+                (0..<2).each { index ->
+                    assign(ensure(ccu6, "McuCcu6ModuleAllocationConf_" + index), "McuCcu6ModuleAllocationConf", "CCU6_MODULE_NOT_USED")
+                }
+                def gpt12 = many(hw, "McuGpt12ModuleAllocationConf")
+                ["GPT_TIMER_2", "GPT_TIMER_3", "GPT_TIMER_4", "GPT_TIMER_5", "GPT_TIMER_6"].eachWithIndex { timer, index ->
+                    def module = ensure(gpt12, "McuGpt12ModuleAllocationConf_" + index)
+                    assign(module, "McuGpt12ModuleAllocationConf", "GPT_TIMER_NOT_USED")
+                    assign(module, "McuGpt12TimerAllocation", timer)
+                }
+                def stm = many(hw, "McuStmAllocationConf")
+                (0..<4).each { index ->
+                    def module = ensure(stm, "McuStmAllocationConf_" + index)
+                    assign(module, "McuStmCmp0RegAllocationConf", "STM_CMP0_NOT_USED")
+                    assign(module, "McuStmCmp1RegAllocationConf", "STM_CMP1_NOT_USED")
+                }
+                def eru = one(hw, "McuEruAllocationConf")
+                def eruIn = many(eru, "McuEruChannelInputLineConf")
+                def eruOut = many(eru, "McuEruChannelOutputUnitConf")
+                (0..<8).each { index ->
+                    assign(ensure(eruIn, "McuEruChannelInputLineConf_" + index), "McuEruChannelInputLineConf", "ERU_CHANNEL_INP_NOT_USED")
+                    assign(ensure(eruOut, "McuEruChannelOutputUnitConf_" + index), "McuEruChannelOutputUnitConf", "ERU_CHANNEL_OUT_NOT_USED")
+                }
+                scriptLogger.info("ASCLIN, CCU6, GPT12, STM and ERU allocation filled")
+
+                def gtm = mcu.mcuModuleConfiguration.gtmGlobalConfiguration
+                def fillChannels = { modules, int moduleCount, int channelCount, String modulePrefix, String channelPrefix, Closure configure ->
+                    def moduleList = many(gtm, modulePrefix)
+                    (0..<moduleCount).each { moduleIndex ->
+                        def module = ensure(moduleList, modulePrefix + "_" + moduleIndex)
+                        def channels = many(module, channelPrefix)
+                        (0..<channelCount).each { channelIndex ->
+                            configure(ensure(channels, channelPrefix + "_" + channelIndex))
+                        }
+                    }
+                }
+                fillChannels(null, 5, 16, "GtmTomGlobalConf", "GtmTomChannelConf") { channel ->
+                    assign(channel, "GtmTimerPortPinSelect", "NONE")
+                    assign(channel, "GtmTomChInternalTriggerEnable", false)
+                    assign(channel, "GtmTomChResetCn0OnTriggerEnable", false)
+                }
+                def tomModules = many(gtm, "GtmTomGlobalConf")
+                (0..<5).each { moduleIndex ->
+                    def groups = many(ensure(tomModules, "GtmTomGlobalConf_" + moduleIndex), "GtmTomGroupConf")
+                    (0..<2).each { groupIndex ->
+                        def timeBase = one(ensure(groups, "GtmTomGroupConf_" + groupIndex), "GtmTomActionTimeBaseUnitConf")
+                        assign(timeBase, "GtmTomActionTimeBaseSelection", "TOM_ACT_TB_TBU_TS0")
+                        assign(timeBase, "GtmTomActionTimeBaseValue", 1)
+                    }
+                }
+                fillChannels(null, 9, 8, "GtmAtomGlobalConf", "GtmAtomChannelConf") { channel ->
+                    assign(channel, "GtmTimerPortPinSelect", "NONE")
+                    assign(channel, "GtmAtomChInternalTriggerEnable", false)
+                    assign(channel, "GtmAtomChResetCn0OnTriggerEnable", false)
+                }
+                fillChannels(null, 7, 8, "GtmTimGlobalConf", "GtmTimChannelConf") { channel ->
+                    assign(channel, "GtmTimInpPortPinSel", "SEL0_NONE")
+                }
+                def clusters = many(gtm, "GtmClusterConf")
+                (0..<9).each { index ->
+                    def cluster = ensure(clusters, "GtmClusterConf_" + index)
+                    assign(cluster, "GtmCmuClusterInputClockDividerEnable", "CLS_CLK_CFG_ENABLED_WITH_DIV_SEL2")
+                    def clocks = one(cluster, "GtmClusterConfClockSetting")
+                    (0..<8).each { clock ->
+                        assign(clocks, "GtmClusterConfClock" + clock + "Src", "CMU_CONF_CLOCK" + clock + "_SEL0")
+                    }
+                    assign(one(cluster, "GtmClusterFixedClockSetting"), "GtmClusterFixedClockSrc", "CMU_FIXED_CLOCK0_SEL0")
+                }
+                def tbu = many(gtm, "GtmTbuChannelConf")
+                (0..<4).each { index ->
+                    def channel = ensure(tbu, "GtmTbuChannelConf_" + index)
+                    assign(channel, "GtmTbuChClockSourceSelection", "CMU_CLOCK0_SEL0")
+                    assign(channel, "GtmTbuChMode", "FREE_RUNNING_COUNTER_SEL0")
+                    assign(channel, "GtmTbuChModuloCntrSel", "TBU_CH1_SEL0")
+                    assign(channel, "GtmTbuChResolutionSel", "TBU_CH_LOWER_COUNT_BITS_SEL0")
+                    assign(channel, "GtmTbuChannelEnable", false)
+                }
+                def adc = many(gtm, "GtmTriggerForAdc")
+                (0..<12).each { index ->
+                    def trigger = ensure(adc, "GtmTriggerForAdc_" + index)
+                    (0..<5).each { select ->
+                        assign(trigger, "GtmAdcTrigger" + select + "Select", "TRIG_0_NO_TRIGGER")
+                    }
+                }
+                def dsadc = many(gtm, "GtmTriggerForDsadc")
+                (0..<6).each { index ->
+                    def trigger = ensure(dsadc, "GtmTriggerForDsadc_" + index)
+                    (0..<4).each { select ->
+                        assign(trigger, "GtmDsadcTrigger" + select + "Select", "TRIG_0_NO_TRIGGER")
+                    }
+                }
+                scriptLogger.info("GTM global containers filled and left unused")
+
+                def clock = ensure(mcu.mcuModuleConfiguration.mcuClockSettingConfig, "McuClockSettingConfig_0")
+                def reference = ensure(many(clock, "McuClockReferencePoint"), "McuClockReferencePoint_0")
+                assign(reference, "McuClockRefSelection", "MCU_USER_DEFINED_FREQUENCY")
+                assign(reference, "McuClockReferencePointFrequency", 20000000.0d)
+                scriptLogger.info("Clock reference point is the 20 MHz oscillator")
+
+                def reasons = [
+                    "MCU_ESR0_RESET", "MCU_ESR1_RESET", "MCU_SMU_RESET", "MCU_SW_RESET",
+                    "MCU_STM0_RESET", "MCU_STM1_RESET", "MCU_STM2_RESET", "MCU_STM3_RESET",
+                    "MCU_STM4_RESET", "MCU_STM5_RESET", "MCU_POWER_ON_RESET", "MCU_CB0_RESET",
+                    "MCU_CB1_RESET", "MCU_CB3_RESET", "MCU_EVRC_RESET", "MCU_EVR33_RESET",
+                    "MCU_SUPPLY_WDOG_RESET", "MCU_STBYR_RESET", "MCU_LBIST_RESET",
+                    "MCU_RESET_MULTIPLE", "MCU_RESET_UNDEFINED"
+                ]
+                def reasonList = many(mcu.mcuPublishedInformation, "McuResetReasonConf")
+                reasons.eachWithIndex { name, id ->
+                    assign(ensure(reasonList, name), "McuResetReason", id)
+                }
+                scriptLogger.info("Reset reasons " + reasons.size())
+
+                assign(ecuM.ecuMFlexGeneralOrCreate, "EcuMModeHandling", true)
+                scriptLogger.info("EcuM mode handling enabled")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

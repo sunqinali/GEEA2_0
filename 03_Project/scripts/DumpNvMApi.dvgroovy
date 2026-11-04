@@ -1,0 +1,25 @@
+﻿import static com.vector.cfg.automation.api.ScriptApi.*
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.fls.Fls
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.fee.Fee
+import com.vector.cfg.automation.model.ecuc.microsar.nvm.NvM
+import com.vector.cfg.automation.model.ecuc.microsar.memif.MemIf
+
+daVinci {
+  scriptDescription "Dump Fls/Fee/NvM/MemIf API"
+  scriptTask("DumpNvMApi", DV_PROJECT) {
+    code {
+      transaction {
+        def fls = bswmdModel(Fls.DefRef).single
+        scriptLogger.info("Fls methods: " + fls.getClass().methods.findAll{it.parameterTypes.length==0 && (it.name.contains("OrCreate")||it.name.startsWith("getFls")||it.name.startsWith("getFee"))}.collect{it.name}.sort().join(", "))
+        def cfg = fls.flsConfigSetOrCreate
+        scriptLogger.info("FlsConfigSet methods: " + cfg.getClass().methods.findAll{it.parameterTypes.length==0 && it.name.contains("OrCreate")}.collect{it.name}.sort().join(", "))
+        def fee = bswmdModel(Fee.DefRef).single
+        scriptLogger.info("Fee methods: " + fee.getClass().methods.findAll{it.parameterTypes.length==0 && it.name.contains("OrCreate")}.collect{it.name}.sort().join(", "))
+        def nvm = bswmdModel(NvM.DefRef).single
+        scriptLogger.info("NvM methods: " + nvm.getClass().methods.findAll{it.parameterTypes.length==0 && it.name.contains("OrCreate")}.collect{it.name}.sort().take(80).join(", "))
+        def mem = bswmdModel(MemIf.DefRef).single
+        scriptLogger.info("MemIf methods: " + mem.getClass().methods.findAll{it.parameterTypes.length==0 && it.name.contains("OrCreate")}.collect{it.name}.sort().join(", "))
+      }
+    }
+  }
+}

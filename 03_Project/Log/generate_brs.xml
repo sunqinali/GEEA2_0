@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DaVinciExecutionReport name="Generation Execution Report">
+    <ValidationResults fatalerrors="0" errors="0" warnings="16" improvements="0" infos="6">
+        <ValidationResultId id="09000" message="No McData available" origin="ArxmlToA2l">
+            <ValidationResult severity="Info" ondemandresult="true">
+                <Description>There is no measurement and calibration support data in this variant. Nothing to convert from Arxml to A2L.</Description>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="80001" message="Value of 'DetEnableDet' parameter is invalid" origin="DET">
+            <ValidationResult severity="Info" ondemandresult="false">
+                <Description>'DetEnableDet' parameter can be set to false because development error detection is not used.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/Det/DetGeneral[0:DetEnableDet]</Object>
+                        <Definition>/MICROSAR/Det/DetGeneral/DetEnableDet</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="79203" message="No EndToEndProtections in the project available" origin="E2EPW">
+            <ValidationResult severity="Info" ondemandresult="true">
+                <Description>The Project does not contain any EndToEndProtections, so there is nothing to do.</Description>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="01310" message="Obsolete init core ID configuration" origin="VLINKGEN">
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_DATA_CORE0_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE0_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_DATA_CORE1_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE1_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_DATA_CORE2_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE2_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_DATA_CORE3_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE3_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_DATA_CORE4_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE4_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_DATA_CORE5_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE5_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_DATA_SHARED_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_SHARED_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init core ID of 'OS_GLOBALSHARED_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_GLOBALSHARED_VAR[0:vLinkGenVarGroupInitCore]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupInitCore</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="03261" message="Obsolete VAR section group init configuration" origin="VLINKGEN">
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_DATA_CORE0_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE0_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_DATA_CORE1_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE1_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_DATA_CORE2_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE2_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_DATA_CORE3_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE3_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_DATA_CORE4_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE4_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_DATA_CORE5_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_CORE5_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_DATA_SHARED_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_DATA_SHARED_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Warning" ondemandresult="false">
+                <Description>The init (ROM) memory region block of 'OS_GLOBALSHARED_VAR' is obsolete and can be removed.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vLinkGen/vLinkGenMemLayout/OS_GLOBALSHARED_VAR[0:vLinkGenVarGroupRomRegion]</Object>
+                        <Definition>/MICROSAR/vLinkGen/vLinkGenMemLayout/vLinkGenLogicalVarGroup/vLinkGenVarGroupRomRegion</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="01200" message="The configuration of the booleans vBRSHwEnable{PllClocks,Port,Watchdog}Handling and the usage of modules Mcu, Port and Wdg is not consistent" origin="vBRS">
+            <ValidationResult severity="Info" ondemandresult="false">
+                <Description>Execute the following changes to adapt the vBRS hardware driver configuration to the modules contained in the current project.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vBRS/vBRSHwConfig[0:vBRSEnablePLLClocksHandling]</Object>
+                        <Definition>/MICROSAR/vBRS/vBRSHwConfig/vBRSEnablePLLClocksHandling</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                    <CE>
+                        <Object>/ActiveEcuC/vBRS/vBRSHwConfig[0:vBRSEnablePortHandling]</Object>
+                        <Definition>/MICROSAR/vBRS/vBRSHwConfig/vBRSEnablePortHandling</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                    <CE>
+                        <Object>/ActiveEcuC/vBRS/vBRSHwConfig[0:vBRSEnableWatchdogHandling]</Object>
+                        <Definition>/MICROSAR/vBRS/vBRSHwConfig/vBRSEnableWatchdogHandling</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+        <ValidationResultId id="01700" message="Configuration of EcuM/SchM stub generation and usage of Microsar EcuM/SchM modules is not consistent" origin="vBRS">
+            <ValidationResult severity="Info" ondemandresult="false">
+                <Description>Enable the generation of EcuM stub by vBRS because no Microsar EcuM is part of the configuration.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vBRS/vBRSGeneral[0:vBRSEnableEcuMStubGeneration]</Object>
+                        <Definition>/MICROSAR/vBRS/vBRSGeneral/vBRSEnableEcuMStubGeneration</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+            <ValidationResult severity="Info" ondemandresult="false">
+                <Description>Enable the generation of SchM stubs by vBRS because no Microsar Rte is part of the configuration.</Description>
+                <ErroneousCEs>
+                    <CE>
+                        <Object>/ActiveEcuC/vBRS/vBRSGeneral[0:vBRSEnableSchmStubGeneration]</Object>
+                        <Definition>/MICROSAR/vBRS/vBRSGeneral/vBRSEnableSchmStubGeneration</Definition>
+                        <Type>parameter</Type>
+                    </CE>
+                </ErroneousCEs>
+            </ValidationResult>
+        </ValidationResultId>
+    </ValidationResults>
+    <GenerationProcessResult result="SUCCESSFUL" lastexecutiontime="2026-10-30 21:46:03" lastexecutionduration="0.909">
+        <GenerationResult generationtype="GENERATOR">
+            <Name>Det</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="CALCULATION" state="SUCCESSFUL"/>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL">
+                    <GeneratedFiles>
+                        <File generationinfo="FILE_IS_UP_TO_DATE">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\Det_Cfg.c</File>
+                        <File generationinfo="FILE_IS_UP_TO_DATE">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\Det_Cfg.h</File>
+                    </GeneratedFiles>
+                </Phase>
+            </Phases>
+            <Generator>
+                <Name>MICROSAR Det Generator</Name>
+                <Version>12.0.0.00</Version>
+                <MSN>Det</MSN>
+                <Definition>/MICROSAR/Det</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>Det</Name>
+                    <Definition>/MICROSAR/Det</Definition>
+                    <ObjectLink>/ActiveEcuC/Det</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>E2EPW</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL"/>
+            </Phases>
+            <Generator>
+                <Name>E2EPW</Name>
+                <Version>3.2.0</Version>
+                <MSN>E2EPW</MSN>
+                <Definition>/MICROSAR/E2EPW</Definition>
+            </Generator>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>EcuC</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL">
+                    <GeneratedFiles>
+                        <File generationinfo="FILE_IS_UP_TO_DATE">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\ComStack_Cfg.h</File>
+                    </GeneratedFiles>
+                </Phase>
+            </Phases>
+            <Generator>
+                <Name>MICROSAR EcuC Generator</Name>
+                <Version>6.0.0</Version>
+                <MSN>EcuC</MSN>
+                <Definition>/MICROSAR/EcuC</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>EcuC</Name>
+                    <Definition>/MICROSAR/EcuC</Definition>
+                    <ObjectLink>/ActiveEcuC/EcuC</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>ARXML to A2L Converter</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL"/>
+            </Phases>
+            <Generator>
+                <Name>ARXML to A2L Converter</Name>
+                <Version>2.3.0</Version>
+                <MSN>McDataConv</MSN>
+                <Definition>/MICROSAR/McDataConv</Definition>
+            </Generator>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>vBRS</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL">
+                    <GeneratedFiles>
+                        <File generationinfo="FILE_IS_UP_TO_DATE">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\..\Makefile.config.generated</File>
+                        <File generationinfo="FILE_IS_UP_TO_DATE">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\.\BrsTccCfg.h</File>
+                        <File generationinfo="FILE_IS_UP_TO_DATE">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\.\vBrsCfg.h</File>
+                    </GeneratedFiles>
+                </Phase>
+            </Phases>
+            <Generator>
+                <Name>MICROSAR vBRS Generator</Name>
+                <Version>10.2.0</Version>
+                <MSN>vBRS</MSN>
+                <Definition>/MICROSAR/vBRS</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>vBRS</Name>
+                    <Definition>/MICROSAR/vBRS</Definition>
+                    <ObjectLink>/ActiveEcuC/vBRS</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>vLinkGen</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL">
+                    <GeneratedFiles>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\vLinkGen_Cfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\vLinkGen_Lcfg.c</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\GenData\vLinkGen_Lcfg.h</File>
+                        <File generationinfo="FILE_CREATED">C:\wk_manu\xinyu\03_Project\IEM_TC387_BRS\Appl\Source\vLinkGen_Template.lsl</File>
+                    </GeneratedFiles>
+                </Phase>
+            </Phases>
+            <Generator>
+                <Name>MICROSAR vLinkGen Generator</Name>
+                <Version>2.3.0</Version>
+                <MSN>vLinkGen</MSN>
+                <Definition>/MICROSAR/vLinkGen</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>vLinkGen</Name>
+                    <Definition>/MICROSAR/vLinkGen</Definition>
+                    <ObjectLink>/ActiveEcuC/vLinkGen</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+        <GenerationResult generationtype="GENERATOR">
+            <Name>vSet</Name>
+            <State>SUCCESSFUL</State>
+            <Phases>
+                <Phase type="VALIDATION" state="SUCCESSFUL"/>
+                <Phase type="GENERATION" state="SUCCESSFUL"/>
+            </Phases>
+            <Generator>
+                <Name>MICROSAR vSet Generator</Name>
+                <Version>2.1.0</Version>
+                <MSN>vSet</MSN>
+                <Definition>/MICROSAR/vSet</Definition>
+            </Generator>
+            <ModulConfigurations>
+                <ModuleConfiguration>
+                    <Name>vSet</Name>
+                    <Definition>/MICROSAR/vSet</Definition>
+                    <ObjectLink>/ActiveEcuC/vSet</ObjectLink>
+                    <ConfigurationVariant>VARIANT_PRE_COMPILE</ConfigurationVariant>
+                    <SupportsPostBuildVariance>false</SupportsPostBuildVariance>
+                </ModuleConfiguration>
+            </ModulConfigurations>
+        </GenerationResult>
+    </GenerationProcessResult>
+</DaVinciExecutionReport>

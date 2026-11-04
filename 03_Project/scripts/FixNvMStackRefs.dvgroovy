@@ -1,0 +1,184 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.fee.Fee
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.fls.Fls
+import com.vector.cfg.automation.model.ecuc.microsar.memif.MemIf
+import com.vector.cfg.automation.model.ecuc.microsar.nvm.NvM
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+/**
+ * Fix MemIf/Fee/NvM refs + Rte MainFunction maps after Activate/ConfigureNvMStack.
+ */
+daVinci {
+    scriptDescription "Fix NvM stack validation refs and Rte mappings"
+    scriptTask("FixNvMStackRefs", DV_PROJECT) {
+        taskDescription "FeeDeviceIndex→FlsGeneral, MemIf→FeeGeneral, NvM RAM/Fee, Rte maps"
+        code {
+            def unwrap = { obj ->
+                if (obj == null) return null
+                if (obj.getClass().simpleName.contains("Optional") || obj.respondsTo("isPresent")) {
+                    if (obj.respondsTo("isPresent") && !obj.isPresent()) return null
+                    if (obj.respondsTo("get")) return obj.get()
+                }
+                return obj
+            }
+            def setEnum = { parameter, String literal ->
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def enumClass = parameter.getClass().classLoader.loadClass(parameter.getClass().package.name + ".E" + parameter.getClass().simpleName)
+                def match = enumClass.enumConstants.find { it.name() == literal }
+                if (match == null) throw new IllegalStateException("No ${literal}")
+                setter.invoke(parameter, match)
+            }
+            def assign = { owner, String paramName, value ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ${paramName} on ${owner.getClass().simpleName}")
+                def parameter = unwrap(getter.invoke(owner))
+                def setter = parameter.getClass().methods.find { it.name == "setValue" && it.parameterTypes.length == 1 }
+                def typeName = setter.parameterTypes[0].name
+                if (typeName.contains("GIEnum") || parameter.getClass().simpleName.startsWith("GIEnum") || typeName.contains("ERte") || typeName.startsWith("com.vector.cfg.automation.model")) {
+                    try { setEnum(parameter, value.toString()); return } catch (Throwable ignored) {}
+                }
+                if (value instanceof Boolean) setter.invoke(parameter, value)
+                else if (value instanceof Long || value instanceof Integer) setter.invoke(parameter, value as Long)
+                else setter.invoke(parameter, value)
+            }
+            def setRef = { owner, String paramName, target ->
+                def methods = owner.getClass().methods.findAll { it.parameterTypes.length == 0 }
+                def getter = methods.find { it.name == "get${paramName}OrCreate" }
+                if (getter == null) getter = methods.find { it.name == "get${paramName}" }
+                if (getter == null) throw new IllegalStateException("No ref ${paramName}")
+                def parameter = unwrap(getter.invoke(owner))
+                if (parameter.respondsTo("setRefTarget")) {
+                    try { parameter.setRefTarget(target); return } catch (Throwable ignored) {}
+                }
+                if (parameter.respondsTo("setRefTargetMdf")) {
+                    parameter.setRefTargetMdf(target.mdfObject != null ? target.mdfObject : target)
+                    return
+                }
+                throw new IllegalStateException("Cannot setRef ${paramName}")
+            }
+            def ensure = { list, String name ->
+                list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+            }
+
+            transaction {
+                def fls = bswmdModel(Fls.DefRef).single
+                def fee = bswmdModel(Fee.DefRef).single
+                def memIf = bswmdModel(MemIf.DefRef).single
+                def flsGen = fls.flsGeneralOrCreate
+                def feeGen = fee.feeGeneralOrCreate
+                def hw = memIf.memIfMemHwA.byName("MemIfMemHwA")
+                hw.memIfMemHwARefOrCreate.setRefTargetMdf(feeGen.mdfObject)
+                fee.feeBlockConfiguration.each { blk ->
+                    blk.feeDeviceIndexOrCreate.setRefTargetMdf(flsGen.mdfObject)
+                }
+                scriptLogger.info("MemIf→FeeGeneral, FeeDeviceIndex→FlsGeneral")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def nvm = bswmdModel(NvM.DefRef).single
+                def common = nvm.nvMCommonOrCreate
+                assign(common, "NvMDatasetSelectionBits", 0L)
+                scriptLogger.info("NvMDatasetSelectionBits=0")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def fee = bswmdModel(Fee.DefRef).single
+                def nvm = bswmdModel(NvM.DefRef).single
+                def cfgBlk = nvm.nvMBlockDescriptor.byName("NvMConfigBlock")
+                try { assign(cfgBlk, "NvMBlockUseSetRamBlockStatus", true) } catch (Exception e) {
+                    scriptLogger.warn("ConfigBlock UseSetRam: " + e.message)
+                }
+                def tgt = cfgBlk.nvMTargetBlockReferenceOrCreate
+                def feeRef = tgt.nvMFeeRefOrCreate
+                def feeCfg = fee.feeBlockConfiguration.byName("FeeBlock_DemAdmin")
+                feeRef.nvMNameOfFeeBlockOrCreate.setRefTargetMdf(feeCfg.mdfObject)
+                try { assign(cfgBlk, "NvMRamBlockDataAddress", "NvM_ConfigBlock_Ram") } catch (Exception e) {
+                    scriptLogger.warn("ConfigBlock RAM: " + e.message)
+                }
+                // NvMNvBlockLength is preconfigured — do not touch
+                scriptLogger.info("NvMConfigBlock Fee target set")
+            }
+            activeProject().saveProject()
+
+            transaction {
+                def fee = bswmdModel(Fee.DefRef).single
+                def nvm = bswmdModel(NvM.DefRef).single
+                def blk = nvm.nvMBlockDescriptor.byName("NvMBlock_ProgRequest")
+                assign(blk, "NvMRamBlockDataAddress", "Appl_ProgRequest_NvMRam")
+                assign(blk, "NvMSelectBlockForReadAll", true)
+                assign(blk, "NvMSelectBlockForWriteAll", true)
+                assign(blk, "NvMBlockUseSetRamBlockStatus", true)
+                assign(blk, "NvMNvBlockNum", 1L)
+                def tgt = blk.nvMTargetBlockReferenceOrCreate
+                def feeRef = tgt.nvMFeeRefOrCreate
+                def feeBlk = fee.feeBlockConfiguration.byName("FeeBlock_ProgRequest")
+                feeRef.nvMNameOfFeeBlockOrCreate.setRefTargetMdf(feeBlk.mdfObject)
+                scriptLogger.info("NvMBlock_ProgRequest RAM+Fee OK")
+            }
+            activeProject().saveProject()
+
+            // Rte instances + MainFunction maps (Fee/NvM/Fls if present)
+            transaction {
+                def rte = bswmdModel(Rte.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+                def taskBsw = os.osTask.byName("Task_Bsw_10ms")
+                def alarmBsw = null
+                try { alarmBsw = os.osAlarm.byName("Alarm_Bsw_10ms") } catch (Exception ignored) {}
+
+                // Ensure Rte Bsw instances exist (DaVinci usually auto-creates on activate; force names)
+                ["Fee", "NvM", "Fls"].each { String modName ->
+                    try {
+                        if (!rte.rteBswModuleInstance.exists(modName)) {
+                            scriptLogger.warn("Rte instance ${modName} missing — open DaVinci may auto-add; skip map")
+                        } else {
+                            scriptLogger.info("Rte instance ${modName} present")
+                        }
+                    } catch (Exception e) {
+                        scriptLogger.warn("Rte check ${modName}: " + e.message)
+                    }
+                }
+
+                def mapMf = { String instName, String eventName, long pos ->
+                    if (!rte.rteBswModuleInstance.exists(instName)) {
+                        scriptLogger.warn("skip map ${instName}")
+                        return
+                    }
+                    def inst = rte.rteBswModuleInstance.byName(instName)
+                    def event = inst.rteBswEventToTaskMapping.exists(eventName) ?
+                            inst.rteBswEventToTaskMapping.byName(eventName) :
+                            inst.rteBswEventToTaskMapping.createAndAdd(eventName)
+                    setRef(event, "RteBswMappedToTaskRef", taskBsw)
+                    if (alarmBsw != null) {
+                        try { setRef(event, "RteBswUsedOsAlarmRef", alarmBsw) } catch (Exception ignored) {}
+                    }
+                    assign(event, "RteBswPositionInTask", pos)
+                    assign(event, "RteBswImmediateRestart", false)
+                    assign(event, "RteCyclicTriggerImplementation", "None")
+                    scriptLogger.info("Mapped ${eventName} → Task_Bsw_10ms @ ${pos}")
+                }
+
+                mapMf("Fee", "Fee_MainFunctionTimingEvent0", 20L)
+                mapMf("NvM", "NvM_MainFunctionTimingEvent0", 21L)
+                // Fls MainFunction optional if polling via Fee
+                try { mapMf("Fls", "Fls_MainFunctionTimingEvent0", 19L) } catch (Exception e) {
+                    scriptLogger.warn("Fls map: " + e.message)
+                }
+
+                // Assign NvM to OsApplication (Core0)
+                try {
+                    def app = os.osApplication.byName("OsApplication")
+                    // OsAppEcucPartition / module assignment often via Rte; log only
+                    scriptLogger.info("OsApplication Core0 present for NvM assignment (Rte may auto-bind)")
+                } catch (Exception ignored) {}
+            }
+            activeProject().saveProject()
+            scriptLogger.info("FixNvMStackRefs done")
+        }
+    }
+}

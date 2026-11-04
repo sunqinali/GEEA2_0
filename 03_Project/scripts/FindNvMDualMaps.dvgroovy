@@ -1,0 +1,88 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.rte.Rte
+
+daVinci {
+    scriptDescription "Find all Rte mappings that schedule NvM_MainFunction"
+    scriptTask("FindNvMDualMaps", DV_PROJECT) {
+        taskDescription "Scan BSW+SWC mappings whose trigger leads to NvM_MainFunction"
+        code {
+            def rte = bswmdModel(Rte.DefRef).single
+            def hits = []
+            rte.rteBswModuleInstance.each { inst ->
+                inst.rteBswEventToTaskMapping.each { ev ->
+                    try {
+                        def mdf = ev.rteBswEventRef.refTargetMdf
+                        def info = "${mdf}"
+                        def name = ""
+                        try { name = mdf.name } catch (Exception ignored) {}
+                        // also check starts-on / parent entity
+                        def blob = (info + " " + name).toLowerCase()
+                        if (blob.contains("nvm")) {
+                            def trig = ev.rteCyclicTriggerImplementation.value
+                            def task = "?"
+                            try { task = ev.rteBswMappedToTaskRef.refTarget.shortname } catch (Exception ignored) {}
+                            hits << "BSW ${inst.shortname}/${ev.shortname} event=${name} trig=${trig} task=${task} mdf=${info}"
+                        }
+                    } catch (Exception e) {
+                        // missing event ref
+                        def trig = "?"
+                        try { trig = ev.rteCyclicTriggerImplementation.value } catch (Exception ignored) {}
+                        if (inst.shortname.toString().toLowerCase().contains("nvm") || ev.shortname.toString().toLowerCase().contains("nvm")) {
+                            hits << "BSW ${inst.shortname}/${ev.shortname} NO_EVENTREF trig=${trig} err=${e.message}"
+                        }
+                    }
+                }
+            }
+            rte.rteSwComponentInstance.each { inst ->
+                inst.rteEventToTaskMapping.each { ev ->
+                    try {
+                        def mdf = ev.rteEventRef.refTargetMdf
+                        def name = ""
+                        try { name = mdf.name } catch (Exception ignored) {}
+                        def blob = ("${mdf} ${name} ${inst.shortname} ${ev.shortname}").toLowerCase()
+                        if (blob.contains("nvm")) {
+                            def trig = "?"
+                            try { trig = ev.rteCyclicTriggerImplementation.value } catch (Exception ignored) {}
+                            def task = "?"
+                            try { task = ev.rteMappedToTaskRef.refTarget.shortname } catch (Exception ignored) {}
+                            hits << "SWC ${inst.shortname}/${ev.shortname} event=${name} trig=${trig} task=${task}"
+                        }
+                    } catch (Exception ignored) {}
+                }
+            }
+            scriptLogger.info("HITS=${hits.size()}")
+            hits.each { scriptLogger.info(it) }
+
+            // Also: for Dem compare - how many maps hit Dem_MasterMainFunction
+            def demHits = 0
+            rte.rteBswModuleInstance.each { inst ->
+                inst.rteBswEventToTaskMapping.each { ev ->
+                    try {
+                        def mdf = ev.rteBswEventRef.refTargetMdf
+                        def name = ""; try { name = mdf.name } catch (Exception ignored) {}
+                        if (name.toLowerCase().contains("dem_master") || "${mdf}".toLowerCase().contains("dem_master")) {
+                            demHits++
+                            scriptLogger.info("DEM-BSW ${inst.shortname}/${ev.shortname} trig=${ev.rteCyclicTriggerImplementation.value}")
+                        }
+                    } catch (Exception ignored) {}
+                }
+            }
+            rte.rteSwComponentInstance.each { inst ->
+                inst.rteEventToTaskMapping.each { ev ->
+                    try {
+                        def mdf = ev.rteEventRef.refTargetMdf
+                        def name = ""; try { name = mdf.name } catch (Exception ignored) {}
+                        if (name.toLowerCase().contains("dem_master") || ev.shortname.toString().toLowerCase().contains("dem_master")) {
+                            demHits++
+                            def trig = "?"; try { trig = ev.rteCyclicTriggerImplementation.value } catch (Exception ignored) {}
+                            scriptLogger.info("DEM-SWC ${inst.shortname}/${ev.shortname} trig=${trig}")
+                        }
+                    } catch (Exception ignored) {}
+                }
+            }
+            scriptLogger.info("demHits=${demHits}")
+            scriptLogger.info("FindNvMDualMaps done")
+        }
+    }
+}

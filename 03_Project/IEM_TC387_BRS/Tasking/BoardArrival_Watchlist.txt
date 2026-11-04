@@ -1,0 +1,72 @@
+IEM_TC387_BRS — debugger watchlist (board arrival)
+=================================================
+
+Download: Tasking/Debug/IEM_TC387_BRS.elf
+Rebuild after Generate: Tasking\AfterGenerate.bat
+
+=== One glance ===
+Appl_Bringup_Ok           expect 1  (Stack + Smoke + samples)
+Appl_Bringup_FailFlags    bits: 0=Stack 1=Smoke 2=Sample 3=Nm 4=ComIpdu
+Appl_Can_SampleCnt        must increment (~100 ms, Core0)
+Appl_Core2_Tick100ms      must increment (Core2 alive; StartCore 1..3 OK)
+Appl_Com_IpduStarted      1 after Com_Init and/or BswM AL_EnterRun
+Appl_Can_PduMode          1 = CANIF_GET_ONLINE (with StackOk)
+Appl_ProgRequestFlag      0 normal; 1 if AL_ProgReset / Dcm SetProgConditions
+Appl_ProgMagic            0x50524F47 when handover valid
+Appl_Dem_BusOffActive     1 while CanSM BusOffCnt>0 (Dem COM_Busoff)
+Appl_Dem_CarConfigErrActive  via Dem COM_CarConfigErr (CDD E300-56)
+Appl_CarConfig_State         0 Bulk / 1 Valid / 2 Error
+Appl_CarConfig_LastBlkId     VehCfgPrm BlockID (nonzero when RX)
+Appl_CarConfig_PassedOnce    1 after first good BlkID (Dem PASSED)
+Manual: Appl_CarConfig_InjectError()
+
+=== NvM / Fee / Dem NvRAM (ELF: regen22 + Appl_NvM_* hooks; DemUseNvm=true) ===
+Fls/Fee DF0 @ 0xAF000000; MemIf→Fee; NvM on Task_Bsw_10ms (BSW+SWC Timer None)
+Fee: NvMConfig(+cons0)=2/3, Prog=4, DemAdmin=6, DemStatus=8, Primary0-7=10..24 (stride 2)
+Startup: EcuM DriverInitOne → Appl_NvM_InitStackAndReadAll() before Dem_Init (timed poll)
+Shutdown: EcuM_OnGoOffOne → Appl_NvM_WriteAllSync()
+Watch: Appl_NvM_Inited, ReadAllDone/TimedOut, WriteAllDone/TimedOut, MultiBlockResult
+Board: confirm ReadAllDone=1 (not TimedOut); Fee idle; ProgRequest + Dem DTC persist (T8)
+
+=== CAN stack (Core0) ===
+Appl_Can_StackOk          1
+Appl_Can_ComMMode         2 FULL
+Appl_Can_CanSMMode        2 FULL
+Appl_Can_CtrlMode         2 STARTED
+Appl_Can_TrcvMode         0 NORMAL
+Appl_Can_CanSMState       0x10 FULLCOM meta
+Appl_Can_BusOffCnt        0
+Appl_Can_NmOk             1 (optional for Bringup_Ok)
+Appl_Can_NmMode           3 NETWORK
+Appl_Can_NmState          4 NORMAL / 5 REPEAT / 3 READY_SLEEP
+
+=== COM traffic ===
+Appl_Com_IpduOk           1 (Rx/Tx MPG + base SPG + ReceptionDM)
+Appl_Com_RxOkCnt          E_OK on isCarTiGlb
+Appl_Com_RxChangeCnt      live bus (CarTiGlb changes)
+Appl_Com_RxLastValue      last CarTiGlb
+BswM AL_EnterRun: Allow + ComM FULL + Appl_Com_StartIpduGroups_ForBswM()
+BswM AL_ProgReset: Appl_BswM_ProgRequest() + EcuM reset/GoDown
+
+=== TJA1145 smoke ===
+Appl_CanTrcv_SmokeOk      1
+Appl_CanTrcv_SmokePhase   1 afterInit / 2 deferred / 3 manual
+Appl_CanTrcv_LastRet      0 E_OK
+Appl_CanTrcv_SpiSeqL/M/N  0 SPI_SEQ_OK
+Appl_CanTrcv_LastOpMode   0 NORMAL
+
+Manual calls:
+  Appl_CanTrcv_Smoke_SetNormal / _SetStandby / _SetSleep
+
+=== DET ===
+Appl_Det_Count
+Appl_Det_LastModuleId / _LastApiId / _LastErrorId
+detLogBuffer / detStatus
+
+=== HW if SPI/mode fails ===
+P32.5 ENCAN HIGH, P32.4 NSTBCAN HIGH
+P10.5 CS QSPI3 CH8, P10.6 SCLK, P10.8 MOSI, P10.7 MISO
+
+=== Multicore note ===
+ECUM_NUMBER_OF_CORES=4; EcuM_StartOS StartCore(1..3); BRS_CPU_CORE_AMOUNT=4
+Do not start Core4/5 (TC397 SIP leftover; LSL maps them to LMU).

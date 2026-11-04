@@ -1,0 +1,50 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.ecuc.EcuC
+import com.vector.cfg.automation.model.ecuc.microsar.ecum.EcuM
+import com.vector.cfg.automation.model.ecuc.microsar.os.Os
+
+daVinci {
+    scriptDescription "Bind EcuM to the four Ecuc partitions. BSW execution stays on Core 0."
+
+    scriptTask("ConfigureEcuM4Cores", DV_PROJECT) {
+        taskDescription "Create EcucPartition Core 0-3 and point EcuM and OsApplication at them"
+        code {
+            transaction {
+                def ecuC = bswmdModel(EcuC.DefRef).single
+                def ecuM = bswmdModel(EcuM.DefRef).single
+                def os = bswmdModel(Os.DefRef).single
+
+                def parts = ecuC.ecucPartitionCollectionOrCreate.ecucPartition
+                def appNames = ["OsApplication", "OsApplication_Core1", "OsApplication_Core2", "OsApplication_Core3"]
+                def flex = ecuM.ecuMConfigurationOrCreate.ecuMFlexConfigurationOrCreate
+
+                (0..3).each { i ->
+                    def name = "EcucPartition_Core${i}"
+                    def part = parts.exists(name) ? parts.byName(name) : parts.createAndAdd(name)
+                    part.ecucPartitionBswModuleExecutionOrCreate.value = (i == 0)
+
+                    def app = os.osApplication.byName(appNames[i])
+                    app.osAppEcucPartitionRefOrCreate.setRefTarget(part)
+
+                    boolean linked = false
+                    flex.ecuMPartitionRef.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == part.shortname) {
+                            linked = true
+                        }
+                    }
+                    if (!linked) {
+                        flex.ecuMPartitionRef.createAndAdd().setRefTarget(part)
+                    }
+                    scriptLogger.info(name + " bsw=" + (i == 0) + " app=" + appNames[i])
+                }
+
+                def mode = os.osAppMode.byName("OSDEFAULTAPPMODE")
+                ecuM.ecuMConfigurationOrCreate.ecuMCommonConfigurationOrCreate.ecuMDefaultAppModeOrCreate.setRefTarget(mode)
+                scriptLogger.info("EcuM default app mode OSDEFAULTAPPMODE")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

@@ -1,0 +1,23 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.aurix2g.ecucdefs.mcallib.McalLib
+
+daVinci {
+    scriptDescription "Activate the Infineon McalLib module required by the Mcu generator"
+    scriptTask("ActivateMcalLib", DV_PROJECT) {
+        taskDescription "Add McalLib to the active ECUC when it is missing"
+        code {
+            transaction {
+                def present = activeEcuc.modules(McalLib.DefRef)
+                if (present == null || present.isEmpty()) {
+                    operations.activateModuleConfiguration(McalLib.DefRef)
+                    scriptLogger.info("McalLib activated")
+                } else {
+                    scriptLogger.info("McalLib already active")
+                }
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

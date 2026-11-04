@@ -1,0 +1,157 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.BswM
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmarbitration.bswmmodecondition.bswmconditiontype.EBswMConditionType
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmarbitration.bswmrule.bswmruleinitstate.EBswMRuleInitState
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmmodecontrol.bswmactionlist.bswmactionlistexecution.EBswMActionListExecution
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmmodecontrol.bswmaction.bswmavailableactions.bswmcommmodeswitch.bswmcommrequestedmode.EBswMComMRequestedMode
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmmodecontrol.bswmaction.bswmavailableactions.bswmecumselectshutdowntarget.bswmecumshutdowntarget.EBswMEcuMShutdownTarget
+import com.vector.cfg.automation.model.ecuc.microsar.comm.ComM
+import com.vector.cfg.automation.model.ecuc.microsar.ecuc.EcuC
+import com.vector.cfg.automation.model.ecuc.microsar.ecum.EcuM
+
+daVinci {
+    scriptDescription "BswM: allow FULL_COMM on EcuM RUN, and reset on DCM application update"
+
+    scriptTask("ConfigureBswM", DV_PROJECT) {
+        taskDescription "Create the startup communication rule and the programming-session reset rule"
+        code {
+            transaction {
+                def bswM = bswmdModel(BswM.DefRef).single
+                def comm = bswmdModel(ComM.DefRef).single
+                def ecuM = bswmdModel(EcuM.DefRef).single
+                def ecuC = bswmdModel(EcuC.DefRef).single
+
+                def commSet = comm.comMConfigSet
+                def channel = commSet.comMChannel.byName("PropulsionCAN_IEM_19020f5a")
+                def commUser = commSet.comMUser.byName("PropulsionCAN_IEM_04f8de22")
+
+                def flex = ecuM.ecuMConfigurationOrCreate.ecuMFlexConfigurationOrCreate
+                def ecuMUsers = flex.ecuMFlexUserConfig
+                def ecuMUser = ecuMUsers.exists("EcuMUser_BswM") ? ecuMUsers.byName("EcuMUser_BswM") : ecuMUsers.createAndAdd("EcuMUser_BswM")
+                ecuMUser.ecuMFlexUserOrCreate.value = 0
+                def allowed = flex.ecuMGoDownAllowedUsersOrCreate.ecuMGoDownAllowedUserRef
+                boolean userLinked = false
+                allowed.each { ref ->
+                    if (ref.refTarget != null && ref.refTarget.shortname == ecuMUser.shortname) {
+                        userLinked = true
+                    }
+                }
+                if (!userLinked) {
+                    allowed.createAndAdd().setRefTarget(ecuMUser)
+                }
+                def resetMode = flex.ecuMResetMode.byName("ECUM_RESET_MCU")
+
+                def configs = bswM.bswMConfig
+                def cfg = configs.exists("BswMConfig") ? configs.byName("BswMConfig") : configs.createAndAdd("BswMConfig")
+                def partition = ecuC.ecucPartitionCollectionOrCreate.ecucPartition.byName("EcucPartition_Core0")
+                cfg.bswMPartitionRefOrCreate.setRefTarget(partition)
+
+                def arb = cfg.bswMArbitrationOrCreate
+                def ctrl = cfg.bswMModeControlOrCreate
+
+                def ensure = { list, String name ->
+                    list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+                }
+                def linkOnce = { list, target ->
+                    boolean linked = false
+                    list.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == target.shortname) {
+                            linked = true
+                        }
+                    }
+                    if (!linked) {
+                        list.createAndAdd().setRefTargetMdf(target.mdfObject)
+                    }
+                }
+
+                def portEcuM = ensure(arb.bswMModeRequestPort, "MRP_EcuMIndication")
+                portEcuM.bswMModeRequestSourceOrCreate.bswMEcuMIndicationOrCreate
+                def portDcm = ensure(arb.bswMModeRequestPort, "MRP_DcmApplicationUpdated")
+                portDcm.bswMModeRequestSourceOrCreate.bswMDcmApplicationUpdatedIndicationOrCreate
+
+                def condRun = ensure(arb.bswMModeCondition, "COND_EcuM_RUN")
+                condRun.bswMConditionTypeOrCreate.value = EBswMConditionType.BSWM_EQUALS
+                condRun.bswMConditionModeOrCreate.setRefTarget(portEcuM)
+                condRun.bswMConditionValueOrCreate.bswMBswModeOrCreate.bswMBswRequestedModeOrCreate.value = "ECUM_STATE_RUN"
+
+                def condProg = ensure(arb.bswMModeCondition, "COND_DcmApplicationUpdated")
+                condProg.bswMConditionTypeOrCreate.value = EBswMConditionType.BSWM_EQUALS
+                condProg.bswMConditionModeOrCreate.setRefTarget(portDcm)
+                condProg.bswMConditionValueOrCreate.bswMBswModeOrCreate.bswMBswRequestedModeOrCreate.value = "TRUE"
+
+                def exprRun = ensure(arb.bswMLogicalExpression, "EXP_EcuM_RUN")
+                linkOnce(exprRun.bswMArgumentRef, condRun)
+                def exprProg = ensure(arb.bswMLogicalExpression, "EXP_DcmApplicationUpdated")
+                linkOnce(exprProg.bswMArgumentRef, condProg)
+
+                def actAllow = ensure(ctrl.bswMAction, "ACT_ComMAllow")
+                def allow = actAllow.bswMAvailableActionsOrCreate.bswMComMAllowComOrCreate
+                allow.bswMComAllowedOrCreate.value = true
+                allow.bswMComMAllowChannelRefOrCreate.setRefTarget(channel)
+
+                def actFull = ensure(ctrl.bswMAction, "ACT_ComMFull")
+                def full = actFull.bswMAvailableActionsOrCreate.bswMComMModeSwitchOrCreate
+                full.bswMComMRequestedModeOrCreate.value = EBswMComMRequestedMode.BSWM_FULL_COM
+                full.bswMComMUserRefOrCreate.setRefTarget(commUser)
+
+                def actFlag = ensure(ctrl.bswMAction, "ACT_ProgRequest")
+                def callout = actFlag.bswMAvailableActionsOrCreate.bswMUserCalloutOrCreate
+                callout.bswMUserCalloutFunctionOrCreate.value = "Appl_BswM_ProgRequest"
+                callout.bswMCreateCalloutOrCreate.value = false
+
+                def actReset = ensure(ctrl.bswMAction, "ACT_SelectReset")
+                def select = actReset.bswMAvailableActionsOrCreate.bswMEcuMSelectShutdownTargetOrCreate
+                select.bswMEcuMShutdownTargetOrCreate.value = EBswMEcuMShutdownTarget.RESET
+                select.bswMEcuMResetModeRefOrCreate.setRefTarget(resetMode)
+
+                def actDown = ensure(ctrl.bswMAction, "ACT_GoDown")
+                actDown.bswMAvailableActionsOrCreate.bswMEcuMGoDownOrCreate.bswMEcuMUserIdRefOrCreate.setRefTarget(ecuMUser)
+
+                def listRun = ensure(ctrl.bswMActionList, "AL_EnterRun")
+                listRun.bswMActionListExecutionOrCreate.value = EBswMActionListExecution.BSWM_TRIGGER
+                def itemAllow = ensure(listRun.bswMActionListItem, "AL_EnterRun_Allow")
+                itemAllow.bswMActionListItemIndexOrCreate.value = 0
+                itemAllow.bswMAbortOnFailOrCreate.value = false
+                itemAllow.bswMActionListItemRefOrCreate.setRefTargetMdf(actAllow.mdfObject)
+                def itemFull = ensure(listRun.bswMActionListItem, "AL_EnterRun_Full")
+                itemFull.bswMActionListItemIndexOrCreate.value = 1
+                itemFull.bswMAbortOnFailOrCreate.value = false
+                itemFull.bswMActionListItemRefOrCreate.setRefTargetMdf(actFull.mdfObject)
+
+                def listProg = ensure(ctrl.bswMActionList, "AL_ProgReset")
+                listProg.bswMActionListExecutionOrCreate.value = EBswMActionListExecution.BSWM_TRIGGER
+                def itemFlag = ensure(listProg.bswMActionListItem, "AL_ProgReset_Flag")
+                itemFlag.bswMActionListItemIndexOrCreate.value = 0
+                itemFlag.bswMAbortOnFailOrCreate.value = false
+                itemFlag.bswMActionListItemRefOrCreate.setRefTargetMdf(actFlag.mdfObject)
+                def itemReset = ensure(listProg.bswMActionListItem, "AL_ProgReset_Target")
+                itemReset.bswMActionListItemIndexOrCreate.value = 1
+                itemReset.bswMAbortOnFailOrCreate.value = false
+                itemReset.bswMActionListItemRefOrCreate.setRefTargetMdf(actReset.mdfObject)
+                def itemDown = ensure(listProg.bswMActionListItem, "AL_ProgReset_GoDown")
+                itemDown.bswMActionListItemIndexOrCreate.value = 2
+                itemDown.bswMAbortOnFailOrCreate.value = false
+                itemDown.bswMActionListItemRefOrCreate.setRefTargetMdf(actDown.mdfObject)
+
+                def ruleRun = ensure(arb.bswMRule, "RULE_EnterRun")
+                ruleRun.bswMRuleIdOrCreate.value = 0
+                ruleRun.bswMRuleInitStateOrCreate.value = EBswMRuleInitState.BSWM_FALSE
+                ruleRun.bswMNestedExecutionOnlyOrCreate.value = false
+                ruleRun.bswMRuleExpressionRefOrCreate.setRefTargetMdf(exprRun.mdfObject)
+                ruleRun.bswMRuleTrueActionListOrCreate.setRefTargetMdf(listRun.mdfObject)
+
+                def ruleProg = ensure(arb.bswMRule, "RULE_ProgReset")
+                ruleProg.bswMRuleIdOrCreate.value = 1
+                ruleProg.bswMRuleInitStateOrCreate.value = EBswMRuleInitState.BSWM_FALSE
+                ruleProg.bswMNestedExecutionOnlyOrCreate.value = false
+                ruleProg.bswMRuleExpressionRefOrCreate.setRefTargetMdf(exprProg.mdfObject)
+                ruleProg.bswMRuleTrueActionListOrCreate.setRefTargetMdf(listProg.mdfObject)
+
+                scriptLogger.info("BswM rules RULE_EnterRun and RULE_ProgReset created")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved")
+        }
+    }
+}

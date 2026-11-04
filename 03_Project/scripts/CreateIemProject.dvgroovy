@@ -1,0 +1,51 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+daVinci {
+    scriptDescription "Create IEM_TC387 DPA on the TC397 derivative with 4-core OS intended later"
+
+    scriptTask("CreateIemProject", DV_APPLICATION) {
+        taskDescription "Create the IEM_TC387 DaVinci project"
+        code {
+            def folder = "c:/wk_manu/xinyu/03_Project/IEM_TC387"
+            def devExe = "C:/Program Files (x86)/Vector DaVinci Developer 4.7/Bin/DaVinciDEV.exe"
+
+            def theProject = projects.createProject {
+                projectName "IEM_TC387"
+                projectFolder folder
+
+                general {
+                    description "IEM GEEA2.0 Base Tech. Tool derivative TC397, OS will enable Core 0-3 only. Board is jf_ctrl TC387."
+                    author "IEM"
+                    createStartMenuEntries false
+                }
+
+                def tgt = getTarget()
+                def derivs = tgt.getAvailableDerivatives()
+                scriptLogger.info("Available derivatives: " + derivs.collect { it.name })
+                def deriv = derivs.find { it.name.contains("TC397") }
+                if (deriv == null) {
+                    throw new IllegalStateException("No TC397 derivative")
+                }
+                scriptLogger.info("Selected derivative: " + deriv.name)
+                tgt.setDerivative(deriv)
+
+                def comps = tgt.getAvailableCompilers()
+                scriptLogger.info("Available compilers: " + comps.collect { it.toString() })
+                def comp = comps.find { it.toString().toLowerCase().contains("tasking") }
+                if (comp == null) {
+                    throw new IllegalStateException("No Tasking compiler")
+                }
+                scriptLogger.info("Selected compiler: " + comp)
+                tgt.setCompiler(comp)
+
+                daVinciDeveloper {
+                    createDaVinciDeveloperWorkspace true
+                    daVinciDeveloperExecutable devExe
+                }
+            }
+
+            scriptLogger.info("Project created: " + theProject)
+            theProject
+        }
+    }
+}

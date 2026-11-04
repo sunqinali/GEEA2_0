@@ -1,0 +1,23 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.crc.Crc
+
+daVinci {
+    scriptDescription "Activate MICROSAR Crc required by NvM ConfigBlock CRC"
+    scriptTask("ActivateCrc", DV_PROJECT) {
+        taskDescription "Add Crc module to active ECUC"
+        code {
+            transaction {
+                def present = activeEcuc.modules(Crc.DefRef)
+                if (present == null || present.isEmpty()) {
+                    operations.activateModuleConfiguration(Crc.DefRef)
+                    scriptLogger.info("Crc activated")
+                } else {
+                    scriptLogger.info("Crc already active")
+                }
+            }
+            activeProject().saveProject()
+            scriptLogger.info("ActivateCrc done")
+        }
+    }
+}
