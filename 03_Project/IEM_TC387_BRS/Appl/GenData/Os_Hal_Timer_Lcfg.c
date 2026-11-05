@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Hal_Timer_Lcfg.c
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:51
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -127,7 +127,7 @@ CONST(Os_Hal_TimerFrtConfigType, OS_CONST) OsCfg_Hal_TimerFrt_SystemTimer_Core2 
   /* ICRMask                           = */ OS_HAL_TIMER_STM_ICR_USE_CMP0_MASK,
   /* ICRValue                          = */ OS_HAL_TIMER_STM_ICR_USE_CMP0_VALUE,
   /* ReloadValue                       = */ 0
-} 
+}
 ;
 
 #define OS_STOP_SEC_CORE2_CONST_UNSPECIFIED

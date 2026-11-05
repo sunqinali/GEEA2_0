@@ -15,7 +15,18 @@ Appl_Os_StartOsEntered    2=master called StartOS (barrier); 3=sched (unlikely)
 Appl_Os_StartOsMask       bits of cores that reached StartOS() — expect 0xF
 Appl_Os_SlavePhase[0..3]  1=BIV 2=PreMain 3=main/Os_Init 4=Os_Init done 5=EcuM_StartOS 6=StartOS
                           8=Default_Init_Task (barrier released). Stuck at 6 = MPU/barrier write fail
-Appl_Os_FwStamp           MUST be 0x260B051E (GC=INIT + EraseAll + no early ReadAll)
+Appl_Os_FwStamp           MUST be 0x260B052D (Com_IpduGroupControl; was Start no-op under COM_IPDUGROUPINFO=OFF)
+                          Do NOT “fix” base to 0xF0208E00 — Vector tCanObjType has Infineon preamble before CREL.
+                          HwLoop timeout 100ms (Appl_Can_HwLoopTimer). Expect HwLoopTimeoutCnt=0 after Can_Init.
+                          Alone on ACAN: BusOffCnt climbs (NM TX no ACK) → ComM/CanSM stay SILENT → StackOk=0.
+                          With ZCANPRO ACAN 500k (ACK + NM 0x51C): expect ComM/CanSM FULL, Pdu ONLINE, RxOkCnt↑.
+Appl_Os_ProtHookCnt/Fatal/Dstr/Deadd  MemFault latch; also CPU0_DEADD @ 0xF881901C
+Flash: python Tasking\_elf2ihex.py then MemtoolCli PROGRAM *.hex (mass-erase first if CRC fail)
+MPU: AfterGenerate _patch_mpu_barrier_write.py opens Region0-3 R/W on all PS
+Appl_Diag_ReadyApproxMs   after DemDeferred=0; expect <<2500 for T2
+Appl_Can_NmOk / NmState   1 / NORMAL_OPERATION (ZCANPRO on ACAN 500k: NM 0x51C; pins P32.3/P32.2)
+Appl_ComShell_RxOkCnt     rises when CarTiGlb received (needs bus)
+Appl_ComShell_CarTiGlb    live global time from COM
 Appl_NvM_FeeMainJob       1=INITGC then →0; stuck=erase/Fls issue
 Appl_NvM_FeeInitGCState   7=virgin prep, 1=INVALID→erase, 6=FAIL
 Appl_NvM_FeePendReq       1=no pend; 3=READ hung (051D bug)
@@ -31,7 +42,7 @@ Appl_NvM_DemDeferred      →0 after ReadAll
 Det 53                    Dcm MF before Dcm_Init — clears after DemDeferred=0
 Appl_Os_SlavePhase[2]     9
 Appl_Can_Ccucon1          0x21210012 = fMCAN OK
-Appl_NvM_ReadAllDone      0 + Det20=NvM/Fee OK for bring-up
+Appl_NvM_ReadAllDone      1 (board OK on 051E+)
 Appl_Os_RstStat           SCU_RSTSTAT latch; SMU≈bit3, PORST=bit16 sticky — SMU means app reset
                           If PC snaps to 0xA0000000: SMU reset; check RstStat then DisableSMU path
 Appl_Com_IpduStarted      1 after Com_Init and/or BswM AL_EnterRun
@@ -78,9 +89,12 @@ Appl_Can_NmState          4 NORMAL / 5 REPEAT / 3 READY_SLEEP
 
 === COM traffic ===
 Appl_Com_IpduOk           1 (Rx/Tx MPG + base SPG + ReceptionDM)
-Appl_Com_RxOkCnt          E_OK on isCarTiGlb
+Appl_Com_RxOkCnt          E_OK on isCarTiGlb (needs UpdateBit!)
 Appl_Com_RxChangeCnt      live bus (CarTiGlb changes)
 Appl_Com_RxLastValue      last CarTiGlb
+Appl_Com_RxRet            0x80 = no UB yet; 0 = OK
+# ZCANPRO RX test: ID 0x162 STD, DLC=8, data 11 22 33 44 80 00 00 00
+#   byte0..3 = CarTiGlb (Motorola), byte4 bit7 = UpdateBit (must be 1)
 BswM AL_EnterRun: Allow + ComM FULL + Appl_Com_StartIpduGroups_ForBswM()
 BswM AL_ProgReset: Appl_BswM_ProgRequest() + EcuM reset/GoDown
 

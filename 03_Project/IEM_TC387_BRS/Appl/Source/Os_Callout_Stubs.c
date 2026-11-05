@@ -76,6 +76,11 @@ volatile uint32 Appl_Os_FrtShim_TIM0 = 0uL;
 volatile uint32 Appl_Os_FrtShim_CMP0 = 0uL;
 volatile uint32 Appl_Os_FrtShim_CMCON = 0uL;
 volatile uint32 Appl_Os_FrtShim_ICR = 0uL;
+/* MemFault / ProtectionHook latch (StartOS Cat2 bring-up) */
+volatile uint8 Appl_Os_ProtHookCnt = 0u;
+volatile StatusType Appl_Os_ProtFatal = (StatusType)0u;
+volatile uint32 Appl_Os_ProtDstr = 0uL;
+volatile uint32 Appl_Os_ProtDeadd = 0uL;
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           </USERBLOCK>
  *********************************************************************************************************************/
@@ -161,6 +166,9 @@ FUNC(void, OS_ERRORHOOK_CODE) ErrorHook(StatusType Error)
       Appl_Os_ErrorDetailed = CurrentError.DetailedError;
     }
     Appl_Os_ErrorCoreId = (uint8)GetCoreID();
+    /* Also sample trap regs (ProtectionHook is OFF in this cfg). */
+    Appl_Os_ProtDstr = (uint32)__mfcr(0x9010);
+    Appl_Os_ProtDeadd = (uint32)__mfcr(0x901C);
   }
   if (Error != E_OS_NOFUNC)
   {
@@ -189,6 +197,14 @@ FUNC(ProtectionReturnType, OS_PROTECTIONHOOK_CODE) ProtectionHook(StatusType Fat
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           <USERBLOCK OS_Callout_Stubs_ProtectionHook>
  *********************************************************************************************************************/
+  if (Appl_Os_ProtHookCnt == 0u)
+  {
+    Appl_Os_ProtFatal = Fatalerror;
+    /* TC38x CSFR (regtc38x): DSTR=0x9010, DEADD=0x901C */
+    Appl_Os_ProtDstr = (uint32)__mfcr(0x9010);
+    Appl_Os_ProtDeadd = (uint32)__mfcr(0x901C);
+  }
+  Appl_Os_ProtHookCnt++;
   return PRO_SHUTDOWN;
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           </USERBLOCK>

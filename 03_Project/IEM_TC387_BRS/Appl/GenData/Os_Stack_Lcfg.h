@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Stack_Lcfg.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:52
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -91,7 +91,7 @@ extern OS_STACK_DECLARE(OsCfg_Stack_OsCore0_Init_Dyn, OS_CFG_SIZE_OSCORE0_INIT_S
 # include "Os_MemMap_Stacks.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
 
 /* ISR core global stack: OsCore0_Isr_Core */
-/* User: [CounterIsr_SystemTimer] */
+/* User: [CanIsr_3, CounterIsr_SystemTimer] */
 extern OS_STACK_DECLARE(OsCfg_Stack_OsCore0_Isr_Core_Dyn, OS_CFG_SIZE_OSCORE0_ISR_CORE_STACK);
 
 # define OS_STOP_SEC_STACK_OSCORE0_ISR_CORE_VAR_NOINIT_UNSPECIFIED

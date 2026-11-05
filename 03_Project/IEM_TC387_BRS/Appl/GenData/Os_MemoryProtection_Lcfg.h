@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_MemoryProtection_Lcfg.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:52
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -77,6 +77,7 @@
 extern CONST(Os_MpCoreConfigType, OS_CONST) OsCfg_Mp_OsCore0;
 extern CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_OsApplication;
 extern CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_SystemApplication_OsCore0;
+extern CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_CanIsr_3;
 extern CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_CounterIsr_SystemTimer;
 extern CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_Default_Init_Task;
 extern CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_Default_Init_Task_Trusted;

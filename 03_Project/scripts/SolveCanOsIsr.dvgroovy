@@ -1,0 +1,42 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+daVinci {
+    scriptDescription "Solve Cfg95300 Can OsIsr recommendations into Os"
+
+    scriptTask("SolveCanOsIsr", DV_PROJECT) {
+        taskDescription "Preferred-solve Can Cat2 OsIsr then save"
+        code {
+            (1..8).each { round ->
+                def results = validation.validationResults
+                def cfg95300 = results.findAll { r ->
+                    try {
+                        def id = (r.id ?: r.resultId ?: "").toString()
+                        def msg = (r.message ?: r.description ?: "").toString()
+                        id.contains("Cfg95300") || msg.contains("Os Interrupt Service Routines")
+                    } catch (Throwable t) {
+                        false
+                    }
+                }
+                def withPreferred = results.findAll { r ->
+                    try { r.preferredSolvingAction != null } catch (Throwable t) { false }
+                }
+                scriptLogger.info("Round ${round}: total=${results.size()} cfg95300=${cfg95300.size()} preferred=${withPreferred.size()}")
+                cfg95300.each { r ->
+                    try {
+                        scriptLogger.info("  Cfg95300: id=${r.id} msg=${r.message} preferred=${r.preferredSolvingAction}")
+                    } catch (Throwable t) {
+                        scriptLogger.info("  Cfg95300 entry (dump failed): " + r)
+                    }
+                }
+                if (withPreferred.isEmpty()) {
+                    return
+                }
+                def summary = validation.solver.solveAllWithPreferredSolvingAction()
+                scriptLogger.info("Round ${round} solve summary: " + summary)
+                activeProject().saveProject()
+            }
+            activeProject().saveProject()
+            scriptLogger.info("SolveCanOsIsr finished")
+        }
+    }
+}

@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Task_Lcfg.c
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 17:03:57
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -634,7 +634,7 @@ CONST(Os_TaskConfigType, OS_CONST) OsCfg_Task_Task_Appl_100ms =
   /* .HomePriority           = */ (Os_TaskPrioType)5uL,
   /* .TaskId                 = */ Task_Appl_100ms,
   /* .RunningPriority        = */ (Os_TaskPrioType)5uL,
-  /* .MaxActivations         = */ (Os_ActivationCntType)5uL,
+  /* .MaxActivations         = */ (Os_ActivationCntType)1uL,
   /* .AutostartModes         = */ OS_APPMODE_NONE,
     /* .AccessingApplications = */ (OS_APPID2MASK(OsApplication_Core2) | OS_APPID2MASK(SystemApplication_OsCore0) | OS_APPID2MASK(SystemApplication_OsCore1) | OS_APPID2MASK(SystemApplication_OsCore2) | OS_APPID2MASK(SystemApplication_OsCore3)),  /* PRQA S 0410 */ /* MD_MSR_Dir1.1 */
   /* .NumSchEventsRoundRobin = */ 0uL,
@@ -669,7 +669,7 @@ CONST(Os_TaskConfigType, OS_CONST) OsCfg_Task_Task_Appl_10ms =
   /* .HomePriority           = */ (Os_TaskPrioType)4uL,
   /* .TaskId                 = */ Task_Appl_10ms,
   /* .RunningPriority        = */ (Os_TaskPrioType)4uL,
-  /* .MaxActivations         = */ (Os_ActivationCntType)5uL,
+  /* .MaxActivations         = */ (Os_ActivationCntType)1uL,
   /* .AutostartModes         = */ OS_APPMODE_NONE,
     /* .AccessingApplications = */ (OS_APPID2MASK(OsApplication) | OS_APPID2MASK(OsApplication_Core1) | OS_APPID2MASK(OsApplication_Core2) | OS_APPID2MASK(OsApplication_Core3) | OS_APPID2MASK(SystemApplication_OsCore0) | OS_APPID2MASK(SystemApplication_OsCore1) | OS_APPID2MASK(SystemApplication_OsCore2) | OS_APPID2MASK(SystemApplication_OsCore3)),  /* PRQA S 0410 */ /* MD_MSR_Dir1.1 */
   /* .NumSchEventsRoundRobin = */ 0uL,

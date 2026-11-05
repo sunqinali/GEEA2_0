@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Application_Cfg.h
- *   Generation Time: 2026-10-30 22:32:05
+ *   Generation Time: 2026-11-05 20:21:51
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -88,7 +88,7 @@
 # define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_ALARMS             (0uL)
 # define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_COUNTERS           (1uL)
 # define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_HOOKS              (0uL)
-# define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_ISRS               (1uL)
+# define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_ISRS               (2uL)
 # define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_CAT1ISRS           (0uL)
 # define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_SCHTS              (0uL)
 # define OS_CFG_NUM_APP_SYSTEMAPPLICATION_OSCORE0_TASKS              (3uL)

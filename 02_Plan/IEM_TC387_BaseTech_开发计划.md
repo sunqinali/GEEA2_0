@@ -71,7 +71,7 @@ Base Tech 对底层时序和平台的硬要求：
 
 1. Developer 使用 4.7。阶段 0 的出口包含用 4.7 打开同一 DPA。
 2. 编译器使用本机 Tasking v6.3.1。SIP 交付说明写的是 V6.2r2，按已确认的 v6.3.1 配置工程。
-3. CAN 收发器使用 TJA1145。jf_ctrl 上已贴装的是 U600 `TJA1145AT/FD`，接在 DCAN。SPI 为 QSPI3。收发器网络管理包括 Normal / Standby / Sleep、CAN 唤醒和选择性唤醒，唤醒范围覆盖 NM ID `0x500`–`0x53F`。
+3. CAN 收发器使用 TJA1145。jf_ctrl 上已贴装的是 U600 `TJA1145AT/FD`，**接在 ACAN**（MCU `CANATXD_P32_3` / `CANARXD_P32_2`，`M_CAN3` / RxSel_b）。SPI 为 QSPI3。DCAN（P11.0/P11.7）对应 U606，板级 DNS。收发器网络管理包括 Normal / Standby / Sleep、CAN 唤醒和选择性唤醒，唤醒范围覆盖 NM ID `0x500`–`0x53F`。
 4. 新建工程基于 TC397。SIP 许可覆盖 TC387。OS 只开 Core 0–Core 3，BSW 全部放在 Core 0。不配置 Core 4 和 Core 5。原理图 HWCFG2 在 4 核及以上为下拉。
 5. 本阶段不做 FBL。应用只留 `ProgRequest` 标志和复位原因，供以后的 PBL/SBL 读取。**BRS 已落实**：BswM `AL_ProgReset` → `Appl_BswM_ProgRequest()`（`Appl_ProgRequestFlag`）+ EcuM SelectReset/GoDown。
 6. 外部看门狗用板上的 TLF35584，SIP 模块 `Wdg_30_TLF35584`。
@@ -79,7 +79,7 @@ Base Tech 对底层时序和平台的硬要求：
 
 仍待确认：
 
-1. 波特率。SDB 的 PropulsionCAN 是 500 kbit/s 经典 CAN。HSI 把 ACAN 写成 1 Mbps，原理图频率说明里还有 “CAN: 1MHz”，通信页又有 500 kbps。本阶段 DCAN/TJA1145 按 SDB 的 500 kbit/s 配置。ACAN 不在当前 SDB 里，启用前先把 1 Mbps 和 500 kbps 哪个生效定下来。
+1. 波特率。SDB 的 PropulsionCAN 是 500 kbit/s 经典 CAN。HSI 曾把 ACAN 写成 1 Mbps，但 **U600 TJA1145=ACAN 物理口**；本阶段 PropulsionCAN 走 ACAN/TJA1145，按 SDB **500 kbit/s**。若台架要求 1 Mbps 再改 baud（勿与 DNS 的 DCAN/P11 混淆）。
 2. P32.5/P32.4 最终是否为收发器使能（见上条决策 7），以板级原理图走线实测为准。
 
 核划分（工程基于 TC397，只启用 Core 0–Core 3）：
@@ -138,15 +138,15 @@ DaVinci 工程名以 BRS 为准：`IEM_TC387_BRS`，ECU Instance 选提取中的
 
 ### 阶段 2：MCAL 最小集 — **通信/SPI/Port 已完成；TLF 慢狗与 Fls 细项待收紧**
 
-引脚以 jf_ctrl / HSI 为准；BRS Port 已配 DCAN + QSPI3 CHANNEL8（CS P10.5）+ EN/NSTB 见 §3 决策 7。
+引脚以 **原理图 sch_jf_ctrl** 为准（HSI 旧注 “DCAN/TJA1145” 已证伪）；BRS Port 已配 **ACAN/TJA1145 P32.3/P32.2** + QSPI3 CHANNEL8（CS P10.5）+ EN/NSTB 见 §3 决策 7。
 
-- Mcu / Can：500 kbit/s 经典 CAN，关 FD。
-- PropulsionCAN：TX P11.0 / RX P11.7；QSPI3：CS P10.5 SLSO8，SCLK/MOSI/MISO 按 Port ECUC（与 HSI 表核对，到板用逻辑分析仪确认）。
+- Mcu / Can：500 kbit/s 经典 CAN，关 FD；控制器 **M_CAN3 @ 0xF0208F00**，`CanIOPort=b_001`。
+- PropulsionCAN：TX **P32.3 ALT5** / RX **P32.2**；QSPI3：CS P10.5 SLSO8，SCLK/MOSI/MISO 按 Port ECUC。
 - P00.8 双 CS 不启用。
-- QSPI4 / TLF35584、Gpt 喂狗窗口、Fls/Fee 分区：工程侧有基础，**板级喂狗与 NvM 块布局仍属待闭环项**。
+- QSPI4 / TLF35584、Gpt 喂狗窗口、Fls/Fee 分区：工程侧有基础；**Fee/NvM ReadAll 板级已通（051E）**；**TLF 正式喂狗仍用 TSTM=HIGH 旁路，Wdg_30_TLF35584 待接入**。
 - Adc / Pwm / Icu / Dsadc：仍不启用。
 
-出口：MCAL 生成通过，总线隐性 — **生成/链接已过；总线隐性待板。**
+出口：MCAL 生成通过，总线隐性 — **生成/链接已过；总线隐性/CANoe 待台架。**
 
 ### 阶段 3：通信栈 — **无板 SW 完成；CANoe 出口待板**
 
@@ -169,7 +169,8 @@ DaVinci 工程名以 BRS 为准：`IEM_TC387_BRS`，ECU Instance 选提取中的
 - DID `0xE103` 按 Base Tech 表做最多 10 个错误 CCP。CCP 清单（IEM 实际订阅哪些号）需求里没有释放版列表，先做成可配置表，表内容待 Car Config 数据库。
 
 出口：CANdela 或 CANoe 对 Default 会话做 `0x3E`、`0x10`、`0x22`（至少一条平台 DID）、`0x19`。编程下载返回明确的负响应，而不是超时。  
-**无板侧：** `0x22 F120/E103` 已有数据；`0x34`→NRC11；RID `0x0206` 有明确正响应；`0x27` CompareKey 明确失败。会话/时序出口仍待板+CANoe。
+**无板侧：** `0x22 F120/E103` 已有数据；`0x34`→NRC11；RID `0x0206` 有明确正响应；`0x27` CompareKey 明确失败。  
+**板级：** Fee IDLE + `NvM_ReadAllDone=1` + Dem/Dcm deferred 完成（`Appl_NvM_DemDeferred→0`）；会话/`0x3E`<2.5s（T2）仍待 CANoe。
 
 ### 阶段 5：RTE 与应用壳 — **标量 SWC↔COM 已闭合（组信号/CCP 仍开）**
 
@@ -207,7 +208,7 @@ Developer 中：
 | 1670 / 1671 COM 5 ms ± 1 ms | `Task_Com_5ms` 独占 COM 主函数 |
 | 1673 启动 2.5 s | EcuM 启动链 + NvM 超时 |
 | 1657 CAN NM | CanNm ID 与提取一致；TJA1145 选择性唤醒覆盖 0x500–0x53F |
-| CAN 500 kbit/s、单采样、采样点 | DCAN / CAN11，20 MHz 晶振，采样点 80% |
+| CAN 500 kbit/s、单采样、采样点 | ACAN / TJA1145 / P32.2–3（M_CAN3），20 MHz 晶振，采样点 80% |
 | 396 复位不拉显性 | Port 复位电平 + Can 初始化顺序 |
 | DoCAN 时序 | CanTp，对照 4.3.3 和 CDD |
 | UDS 会话 / DID / DTC | Dcm + Dem，数据来自 CDD |
@@ -222,9 +223,9 @@ Developer 中：
 | --- | --- | --- |
 | A | 阶段 0–1：DPA + 四核空工程可编 | **已完成**（现主线 BRS） |
 | B | 阶段 2–3：MCAL 通信最小集 + CanTrcv/Can 栈无板可观测 | **已完成**（`generate_regen11_bswm` / ELF） |
-| C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、可选 `isCarTiGlb` | **挂起（等板）** |
-| D | 阶段 3 出口：CANoe NM `0x51C` + 周期帧；T1/T3–T5/T7 | 挂起（等板） |
-| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳（无板）→ NvM/Fee/Fls/DemUseNvm | 阶段4无板闭合；阶段5 标量 SWC↔COM v0.5 闭合；组信号/CCP DB / T1–T8 等板 |
-| F | 阶段 6：完整台架 T1–T8 记录 | 挂起（等板） |
+| C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、Fee/NvM ReadAll | **已完成（051E；TSTM 旁路狗；Rx=`CarTiGlb` 待总线）** |
+| D | 阶段 3 出口：CANoe NM `0x51C` + 周期帧；T1/T3–T5/T7 | **进行中（等 CANoe）** |
+| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | 无板+板级 NvM 闭合；组信号/CCP DB / T2 `0x3E` 等 CANoe |
+| F | 阶段 6：完整台架 T1–T8 记录 | 挂起（等台架） |
 
-ACAN 的 1 Mbps 与 SDB 的 500 kbit/s 不要混到 DCAN 上。Generate 后执行 `IEM_TC387_BRS/Tasking/AfterGenerate.bat`（LSL + BswM callout 补丁 + CanTrcv Tasking 接线恢复 + amk）。
+ZCANPRO/CANoe 接 **ACAN**（U600 TJA1145）；波特率先按 SDB **500 kbit/s**。Generate 后执行 `IEM_TC387_BRS/Tasking/AfterGenerate.bat`（LSL + BswM callout 补丁 + CanTrcv Tasking 接线恢复 + amk）。

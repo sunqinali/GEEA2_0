@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Hal_Cfg.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:51
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -50,6 +50,8 @@
 # define OS_CFG_HAL_MINOR_VERSION                (30u)
 
 /* ISR core and level definitions */
+# define OS_ISR_CANISR_3_CORE      (0)
+# define OS_ISR_CANISR_3_LEVEL     (15)
 # define OS_ISR_COUNTERISR_SYSTEMTIMER_CORE      (0)
 # define OS_ISR_COUNTERISR_SYSTEMTIMER_LEVEL     (10)
 # define OS_ISR_ISR_SYSTEMTIMER_CORE2_CORE      (2)

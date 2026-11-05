@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_MemoryProtection_Cfg.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:52
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -45,9 +45,7 @@
  *********************************************************************************************************************/
 
 /*! Defines whether memory protection is active (STD_ON) or not (STD_OFF). */
-/* Bring-up: OFF — slave InitHook/SystemApp PS could not write OS barriers in Core0 DSPR
- * (StartOS hang, SlavePhase stuck at 6). Re-enable after MPU WriteEnable/regions fixed in cfg. */
-# define OS_CFG_MEMORY_PROTECTION                          (STD_OFF)
+# define OS_CFG_MEMORY_PROTECTION                          (STD_ON)
 
 /*! Defines whether access rights switching for applications is active (STD_ON) or not (STD_OFF). */
 # define OS_CFG_MEMORY_PROTECTION_FOR_APPLICATIONS         (STD_OFF)

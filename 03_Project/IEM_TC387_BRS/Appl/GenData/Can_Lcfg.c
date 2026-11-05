@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Can_Lcfg.c
- *   Generation Time: 2026-10-30 22:11:23
+ *   Generation Time: 2026-11-05 20:18:11
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -99,7 +99,7 @@
 /*lint -restore */
 CONST(Can_BTPType, CAN_CONST) Can_BTP[1] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
   /* Index     BTP              Comment */
-  /*     0 */  0x04010E03u   /* [PropulsionCAN_6c6185ef - CanControllerBaudrateConfig] */
+  /*     0 */  0x04070E03u   /* [PropulsionCAN_6c6185ef - 500k @ fMCAN=80MHz, NBRP=7] */
 };
 #define CAN_STOP_SEC_CONST_32BIT
 /*lint -save -esym(961, 19.1) */
@@ -162,7 +162,7 @@ CONST(Can_CanIfChannelIdType, CAN_CONST) Can_CanIfChannelId[1] = {  /* PRQA S 15
 /*lint -restore */
 CONST(Can_CanSubSystemBaseAdrType, CAN_CONST) Can_CanSubSystemBaseAdr[1] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
   /* Index     CanSubSystemBaseAdr      Comment */
-  /*     0 */          0xF0218000u   /* [Sub-system base address for system 1] */
+  /*     0 */          0xF0208000u   /* [Sub-system base address for system 0] */
 };
 #define CAN_STOP_SEC_CONST_32BIT
 /*lint -save -esym(961, 19.1) */
@@ -205,7 +205,7 @@ CONST(Can_CanSubSystemBaseAdrType, CAN_CONST) Can_CanSubSystemBaseAdr[1] = {  /*
 /*lint -restore */
 CONST(Can_ControllerConfigType, CAN_CONST) Can_ControllerConfig[1] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
     /* Index    BasisAdr     CanControllerDefaultBaudrate  IsTTCan  CanControllerDefaultBaudrateIdx  MailboxRxBasicEndIdx                                                                                                                                                MailboxRxBasicLength                                                                                                                                                MailboxRxBasicStartIdx                                                                                                                                                MailboxTxBasicEndIdx                                                                                                                                                MailboxTxBasicLength                                                                                                                                                MailboxTxBasicStartIdx                                                                                                                                                RxBasicHwStart  RxBasicHwStop  RxFullHwStart  RxFullHwStop  RxSelection  TxBasicHwStart  TxBasicHwStop  TxFullHwStart  TxFullHwStop  UnusedHwStart  UnusedHwStop        Comment                              Referable Keys */
-  { /*     0 */ 0xF0218500u,                         500u,   FALSE,                              0u,                   2u  /* RX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                   1u  /* RX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                     1u  /* RX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                   1u  /* TX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                   1u  /* TX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                     0u  /* TX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,             0u,            1u,            0u,           0u,       0x03u,             0u,            1u,            1u,           1u,            0u,           0u }   /* [PropulsionCAN_6c6185ef] */  /* [/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef] */
+  { /*     0 */ 0xF0208D00u,                         500u,   FALSE,                              0u,                   2u  /* RX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                   1u  /* RX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                     1u  /* RX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                   1u  /* TX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                   1u  /* TX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,                     0u  /* TX_BASICCAN_TYPE/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef (DefRef: /MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController) */,             0u,            1u,            0u,           0u,       0x01u,             0u,            1u,            1u,           1u,            0u,           0u }   /* [PropulsionCAN_6c6185ef] */  /* [/ActiveEcuC/Can/CanConfigSet/PropulsionCAN_6c6185ef] */
 };
 #define CAN_STOP_SEC_CONST_UNSPECIFIED
 /*lint -save -esym(961, 19.1) */
@@ -281,7 +281,7 @@ CONST(Can_INT_PriorityType, CAN_CONST) Can_INT_Priority[1] = {  /* PRQA S 1514, 
 /*lint -restore */
 CONST(Can_INT_RoutingGroupType, CAN_CONST) Can_INT_RoutingGroup[1] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
   /* Index     INT_RoutingGroup      Comment */
-  /*     0 */       0x11111111u   /* [PropulsionCAN_6c6185ef] */
+  /*     0 */       0x33333333u   /* [PropulsionCAN_6c6185ef] */
 };
 #define CAN_STOP_SEC_CONST_32BIT
 /*lint -save -esym(961, 19.1) */
@@ -325,6 +325,26 @@ CONST(Can_InitObjectStartIndexType, CAN_CONST) Can_InitObjectStartIndex[2] = {  
   /*     1 */                    1u   /* [stop index] */
 };
 #define CAN_STOP_SEC_CONST_8BIT
+/*lint -save -esym(961, 19.1) */
+#include "MemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+
+/**********************************************************************************************************************
+  Can_IsrOsId
+**********************************************************************************************************************/
+/** 
+  \var    Can_IsrOsId
+  \brief  OS Symbolic Name Value for Service Request Nodes.
+*/ 
+#define CAN_START_SEC_CONST_UNSPECIFIED
+/*lint -save -esym(961, 19.1) */
+#include "MemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+CONST(Can_OsIsrType, CAN_CONST) Can_IsrOsId[1] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
+  /* Index     IsrOsId       Comment */
+  /*     0 */ CanIsr_3    /* [PropulsionCAN_6c6185ef [Node | Channel] 3] */
+};
+#define CAN_STOP_SEC_CONST_UNSPECIFIED
 /*lint -save -esym(961, 19.1) */
 #include "MemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
 /*lint -restore */
@@ -498,7 +518,7 @@ CONST(Can_SIDFEType, CAN_CONST) Can_SIDFE[1] = {  /* PRQA S 1514, 1533 */  /* MD
 /*lint -restore */
 CONST(Can_SRN_AddressType, CAN_CONST) Can_SRN_Address[1] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
   /* Index     SRN_Address      Comment */
-  /*     0 */  0xF00385F4u   /* [PropulsionCAN_6c6185ef] */
+  /*     0 */  0xF00385BCu   /* [PropulsionCAN_6c6185ef] */
 };
 #define CAN_STOP_SEC_CONST_32BIT
 /*lint -save -esym(961, 19.1) */
@@ -529,7 +549,7 @@ CONST(Can_SRN_AddressType, CAN_CONST) Can_SRN_Address[1] = {  /* PRQA S 1514, 15
 /*lint -restore */
 CONST(Can_ShmAdrType, CAN_CONST) Can_ShmAdr[1] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
     /* Index    RXBA                           RXF0A                           RXF1A                          SIDFA                          StartAdr     StopAdr      TXBA                            TXEFA                          XIDFA                                Comment */
-  { /*     0 */ 0xF0210000u  /* Size[B]: 0 */, 0xF0210004u  /* Size[B]: 96 */, 0xF0210000u  /* Size[B]: 0 */, 0xF0210000u  /* Size[B]: 4 */, 0xF0210000u, 0xF0210075u, 0xF0210064u  /* Size[B]: 16 */, 0xF0210000u  /* Size[B]: 0 */, 0xF0210000u  /* Size[B]: 0 */ }   /* [PropulsionCAN_6c6185ef] */
+  { /*     0 */ 0xF0200000u  /* Size[B]: 0 */, 0xF0200004u  /* Size[B]: 96 */, 0xF0200000u  /* Size[B]: 0 */, 0xF0200000u  /* Size[B]: 4 */, 0xF0200000u, 0xF0200075u, 0xF0200064u  /* Size[B]: 16 */, 0xF0200000u  /* Size[B]: 0 */, 0xF0200000u  /* Size[B]: 0 */ }   /* [PropulsionCAN_6c6185ef] */
 };
 #define CAN_STOP_SEC_CONST_UNSPECIFIED
 /*lint -save -esym(961, 19.1) */

@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_MemoryProtection_Lcfg.c
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:52
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -95,6 +95,13 @@ CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_SystemApplication_OsCore0 =
 {
   /* .AppAccessRights    = */ &OsCfg_Hal_Mp_SystemApplication_OsCore0,
   /* .ThreadAccessRights = */ &OsCfg_Hal_Mp_EmptyThread
+};
+
+/*! Memory protection configuration data: CanIsr_3 */
+CONST(Os_MpAccessRightsType, OS_CONST) OsCfg_Mp_CanIsr_3 =
+{
+  /* .AppAccessRights    = */ &OsCfg_Hal_Mp_SystemApplication_OsCore0,
+  /* .ThreadAccessRights = */ &OsCfg_Hal_Mp_CanIsr_3
 };
 
 /*! Memory protection configuration data: CounterIsr_SystemTimer */

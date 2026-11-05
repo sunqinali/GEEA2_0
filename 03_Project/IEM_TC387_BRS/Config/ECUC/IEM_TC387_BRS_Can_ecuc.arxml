@@ -136,7 +136,7 @@
                 </ECUC-NUMERICAL-PARAM-VALUE>
                 <ECUC-TEXTUAL-PARAM-VALUE>
                   <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanGeneral/CanInterruptCategory</DEFINITION-REF>
-                  <VALUE>VOIDFUNCVOID</VALUE>
+                  <VALUE>CATEGORY2</VALUE>
                 </ECUC-TEXTUAL-PARAM-VALUE>
                 <ECUC-NUMERICAL-PARAM-VALUE>
                   <DEFINITION-REF DEST="ECUC-BOOLEAN-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanGeneral/CanGetStatus</DEFINITION-REF>
@@ -192,7 +192,7 @@
                 </ECUC-NUMERICAL-PARAM-VALUE>
                 <ECUC-NUMERICAL-PARAM-VALUE>
                   <DEFINITION-REF DEST="ECUC-BOOLEAN-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanGeneral/CanUseOsInterruptControl</DEFINITION-REF>
-                  <VALUE>false</VALUE>
+                  <VALUE>true</VALUE>
                 </ECUC-NUMERICAL-PARAM-VALUE>
                 <ECUC-NUMERICAL-PARAM-VALUE>
                   <DEFINITION-REF DEST="ECUC-BOOLEAN-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanGeneral/CanSafeBswChecks</DEFINITION-REF>
@@ -320,7 +320,7 @@
                     </ECUC-TEXTUAL-PARAM-VALUE>
                     <ECUC-NUMERICAL-PARAM-VALUE>
                       <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController/CanControllerBaseAddress</DEFINITION-REF>
-                      <VALUE>4028728576</VALUE>
+                      <VALUE>4028665088</VALUE>
                     </ECUC-NUMERICAL-PARAM-VALUE>
                     <ECUC-NUMERICAL-PARAM-VALUE>
                       <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController/CanControllerId</DEFINITION-REF>
@@ -348,7 +348,7 @@
                     </ECUC-NUMERICAL-PARAM-VALUE>
                     <ECUC-TEXTUAL-PARAM-VALUE>
                       <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController/CanBasisAddressEnum</DEFINITION-REF>
-                      <VALUE>M_CAN5</VALUE>
+                      <VALUE>M_CAN3</VALUE>
                     </ECUC-TEXTUAL-PARAM-VALUE>
                     <ECUC-TEXTUAL-PARAM-VALUE>
                       <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController/CanTxBufferElementSize</DEFINITION-REF>
@@ -388,7 +388,7 @@
                     </ECUC-NUMERICAL-PARAM-VALUE>
                     <ECUC-TEXTUAL-PARAM-VALUE>
                       <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController/CanIOPort</DEFINITION-REF>
-                      <VALUE>b_011</VALUE>
+                      <VALUE>b_001</VALUE>
                     </ECUC-TEXTUAL-PARAM-VALUE>
                   </PARAMETER-VALUES>
                   <REFERENCE-VALUES>
@@ -440,11 +440,11 @@
                         </ECUC-NUMERICAL-PARAM-VALUE>
                         <ECUC-NUMERICAL-PARAM-VALUE>
                           <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController/CanControllerBaudrateConfig/CanBaudrateClock</DEFINITION-REF>
-                          <VALUE>20000</VALUE>
+                          <VALUE>80000</VALUE>
                         </ECUC-NUMERICAL-PARAM-VALUE>
                         <ECUC-NUMERICAL-PARAM-VALUE>
                           <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Can_Mpc5700Mcan/Can/CanConfigSet/CanController/CanControllerBaudrateConfig/CanBaudratePrescaler</DEFINITION-REF>
-                          <VALUE>2</VALUE>
+                          <VALUE>8</VALUE>
                         </ECUC-NUMERICAL-PARAM-VALUE>
                       </PARAMETER-VALUES>
                     </ECUC-CONTAINER-VALUE>

@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Lcfg.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:51
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -241,6 +241,18 @@ extern FUNC(void, OS_TASK_ECUM_CORE1_CODE) Os_Task_Task_EcuM_Core1(void);
 extern FUNC(void, OS_TASK_ECUM_CORE3_CODE) Os_Task_Task_EcuM_Core3(void);
 
 # define OS_STOP_SEC_Task_EcuM_Core3_CODE
+# include "Os_MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+
+# define OS_START_SEC_CanIsr_3_CODE
+# include "Os_MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+/**********************************************************************************************************************
+ *  CanIsr_3()
+ *********************************************************************************************************************/
+extern FUNC(void, OS_CANISR_3_CODE) Os_Isr_CanIsr_3(void);
+
+# define OS_STOP_SEC_CanIsr_3_CODE
 # include "Os_MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
 
 

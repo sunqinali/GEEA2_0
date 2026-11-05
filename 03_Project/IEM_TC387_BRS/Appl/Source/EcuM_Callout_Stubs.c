@@ -385,6 +385,7 @@ FUNC(void, ECUM_CODE) EcuM_StartOS(AppModeType appMode)
     extern volatile uint32 Appl_Os_Stm2ClcBefore;
     extern volatile uint32 Appl_Os_Stm2Tim0Probe;
     uint32 n;
+    volatile uint32 *srcCan0Int3;
     Appl_UnlockEndinit();
     *(volatile uint32 *)0xF0001000uL = 0uL; /* STM0_CLC */
     *(volatile uint32 *)0xF0001100uL = 0uL; /* STM1_CLC */
@@ -401,6 +402,12 @@ FUNC(void, ECUM_CODE) EcuM_StartOS(AppModeType appMode)
     Appl_Os_Stm2ClcBefore = *(volatile uint32 *)0xF0001200uL;
     Appl_Os_Stm2Tim0Probe = *(volatile uint32 *)0xF0001210uL;
     Appl_LockEndinit();
+
+    /* Cat2 CanIsr_3: keep SRC_CAN0_INT3 quiet until Can_Init enables via Os.
+     * Spurious pending SRE during StartOS → MemFault loop in Os_Hal_MemFault. */
+    srcCan0Int3 = (volatile uint32 *)0xF00385BCuL;
+    *srcCan0Int3 &= ~0x00000400uL; /* SRE=0 */
+    *srcCan0Int3 |= 0x02000000uL;  /* CLRR=1 */
   }
 
   /* Start OS must be called for each core */

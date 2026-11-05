@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Alarm_Lcfg.c
- *   Generation Time: 2026-10-30 22:32:05
+ *   Generation Time: 2026-11-05 17:03:56
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -139,7 +139,7 @@ CONST(Os_AlarmActivateTaskConfigType, OS_CONST) OsCfg_Alarm_Alarm_Bsw_10ms =
     {
       /* .AlarmTime        = */ 10uL, /* 0.01 sec */
       /* .Cycle            = */ 10uL, /* 0.01 sec */
-      /* .ApplicationModes = */ OS_APPMODE_NONE, /* start after InitAfterOs via SetRelAlarm */
+      /* .ApplicationModes = */ OSDEFAULTAPPMODE,
       /* .AlarmMode        = */ OS_ALARMMODE_RELATIVE
     },
     /* .AccessingApplications = */ (OS_APPID2MASK(OsApplication) | OS_APPID2MASK(SystemApplication_OsCore0) | OS_APPID2MASK(SystemApplication_OsCore1) | OS_APPID2MASK(SystemApplication_OsCore2) | OS_APPID2MASK(SystemApplication_OsCore3)),  /* PRQA S 0410 */ /* MD_MSR_Dir1.1 */
@@ -164,7 +164,7 @@ CONST(Os_AlarmActivateTaskConfigType, OS_CONST) OsCfg_Alarm_Alarm_Com_5ms =
     {
       /* .AlarmTime        = */ 5uL, /* 0.005 sec */
       /* .Cycle            = */ 5uL, /* 0.005 sec */
-      /* .ApplicationModes = */ OS_APPMODE_NONE, /* start after InitAfterOs via SetRelAlarm */
+      /* .ApplicationModes = */ OSDEFAULTAPPMODE,
       /* .AlarmMode        = */ OS_ALARMMODE_RELATIVE
     },
     /* .AccessingApplications = */ (OS_APPID2MASK(OsApplication) | OS_APPID2MASK(SystemApplication_OsCore0) | OS_APPID2MASK(SystemApplication_OsCore1) | OS_APPID2MASK(SystemApplication_OsCore2) | OS_APPID2MASK(SystemApplication_OsCore3)),  /* PRQA S 0410 */ /* MD_MSR_Dir1.1 */
@@ -203,7 +203,7 @@ CONST(Os_AlarmActivateTaskConfigType, OS_CONST) OsCfg_Alarm_Alarm_Appl_100ms =
     {
       /* .AlarmTime        = */ 100uL, /* 0.1 sec */
       /* .Cycle            = */ 100uL, /* 0.1 sec */
-      /* .ApplicationModes = */ OS_APPMODE_NONE,
+      /* .ApplicationModes = */ OSDEFAULTAPPMODE,
       /* .AlarmMode        = */ OS_ALARMMODE_RELATIVE
     },
     /* .AccessingApplications = */ (OS_APPID2MASK(OsApplication_Core2) | OS_APPID2MASK(SystemApplication_OsCore0) | OS_APPID2MASK(SystemApplication_OsCore1) | OS_APPID2MASK(SystemApplication_OsCore2) | OS_APPID2MASK(SystemApplication_OsCore3)),  /* PRQA S 0410 */ /* MD_MSR_Dir1.1 */
@@ -228,7 +228,7 @@ CONST(Os_AlarmActivateTaskConfigType, OS_CONST) OsCfg_Alarm_Alarm_Appl_10ms =
     {
       /* .AlarmTime        = */ 10uL, /* 0.01 sec */
       /* .Cycle            = */ 10uL, /* 0.01 sec */
-      /* .ApplicationModes = */ OS_APPMODE_NONE, /* avoid E_OS_LIMIT while Core0 Init_Task runs */
+      /* .ApplicationModes = */ OSDEFAULTAPPMODE,
       /* .AlarmMode        = */ OS_ALARMMODE_RELATIVE
     },
     /* .AccessingApplications = */ (OS_APPID2MASK(OsApplication_Core2) | OS_APPID2MASK(SystemApplication_OsCore0) | OS_APPID2MASK(SystemApplication_OsCore1) | OS_APPID2MASK(SystemApplication_OsCore2) | OS_APPID2MASK(SystemApplication_OsCore3)),  /* PRQA S 0410 */ /* MD_MSR_Dir1.1 */

@@ -7,9 +7,9 @@
 
 /* TC3xx STM0 TIM0 @ 0xF0001010 (not legacy 0xF0000010) */
 #define APPL_CAN_STM0_TIM0 (*(volatile uint32 *)(0xF0001010uL))
-#define APPL_CAN_TIMEOUT_TICKS (1000000uL) /* 10 ms * 100 MHz */
+#define APPL_CAN_TIMEOUT_TICKS (10000000uL) /* 100 ms * 100 MHz — MCMCAN RINIT/RBUSY needs headroom */
 /* Fast abort if STM frozen — enough for short CCCR polls, not multi-second hangs */
-#define APPL_CAN_SOFT_LOOP_MAX (50000uL)
+#define APPL_CAN_SOFT_LOOP_MAX (500000uL)
 
 static uint32 Appl_Can_HwLoopStart[CAN_LOOP_MAX + 1u];
 static uint32 Appl_Can_HwLoopIters[CAN_LOOP_MAX + 1u];

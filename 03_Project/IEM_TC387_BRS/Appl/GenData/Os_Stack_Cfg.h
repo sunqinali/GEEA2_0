@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Stack_Cfg.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 17:03:57
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -49,7 +49,7 @@
 /*! Defines whether stack measurement is active (STD_ON) or not (STD_OFF). */
 # define OS_CFG_STACKMEASUREMENT                 (STD_OFF)
 
-/* Configured stack sizes (Total: 38912 Byte) */
+/* Configured stack sizes (Total: 46080 Byte) */
 # define OS_CFG_SIZE_OSCORE0_ERROR_STACK     (1024uL)
 # define OS_CFG_SIZE_OSCORE0_INIT_STACK     (1024uL)
 # define OS_CFG_SIZE_OSCORE0_ISR_CORE_STACK     (1024uL)
@@ -58,7 +58,7 @@
 # define OS_CFG_SIZE_OSCORE0_TASK_PRIO40_STACK     (2048uL)
 # define OS_CFG_SIZE_OSCORE0_TASK_PRIO4294967295_STACK     (1024uL)
 # define OS_CFG_SIZE_OSCORE0_TASK_PRIO49_STACK     (1024uL)
-# define OS_CFG_SIZE_OSCORE0_TASK_PRIO50_STACK     (8192uL) /* Default_Init_Task: Can→Dcm init needs headroom */
+# define OS_CFG_SIZE_OSCORE0_TASK_PRIO50_STACK     (8192uL)
 # define OS_CFG_SIZE_OSCORE1_ERROR_STACK     (1024uL)
 # define OS_CFG_SIZE_OSCORE1_INIT_STACK     (1024uL)
 # define OS_CFG_SIZE_OSCORE1_KERNEL_STACK     (1024uL)

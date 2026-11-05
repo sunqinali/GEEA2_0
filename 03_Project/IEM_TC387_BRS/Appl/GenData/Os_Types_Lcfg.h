@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Types_Lcfg.h
- *   Generation Time: 2026-10-30 22:32:07
+ *   Generation Time: 2026-11-05 20:21:52
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -86,6 +86,7 @@
 #define Task_EcuM_Core3 Task_EcuM_Core3
 
 /* Category 2 ISR identifiers. */
+#define CanIsr_3 CanIsr_3
 #define CounterIsr_SystemTimer CounterIsr_SystemTimer
 #define Isr_SystemTimer_Core2 Isr_SystemTimer_Core2
 
@@ -184,9 +185,10 @@ typedef enum
 /*! Category 2 ISR identifiers. */
 typedef enum
 {
-  CounterIsr_SystemTimer = 0,   /* PRQA S 0784 */ /* MD_Os_Rule5.5_0784 */
-  Isr_SystemTimer_Core2 = 1,   /* PRQA S 0784 */ /* MD_Os_Rule5.5_0784 */
-  OS_ISRID_COUNT = 2,
+  CanIsr_3 = 0,   /* PRQA S 0784 */ /* MD_Os_Rule5.5_0784 */
+  CounterIsr_SystemTimer = 1,   /* PRQA S 0784 */ /* MD_Os_Rule5.5_0784 */
+  Isr_SystemTimer_Core2 = 2,   /* PRQA S 0784 */ /* MD_Os_Rule5.5_0784 */
+  OS_ISRID_COUNT = 3,
   INVALID_ISR = OS_ISRID_COUNT
 } ISRType;
 

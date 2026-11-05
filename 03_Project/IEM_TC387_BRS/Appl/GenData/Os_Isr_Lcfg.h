@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Isr_Lcfg.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:51
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -72,6 +72,10 @@
 
 # define OS_START_SEC_CORE0_CONST_UNSPECIFIED
 # include "Os_MemMap_OsSections.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+/*! ISR configuration data: CanIsr_3 */
+extern CONST(Os_IsrHwConfigType, OS_CONST) OsCfg_Isr_CanIsr_3_HwConfig;
+extern CONST(Os_IsrConfigType, OS_CONST) OsCfg_Isr_CanIsr_3;
 
 /*! ISR configuration data: CounterIsr_SystemTimer */
 extern CONST(Os_IsrHwConfigType, OS_CONST) OsCfg_Isr_CounterIsr_SystemTimer_HwConfig;

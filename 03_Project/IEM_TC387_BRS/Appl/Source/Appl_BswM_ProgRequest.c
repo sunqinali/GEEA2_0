@@ -40,6 +40,11 @@ uint8 Appl_NvM_DemDeferred = 0u;
 uint8 Appl_NvM_FeeMainJob = 0xFFu;
 uint8 Appl_NvM_FeeInitGCState = 0xFFu;
 uint8 Appl_NvM_FeePendReq = 0xFFu;
+/* T2 helper: ~ms from first CanStack sample to Dem/Dcm ready (SampleCnt*100). */
+volatile uint16 Appl_Diag_ReadySampleCnt = 0u;
+volatile uint32 Appl_Diag_ReadyApproxMs = 0u;
+
+extern volatile uint16 Appl_Can_SampleCnt;
 
 /* Fee_StateVar lives in Fee_PBcfg.c */
 extern Fee_StateDataType Fee_StateVar;
@@ -151,6 +156,11 @@ void Appl_NvM_Background(void)
       Dem_Init(NULL_PTR);
       Dcm_Init(NULL_PTR);
       Appl_NvM_DemDeferred = 0u;
+      if (Appl_Diag_ReadyApproxMs == 0u)
+      {
+        Appl_Diag_ReadySampleCnt = Appl_Can_SampleCnt;
+        Appl_Diag_ReadyApproxMs = ((uint32)Appl_Can_SampleCnt) * 100uL;
+      }
     }
     return;
   }
@@ -188,6 +198,11 @@ void Appl_NvM_Background(void)
         Dem_Init(NULL_PTR);
         Dcm_Init(NULL_PTR);
         Appl_NvM_DemDeferred = 0u;
+        if (Appl_Diag_ReadyApproxMs == 0u)
+        {
+          Appl_Diag_ReadySampleCnt = Appl_Can_SampleCnt;
+          Appl_Diag_ReadyApproxMs = ((uint32)Appl_Can_SampleCnt) * 100uL;
+        }
       }
     }
   }

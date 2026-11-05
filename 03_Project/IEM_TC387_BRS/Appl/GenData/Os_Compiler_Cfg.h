@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_Compiler_Cfg.h
- *   Generation Time: 2026-10-30 22:32:05
+ *   Generation Time: 2026-11-05 20:21:51
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -36,6 +36,7 @@
  *  OS USER CALLOUT CODE SECTIONS
  *********************************************************************************************************************/
 
+# define OS_CANISR_3_CODE
 # define OS_DEFAULT_INIT_TASK_CODE
 # define OS_DEFAULT_INIT_TASK_CORE1_CODE
 # define OS_DEFAULT_INIT_TASK_CORE1_TRUSTED_CODE

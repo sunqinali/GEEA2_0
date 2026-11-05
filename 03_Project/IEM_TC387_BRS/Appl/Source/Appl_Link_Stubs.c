@@ -4,6 +4,7 @@
 #include "Std_Types.h"
 #include "Dcm.h"
 #include "Os.h"
+#include "Can.h"
 #include "Appl_CanTrcv_Smoke.h"
 #include "Appl_CanStack_Status.h"
 #include "Appl_NvM_Buffers.h"
@@ -13,6 +14,9 @@
 
 /* Heartbeat: Task_Appl_100ms runs on Core2 (alarm autostart). Do NOT call BSW APIs here. */
 volatile uint16 Appl_Core2_Tick100ms = 0u;
+/* Bring-up: Cat2 CanIsr_3 pending (SRC SRR/IOV, RXF0 full) but not draining — poll CanInterrupt. */
+volatile uint16 Appl_Can_IrqPollCnt = 0u;
+volatile uint16 Appl_Can_IrqPollHit = 0u;
 
 /* CAN Driver expects UsedCore selector; map all CAN IRQs to core 0 for bring-up. */
 uint8 Can_GetkCanUsedCore(void)
@@ -31,6 +35,18 @@ void Spi_MainFunction_Handling(void)
   Fee_MainFunction();
   /* Light NvM state machine every Spi tick. No Fls burst. */
   Appl_NvM_Background();
+
+  /* Drain M_CAN RX FIFO from task if Cat2 ISR is not servicing (SRC@0xF00385BC SRR stuck). */
+  {
+    uint32 ir = *(volatile uint32 *)0xF0208E50uL;
+    uint32 rxf0s = *(volatile uint32 *)0xF0208EA4uL;
+    Appl_Can_IrqPollCnt++;
+    if (((ir & 0x1uL) != 0uL) || ((rxf0s & 0x7FuL) != 0uL))
+    {
+      CanInterrupt();
+      Appl_Can_IrqPollHit++;
+    }
+  }
 
   s_div10++;
   if (s_div10 >= 10u) /* ~100 ms */

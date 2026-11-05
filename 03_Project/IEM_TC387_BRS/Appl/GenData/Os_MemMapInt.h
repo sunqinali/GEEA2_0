@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Os_MemMapInt.h
- *   Generation Time: 2026-10-30 22:32:06
+ *   Generation Time: 2026-11-05 20:21:52
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -82,6 +82,31 @@
 # undef OS_OS_COREINITHOOK_CODE_OPEN /* PRQA S 0841 */ /* MD_MSR_Undef */
 # pragma section code restore /* PRQA S 3116 */ /* MD_MSR_Pragma */
 # undef OS_STOP_SEC_OS_COREINITHOOK_CODE /* PRQA S 0841 */ /* MD_MSR_Undef */
+# undef MEMMAP_ERROR /* PRQA S 0841 */ /* MD_MSR_Undef */
+#endif
+
+#ifdef OS_START_SEC_CanIsr_3_CODE
+# ifdef OS_MEMMAP_SECTION_OPEN
+#  error A MemMap section is already open. Nesting is not supported.
+# endif
+# define OS_MEMMAP_SECTION_OPEN
+# define OS_CanIsr_3_CODE_OPEN
+# undef MEMMAP_ERROR /* PRQA S 0841 */ /* MD_MSR_Undef */
+# pragma section code "OS_CanIsr_3_CODE" /* PRQA S 3116 */ /* MD_MSR_Pragma */
+# undef OS_START_SEC_CanIsr_3_CODE /* PRQA S 0841 */ /* MD_MSR_Undef */
+#endif
+
+#ifdef OS_STOP_SEC_CanIsr_3_CODE
+# ifndef OS_MEMMAP_SECTION_OPEN
+#  error No MemMap section is currently opened.
+# endif
+# undef OS_MEMMAP_SECTION_OPEN /* PRQA S 0841 */ /* MD_MSR_Undef */
+# ifndef OS_CanIsr_3_CODE_OPEN
+#  error Section OS_CanIsr_3_CODE is currently not opened and so cannot be closed.
+# endif
+# undef OS_CanIsr_3_CODE_OPEN /* PRQA S 0841 */ /* MD_MSR_Undef */
+# pragma section code restore /* PRQA S 3116 */ /* MD_MSR_Pragma */
+# undef OS_STOP_SEC_CanIsr_3_CODE /* PRQA S 0841 */ /* MD_MSR_Undef */
 # undef MEMMAP_ERROR /* PRQA S 0841 */ /* MD_MSR_Undef */
 #endif
 

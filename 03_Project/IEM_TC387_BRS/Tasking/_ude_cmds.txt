@@ -1,0 +1,8 @@
+connect
+state-all
+reload
+state-all
+location
+read-expression Appl_Os_FwStamp
+go
+exit

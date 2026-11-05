@@ -26,6 +26,8 @@ extern uint8 Appl_NvM_DemDeferred;     /* 1: Dem_Init/Dcm_Init pending after Rea
 extern uint8 Appl_NvM_FeeMainJob;      /* Fee_StateVar.FeeMainJob (1=INITGC) */
 extern uint8 Appl_NvM_FeeInitGCState;  /* 1=INVALID 6=FAIL 7=VIRGIN … */
 extern uint8 Appl_NvM_FeePendReq;      /* !=1 means pending user job */
+extern volatile uint16 Appl_Diag_ReadySampleCnt; /* CanStack samples at Dem/Dcm ready */
+extern volatile uint32 Appl_Diag_ReadyApproxMs;  /* ~SampleCnt*100; T2 budget 2500 */
 
 /* Fls→Fee→NvM init; must NOT block Init_Task for seconds. */
 void Appl_NvM_InitStackAndReadAll(void);

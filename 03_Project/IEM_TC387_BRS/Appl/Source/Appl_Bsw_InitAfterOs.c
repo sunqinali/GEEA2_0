@@ -41,7 +41,7 @@ extern boolean BswM_PreInitialized;
 extern void Appl_UnlockEndinit(void);
 extern void Appl_LockEndinit(void);
 
-volatile uint32 Appl_Os_FwStamp = 0x260B051EuL;
+volatile uint32 Appl_Os_FwStamp = 0x260B052DuL;
 volatile uint8 Appl_Rte_StartRet = 0xFFu;
 volatile uint8 Appl_Rte_InitState = 0u;
 volatile uint8 Appl_Can_InitSkipped = 0u;
@@ -110,9 +110,9 @@ static void Appl_Can_EnableMcmcan(void)
 
 void Appl_Bsw_InitAfterOs(void)
 {
-  if (Appl_Os_FwStamp != 0x260B051EuL)
+  if (Appl_Os_FwStamp != 0x260B052DuL)
   {
-    Appl_Os_FwStamp = 0x260B051EuL;
+    Appl_Os_FwStamp = 0x260B052DuL;
   }
 
   /* Ensure BswM PreInit even if DriverInitZero/One GetCoreID path was skipped.
@@ -140,6 +140,9 @@ void Appl_Bsw_InitAfterOs(void)
   CanTp_Init(NULL_PTR);
 
   Appl_Os_InitPhase = 51u;
+  /* PduR_Init is a no-op (Det PDUR_E_NO_PREINIT) without PreInit — RX dies at PduR_LoIfRxIndication. */
+  PduR_InitMemory();
+  PduR_PreInit(NULL_PTR);
   PduR_Init(NULL_PTR);
   Appl_Os_InitPhase = 52u;
   Com_Init(NULL_PTR);
