@@ -295,7 +295,7 @@
 #define CAN_LOOP_MAX                         7u
 
 /* Appl calls */
-#define CAN_HW_LOOP_SUPPORT_API              STD_OFF
+#define CAN_HW_LOOP_SUPPORT_API              STD_ON    /* ApplCanTimer* via STM — avoid GetCounterValue before StartOS */
 #define CAN_GENERIC_PRECOPY                  STD_OFF
 #define CAN_GENERIC_CONFIRMATION             STD_OFF
 #define CAN_GENERIC_PRETRANSMIT              STD_OFF

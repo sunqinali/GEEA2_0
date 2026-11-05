@@ -1685,7 +1685,7 @@ static const Port_n_ConfigType Port_kConfiguration[] =
       PORT_PIN_LEVEL_LOW,/* Pin 8 */
       PORT_PIN_LEVEL_LOW,/* Pin 9 */
       PORT_PIN_LEVEL_LOW,/* Pin 10 */
-      PORT_PIN_LEVEL_LOW,/* Pin 11 */
+      PORT_PIN_LEVEL_HIGH,/* Pin 11 — TSTM: high disables TLF35584 WD (bring-up) */
       0U,/* Pin 12 */
       0U,/* Pin 13 */
       0U,/* Pin 14 */

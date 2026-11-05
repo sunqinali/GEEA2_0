@@ -45,7 +45,9 @@
  *********************************************************************************************************************/
 
 /*! Defines whether memory protection is active (STD_ON) or not (STD_OFF). */
-# define OS_CFG_MEMORY_PROTECTION                          (STD_ON)
+/* Bring-up: OFF — slave InitHook/SystemApp PS could not write OS barriers in Core0 DSPR
+ * (StartOS hang, SlavePhase stuck at 6). Re-enable after MPU WriteEnable/regions fixed in cfg. */
+# define OS_CFG_MEMORY_PROTECTION                          (STD_OFF)
 
 /*! Defines whether access rights switching for applications is active (STD_ON) or not (STD_OFF). */
 # define OS_CFG_MEMORY_PROTECTION_FOR_APPLICATIONS         (STD_OFF)

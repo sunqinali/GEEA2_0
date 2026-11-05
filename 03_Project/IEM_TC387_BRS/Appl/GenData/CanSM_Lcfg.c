@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: CanSM_Lcfg.c
- *   Generation Time: 2026-10-30 22:06:50
+ *   Generation Time: 2026-11-04 20:58:03
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -96,5 +96,19 @@ VAR(CanSM_ChannelVarRecordType, CANSM_VAR_NOINIT) CanSM_ChannelVarRecord[1];  /*
 
 
 
+/* -----------------------------------------------------------------------------
+    CanSM Functions
+ ----------------------------------------------------------------------------- */
+
+#define CANSM_START_SEC_CODE
+#include "MemMap.h"  /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+FUNC(void, CANSM_CODE) CanSM_Dem_ReportErrorEvent(Dem_EventIdType CanSM_EventID, Dem_EventStatusType CanSM_EventStatus)
+{
+  (void)Dem_ReportErrorStatus( CanSM_EventID, CanSM_EventStatus );
+}
+
+#define CANSM_STOP_SEC_CODE
+#include "MemMap.h"  /* PRQA S 5087 */ /* MD_MSR_MemMap */
 
 

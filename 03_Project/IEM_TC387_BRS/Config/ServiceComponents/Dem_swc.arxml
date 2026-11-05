@@ -14038,36 +14038,6 @@
                       </ADMIN-DATA>
                       <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor</PROVIDED-INTERFACE-TREF>
                     </P-PORT-PROTOTYPE>
-                    <P-PORT-PROTOTYPE UUID="5fa559af-fb82-4d68-9d60-7d579918ee1c">
-                      <SHORT-NAME>EvtInfo_COM_Busoff</SHORT-NAME>
-                      <ADMIN-DATA>
-                        <SDGS>
-                          <SDG GID="DV:DerivedFromReferrables">
-                            <SDG GID="DV:DerivedFromReferrablesVariant">
-                              <SD GID="DV:InvariantValuesView"/>
-                              <SDX-REF DEST="ECUC-CONTAINER-VALUE">/ActiveEcuC/Dem/DemConfigSet/COM_Busoff</SDX-REF>
-                              <SD GID="DV:DerivedFromReferrablesUUID">b48ee77e-964e-45e8-815d-f3f077c5665c</SD>
-                            </SDG>
-                          </SDG>
-                        </SDGS>
-                      </ADMIN-DATA>
-                      <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo</PROVIDED-INTERFACE-TREF>
-                    </P-PORT-PROTOTYPE>
-                    <P-PORT-PROTOTYPE UUID="d911bc08-1dc0-4df9-8f4b-e02dd458c69e">
-                      <SHORT-NAME>Event_COM_Busoff</SHORT-NAME>
-                      <ADMIN-DATA>
-                        <SDGS>
-                          <SDG GID="DV:DerivedFromReferrables">
-                            <SDG GID="DV:DerivedFromReferrablesVariant">
-                              <SD GID="DV:InvariantValuesView"/>
-                              <SDX-REF DEST="ECUC-CONTAINER-VALUE">/ActiveEcuC/Dem/DemConfigSet/COM_Busoff</SDX-REF>
-                              <SD GID="DV:DerivedFromReferrablesUUID">b48ee77e-964e-45e8-815d-f3f077c5665c</SD>
-                            </SDG>
-                          </SDG>
-                        </SDGS>
-                      </ADMIN-DATA>
-                      <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor</PROVIDED-INTERFACE-TREF>
-                    </P-PORT-PROTOTYPE>
                     <P-PORT-PROTOTYPE UUID="93f9f98a-0bad-49d6-8389-fb3bdc2cd741">
                       <SHORT-NAME>EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                       <ADMIN-DATA>
@@ -21299,22 +21269,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventUdsStatus</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="6bf50146-256d-41ae-af8e-6d173e9ef93c">
-                          <SHORT-NAME>OpEventGetEventUdsStatus_GetEventUdsStatus_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventUdsStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventUdsStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="c48aae70-9f27-4d52-bd21-86654bd4fb56">
-                          <SHORT-NAME>OpEventGetEventUdsStatus_GetEventUdsStatus_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventUdsStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventUdsStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="518159c9-8f35-40eb-b5c3-a695f7c61e27">
                           <SHORT-NAME>OpEventGetEventUdsStatus_GetEventUdsStatus_EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventUdsStatus</START-ON-EVENT-REF>
@@ -24600,22 +24554,6 @@
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventStatus</START-ON-EVENT-REF>
                           <OPERATION-IREF>
                             <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_INV_CU_TEMP2_RNG_NOK</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="91eedd38-2c40-43f7-975a-872cd78a2161">
-                          <SHORT-NAME>OpEventGetEventStatus_GetEventStatus_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="632266d1-a656-462a-b09b-6fb0ed9ff080">
-                          <SHORT-NAME>OpEventGetEventStatus_GetEventStatus_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventStatus</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
@@ -27907,22 +27845,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventFailed</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="194c044a-e070-4144-8b9b-f64c52b929e3">
-                          <SHORT-NAME>OpEventGetEventFailed_GetEventFailed_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventFailed</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventFailed</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="d7ae1359-7ae0-49cc-a6a4-e9dd3f03c2e7">
-                          <SHORT-NAME>OpEventGetEventFailed_GetEventFailed_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventFailed</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventFailed</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="3ff4a4b7-4707-4b56-a4fa-c248cb14b327">
                           <SHORT-NAME>OpEventGetEventFailed_GetEventFailed_EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventFailed</START-ON-EVENT-REF>
@@ -31208,22 +31130,6 @@
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventTested</START-ON-EVENT-REF>
                           <OPERATION-IREF>
                             <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_INV_CU_TEMP2_RNG_NOK</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventTested</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="c66aedfe-de78-463a-ace9-3e45b0b49962">
-                          <SHORT-NAME>OpEventGetEventTested_GetEventTested_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventTested</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventTested</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="2a225a23-2c15-4ef0-a239-ca1e830041d4">
-                          <SHORT-NAME>OpEventGetEventTested_GetEventTested_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventTested</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventTested</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
@@ -34515,22 +34421,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetDTCOfEvent</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="d1537546-29ae-4a26-8658-3f3a3ba2ed3b">
-                          <SHORT-NAME>OpEventGetDTCOfEvent_GetDTCOfEvent_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetDTCOfEvent</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetDTCOfEvent</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="c09e99e6-7b5c-4e06-aa50-d3dc8eb16f8e">
-                          <SHORT-NAME>OpEventGetDTCOfEvent_GetDTCOfEvent_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetDTCOfEvent</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetDTCOfEvent</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="01b60d93-c512-45ce-964c-6120bc21d634">
                           <SHORT-NAME>OpEventGetDTCOfEvent_GetDTCOfEvent_EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetDTCOfEvent</START-ON-EVENT-REF>
@@ -37816,22 +37706,6 @@
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetFaultDetectionCounter</START-ON-EVENT-REF>
                           <OPERATION-IREF>
                             <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_INV_CU_TEMP2_RNG_NOK</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetFaultDetectionCounter</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="8d4c05ff-c0d7-459b-8c58-88dacbcf38b2">
-                          <SHORT-NAME>OpEventGetFaultDetectionCounter_GetFaultDetectionCounter_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetFaultDetectionCounter</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetFaultDetectionCounter</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="fab6aa80-8896-4865-83b6-6ddff2972b3e">
-                          <SHORT-NAME>OpEventGetFaultDetectionCounter_GetFaultDetectionCounter_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetFaultDetectionCounter</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetFaultDetectionCounter</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
@@ -41123,22 +40997,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventFreezeFrameDataEx</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="3a3ae47f-8448-4dfd-98ed-6e684da8558b">
-                          <SHORT-NAME>OpEventGetEventFreezeFrameDataEx_GetEventFreezeFrameDataEx_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventFreezeFrameDataEx</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventFreezeFrameDataEx</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="69f711ff-fd7c-4423-8a53-007ebdc424c6">
-                          <SHORT-NAME>OpEventGetEventFreezeFrameDataEx_GetEventFreezeFrameDataEx_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventFreezeFrameDataEx</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventFreezeFrameDataEx</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="f676062f-36b5-4095-954b-bf1e74a54f8b">
                           <SHORT-NAME>OpEventGetEventFreezeFrameDataEx_GetEventFreezeFrameDataEx_EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventFreezeFrameDataEx</START-ON-EVENT-REF>
@@ -44427,22 +44285,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventExtendedDataRecordEx</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="fb1335ca-0201-4ad0-81e3-fa46edb85351">
-                          <SHORT-NAME>OpEventGetEventExtendedDataRecordEx_GetEventExtendedDataRecordEx_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventExtendedDataRecordEx</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventExtendedDataRecordEx</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="9d97d085-9df4-4870-946e-eb890e42584f">
-                          <SHORT-NAME>OpEventGetEventExtendedDataRecordEx_GetEventExtendedDataRecordEx_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventExtendedDataRecordEx</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/GetEventExtendedDataRecordEx</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="c97cd4c0-334c-429e-8282-31ace85487a5">
                           <SHORT-NAME>OpEventGetEventExtendedDataRecordEx_GetEventExtendedDataRecordEx_EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventExtendedDataRecordEx</START-ON-EVENT-REF>
@@ -47715,14 +47557,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventEnableCondition</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="241b527c-f05f-414a-a09d-88cba6378592">
-                          <SHORT-NAME>OpEventGetEventEnableCondition_GetEventEnableCondition_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventEnableCondition</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetEventEnableCondition</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="0021e7bc-e24e-4325-8bdc-c7ebf362c8f0">
                           <SHORT-NAME>OpEventGetEventEnableCondition_GetEventEnableCondition_EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetEventEnableCondition</START-ON-EVENT-REF>
@@ -49368,14 +49202,6 @@
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetDebouncingOfEvent</START-ON-EVENT-REF>
                           <OPERATION-IREF>
                             <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_INV_CU_TEMP2_RNG_NOK</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetDebouncingOfEvent</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="ba44dcce-a483-42a4-8640-def3dd6e7c11">
-                          <SHORT-NAME>OpEventGetDebouncingOfEvent_GetDebouncingOfEvent_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetDebouncingOfEvent</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetDebouncingOfEvent</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
@@ -51027,14 +50853,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetMonitorStatus</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="47a47f10-5e22-4d08-8135-55f880221d21">
-                          <SHORT-NAME>OpEventGetMonitorStatus_GetMonitorStatus_EvtInfo_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetMonitorStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticInfo/GetMonitorStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="5e47b863-0d75-46e7-95f2-2a7fc9d03636">
                           <SHORT-NAME>OpEventGetMonitorStatus_GetMonitorStatus_EvtInfo_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/GetMonitorStatus</START-ON-EVENT-REF>
@@ -52683,14 +52501,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/SetEventStatus</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="460a4c91-81b3-4bd2-97d8-c6cbb763ef8a">
-                          <SHORT-NAME>OpEventSetEventStatus_SetEventStatus_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/SetEventStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/SetEventStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="612bcda7-f357-4d81-b6cd-77f3c8c1b758">
                           <SHORT-NAME>OpEventSetEventStatus_SetEventStatus_Event_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/SetEventStatus</START-ON-EVENT-REF>
@@ -54331,14 +54141,6 @@
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/ResetEventStatus</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="d3c3a72d-2d9b-4b09-92f6-c7ff509aefff">
-                          <SHORT-NAME>OpEventResetEventStatus_ResetEventStatus_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/ResetEventStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/ResetEventStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
                         <OPERATION-INVOKED-EVENT UUID="f5e65bb7-ecba-4e0f-87f3-88a84ce6be9c">
                           <SHORT-NAME>OpEventResetEventStatus_ResetEventStatus_Event_INV_IMMO_NOKEY</SHORT-NAME>
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/ResetEventStatus</START-ON-EVENT-REF>
@@ -55976,14 +55778,6 @@
                           <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/ResetEventDebounceStatus</START-ON-EVENT-REF>
                           <OPERATION-IREF>
                             <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_INV_CU_TEMP2_RNG_NOK</CONTEXT-P-PORT-REF>
-                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/ResetEventDebounceStatus</TARGET-PROVIDED-OPERATION-REF>
-                          </OPERATION-IREF>
-                        </OPERATION-INVOKED-EVENT>
-                        <OPERATION-INVOKED-EVENT UUID="4ac0c2eb-7026-4707-b63e-4db27b2abd6e">
-                          <SHORT-NAME>OpEventResetEventDebounceStatus_ResetEventDebounceStatus_Event_COM_Busoff</SHORT-NAME>
-                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/DemSatellite_0InternalBehavior/ResetEventDebounceStatus</START-ON-EVENT-REF>
-                          <OPERATION-IREF>
-                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</CONTEXT-P-PORT-REF>
                             <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/ResetEventDebounceStatus</TARGET-PROVIDED-OPERATION-REF>
                           </OPERATION-IREF>
                         </OPERATION-INVOKED-EVENT>
@@ -57704,36 +57498,6 @@
                             </PORT-DEFINED-ARGUMENT-VALUE>
                           </PORT-ARG-VALUES>
                           <PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_INV_CU_TEMP2_RNG_NOK</PORT-REF>
-                        </PORT-API-OPTION>
-                        <PORT-API-OPTION>
-                          <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
-                          <INDIRECT-API>false</INDIRECT-API>
-                          <PORT-ARG-VALUES>
-                            <PORT-DEFINED-ARGUMENT-VALUE>
-                              <VALUE>
-                                <NUMERICAL-VALUE-SPECIFICATION>
-                                  <VALUE>6</VALUE>
-                                </NUMERICAL-VALUE-SPECIFICATION>
-                              </VALUE>
-                              <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/MICROSAR/Dem_swc/DataTypes/Dem_EventIdType</VALUE-TYPE-TREF>
-                            </PORT-DEFINED-ARGUMENT-VALUE>
-                          </PORT-ARG-VALUES>
-                          <PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/EvtInfo_COM_Busoff</PORT-REF>
-                        </PORT-API-OPTION>
-                        <PORT-API-OPTION>
-                          <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
-                          <INDIRECT-API>false</INDIRECT-API>
-                          <PORT-ARG-VALUES>
-                            <PORT-DEFINED-ARGUMENT-VALUE>
-                              <VALUE>
-                                <NUMERICAL-VALUE-SPECIFICATION>
-                                  <VALUE>6</VALUE>
-                                </NUMERICAL-VALUE-SPECIFICATION>
-                              </VALUE>
-                              <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/MICROSAR/Dem_swc/DataTypes/Dem_EventIdType</VALUE-TYPE-TREF>
-                            </PORT-DEFINED-ARGUMENT-VALUE>
-                          </PORT-ARG-VALUES>
-                          <PORT-REF DEST="P-PORT-PROTOTYPE">/MICROSAR/Dem_swc/ComponentTypes/DemSatellite_0/Event_COM_Busoff</PORT-REF>
                         </PORT-API-OPTION>
                         <PORT-API-OPTION>
                           <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>

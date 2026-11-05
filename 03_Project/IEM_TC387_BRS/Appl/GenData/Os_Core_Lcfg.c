@@ -413,7 +413,7 @@ CONST(Os_CoreAsrConfigType, OS_CONST) OsCfg_Core_OsCore1 =
     /* .Id                   = */ OS_CORE_ID_1,
     /* .Trace                = */ NULL_PTR,
     /* .IsAsrCore            = */ TRUE,
-    /* .IsAutostart          = */ TRUE,
+    /* .IsAutostart          = */ FALSE,
     /* .IsMasterStartAllowed = */ FALSE,
     /* .HasPrivilegedHardwareAccess = */ FALSE
   },
@@ -527,7 +527,7 @@ CONST(Os_CoreAsrConfigType, OS_CONST) OsCfg_Core_OsCore2 =
     /* .Id                   = */ OS_CORE_ID_2,
     /* .Trace                = */ NULL_PTR,
     /* .IsAsrCore            = */ TRUE,
-    /* .IsAutostart          = */ TRUE,
+    /* .IsAutostart          = */ FALSE,
     /* .IsMasterStartAllowed = */ FALSE,
     /* .HasPrivilegedHardwareAccess = */ FALSE
   },
@@ -638,7 +638,7 @@ CONST(Os_CoreAsrConfigType, OS_CONST) OsCfg_Core_OsCore3 =
     /* .Id                   = */ OS_CORE_ID_3,
     /* .Trace                = */ NULL_PTR,
     /* .IsAsrCore            = */ TRUE,
-    /* .IsAutostart          = */ TRUE,
+    /* .IsAutostart          = */ FALSE,
     /* .IsMasterStartAllowed = */ FALSE,
     /* .HasPrivilegedHardwareAccess = */ FALSE
   },

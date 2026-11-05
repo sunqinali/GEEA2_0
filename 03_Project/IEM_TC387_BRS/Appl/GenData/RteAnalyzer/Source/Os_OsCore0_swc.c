@@ -90,7 +90,10 @@
  * CounterType: Integer in interval [0...255]
  * TimeInMicrosecondsType: Integer in interval [0...4294967295]
  * uint32: Integer in interval [0...4294967295] (standard type)
- * uint8: Integer in interval [0...255] (standard type)
+ *
+ * Enumeration Types:
+ * ==================
+ * uint8: Enumeration of integer in interval [0...255] with enumerators
  *
  *********************************************************************************************************************/
 

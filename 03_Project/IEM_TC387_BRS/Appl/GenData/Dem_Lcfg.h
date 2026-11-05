@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: Dem_Lcfg.h
- *   Generation Time: 2026-11-04 18:33:53
+ *   Generation Time: 2026-11-04 20:58:04
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -850,7 +850,7 @@
 #define DEM_CFG_ISDEF_ENABLECONDITIONGROUPTABLEIDXOFEVENTTABLE                                      STD_OFF
 #define DEM_CFG_ISDEF_EVENTDESTINATIONOFEVENTTABLE                                                  STD_ON
 #define DEM_CFG_ISDEF_EVENTFAILURECYCLECOUNTERTHRESHOLDOFEVENTTABLE                                 STD_ON
-#define DEM_CFG_ISDEF_EVENTKINDOFEVENTTABLE                                                         STD_ON
+#define DEM_CFG_ISDEF_EVENTKINDOFEVENTTABLE                                                         STD_OFF
 #define DEM_CFG_ISDEF_EVENTLATCHTFOFEVENTTABLE                                                      STD_ON
 #define DEM_CFG_ISDEF_EVENTPRIORITYOFEVENTTABLE                                                     STD_OFF
 #define DEM_CFG_ISDEF_EVENTSIGNIFICANCEOFEVENTTABLE                                                 STD_ON
@@ -1169,7 +1169,7 @@
 #define DEM_CFG_EQ2_ENABLECONDITIONGROUPTABLEIDXOFEVENTTABLE                                        
 #define DEM_CFG_EQ2_EVENTDESTINATIONOFEVENTTABLE                                                    DEM_CFG_MEMORYID_PRIMARY
 #define DEM_CFG_EQ2_EVENTFAILURECYCLECOUNTERTHRESHOLDOFEVENTTABLE                                   0u
-#define DEM_CFG_EQ2_EVENTKINDOFEVENTTABLE                                                           DEM_CFG_DEM_EVENT_KIND_SWC_EVENTKINDOFEVENTTABLE
+#define DEM_CFG_EQ2_EVENTKINDOFEVENTTABLE                                                           
 #define DEM_CFG_EQ2_EVENTLATCHTFOFEVENTTABLE                                                        FALSE
 #define DEM_CFG_EQ2_EVENTPRIORITYOFEVENTTABLE                                                       
 #define DEM_CFG_EQ2_EVENTSIGNIFICANCEOFEVENTTABLE                                                   DEM_CFG_DEM_EVENT_SIGNIFICANCE_FAULT_EVENTSIGNIFICANCEOFEVENTTABLE
@@ -2364,6 +2364,7 @@
 #define Dem_Cfg_GetDtrTableIndEndIdxOfEventTable(Index)                                             (0u)
 #define Dem_Cfg_GetDtrTableIndStartIdxOfEventTable(Index)                                           (0u)
 #define Dem_Cfg_GetEnableConditionGroupTableIdxOfEventTable(Index)                                  (Dem_Cfg_GetEventTableOfPCConfig()[(Index)].EnableConditionGroupTableIdxOfEventTable)
+#define Dem_Cfg_GetEventKindOfEventTable(Index)                                                     (Dem_Cfg_GetEventTableOfPCConfig()[(Index)].EventKindOfEventTable)
 #define Dem_Cfg_GetEventPriorityOfEventTable(Index)                                                 (Dem_Cfg_GetEventTableOfPCConfig()[(Index)].EventPriorityOfEventTable)
 #define Dem_Cfg_GetFailedCycleCounterIndexOfEventTable(Index)                                       (0u)
 #define Dem_Cfg_GetFaultPendingCounterIndexOfEventTable(Index)                                      (0u)
@@ -2511,7 +2512,6 @@
 #define Dem_Cfg_GetDebounceTableIdxOfEventTable(Index)                                              0u  /**< the index of the 1:1 relation pointing to Dem_Cfg_DebounceTable */
 #define Dem_Cfg_GetEventDestinationOfEventTable(Index)                                              DEM_CFG_MEMORYID_PRIMARY  /**< DemEventDestination of the DemEventParameter/DemEventClass */
 #define Dem_Cfg_GetEventFailureCycleCounterThresholdOfEventTable(Index)                             0u  /**< DemEventFailureCycleCounterThreshold of the DemEventParameter/DemEventClass, '0': is also default for unset parameter */
-#define Dem_Cfg_GetEventKindOfEventTable(Index)                                                     DEM_CFG_DEM_EVENT_KIND_SWC_EVENTKINDOFEVENTTABLE  /**< DemEventKind of the DemEventParameter */
 #define Dem_Cfg_IsEventLatchTFOfEventTable(Index)                                                   (((FALSE)) != FALSE)  /**< DemEventLatchTestFailed of the DemEventParameter */
 #define Dem_Cfg_GetEventSignificanceOfEventTable(Index)                                             DEM_CFG_DEM_EVENT_SIGNIFICANCE_FAULT_EVENTSIGNIFICANCEOFEVENTTABLE  /**< DemEventSignificance of the DemEventParameter/DemEventClass */
 #define Dem_Cfg_GetExtendedDataTableIdxOfEventTable(Index)                                          1u  /**< the index of the 1:1 relation pointing to Dem_Cfg_ExtendedDataTable */
@@ -3284,7 +3284,7 @@
 #define Dem_Cfg_ExistsDEM_CFG_DEBOUNCETYPE_TIMEREventDebounceAlgorithmOfDebounceTable()             (FALSE != FALSE)
 #define Dem_Cfg_ExistsDEM_CFG_DEBOUNCETYPE_EXTERNALEventDebounceAlgorithmOfDebounceTable()          (FALSE != FALSE)
 #define Dem_Cfg_ExistsDEM_CFG_DEBOUNCETYPE_INVALIDEventDebounceAlgorithmOfDebounceTable()           (TRUE != FALSE)
-#define Dem_Cfg_ExistsDEM_EVENT_KIND_BSWEventKindOfEventTable()                                     (FALSE != FALSE)
+#define Dem_Cfg_ExistsDEM_EVENT_KIND_BSWEventKindOfEventTable()                                     (TRUE != FALSE)
 #define Dem_Cfg_ExistsDEM_EVENT_KIND_SWCEventKindOfEventTable()                                     (TRUE != FALSE)
 #define Dem_Cfg_ExistsDEM_EVENT_SIGNIFICANCE_OCCURRENCEEventSignificanceOfEventTable()              (FALSE != FALSE)
 #define Dem_Cfg_ExistsDEM_EVENT_SIGNIFICANCE_FAULTEventSignificanceOfEventTable()                   (TRUE != FALSE)
@@ -4881,6 +4881,7 @@ typedef struct sDem_Cfg_EventTableType
   Dem_Cfg_AgingCycleCounterThresholdOfEventTableType AgingCycleCounterThresholdOfEventTable;  /**< DemAgingCycleCounterThreshold of the DemEventParameter/DemEventClass, if AgingAllowedOfEventTable==FALSE we use '255' here, too. */
   Dem_Cfg_DtcTableIdxOfEventTableType DtcTableIdxOfEventTable;  /**< the index of the 1:1 relation pointing to Dem_Cfg_DtcTable */
   Dem_Cfg_EnableConditionGroupTableIdxOfEventTableType EnableConditionGroupTableIdxOfEventTable;  /**< the index of the 1:1 relation pointing to Dem_Cfg_EnableConditionGroupTable */
+  Dem_Cfg_EventKindOfEventTableType EventKindOfEventTable;  /**< DemEventKind of the DemEventParameter */
   Dem_Cfg_EventPriorityOfEventTableType EventPriorityOfEventTable;  /**< DemEventParameter/DemEventClass/DemEventPriority, values [1..255] for the configuration range [1..255]. */
   Dem_Cfg_FreezeFrameTableStdFFIdxOfEventTableType FreezeFrameTableStdFFIdxOfEventTable;  /**< the index of the 1:1 relation pointing to Dem_Cfg_FreezeFrameTable */
   Dem_Cfg_HealingTargetOfEventTableType HealingTargetOfEventTable;  /**< DemIndicatorHealingCycleCounterThreshold of the DemEventParameter/DemEventClass/DemIndicatorAttribute (for each event all attribute's value must be identical). Events without DemIndicatorAttribute have: 0. */
@@ -5620,6 +5621,7 @@ extern CONST(Dem_Cfg_EnableConditionTableType, DEM_CONST) Dem_Cfg_EnableConditio
   AgingCycleCounterThreshold      DemAgingCycleCounterThreshold of the DemEventParameter/DemEventClass, if AgingAllowedOfEventTable==FALSE we use '255' here, too.
   DtcTableIdx                     the index of the 1:1 relation pointing to Dem_Cfg_DtcTable
   EnableConditionGroupTableIdx    the index of the 1:1 relation pointing to Dem_Cfg_EnableConditionGroupTable
+  EventKind                       DemEventKind of the DemEventParameter
   EventPriority                   DemEventParameter/DemEventClass/DemEventPriority, values [1..255] for the configuration range [1..255].
   FreezeFrameTableStdFFIdx        the index of the 1:1 relation pointing to Dem_Cfg_FreezeFrameTable
   HealingTarget                   DemIndicatorHealingCycleCounterThreshold of the DemEventParameter/DemEventClass/DemIndicatorAttribute (for each event all attribute's value must be identical). Events without DemIndicatorAttribute have: 0.

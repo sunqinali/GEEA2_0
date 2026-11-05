@@ -149,7 +149,6 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  * sint8: Integer in interval [-128...127] (standard type)
  * uint16: Integer in interval [0...65535] (standard type)
  * uint32: Integer in interval [0...4294967295] (standard type)
- * uint8: Integer in interval [0...255] (standard type)
  *
  * Enumeration Types:
  * ==================
@@ -577,6 +576,7 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  *   DEM_UDS_STATUS_WIR_BflMask 128U (0b10000000)
  *   DEM_UDS_STATUS_WIR_BflPn 7
  *   DEM_UDS_STATUS_WIR_BflLn 1
+ * uint8: Enumeration of integer in interval [0...255] with enumerators
  *
  * Array Types:
  * ============

@@ -32,6 +32,7 @@
 #include "Rte_Type.h"
 #include "Rte_Main.h"
 
+#include "Rte_Appl_ComShell.h"
 #include "Rte_BswM.h"
 #include "Rte_ComM.h"
 #include "Rte_Dcm.h"
@@ -66,6 +67,11 @@
 #include "SchM_Spi.h"
 
 #include "Rte_Hook.h"
+
+#include "Com.h"
+#if defined(IL_ASRCOM_VERSION)
+# define RTE_USE_COM_TXSIGNAL_RDACCESS
+#endif
 
 #include "Rte_Cbk.h"
 
@@ -154,48 +160,200 @@ FUNC(void, RTE_CODE) Rte_InitMemory_OsApplication(void)
 
 
 /**********************************************************************************************************************
+ * Internal/External Tx connections
+ *********************************************************************************************************************/
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_ImobEngSts2_ImobEngSts2(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isImobEngSts2_5f8745c8_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_PLockFltIndcRe_PLockFltIndcRe(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isPLockFltIndcRe_f756fd30_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_PLockFltLvlRe_PLockFltLvlRe(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isPLockFltLvlRe_167e1ed2_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_PLockParkStsRe_PLockParkStsRe(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isPLockParkStsRe_8fb3cac5_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotClrRdyReq_WhlMotClrRdyReq(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotClrRdyReq_189c9369_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotCooltFlowMinReq_WhlMotCooltFlowMinReq(uint16 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotCooltFlowMinReq_102e8fa4_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysCoolgReq_WhlMotSysCoolgReq(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysCoolgReq_32e8ee03_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysCooltT_WhlMotSysCooltT(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysCooltT_da703242_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysErrIndcnReq_WhlMotSysErrIndcnReq(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysErrIndcnReq_d5e6edc2_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysHeatFdBck_WhlMotSysHeatFdBck(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysHeatFdBck_516116c8_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysHeatPwrAct_WhlMotSysHeatPwrAct(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysHeatPwrAct_e1709dcf_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysHeatPwrMax_WhlMotSysHeatPwrMax(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysHeatPwrMax_d3ea4a02_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysIdc_WhlMotSysIdc(uint16 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysIdc_56101b54_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysInvrT_WhlMotSysInvrT(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysInvrT_11341a35_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysLimnIndcn_WhlMotSysLimnIndcn(uint16 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysLimnIndcn_9f88a06a_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysModSts_WhlMotSysModSts(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysModSts_bd46c3f5_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysMotT_WhlMotSysMotT(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysMotT_54e003b6_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysSpdAct_WhlMotSysSpdAct(sint16 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysSpdAct_e26fc666_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysUdc_WhlMotSysUdc(uint16 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComSignal_isWhlMotSysUdc_432c4140_Tx, (&data)); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+
+/**********************************************************************************************************************
  * Internal C/S connections
  *********************************************************************************************************************/
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Main_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_F120: stubs removed — see Appl_Did_F120.c */
+/* removed Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Main_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_F120: stubs removed — see Appl_Did_F120.c */
+/* removed Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Main_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Main_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data4ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_F120: stubs removed — see Appl_Did_F120.c */
+/* removed Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Variant_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Variant_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_F120: stubs removed — see Appl_Did_F120.c */
+/* removed Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Variant_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_Application_Diagnostic_Database_Part_Number_Partnumber_Variant_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data3ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_0xEEC7_1_DID_EED2_SaftyTorque_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
 {
@@ -2590,425 +2748,173 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_DD0C_Electric_Power
   return ret;
 }
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_10_5th_parameter_number_of_the_car_configuration_data_450C8300_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_10_5th_parameter_number_of_the_car_configuration_data_450C8300_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_10_5th_parameter_number_of_the_car_configuration_data_450C8300_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_10_5th_parameter_number_of_the_car_configuration_data_450C8300_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_11_5th_parameter_invalid_value_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_11_5th_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_11_5th_parameter_invalid_value_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_12_6th_parameter_number_of_the_car_configuration_data_E81803DD_ConditionCheckRead */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_11_5th_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_12_6th_parameter_number_of_the_car_configuration_data_E81803DD_ReadData */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_12_6th_parameter_number_of_the_car_configuration_data_E81803DD_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_13_6th_parameter_invalid_value_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_13_6th_parameter_invalid_value_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_12_6th_parameter_number_of_the_car_configuration_data_E81803DD_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_14_7th_parameter_number_of_the_car_configuration_data_8B2384BA_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_13_6th_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_14_7th_parameter_number_of_the_car_configuration_data_8B2384BA_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_15_7th_parameter_invalid_value_ConditionCheckRead */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_13_6th_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_15_7th_parameter_invalid_value_ReadData */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_14_7th_parameter_number_of_the_car_configuration_data_8B2384BA_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_16_8th_parameter_number_of_the_car_configuration_data_2E2F0597_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_16_8th_parameter_number_of_the_car_configuration_data_2E2F0597_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_14_7th_parameter_number_of_the_car_configuration_data_8B2384BA_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_17_8th_parameter_invalid_value_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_15_7th_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_17_8th_parameter_invalid_value_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_18_9th_parameter_number_of_the_car_configuration_data_D13A8674_ConditionCheckRead */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_15_7th_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_18_9th_parameter_number_of_the_car_configuration_data_D13A8674_ReadData */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_16_8th_parameter_number_of_the_car_configuration_data_2E2F0597_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_19_9th_parameter_invalid_value_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_19_9th_parameter_invalid_value_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_16_8th_parameter_number_of_the_car_configuration_data_2E2F0597_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_1_Number_of_invalid_car_configuration_parameter_value_7E36D2F5_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_17_8th_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_1_Number_of_invalid_car_configuration_parameter_value_7E36D2F5_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_20_10th_parameter_number_of_the_car_configuration_dat_86F3B3DF_ConditionCheckRead */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_17_8th_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_20_10th_parameter_number_of_the_car_configuration_dat_86F3B3DF_ReadData */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_18_9th_parameter_number_of_the_car_configuration_data_D13A8674_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_21_10th_parameter_invalid_value_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_21_10th_parameter_invalid_value_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_18_9th_parameter_number_of_the_car_configuration_data_D13A8674_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_2_1st_parameter_number_of_the_car_configuration_data_C808D86E_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_19_9th_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_2_1st_parameter_number_of_the_car_configuration_data_C808D86E_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_3_1st_parameter_invalid_value_ConditionCheckRead */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_19_9th_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_3_1st_parameter_invalid_value_ReadData */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_1_Number_of_invalid_car_configuration_parameter_value_7E36D2F5_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_4_2nd_parameter_number_of_the_car_configuration_data_0046C356_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_4_2nd_parameter_number_of_the_car_configuration_data_0046C356_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_1_Number_of_invalid_car_configuration_parameter_value_7E36D2F5_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_5_2nd_parameter_invalid_value_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_20_10th_parameter_number_of_the_car_configuration_dat_86F3B3DF_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_5_2nd_parameter_invalid_value_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_6_3rd_parameter_number_of_the_car_configuration_data_DA502437_ConditionCheckRead */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_20_10th_parameter_number_of_the_car_configuration_dat_86F3B3DF_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_6_3rd_parameter_number_of_the_car_configuration_data_DA502437_ReadData */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_21_10th_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_7_3rd_parameter_invalid_value_ConditionCheckRead */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_7_3rd_parameter_invalid_value_ReadData */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_21_10th_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_8_4th_parameter_number_of_the_car_configuration_data_125EA492_ConditionCheckRead */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_2_1st_parameter_number_of_the_car_configuration_data_C808D86E_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_8_4th_parameter_number_of_the_car_configuration_data_125EA492_ReadData */
 
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_9_4th_parameter_invalid_value_ConditionCheckRead */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_2_1st_parameter_number_of_the_car_configuration_data_C808D86E_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Data = Data;
+/* APPL_DID_E103: stubs removed — see Appl_Did_E103.c */
+/* removed Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_9_4th_parameter_invalid_value_ReadData */
 
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_3_1st_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_3_1st_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_4_2nd_parameter_number_of_the_car_configuration_data_0046C356_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_4_2nd_parameter_number_of_the_car_configuration_data_0046C356_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_5_2nd_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_5_2nd_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_6_3rd_parameter_number_of_the_car_configuration_data_DA502437_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_6_3rd_parameter_number_of_the_car_configuration_data_DA502437_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_7_3rd_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_7_3rd_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_8_4th_parameter_number_of_the_car_configuration_data_125EA492_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_8_4th_parameter_number_of_the_car_configuration_data_125EA492_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data2ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_9_4th_parameter_invalid_value_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E103_Car_Configuration_Parameter_Faults_DID_E103_9_4th_parameter_invalid_value_ReadData(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data1ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Data) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Data = Data;
-
-  return ret;
-}
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_E300_HVDC_Voltage_DID_E300_HVDC_Voltage_ConditionCheckRead(Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
 {
@@ -7062,17 +6968,9 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_DataServices_DID_F1AF_ECU_Software_E
   return ret;
 }
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_RoutineServices_Check_programming_pre_conditions_Start(Dcm_OpStatusType OpStatus, P2VAR(uint8, AUTOMATIC, RTE_DCM_APPL_VAR) Out_New_Bit_Field, P2VAR(uint8, AUTOMATIC, RTE_DCM_APPL_VAR) Out_RID_0206_Start_Pr_3_Condition_Fullfilled_To_Enter_Programming_Session, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DIAG_BRINGUP: stubs removed — see Appl_Diag_Bringup.c */
+/* removed Rte_Call_Dcm_RoutineServices_Check_programming_pre_conditions_Start */
 
-  OpStatus = OpStatus;
-  Out_New_Bit_Field = Out_New_Bit_Field;
-  Out_RID_0206_Start_Pr_3_Condition_Fullfilled_To_Enter_Programming_Session = Out_RID_0206_Start_Pr_3_Condition_Fullfilled_To_Enter_Programming_Session;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_RoutineServices_P_Lock_RequestResults(Dcm_OpStatusType OpStatus, P2VAR(uint8, AUTOMATIC, RTE_DCM_APPL_VAR) Out_New_Bit_Field, P2VAR(uint8, AUTOMATIC, RTE_DCM_APPL_VAR) Out_P_Lock_Status, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
 {
@@ -7263,49 +7161,21 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_RoutineServices_Starter_Generator_Po
   return ret;
 }
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_SecurityAccess_CommonUnlock_Level_3_CompareKey(P2CONST(Dcm_Data3ByteType, AUTOMATIC, RTE_DCM_APPL_DATA) Key, Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DIAG_BRINGUP: stubs removed — see Appl_Diag_Bringup.c */
+/* removed Rte_Call_Dcm_SecurityAccess_CommonUnlock_Level_3_CompareKey */
 
-  Key = Key;
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
 
-  return ret;
-}
+/* APPL_DIAG_BRINGUP: stubs removed — see Appl_Diag_Bringup.c */
+/* removed Rte_Call_Dcm_SecurityAccess_CommonUnlock_Level_3_GetSeed */
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_SecurityAccess_CommonUnlock_Level_3_GetSeed(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data3ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Seed, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
 
-  OpStatus = OpStatus;
-  Seed = Seed;
-  ErrorCode = ErrorCode;
+/* APPL_DIAG_BRINGUP: stubs removed — see Appl_Diag_Bringup.c */
+/* removed Rte_Call_Dcm_SecurityAccess_ImmoUnlocked_Level_4_CompareKey */
 
-  return ret;
-}
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_SecurityAccess_ImmoUnlocked_Level_4_CompareKey(P2CONST(Dcm_Data3ByteType, AUTOMATIC, RTE_DCM_APPL_DATA) Key, Dcm_OpStatusType OpStatus, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+/* APPL_DIAG_BRINGUP: stubs removed — see Appl_Diag_Bringup.c */
+/* removed Rte_Call_Dcm_SecurityAccess_ImmoUnlocked_Level_4_GetSeed */
 
-  Key = Key;
-  OpStatus = OpStatus;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Call_Dcm_SecurityAccess_ImmoUnlocked_Level_4_GetSeed(Dcm_OpStatusType OpStatus, P2VAR(Dcm_Data3ByteType, AUTOMATIC, RTE_DCM_APPL_VAR) Seed, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_DCM_APPL_VAR) ErrorCode) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
-{
-  Std_ReturnType ret = RTE_E_UNCONNECTED; /* PRQA S 2981 */ /* MD_MSR_RetVal */
-
-  OpStatus = OpStatus;
-  Seed = Seed;
-  ErrorCode = ErrorCode;
-
-  return ret;
-}
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Call_DemMaster_0_CBInitEvt_PS_5V_Fault_InitMonitorForEvent(Dem_InitMonitorReasonType InitMonitorReason) /* PRQA S 1505, 3206, 3673 */ /* MD_MSR_Rule8.7, MD_Rte_3206, MD_Rte_Qac */
 {
@@ -8743,6 +8613,11 @@ TASK(Task_Bsw_10ms) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_Unreachable *
     /* call runnable */
     NvM_MainFunction(); /* PRQA S 2987 */ /* MD_Rte_2987 */
 
+    if (Rte_InitState == RTE_STATE_INIT)
+    {
+      /* call runnable */
+      Appl_ComShell_Step(); /* PRQA S 2987 */ /* MD_Rte_2987 */
+    }
     Rte_ScheduleTable_Task_Bsw_10ms_Step = 1;
   }
   else if (Rte_ScheduleTable_Task_Bsw_10ms_Step == 1U) /* PRQA S 2004 */ /* MD_MSR_EmptyClause */
@@ -8790,6 +8665,11 @@ TASK(Task_Bsw_10ms) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_Unreachable *
     /* call runnable */
     NvM_MainFunction(); /* PRQA S 2987 */ /* MD_Rte_2987 */
 
+    if (Rte_InitState == RTE_STATE_INIT)
+    {
+      /* call runnable */
+      Appl_ComShell_Step(); /* PRQA S 2987 */ /* MD_Rte_2987 */
+    }
     Rte_ScheduleTable_Task_Bsw_10ms_Step = 3;
   }
   else if (Rte_ScheduleTable_Task_Bsw_10ms_Step == 3U) /* PRQA S 2004 */ /* MD_MSR_EmptyClause */ /* COV_RTE_STATE_MACHINE_LAST_STATE */
@@ -8870,6 +8750,21 @@ TASK(Task_Com_5ms) /* PRQA S 3408, 1503 */ /* MD_Rte_3408, MD_MSR_Unreachable */
  *********************************************************************************************************************/
 
 /* module specific MISRA deviations:
+   MD_Rte_0315:  MISRA rule: Dir1.1
+     Reason:     Pointer cast to void because generic access is necessary.
+     Risk:       No functional risk. Only a cast to uint8* is performed.
+     Prevention: Not required.
+
+   MD_Rte_1340:  MISRA rule: Rule17.8
+     Reason:     Passing elements by pointer is a well known concept.
+     Risk:       No functional risk. Data flow is handled with care.
+     Prevention: Not required.
+
+   MD_Rte_2982:  MISRA rule: Rule2.2
+     Reason:     Used to simplify code generation.
+     Risk:       No functional risk. There is no side effect.
+     Prevention: Not required.
+
    MD_Rte_2987:  MISRA rule: Rule2.2
      Reason:     Used to simplify code generation.
      Risk:       No functional risk. There is no side effect.

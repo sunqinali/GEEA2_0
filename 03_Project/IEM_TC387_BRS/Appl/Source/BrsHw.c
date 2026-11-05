@@ -268,6 +268,11 @@ volatile const uint32 bmiField0[128] =
 *******************************************************************************/
 #define BRS_GPT120_BASE  0xF0001800
 #define BRS_GPT120_CLC       BRSHW_IOS(uint32, BRS_GPT120_BASE)
+/* STM CLC — Core2 SystemTimer uses STM2; DISR left set → StartOS FrtInit bus-stalls */
+#define BRS_STM0_CLC         BRSHW_IOS(uint32, 0xF0001000uL)
+#define BRS_STM1_CLC         BRSHW_IOS(uint32, 0xF0001100uL)
+#define BRS_STM2_CLC         BRSHW_IOS(uint32, 0xF0001200uL)
+#define BRS_STM3_CLC         BRSHW_IOS(uint32, 0xF0001300uL)
 
 #elif defined (BRS_PLL_GROUP_C)
 /*******************************************************************************
@@ -699,6 +704,10 @@ void BrsHwPllInitPowerOn(void)
   /*Configuration of PLL starts here*/
   BRS_TRICORE_UNLOCKENDINIT(BrsHw_GetCore());
   BRS_GPT120_CLC = 0x0;
+  BRS_STM0_CLC = 0x0;
+  BRS_STM1_CLC = 0x0;
+  BRS_STM2_CLC = 0x0; /* Core2 Os SystemTimer_Core2 — must be on before StartOS FrtInit */
+  BRS_STM3_CLC = 0x0;
   BRS_SCU_TRAPDIS0 |= 0x0F0F0F0F; /* Traps can not be generated for PLLs and Clocksystem */
   BRS_SCU_TRAPDIS1 |= 0x0F0F;
   BRS_TRICORE_LOCKENDINIT(BrsHw_GetCore());
@@ -1642,13 +1651,15 @@ void BrsHwSoftwareResetECU(void)
  *****************************************************************************/
 void BrsHwDisableSMUReset(void)
 {
-	uint32 ui32tmp;
+  uint32 ui32tmp;
 
-	BRS_TRICORE_UNLOCKENDINIT(BRS_SAFETY_WATCHDOG_INDEX);
-	ui32tmp = BRS_RSTCON;
-	ui32tmp &= 0xFFFEFFFF;  //clear SMU
-	BRS_RSTCON = ui32tmp;
-	BRS_TRICORE_LOCKENDINIT(BRS_SAFETY_WATCHDOG_INDEX);
+  /* RSTCON.SMU[17:16]: 00=no reset, 01=system, 10=application.
+   * Old mask 0xFFFEFFFF only cleared bit16 — left application-reset (10b) active. */
+  BRS_TRICORE_UNLOCKENDINIT(BRS_SAFETY_WATCHDOG_INDEX);
+  ui32tmp = BRS_RSTCON;
+  ui32tmp &= ~0x00030000UL;
+  BRS_RSTCON = ui32tmp;
+  BRS_TRICORE_LOCKENDINIT(BRS_SAFETY_WATCHDOG_INDEX);
 }
 
 /*****************************************************************************/
@@ -1845,7 +1856,10 @@ void Appl_UnlockInit(void)
 
 void Appl_UnlockEndinit(void)
 {
+  /* MCMCAN CLC / MCR are Safety-EndInit protected on TC3xx — CPU EndInit alone
+   * leaves CLC.DISR set → first CCCR/MCR access bus-stalls (InitPhase stuck at 31). */
   BRS_TRICORE_UNLOCKENDINIT(BrsHw_GetCore());
+  BRS_TRICORE_UNLOCKENDINIT(BRS_SAFETY_WATCHDOG_INDEX);
 }
 
 void Appl_LockInit(void)
@@ -1855,6 +1869,7 @@ void Appl_LockInit(void)
 
 void Appl_LockEndinit(void)
 {
+  BRS_TRICORE_LOCKENDINIT(BRS_SAFETY_WATCHDOG_INDEX);
   BRS_TRICORE_LOCKENDINIT(BrsHw_GetCore());
 }
 #endif /*BRS_ENABLE_CAN_SUPPORT || BRS_ENABLE_LIN_SUPPORT || BRS_ENABLE_FLEXRAY_SUPPORT || BRS_ENABLE_ETHERNET_SUPPORT*/

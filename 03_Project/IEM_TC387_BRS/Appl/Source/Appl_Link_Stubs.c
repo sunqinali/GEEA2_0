@@ -6,6 +6,9 @@
 #include "Os.h"
 #include "Appl_CanTrcv_Smoke.h"
 #include "Appl_CanStack_Status.h"
+#include "Appl_NvM_Buffers.h"
+#include "SchM_Fls_17_Dmu.h"
+#include "SchM_Fee.h"
 /* Dcm_Set/GetProgConditions live in Appl_BswM_ProgRequest.c */
 
 /* Heartbeat: Task_Appl_100ms runs on Core2 (alarm autostart). Do NOT call BSW APIs here. */
@@ -23,12 +26,22 @@ void Spi_MainFunction_Handling(void)
 {
   static uint8 s_div10 = 0u;
 
+  /* FLS_USE_INTERRUPTS=OFF: drive Fls+Fee every Spi step (Rte Fee only on Bsw steps 0/2). */
+  Fls_17_Dmu_MainFunction();
+  Fee_MainFunction();
+  /* Light NvM state machine every Spi tick. No Fls burst. */
+  Appl_NvM_Background();
+
   s_div10++;
   if (s_div10 >= 10u) /* ~100 ms */
   {
     s_div10 = 0u;
     Appl_CanTrcv_Smoke_DeferredTick();
     Appl_CanStack_Status_Sample();
+    /* No cross-core ActivateTask (E_OS_SYS_FUNCTION_UNAVAILABLE / no XSignal).
+     * FRT shim → Core2 Appl alarms never fire; count 100ms here as bring-up heartbeat.
+     * Core2 alive proof remains Appl_Os_SlavePhase[2]==9. */
+    Appl_Core2_Tick100ms++;
   }
 }
 
@@ -43,9 +56,8 @@ FUNC(void, DCM_CALLOUT_CODE) Dcm_Confirmation(
   (void)status;
 }
 
-/* Core2 heartbeat only — BSW sampling moved to Spi_MainFunction_Handling (Core0). */
+/* Core2 Appl 100ms — unused while SystemTimer_Core2 is RAM-shimmed. */
 TASK(Task_Appl_100ms)
 {
-  Appl_Core2_Tick100ms++;
   (void)TerminateTask();
 }

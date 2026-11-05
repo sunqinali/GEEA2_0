@@ -103,7 +103,14 @@
  *****************************************************************************/
 void BrsMain_MemoryInit_StageZero_Hook(uint32 coreId)
 {
-  /* nothing to be done up to now */
+  /* Capture RSTSTAT then disable SMU→reset before any further init / StartCore.
+   * PORST is sticky across app resets; SMU bit is the real warm-reset cause. */
+  if (coreId == BRSHW_INIT_CORE_ID)
+  {
+    extern volatile uint32 Appl_Os_RstStat;
+    Appl_Os_RstStat = *((volatile uint32 *)0xF0036050UL); /* SCU_RSTSTAT */
+    BrsHwDisableSMUReset();
+  }
 }
 
 /*****************************************************************************/
@@ -195,7 +202,11 @@ void BrsMain_MemoryInit_StageThree_Hook(uint32 coreId)
  *****************************************************************************/
 void BrsMain_PreMainHook(uint32 coreId)
 {
-  /* nothing to be done up to now */
+  extern volatile uint8 Appl_Os_SlavePhase[4];
+  if (coreId < 4u)
+  {
+    Appl_Os_SlavePhase[coreId] = 2u; /* PreMain memory init done */
+  }
 }
 
 /*****************************************************************************/

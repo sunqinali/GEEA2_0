@@ -4209,7 +4209,7 @@
                             </ECUC-NUMERICAL-PARAM-VALUE>
                             <ECUC-TEXTUAL-PARAM-VALUE>
                               <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/AURIX2G/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePointConfig/McuPllDistributionSettingConfig/McuMCanClockSourceSelection</DEFINITION-REF>
-                              <VALUE>MCAN_CLOCK_SOURCE_DISABLED_SEL0</VALUE>
+                              <VALUE>MCAN_CLOCK_SOURCE_MCANI_SEL1</VALUE>
                             </ECUC-TEXTUAL-PARAM-VALUE>
                             <ECUC-NUMERICAL-PARAM-VALUE>
                               <DEFINITION-REF DEST="ECUC-FLOAT-PARAM-DEF">/AURIX2G/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePointConfig/McuPllDistributionSettingConfig/McuMCanFrequency</DEFINITION-REF>

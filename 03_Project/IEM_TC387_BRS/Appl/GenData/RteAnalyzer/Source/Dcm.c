@@ -113,7 +113,6 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  * ================
  * boolean: Boolean (standard type)
  * uint16: Integer in interval [0...65535] (standard type)
- * uint8: Integer in interval [0...255] (standard type)
  *
  * Enumeration Types:
  * ==================
@@ -256,6 +255,7 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  *   DCM_DEFAULT_SESSION (1U)
  *   DCM_PROGRAMMING_SESSION (2U)
  *   DCM_EXTENDED_DIAGNOSTIC_SESSION (3U)
+ * uint8: Enumeration of integer in interval [0...255] with enumerators
  *
  * Array Types:
  * ============

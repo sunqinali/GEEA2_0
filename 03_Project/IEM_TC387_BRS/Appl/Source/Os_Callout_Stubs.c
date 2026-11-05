@@ -41,6 +41,41 @@
  * DO NOT CHANGE THIS COMMENT!           <USERBLOCK OS_Callout_Stubs_Include>
  *********************************************************************************************************************/
 #include "EcuM.h"
+
+/* Bring-up diagnostics — watch these in UDE when ErrorHook spins */
+volatile uint8 Appl_Os_ErrorHookCnt = 0u;
+volatile StatusType Appl_Os_ErrorStatus = (StatusType)0u;
+volatile OSServiceIdType Appl_Os_ErrorService = (OSServiceIdType)0u;
+volatile Os_StatusType Appl_Os_ErrorDetailed = (Os_StatusType)0u;
+volatile uint8 Appl_Os_ErrorCoreId = 0xFFu;
+volatile uint8 Appl_Os_StartOsEntered = 0u;
+volatile uint8 Appl_Os_StartCoreMask = 0u;
+volatile StatusType Appl_Os_StartCoreStatus[4] = {0xFFu, 0xFFu, 0xFFu, 0xFFu};
+/* DriverInitOne phase: see EcuM_Callout_Stubs breadcrumbs */
+volatile uint8 Appl_Os_InitPhase = 0u;
+volatile uint8 Appl_Os_GetDetErr = 0u;
+/* Per-core slave bring-up: 1=past BIV 2=PreMain 3=main 4=Os_Init done 5=EcuM_StartOS 6=StartOS call */
+volatile uint8 Appl_Os_SlavePhase[4] = {0u, 0u, 0u, 0u};
+/* Bitmask of cores that reached StartOS() call (bit0=Core0 … bit3=Core3) */
+volatile uint8 Appl_Os_StartOsMask = 0u;
+/* Latched SCU_RSTSTAT @ StageZero. TC3xx: SMU≈bit3, SW=bit4, PORST=bit16 (sticky). */
+volatile uint32 Appl_Os_RstStat = 0u;
+/* BswM EcuMMode port after Trusted notify (expect ECUM_STATE_RUN=0x30). */
+volatile uint8 Appl_BswM_EcuMMode = 0u;
+volatile uint8 Appl_BswM_Initialized = 0u;
+volatile uint8 Appl_BswM_PreInitOk = 0u;
+volatile uint8 Appl_BswM_KickDone = 0u;
+volatile uint8 Appl_BswM_InitFallback = 0u;
+volatile uint8 Appl_BswM_DetApi = 0u;
+volatile uint8 Appl_BswM_DetErr = 0u;
+/* STM2_CLC / TIM0 probed on Core0 only (Core2 MMIO may bus-stall). */
+volatile uint32 Appl_Os_Stm2ClcBefore = 0xFFFFFFFFuL;
+volatile uint32 Appl_Os_Stm2Tim0Probe = 0uL;
+/* RAM stand-in for SystemTimer_Core2 FRT regs — real STM2 FrtInit stalls Core2 StartOS. */
+volatile uint32 Appl_Os_FrtShim_TIM0 = 0uL;
+volatile uint32 Appl_Os_FrtShim_CMP0 = 0uL;
+volatile uint32 Appl_Os_FrtShim_CMCON = 0uL;
+volatile uint32 Appl_Os_FrtShim_ICR = 0uL;
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           </USERBLOCK>
  *********************************************************************************************************************/
@@ -111,11 +146,25 @@ FUNC(void, OS_ERRORHOOK_CODE) ErrorHook(StatusType Error)
  * DO NOT CHANGE THIS COMMENT!           <USERBLOCK OS_Callout_Stubs_ErrorHook>
  *********************************************************************************************************************/
   Os_ErrorInformationType CurrentError;
-  volatile uint8 endless = 1u;
-  (void)Os_GetDetailedError(&CurrentError);
-  while(endless)
+  Os_StatusType detSt;
+
+  /* Latch first error only — do NOT spin. E_OS_NOFUNC(5) on CancelAlarm is benign. */
+  if (Appl_Os_ErrorHookCnt == 0u)
   {
-    
+    Appl_Os_ErrorStatus = Error;
+    Appl_Os_ErrorService = OSErrorGetServiceId();
+    detSt = Os_GetDetailedError(&CurrentError);
+    Appl_Os_GetDetErr = (uint8)detSt;
+    if (detSt == OS_STATUS_OK)
+    {
+      Appl_Os_ErrorService = CurrentError.Service;
+      Appl_Os_ErrorDetailed = CurrentError.DetailedError;
+    }
+    Appl_Os_ErrorCoreId = (uint8)GetCoreID();
+  }
+  if (Error != E_OS_NOFUNC)
+  {
+    Appl_Os_ErrorHookCnt++;
   }
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           </USERBLOCK>

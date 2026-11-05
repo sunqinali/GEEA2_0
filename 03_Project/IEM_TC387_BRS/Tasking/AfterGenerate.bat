@@ -13,6 +13,14 @@ echo === Restore CanTrcv / smoke / Det / CanStack makefile wiring ===
 python "%TASKING%_restore_cantrcv_tasking.py"
 if errorlevel 1 exit /b 1
 
+echo === MPU: Core1-3 TRUSTED_WRITE cover Core0 DSPR (OS StartOS barriers) ===
+python "%TASKING%_patch_mpu_barrier_write.py"
+if errorlevel 1 exit /b 1
+
+echo === Core2 FRT: RAM shim (STM2 MMIO stalls StartOS) ===
+python "%TASKING%_patch_core2_frt_shim.py"
+if errorlevel 1 exit /b 1
+
 echo === Offline TJA check ===
 python "%TASKING%_offline_tja_check.py"
 if errorlevel 1 exit /b 1

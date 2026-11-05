@@ -32,6 +32,7 @@
 #include "Rte_Type.h"
 #include "Rte_Main.h"
 
+#include "Rte_Appl_ComShell.h"
 #include "Rte_BswM.h"
 #include "Rte_ComM.h"
 #include "Rte_Dcm.h"
@@ -66,6 +67,11 @@
 #include "SchM_Spi.h"
 
 #include "Rte_Hook.h"
+
+#include "Com.h"
+#if defined(IL_ASRCOM_VERSION)
+# define RTE_USE_COM_TXSIGNAL_RDACCESS
+#endif
 
 #include "Rte_Cbk.h"
 

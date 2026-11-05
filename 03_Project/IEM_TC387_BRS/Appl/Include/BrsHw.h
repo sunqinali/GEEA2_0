@@ -500,6 +500,12 @@ typedef enum
 brsHw_ResetReasonType BrsHwGetResetReason(void);
 
 /*****************************************************************************/
+/* @brief      Clear RSTCON.SMU so SMU alarms do not generate chip reset
+ * @context    Call early on boot core during bring-up (before StartCore)
+ *****************************************************************************/
+void BrsHwDisableSMUReset(void);
+
+/*****************************************************************************/
 /* @brief      This API is used for the BRS time measurement support to get a
  *             default time value for all measurements with this platform to
  *             be able to compare time measurements on different dates based

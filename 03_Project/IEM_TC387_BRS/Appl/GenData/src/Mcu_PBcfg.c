@@ -70,8 +70,8 @@ static const Mcu_PllDistributionConfigType Mcu_kPllDistributionConfiguration_Con
 {
   /* CCUCON0 value */
   0x17230113U,
-  /* CCUCON1 value */
-  0x00000200U,
+  /* CCUCON1 value — match BRS PLL Group B @20 MHz OSC (fMCAN enabled, not DISABLED) */
+  0x21210012U,
   /* CCUCON2 value */
   0x05000001U,
   /* CCUCON5 value */

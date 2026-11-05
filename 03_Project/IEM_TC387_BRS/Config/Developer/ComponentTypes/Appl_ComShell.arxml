@@ -1,0 +1,1248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Appl_ComShell v0.3: 22 RX + 19 TX primitives ↔ COM -->
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="16b668b8-41b8-4679-8b4b-a477c8efa939">
+      <SHORT-NAME>Appl_ComShell</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="1ba5f389-a49f-4130-afaa-0cafb9206e49">
+          <SHORT-NAME>DataTypeMappingSets</SHORT-NAME>
+          <ELEMENTS>
+            <DATA-TYPE-MAPPING-SET UUID="c4856521-81fc-4f7b-8dfd-c56d843e8cbf">
+              <SHORT-NAME>Appl_ComShell_DTMap</SHORT-NAME>
+              <DATA-TYPE-MAPS>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/CarTiGlb_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/Len31_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/WhlMotSysModStsTyp1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/HvTq1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/CooltTHiResl_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/CooltFlow2_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/N1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/PrpsnPwrLimMax_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/PrpsnPwrLimMin_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/WhlMotSysModStsTyp2_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/IsgSpdWSgnTyp_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/sint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/HvU1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/T3_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/HvT1_3</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/Ampr1_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/UInt16_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/HvCoolg1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/OnOff1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/OnBdChrgrHndlSts_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/GearLvrIndcn2_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/Perc7_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/ImobSts_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/OnBdChrgrHndlSts1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/FltIndcn_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/FltLvl_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/PLockParkRequest_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/ParkSts_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/UInt4_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/FrntHeatModEnad_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/IsgHeatPwr_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/CooltFlowForDtElec1_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/WhlMotSysActvDampgModCodSts_2</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+                <DATA-TYPE-MAP>
+                  <APPLICATION-DATA-TYPE-REF DEST="APPLICATION-PRIMITIVE-DATA-TYPE">/ApplicationDataTypes/WhlMotSysHeatFdBck_1</APPLICATION-DATA-TYPE-REF>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                </DATA-TYPE-MAP>
+              </DATA-TYPE-MAPS>
+            </DATA-TYPE-MAPPING-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="b4759d28-f36d-41b8-a5be-d63bd52a9773">
+          <SHORT-NAME>ComponentTypes</SHORT-NAME>
+          <ELEMENTS>
+            <APPLICATION-SW-COMPONENT-TYPE UUID="ef114767-7631-4cbe-8b03-93e0f975c049">
+              <SHORT-NAME>Appl_ComShell</SHORT-NAME>
+              <PORTS>
+                <R-PORT-PROTOTYPE UUID="d0b7302d-9897-4122-84c5-c8f30f4b786b">
+                  <SHORT-NAME>CarTiGlb</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CarTiGlb_5/CarTiGlb</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/CarTiGlb_5</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="f5be0f24-6e50-49a3-9163-5a3af48a3591">
+                  <SHORT-NAME>BkpOfDstTrvld</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/BkpOfDstTrvld_7/BkpOfDstTrvld</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/BkpOfDstTrvld_7</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="bf4d1fbd-b7e3-41e2-b371-2b3450f8dcc9">
+                  <SHORT-NAME>WhlMotSysModReq</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysModReq_2/WhlMotSysModReq</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysModReq_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="9ad8f0ae-ca20-4bad-bdd6-8033c89b4082">
+                  <SHORT-NAME>WhlMotSysTqReq</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqReq_2/WhlMotSysTqReq</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysTqReq_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="2dc830cc-14a9-423e-85a5-4b15b7ac5759">
+                  <SHORT-NAME>CooltTSigForDtElec</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CooltTSigForDtElec_5/CooltTSigForDtElec</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/CooltTSigForDtElec_5</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="f0b87939-de9a-4d06-ba64-0f073fec9169">
+                  <SHORT-NAME>CooltFlowForDtElec</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CooltFlowForDtElec_5/CooltFlowForDtElec</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/CooltFlowForDtElec_5</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="411e45b8-fa19-4d01-a6d4-5355a06ffbd6">
+                  <SHORT-NAME>SpdRotlForWhlsAtAxleRe</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/SpdRotlForWhlsAtAxleRe_7/SpdRotlForWhlsAtAxleRe</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/SpdRotlForWhlsAtAxleRe_7</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="51822adb-0e7d-42b7-84eb-86680e408e36">
+                  <SHORT-NAME>WhlMotSysPwrLimMax</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysPwrLimMax_2/WhlMotSysPwrLimMax</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysPwrLimMax_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="1a25ee09-a7e5-4661-b088-3d1e509fb111">
+                  <SHORT-NAME>WhlMotSysPwrLimMin</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysPwrLimMin_2/WhlMotSysPwrLimMin</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysPwrLimMin_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="b78b7415-7a1e-4b39-8b9f-a779410b8dbb">
+                  <SHORT-NAME>WhlMotSysModSts</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysModSts_5/WhlMotSysModSts</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysModSts_5</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="88a11062-6e99-4345-b0dd-8671ae88d4de">
+                  <SHORT-NAME>WhlMotSysSpdAct</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysSpdAct_4/WhlMotSysSpdAct</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysSpdAct_4</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="ed6a35c7-1a71-4811-b5f2-d277abfa4127">
+                  <SHORT-NAME>WhlMotSysUdc</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysUdc_3/WhlMotSysUdc</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysUdc_3</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="7b8d3419-8fb3-4f1a-9f20-b9c02226a316">
+                  <SHORT-NAME>WhlMotSysMotT</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysMotT_3/WhlMotSysMotT</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysMotT_3</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="e7d48b30-2385-4f2a-a5d5-59b564203c61">
+                  <SHORT-NAME>WhlMotSysInvrT</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysInvrT_4/WhlMotSysInvrT</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysInvrT_4</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="0426e3d6-fb10-4674-90d8-8c71131c221b">
+                  <SHORT-NAME>WhlMotSysCooltT</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysCooltT_4/WhlMotSysCooltT</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysCooltT_4</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="99a13080-3af3-428f-9d12-996672ba6382">
+                  <SHORT-NAME>WhlMotSysIdc</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysIdc_5/WhlMotSysIdc</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysIdc_5</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="a966baed-d96a-454d-8563-cd814e440595">
+                  <SHORT-NAME>WhlMotSysLimnIndcn</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysLimnIndcn_3/WhlMotSysLimnIndcn</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysLimnIndcn_3</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="03dbb6b7-f5b7-43f5-bcb4-60b7a4626d2d">
+                  <SHORT-NAME>WhlMotSysCoolgReq</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysCoolgReq_4/WhlMotSysCoolgReq</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysCoolgReq_4</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="60b85481-2769-42cd-a2c6-0749ddb4c3e6">
+                  <SHORT-NAME>WhlMotSysErrIndcnReq</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysErrIndcnReq_4/WhlMotSysErrIndcnReq</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysErrIndcnReq_4</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="9c98ca1d-3cb7-4d2f-b98b-dd039f333f2a">
+                  <SHORT-NAME>DCChrgnHndlSts</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DCChrgnHndlSts_5/DCChrgnHndlSts</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/DCChrgnHndlSts_5</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="5f15c174-17f2-411a-94a1-84e2c5968f48">
+                  <SHORT-NAME>DrvgCyc</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DrvgCyc_3/DrvgCyc</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/DrvgCyc_3</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="0401dca2-3a89-4feb-b358-1e4fdaf0f489">
+                  <SHORT-NAME>GearLvrIndcn</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/GearLvrIndcn_6/GearLvrIndcn</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/GearLvrIndcn_6</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="e8334713-7dc9-4bca-b388-410ea2fddf40">
+                  <SHORT-NAME>HvBattSoc</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattSoc_2/HvBattSoc</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattSoc_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="e0388fb8-dbd4-43c5-9b59-1f55031d6bbb">
+                  <SHORT-NAME>HvBattUDc</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDc_3/HvBattUDc</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattUDc_3</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="a3d4e1f8-9663-4675-9d6a-3fc942aa4379">
+                  <SHORT-NAME>HvBattUDynMaxLim</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDynMaxLim_4/HvBattUDynMaxLim</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattUDynMaxLim_4</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="f2d3531f-8a5b-40aa-89b1-ae331c490276">
+                  <SHORT-NAME>HvBattUDynMinLim</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDynMinLim_4/HvBattUDynMinLim</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/HvBattUDynMinLim_4</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="31d1d6a9-9b4c-4a76-80a8-0aac1005d5a9">
+                  <SHORT-NAME>ImobEngSts2</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/ImobEngSts2_4/ImobEngSts2</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/ImobEngSts2_4</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="e527b7ad-cf70-434c-a355-4c9f4a681720">
+                  <SHORT-NAME>OnBdChrgrHndlSts1</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/OnBdChrgrHndlSts1_8/OnBdChrgrHndlSts1</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/OnBdChrgrHndlSts1_8</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="c7670756-e5c3-417d-a8f1-37359af632a0">
+                  <SHORT-NAME>PLockFltIndcRe</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockFltIndcRe_1/PLockFltIndcRe</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockFltIndcRe_1</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="594c0ee3-452e-472a-a6e9-f9147d763398">
+                  <SHORT-NAME>PLockFltLvlRe</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockFltLvlRe_1/PLockFltLvlRe</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockFltLvlRe_1</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="ed40b469-5951-421b-a573-ba5234d2c033">
+                  <SHORT-NAME>PLockParkReq</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockParkReq_1/PLockParkReq</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockParkReq_1</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="1f898c42-401a-4d92-96f2-f48d70b90528">
+                  <SHORT-NAME>PLockParkStsRe</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockParkStsRe_1/PLockParkStsRe</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PLockParkStsRe_1</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="5e9a3526-ddf5-4e90-88ff-ac212d2dc9dd">
+                  <SHORT-NAME>PrpsnFbLimnIndcn</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PrpsnFbLimnIndcn_2/PrpsnFbLimnIndcn</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PrpsnFbLimnIndcn_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="223ff800-2c29-4fd4-8ab9-ffdee5f2e22f">
+                  <SHORT-NAME>RearHeatModEnad</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/RearHeatModEnad_2/RearHeatModEnad</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/RearHeatModEnad_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="945a618c-66d4-49aa-8162-6dd12945f217">
+                  <SHORT-NAME>RearHeatPwrAllwd</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/RearHeatPwrAllwd_1/RearHeatPwrAllwd</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/RearHeatPwrAllwd_1</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="f581cce3-1b64-4d39-af02-5abd5ae1a0b0">
+                  <SHORT-NAME>WhlMotClrRdyReq</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotClrRdyReq_4/WhlMotClrRdyReq</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotClrRdyReq_4</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="a6b70478-38b1-4fdb-820d-22d9e156de94">
+                  <SHORT-NAME>WhlMotCooltFlowMinReq</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotCooltFlowMinReq_2/WhlMotCooltFlowMinReq</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotCooltFlowMinReq_2</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="483d7f24-e54f-4a68-a86a-2f2421c7682f">
+                  <SHORT-NAME>WhlMotSysActvDampgModReq</SHORT-NAME>
+                  <REQUIRED-COM-SPECS>
+                    <NONQUEUED-RECEIVER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysActvDampgModReq_2/WhlMotSysActvDampgModReq</DATA-ELEMENT-REF>
+                      <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                      <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                      <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-RECEIVER-COM-SPEC>
+                  </REQUIRED-COM-SPECS>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysActvDampgModReq_2</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="caabea62-2d02-4fa5-9db6-72161d53736a">
+                  <SHORT-NAME>WhlMotSysHeatFdBck</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatFdBck_1/WhlMotSysHeatFdBck</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysHeatFdBck_1</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="9bdceaee-5a1b-4fcc-bd34-8be5434f1580">
+                  <SHORT-NAME>WhlMotSysHeatPwrAct</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatPwrAct_1/WhlMotSysHeatPwrAct</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysHeatPwrAct_1</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="2d8d4fd9-e93b-46e5-9d6c-807c19981eb0">
+                  <SHORT-NAME>WhlMotSysHeatPwrMax</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <NONQUEUED-SENDER-COM-SPEC>
+                      <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatPwrMax_1/WhlMotSysHeatPwrMax</DATA-ELEMENT-REF>
+                      <INIT-VALUE>
+                        <NUMERICAL-VALUE-SPECIFICATION>
+                          <SHORT-LABEL>Init</SHORT-LABEL>
+                          <VALUE>0</VALUE>
+                        </NUMERICAL-VALUE-SPECIFICATION>
+                      </INIT-VALUE>
+                    </NONQUEUED-SENDER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/WhlMotSysHeatPwrMax_1</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+              </PORTS>
+              <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR UUID="2cfe8eab-c741-4746-b83c-3a73e8f2ceec">
+                  <SHORT-NAME>Appl_ComShellInternalBehavior</SHORT-NAME>
+                  <DATA-TYPE-MAPPING-REFS>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/Appl_ComShell/DataTypeMappingSets/Appl_ComShell_DTMap</DATA-TYPE-MAPPING-REF>
+                  </DATA-TYPE-MAPPING-REFS>
+                  <EVENTS>
+                    <TIMING-EVENT UUID="5bd9da33-db12-4947-b8fd-8e0230f385e6">
+                      <SHORT-NAME>RE_Appl_ComShell_Step</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/Appl_ComShell/ComponentTypes/Appl_ComShell/Appl_ComShellInternalBehavior/Appl_ComShell_Step</START-ON-EVENT-REF>
+                      <PERIOD>0.01</PERIOD>
+                    </TIMING-EVENT>
+                  </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <RUNNABLES>
+                    <RUNNABLE-ENTITY UUID="22e040fb-d8f0-457d-8146-07e7574c7768">
+                      <SHORT-NAME>Appl_ComShell_Step</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                        <VARIABLE-ACCESS UUID="8bfe60e6-8b64-4586-81d7-947ce2af4b28">
+                          <SHORT-NAME>DRA_CarTiGlb</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/CarTiGlb</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CarTiGlb_5/CarTiGlb</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="c10ac65a-4fe3-4893-a63c-8b53c6e63f50">
+                          <SHORT-NAME>DRA_BkpOfDstTrvld</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/BkpOfDstTrvld</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/BkpOfDstTrvld_7/BkpOfDstTrvld</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="5a445660-c1a2-4958-bb37-a91c70391ef3">
+                          <SHORT-NAME>DRA_WhlMotSysModReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysModReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysModReq_2/WhlMotSysModReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="ae76403c-b9fd-4f4c-8863-f94014549d00">
+                          <SHORT-NAME>DRA_WhlMotSysTqReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysTqReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqReq_2/WhlMotSysTqReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="75a64c76-5bea-4611-ba73-00c9ef9e1f38">
+                          <SHORT-NAME>DRA_CooltTSigForDtElec</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/CooltTSigForDtElec</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CooltTSigForDtElec_5/CooltTSigForDtElec</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="5f61b8cd-afc9-4b94-9d8c-f0a9956ecf88">
+                          <SHORT-NAME>DRA_CooltFlowForDtElec</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/CooltFlowForDtElec</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CooltFlowForDtElec_5/CooltFlowForDtElec</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="c77eb104-3988-4ca2-98e1-fb0bf3670fe6">
+                          <SHORT-NAME>DRA_SpdRotlForWhlsAtAxleRe</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/SpdRotlForWhlsAtAxleRe</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/SpdRotlForWhlsAtAxleRe_7/SpdRotlForWhlsAtAxleRe</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="11d3a3d1-ad0f-4a54-9a3d-51e38a211a52">
+                          <SHORT-NAME>DRA_WhlMotSysPwrLimMax</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysPwrLimMax</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysPwrLimMax_2/WhlMotSysPwrLimMax</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="86539d36-430a-43ff-a38c-249bb60e45cf">
+                          <SHORT-NAME>DRA_WhlMotSysPwrLimMin</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysPwrLimMin</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysPwrLimMin_2/WhlMotSysPwrLimMin</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="f2608921-448a-4ced-a98e-714c316636c6">
+                          <SHORT-NAME>DRA_DCChrgnHndlSts</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/DCChrgnHndlSts</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DCChrgnHndlSts_5/DCChrgnHndlSts</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="4577ee18-f653-407a-85b7-97337f0fd9ed">
+                          <SHORT-NAME>DRA_DrvgCyc</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/DrvgCyc</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DrvgCyc_3/DrvgCyc</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="3196b693-abd5-4eeb-8f6c-3c03b3829429">
+                          <SHORT-NAME>DRA_GearLvrIndcn</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/GearLvrIndcn</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/GearLvrIndcn_6/GearLvrIndcn</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="06273f05-b53d-4f5e-b72b-0546c1dacb5d">
+                          <SHORT-NAME>DRA_HvBattSoc</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/HvBattSoc</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattSoc_2/HvBattSoc</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="e786d682-fbe5-4260-8236-0b3711f35077">
+                          <SHORT-NAME>DRA_HvBattUDc</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/HvBattUDc</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDc_3/HvBattUDc</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="d6a52fb1-7558-4af7-8673-5a76d13ecf95">
+                          <SHORT-NAME>DRA_HvBattUDynMaxLim</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/HvBattUDynMaxLim</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDynMaxLim_4/HvBattUDynMaxLim</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="aa018627-8e45-48e9-8c04-c06546e8ddb5">
+                          <SHORT-NAME>DRA_HvBattUDynMinLim</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/HvBattUDynMinLim</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvBattUDynMinLim_4/HvBattUDynMinLim</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="eead0a48-be9d-4ad3-a616-2ab830f833f1">
+                          <SHORT-NAME>DRA_OnBdChrgrHndlSts1</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/OnBdChrgrHndlSts1</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/OnBdChrgrHndlSts1_8/OnBdChrgrHndlSts1</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="c329dac6-a023-4433-a4f5-d80bc651cebc">
+                          <SHORT-NAME>DRA_PLockParkReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/PLockParkReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockParkReq_1/PLockParkReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="7f2bbd1e-d948-410a-b55a-012947040ef1">
+                          <SHORT-NAME>DRA_PrpsnFbLimnIndcn</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/PrpsnFbLimnIndcn</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PrpsnFbLimnIndcn_2/PrpsnFbLimnIndcn</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="bf626451-9071-42f7-857c-50d5704ecab0">
+                          <SHORT-NAME>DRA_RearHeatModEnad</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/RearHeatModEnad</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/RearHeatModEnad_2/RearHeatModEnad</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="279698bd-18ae-439f-a205-84502f0ad33c">
+                          <SHORT-NAME>DRA_RearHeatPwrAllwd</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/RearHeatPwrAllwd</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/RearHeatPwrAllwd_1/RearHeatPwrAllwd</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="3890959b-8ee4-46ae-ba5a-eb5dfca1d12b">
+                          <SHORT-NAME>DRA_WhlMotSysActvDampgModReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysActvDampgModReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysActvDampgModReq_2/WhlMotSysActvDampgModReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                      <DATA-SEND-POINTS>
+                        <VARIABLE-ACCESS UUID="e4944664-3413-4a93-a816-c495e1400c83">
+                          <SHORT-NAME>DSP_WhlMotSysModSts</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysModSts</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysModSts_5/WhlMotSysModSts</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="1b570db5-10ba-45bc-9769-e60ae767ea4b">
+                          <SHORT-NAME>DSP_WhlMotSysSpdAct</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysSpdAct</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysSpdAct_4/WhlMotSysSpdAct</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="ea92598c-8e7c-4031-95ba-cbe32b7bf3f5">
+                          <SHORT-NAME>DSP_WhlMotSysUdc</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysUdc</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysUdc_3/WhlMotSysUdc</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="f736a4a8-6074-47da-8dba-6991e7ce9f82">
+                          <SHORT-NAME>DSP_WhlMotSysMotT</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysMotT</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysMotT_3/WhlMotSysMotT</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="b255ff39-d952-46eb-8163-f6812c8cd277">
+                          <SHORT-NAME>DSP_WhlMotSysInvrT</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysInvrT</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysInvrT_4/WhlMotSysInvrT</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="9d4367b0-5da2-40a4-ba30-10780b1f3e46">
+                          <SHORT-NAME>DSP_WhlMotSysCooltT</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysCooltT</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysCooltT_4/WhlMotSysCooltT</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="9c9bf158-ebe7-42b5-a74d-d5644ceb625a">
+                          <SHORT-NAME>DSP_WhlMotSysIdc</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysIdc</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysIdc_5/WhlMotSysIdc</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="9a9948a9-e548-4bdb-8ece-b8bcb5ee49df">
+                          <SHORT-NAME>DSP_WhlMotSysLimnIndcn</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysLimnIndcn</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysLimnIndcn_3/WhlMotSysLimnIndcn</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="1065babf-b0d1-4cce-aa14-7186ff4a9ec4">
+                          <SHORT-NAME>DSP_WhlMotSysCoolgReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysCoolgReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysCoolgReq_4/WhlMotSysCoolgReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="c3b48803-43b7-428e-bc08-9daf6844a4f7">
+                          <SHORT-NAME>DSP_WhlMotSysErrIndcnReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysErrIndcnReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysErrIndcnReq_4/WhlMotSysErrIndcnReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="b098a878-51ea-4ffb-a705-cce3715c4577">
+                          <SHORT-NAME>DSP_ImobEngSts2</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/ImobEngSts2</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/ImobEngSts2_4/ImobEngSts2</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="afec44c6-3ce7-45ca-b38a-08733c2de2dc">
+                          <SHORT-NAME>DSP_PLockFltIndcRe</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/PLockFltIndcRe</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockFltIndcRe_1/PLockFltIndcRe</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="482ffeea-2ace-46a8-8d15-f5dc15e47c54">
+                          <SHORT-NAME>DSP_PLockFltLvlRe</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/PLockFltLvlRe</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockFltLvlRe_1/PLockFltLvlRe</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="0518640f-1363-4b74-b1f6-9abfd0bb089b">
+                          <SHORT-NAME>DSP_PLockParkStsRe</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/PLockParkStsRe</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PLockParkStsRe_1/PLockParkStsRe</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="4fd312c9-f12b-4758-9104-e82b4b0f3f9f">
+                          <SHORT-NAME>DSP_WhlMotClrRdyReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotClrRdyReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotClrRdyReq_4/WhlMotClrRdyReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="23be5856-a6f5-464e-a6e6-97728ec08d88">
+                          <SHORT-NAME>DSP_WhlMotCooltFlowMinReq</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotCooltFlowMinReq</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotCooltFlowMinReq_2/WhlMotCooltFlowMinReq</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="98f83951-6b8a-43f4-a696-1dfa4d3358bc">
+                          <SHORT-NAME>DSP_WhlMotSysHeatFdBck</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysHeatFdBck</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatFdBck_1/WhlMotSysHeatFdBck</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="1e7e16e1-167f-406b-88db-d2bed4410710">
+                          <SHORT-NAME>DSP_WhlMotSysHeatPwrAct</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysHeatPwrAct</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatPwrAct_1/WhlMotSysHeatPwrAct</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="b7f40f99-0098-4e34-9eee-2fde0a076a79">
+                          <SHORT-NAME>DSP_WhlMotSysHeatPwrMax</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysHeatPwrMax</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysHeatPwrMax_1/WhlMotSysHeatPwrMax</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-SEND-POINTS>
+                      <SYMBOL>Appl_ComShell_Step</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </APPLICATION-SW-COMPONENT-TYPE>
+            <SWC-IMPLEMENTATION UUID="3c6cba14-a52c-4f44-8ed8-ea11c500fda1">
+              <SHORT-NAME>Appl_ComShellImplementation</SHORT-NAME>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <SW-VERSION>0.5.0</SW-VERSION>
+              <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/Appl_ComShell/ComponentTypes/Appl_ComShell/Appl_ComShellInternalBehavior</BEHAVIOR-REF>
+            </SWC-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

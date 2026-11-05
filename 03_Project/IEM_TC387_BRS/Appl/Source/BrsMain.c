@@ -237,6 +237,9 @@ void BrsMainInit(void)
   BrsHwWatchdogInitPowerOn();
 #  endif
 
+  /* Bring-up: SMU alarms must not application-reset the chip (else PC→0xA0000000). */
+  BrsHwDisableSMUReset();
+
 #  if defined (BRS_ENABLE_PLLCLOCKS)
   BrsHwPllInitPowerOn();
 #  endif
@@ -375,6 +378,12 @@ TASK(Default_Init_Task)
   BrsTestsuite_BrsMain_Default_Init_Task();
 #endif
 
+  /* Scheduling reached — StartOS barriers released */
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+    Appl_Os_SlavePhase[0] = 8u;
+  }
+
 #if defined (BRS_ENABLE_OS_MULTICORESUPPORT)
   /* Workaround for RTE ESCAN00078832 */
   /* Use this code, if you get a Det Error at the end of Rte_Start() on MasterCore */
@@ -393,7 +402,14 @@ TASK(Default_Init_Task)
 #if defined (BRS_ENABLE_HSM_SUPPORT)
   vHsm_StartupTwo();
 #else
-  EcuM_StartupTwo();
+  /* Can/COM/DEM/DCM after StartOS — see Appl_Bsw_InitAfterOs.c */
+  {
+    extern void Appl_Bsw_InitAfterOs(void);
+    extern void Appl_BswM_NotifyRunAndEnter(uint8 kickPhase);
+    Appl_Bsw_InitAfterOs();
+    EcuM_StartupTwo();
+    Appl_BswM_NotifyRunAndEnter(1u);
+  }
 #endif
 
   (void)TerminateTask();
@@ -416,6 +432,11 @@ TASK(Default_Init_Task_Trusted)
 
   Os_InitialEnableInterruptSources(FALSE);
 
+  {
+    extern void Appl_BswM_NotifyRunAndEnter(uint8 kickPhase);
+    Appl_BswM_NotifyRunAndEnter(2u);
+  }
+
   (void)TerminateTask();
 }
 
@@ -434,7 +455,11 @@ TASK(Default_Init_Task_Core1)
   BrsTestsuite_BrsMain_Default_Init_Task_Core1();
 #endif
 
-  EcuM_StartupTwo();
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+    Appl_Os_SlavePhase[1] = 8u;
+  }
+  /* Skip EcuM_StartupTwo — same prio trap as Core2 (blocks Trusted IRQ enable). */
 
   (void)TerminateTask();
 }
@@ -455,6 +480,10 @@ TASK(Default_Init_Task_Core1_Trusted)
 #endif
 
   Os_InitialEnableInterruptSources(FALSE);
+  {
+    extern void Appl_Rte_StartThisCore(void);
+    Appl_Rte_StartThisCore();
+  }
 
   (void)TerminateTask();
 }
@@ -473,7 +502,19 @@ TASK(Default_Init_Task_Core2)
   BrsTestsuite_BrsMain_Default_Init_Task_Core2();
 #endif
 
-  EcuM_StartupTwo();
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+    Appl_Os_SlavePhase[2] = 8u;
+  }
+  /* Do NOT call EcuM_StartupTwo() — higher prio than Trusted would block IRQ enable.
+   * Also arm IRQs/alarms here so Core2 tick does not depend on Trusted alone. */
+  Os_InitialEnableInterruptSources(FALSE);
+  (void)SetRelAlarm(Alarm_Appl_10ms, 10u, 10u);
+  (void)SetRelAlarm(Alarm_Appl_100ms, 100u, 100u);
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+    Appl_Os_SlavePhase[2] = 9u;
+  }
 
   (void)TerminateTask();
 }
@@ -493,7 +534,22 @@ TASK(Default_Init_Task_Core2_Trusted)
   BrsTestsuite_BrsMain_Default_Init_Task_Core2_Trusted();
 #endif
 
-  Os_InitialEnableInterruptSources(FALSE);
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+    /* Init already armed alarms (phase 9); mark Trusted ran without re-SetRelAlarm. */
+    if (Appl_Os_SlavePhase[2] < 7u)
+    {
+      Appl_Os_SlavePhase[2] = 7u;
+      Os_InitialEnableInterruptSources(FALSE);
+      (void)SetRelAlarm(Alarm_Appl_10ms, 10u, 10u);
+      (void)SetRelAlarm(Alarm_Appl_100ms, 100u, 100u);
+      Appl_Os_SlavePhase[2] = 9u;
+    }
+  }
+  {
+    extern void Appl_Rte_StartThisCore(void);
+    Appl_Rte_StartThisCore();
+  }
 
   (void)TerminateTask();
 }
@@ -512,7 +568,11 @@ TASK(Default_Init_Task_Core3)
   BrsTestsuite_BrsMain_Default_Init_Task_Core3();
 #endif
 
-  EcuM_StartupTwo();
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+    Appl_Os_SlavePhase[3] = 8u;
+  }
+  /* Skip EcuM_StartupTwo — same prio trap as Core2. */
 
   (void)TerminateTask();
 }
@@ -533,6 +593,10 @@ TASK(Default_Init_Task_Core3_Trusted)
 #endif
 
   Os_InitialEnableInterruptSources(FALSE);
+  {
+    extern void Appl_Rte_StartThisCore(void);
+    Appl_Rte_StartThisCore();
+  }
 
   (void)TerminateTask();
 }
@@ -1048,8 +1112,23 @@ int main(void)
   /* OS is configured for UseCase Interrupt Only (/MICROSAR/Os/OsOS/OsUseCase) */
   Os_InitInterruptOnly();
 #  else
-  Os_InitMemory();
-  Os_Init();
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+#  if (BRS_CPU_CORE_AMOUNT>1) || (BRSHW_SOURCECODE_TEMPLATE_VERSION >= 0x0103u)
+    if (coreID < 4u)
+    {
+      Appl_Os_SlavePhase[coreID] = 3u; /* main → Os_Init */
+    }
+#  endif
+    Os_InitMemory();
+    Os_Init();
+#  if (BRS_CPU_CORE_AMOUNT>1) || (BRSHW_SOURCECODE_TEMPLATE_VERSION >= 0x0103u)
+    if (coreID < 4u)
+    {
+      Appl_Os_SlavePhase[coreID] = 4u; /* Os_Init done → EcuM_Init */
+    }
+#  endif
+  }
 #  endif
 # endif
 

@@ -160,8 +160,9 @@ void Brs_PreMainStartup(void)
 #endif
 
 #if (VLINKGEN_CFG_NUM_ZERO_INIT_ONE_GROUPS>1uL)
-  /* vLinkGen_ZeroInit_One_GroupsSet contains vLinkGen VarSectionGroups, configured with Init Policy "ZERO_INIT" and Init Stage "ONE" */
-//  Brs_MemoryZeroInit(&vLinkGen_ZeroInit_One_GroupsSet, BRS_INIT_PATTERN_AREAS, coreID);
+  /* Keep Stage-One zero OFF for bring-up: enabling it triggered SMU app reset
+   * (PC→0xA0000000, RSTSTAT.SMU|PORST). Os_InitMemory still inits OS ZERO_INIT. */
+  /* Brs_MemoryZeroInit(&vLinkGen_ZeroInit_One_GroupsSet, BRS_INIT_PATTERN_AREAS, coreID); */
 #endif
 
 #if (VLINKGEN_CFG_NUM_INIT_ONE_GROUPS>1uL)

@@ -137,7 +137,6 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  * ================
  * EcuM_TimeType: Integer in interval [0...4294967295]
  * uint32: Integer in interval [0...4294967295] (standard type)
- * uint8: Integer in interval [0...255] (standard type)
  *
  * Enumeration Types:
  * ==================
@@ -161,6 +160,7 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  *   ECUM_STATE_RESET (144U)
  * EcuM_UserType: Enumeration of integer in interval [0...255] with enumerators
  *   EcuMConf_EcuMFlexUserConfig_EcuMUser_BswM (0U)
+ * uint8: Enumeration of integer in interval [0...255] with enumerators
  *
  *********************************************************************************************************************/
 

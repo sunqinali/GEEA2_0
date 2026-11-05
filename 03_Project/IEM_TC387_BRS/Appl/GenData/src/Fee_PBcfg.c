@@ -14,7 +14,7 @@
 **                                                                            **
 **  VERSION     : 12.0.0                                                      **
 **                                                                            **
-**  DATE, TIME  : 2026-11-04, 18:36:04   !!!IGNORE-LINE!!!                **
+**  DATE, TIME  : 2026-11-04, 21:04:07   !!!IGNORE-LINE!!!                **
 **                                                                            **
 **  GENERATOR   : Build b191017-0938                                        **
 **                                                                            **
@@ -229,6 +229,16 @@ to the initializer {0} which may be used to initialize an aggregate.
 Here it is defined as enum and first element initialized to 0.
 */
   },
+  {
+    0U, /* Block Cycle Count */
+    (uint8)FEE_NORMAL_DATA,  /* Block type is Normal */
+    26U, /* Block number */
+    16U, /* Fee Block Size */
+/*MISRA2012_RULE_10_3_JUSTIFICATION: Exception MISRA 10_3 is not applicable
+to the initializer {0} which may be used to initialize an aggregate.
+Here it is defined as enum and first element initialized to 0.
+*/
+  },
 };
 const Fee_ConfigType Fee_Config =
 {  
@@ -260,11 +270,12 @@ function will not be required. The function is correctly getting assigned to NUL
   /* Fee threshold value */
   200U,
   /* Number of blocks configured */
-  13U,
+  14U,
   {
     /* Ignore the unconfigured blocks */
     FEE_UNCONFIG_BLOCK_IGNORE,
-    /* Restart Garbage Collection during initialization */
+    /* Must be INIT: WRITE skips FeeStartInitGC → GetStatus IDLE immediately →
+     * NvM_ReadAll hangs FeePendReq=READ while DF0 never formatted. */
     FEE_GC_RESTART_INIT,
     /* Erase Suspend feature is disabled */
     FEE_ERASE_SUSPEND_DISABLED,
@@ -289,8 +300,8 @@ range locations. Out of bounds checks were checked during functional verificatio
 range locations. Out of bounds checks were checked during functional verification. */
   /* QS Hardening Error notification */
   (Fee_NotifFunctionPtrType)NULL_PTR,
-  /* Erase All feature is disabled */
-  (boolean)FALSE
+  /* INVALID DF0 → erase+format both Fee banks (bring-up; virgin EMPTY also OK) */
+  (boolean)TRUE
 
 
 };

@@ -76,10 +76,10 @@
  * NetworkHandleType: Integer in interval [0...255]
  * TimeInMicrosecondsType: Integer in interval [0...4294967295]
  * boolean: Boolean (standard type)
+ * sint16: Integer in interval [-32768...32767] (standard type)
  * sint8: Integer in interval [-128...127] (standard type)
  * uint16: Integer in interval [0...65535] (standard type)
  * uint32: Integer in interval [0...4294967295] (standard type)
- * uint8: Integer in interval [0...255] (standard type)
  *
  * Enumeration Types:
  * ==================
@@ -115,6 +115,7 @@
  * EcuM_ShutdownCauseType: Enumeration of integer in interval [0...3] with enumerators
  * EcuM_StateType: Enumeration of integer in interval [0...144] with enumerators
  * EcuM_UserType: Enumeration of integer in interval [0...255] with enumerators
+ * uint8: Enumeration of integer in interval [0...255] with enumerators
  *
  * Array Types:
  * ============

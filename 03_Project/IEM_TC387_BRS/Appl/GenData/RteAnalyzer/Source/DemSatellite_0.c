@@ -146,7 +146,6 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  * sint8: Integer in interval [-128...127] (standard type)
  * uint16: Integer in interval [0...65535] (standard type)
  * uint32: Integer in interval [0...4294967295] (standard type)
- * uint8: Integer in interval [0...255] (standard type)
  *
  * Enumeration Types:
  * ==================
@@ -328,6 +327,7 @@ typedef P2FUNC(Std_ReturnType, RTE_CODE, FncPtrType)(void);
  *   DEM_UDS_STATUS_WIR_BflMask 128U (0b10000000)
  *   DEM_UDS_STATUS_WIR_BflPn 7
  *   DEM_UDS_STATUS_WIR_BflLn 1
+ * uint8: Enumeration of integer in interval [0...255] with enumerators
  *
  * Array Types:
  * ============
@@ -2464,7 +2464,6 @@ FUNC(void, DemSatellite_0_CODE) Dem_SatelliteMainFunction(void) /* PRQA S 0624, 
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <Event_CRASH_DTC>
@@ -2670,7 +2669,6 @@ FUNC(void, DemSatellite_0_CODE) Dem_SatelliteMainFunction(void) /* PRQA S 0624, 
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetDTCOfEvent> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -2925,7 +2923,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetDTCOf
  *   - triggered by server invocation for OperationPrototype <GetDebouncingOfEvent> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetDebouncingOfEvent> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetDebouncingOfEvent> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetDebouncingOfEvent> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetDebouncingOfEvent> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetDebouncingOfEvent> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetDebouncingOfEvent> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -3179,7 +3176,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetDebou
  *   - triggered by server invocation for OperationPrototype <GetEventEnableCondition> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventEnableCondition> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventEnableCondition> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventEnableCondition> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventEnableCondition> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventEnableCondition> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventEnableCondition> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -3433,7 +3429,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <Event_CRASH_DTC>
@@ -3639,7 +3634,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventExtendedDataRecordEx> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -3896,7 +3890,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <Event_CRASH_DTC>
@@ -4102,7 +4095,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventFailed> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -4356,7 +4348,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <Event_CRASH_DTC>
@@ -4562,7 +4553,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventFreezeFrameDataEx> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -4819,7 +4809,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <Event_CRASH_DTC>
@@ -5025,7 +5014,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventStatus> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -5279,7 +5267,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <Event_CRASH_DTC>
@@ -5485,7 +5472,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetEventTested> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -5739,7 +5725,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <Event_CRASH_DTC>
@@ -5945,7 +5930,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetEvent
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetFaultDetectionCounter> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -6200,7 +6184,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetFault
  *   - triggered by server invocation for OperationPrototype <GetMonitorStatus> of PortPrototype <EvtInfo_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <GetMonitorStatus> of PortPrototype <EvtInfo_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <GetMonitorStatus> of PortPrototype <EvtInfo_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <GetMonitorStatus> of PortPrototype <EvtInfo_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <GetMonitorStatus> of PortPrototype <EvtInfo_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <GetMonitorStatus> of PortPrototype <EvtInfo_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <GetMonitorStatus> of PortPrototype <EvtInfo_CRASH_DTC>
@@ -6454,7 +6437,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) TSC_Inline_DemSatellite_0_Dem_GetMonit
  *   - triggered by server invocation for OperationPrototype <ResetEventDebounceStatus> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <ResetEventDebounceStatus> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <ResetEventDebounceStatus> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <ResetEventDebounceStatus> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <ResetEventDebounceStatus> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <ResetEventDebounceStatus> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <ResetEventDebounceStatus> of PortPrototype <Event_CRASH_DTC>
@@ -6707,7 +6689,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) Dem_ResetEventDebounceStatus(Dem_Event
  *   - triggered by server invocation for OperationPrototype <ResetEventStatus> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <ResetEventStatus> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <ResetEventStatus> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <ResetEventStatus> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <ResetEventStatus> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <ResetEventStatus> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <ResetEventStatus> of PortPrototype <Event_CRASH_DTC>
@@ -6960,7 +6941,6 @@ FUNC(Std_ReturnType, DemSatellite_0_CODE) Dem_ResetEventStatus(Dem_EventIdType p
  *   - triggered by server invocation for OperationPrototype <SetEventStatus> of PortPrototype <Event_AURIX_RST_MPL>
  *   - triggered by server invocation for OperationPrototype <SetEventStatus> of PortPrototype <Event_AURIX_RST_SNG>
  *   - triggered by server invocation for OperationPrototype <SetEventStatus> of PortPrototype <Event_AURIX_WATHDOG_FLT>
- *   - triggered by server invocation for OperationPrototype <SetEventStatus> of PortPrototype <Event_COM_Busoff>
  *   - triggered by server invocation for OperationPrototype <SetEventStatus> of PortPrototype <Event_COM_CarConfigErr>
  *   - triggered by server invocation for OperationPrototype <SetEventStatus> of PortPrototype <Event_COM_NotConfig>
  *   - triggered by server invocation for OperationPrototype <SetEventStatus> of PortPrototype <Event_CRASH_DTC>

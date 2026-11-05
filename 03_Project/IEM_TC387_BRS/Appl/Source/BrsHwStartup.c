@@ -489,6 +489,15 @@ void BRS_FORCE_ACTIVE brsStartupEntry(void)
   BRS_MOVE_TO_CSFR(BRS_PCON0_OFFSET, 0x0UL); /* setting the PCON0 to zero disables the cache bypass (thus program caching is enabled) */
   BRS_TRICORE_LOCKENDINIT(CurrentCoreId);
 
+  /* UDE: Appl_Os_SlavePhase[core]=1 means past BIV/BTV (not stuck in align for(;;)) */
+  {
+    extern volatile uint8 Appl_Os_SlavePhase[4];
+    if (CurrentCoreId < 4u)
+    {
+      Appl_Os_SlavePhase[CurrentCoreId] = 1u;
+    }
+  }
+
 /* =========================================================================== */
 /*                                                                             */
 /* Description: Jump to Brs_PreMainStartup() (BrsMainStartup.c)                */

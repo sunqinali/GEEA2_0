@@ -33,5 +33,6 @@ Std_ReturnType Appl_Det_ErrorHook(uint16 ModuleId, uint8 InstanceId, uint8 ApiId
   Appl_Det_Err[i] = ErrorId;
   Appl_Det_Idx = (uint8)((i + 1u) % APPL_DET_LOG_SIZE);
 
-  return E_OK; /* continue Det processing (log buffer etc.) */
+  /* E_NOT_OK → Det skips Det_EndlessLoop (DET_DEBUG_ENABLED otherwise hangs forever). */
+  return E_NOT_OK;
 }

@@ -11,7 +11,8 @@
 | Generate / ELF | `generate_regen22_demnvm` 0 Fatal/0 Errors；`Tasking/Debug/IEM_TC387_BRS.elf` 链接 OK（含 DemUseNvm） |
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | 当前停点 | **板测挂起**（等板）；无板阶段 4 存储栈已闭合 |
-| 阶段 4 SW（2026-11-04） | ProgConditions；BusOff Dem；CarConfig 壳（E300-56）；**NvM/Fee/Fls + DemUseNvm**；EcuM **ReadAll→Dem_Init** / **WriteAll@GoOff**（带超时） |
+| 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
+| 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
 
 ## 1. 输入与工具
@@ -167,18 +168,20 @@ DaVinci 工程名以 BRS 为准：`IEM_TC387_BRS`，ECU Instance 选提取中的
 - NvM：DEM 主存储、CCP 有效值和 CarConfig 状态（Bulk / Valid）。ReadAll 在启动路径上，写失败不得挡住 2.5 s 诊断就绪；诊断就绪的定义是能响应 `0x10` / `0x22` / `0x3E`，不是所有 DID 都已有应用数据。
 - DID `0xE103` 按 Base Tech 表做最多 10 个错误 CCP。CCP 清单（IEM 实际订阅哪些号）需求里没有释放版列表，先做成可配置表，表内容待 Car Config 数据库。
 
-出口：CANdela 或 CANoe 对 Default 会话做 `0x3E`、`0x10`、`0x22`（至少一条平台 DID）、`0x19`。编程下载返回明确的负响应，而不是超时。
+出口：CANdela 或 CANoe 对 Default 会话做 `0x3E`、`0x10`、`0x22`（至少一条平台 DID）、`0x19`。编程下载返回明确的负响应，而不是超时。  
+**无板侧：** `0x22 F120/E103` 已有数据；`0x34`→NRC11；RID `0x0206` 有明确正响应；`0x27` CompareKey 明确失败。会话/时序出口仍待板+CANoe。
 
-### 阶段 5：RTE 与应用壳 — **未开始（不挡到板 smoke）**
+### 阶段 5：RTE 与应用壳 — **标量 SWC↔COM 已闭合（组信号/CCP 仍开）**
 
 Developer 中：
 
 - 应用 SWC 壳，把系统提取端口映射到 COM 信号。未实现的发送信号保持提取初值，QF 初值为 1（无有效数据），直到应用写入。
-- CarConfig 订阅 SWC：解析 BlockID，做 Bulk → Valid，合法值写 NvM。
+- CarConfig 订阅 SWC：解析 BlockID，做 Bulk → Valid，合法值写 NvM（状态壳已有；CCP 值待 DB）。
 - 运行实体只挂到 Core 0 的 10 ms / 100 ms，或 Core 2 的对应任务。跨核数据用 RTE IOC，本阶段不手写共享内存。
 - 生成 RTE，与 Configurator 的 OS task mapping 一致。
 
-出口：RTE 生成 0 error。未连接端口有清单，不留静默未连接。
+出口：RTE 生成 0 error。未连接端口有清单，不留静默未连接。  
+**进度：** `Appl_ComShell` v0.5 已映射 SystemExtract **全部 41 路标量**（22 RX + 19 TX，`Task_Bsw_10ms`）；`generate_regen25_comshell_v05` 0 Fatal/0 Errors；amk ELF OK。组信号 23 路未进壳（`VehCfgPrm` BlkID 仍由 CarConfig 直连 Com）。未连接清单约 807；`0xF120`/`0xE103`、RID `0x0206`、Security L3/L4 已由 Appl 接管。
 
 ### 阶段 6：构建与基础测试 — **编译链接已完成；台架 T1–T8 待板**
 
@@ -208,7 +211,7 @@ Developer 中：
 | 396 复位不拉显性 | Port 复位电平 + Can 初始化顺序 |
 | DoCAN 时序 | CanTp，对照 4.3.3 和 CDD |
 | UDS 会话 / DID / DTC | Dcm + Dem，数据来自 CDD |
-| Car Config 订阅、0xE103、E300-56 | 应用壳 + NvM + Dem（CDD）；当前仅 BlkID 观测壳 |
+| Car Config 订阅、0xE103、E300-56 | 应用壳 + Dem；BlkID/状态 NvM 壳 + E103；合法 CCP 值表仍待 DB |
 | SWDL / PBL / SBL | 不做，只留交接标志 |
 | QF 语义 | 应用，COM 只搬运 |
 | 30% 资源余量 | 链接后记录，不挡阶段 6 |
@@ -221,7 +224,7 @@ Developer 中：
 | B | 阶段 2–3：MCAL 通信最小集 + CanTrcv/Can 栈无板可观测 | **已完成**（`generate_regen11_bswm` / ELF） |
 | C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、可选 `isCarTiGlb` | **挂起（等板）** |
 | D | 阶段 3 出口：CANoe NM `0x51C` + 周期帧；T1/T3–T5/T7 | 挂起（等板） |
-| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳（无板）→ NvM/Fee/Fls/DemUseNvm | 无板存储栈 + 启停 ReadAll/WriteAll 钩子已闭合；T2/T6/T8 等板验证 |
+| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳（无板）→ NvM/Fee/Fls/DemUseNvm | 阶段4无板闭合；阶段5 标量 SWC↔COM v0.5 闭合；组信号/CCP DB / T1–T8 等板 |
 | F | 阶段 6：完整台架 T1–T8 记录 | 挂起（等板） |
 
 ACAN 的 1 Mbps 与 SDB 的 500 kbit/s 不要混到 DCAN 上。Generate 后执行 `IEM_TC387_BRS/Tasking/AfterGenerate.bat`（LSL + BswM callout 补丁 + CanTrcv Tasking 接线恢复 + amk）。

@@ -428,5 +428,7 @@
         <AmdGenerateDebugData>false</AmdGenerateDebugData>
         <AutomaticSyncSystemDescription>false</AutomaticSyncSystemDescription>
     </Miscellaneous>
-    <SwctGeneration/>
+    <SwctGeneration>
+        <Component Name="Appl_ComShell" GenerationEnabled="true"/>
+    </SwctGeneration>
 </ProjectAssistant>

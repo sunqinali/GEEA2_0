@@ -1,5 +1,5 @@
 /**********************************************************************************************************************
- * Platform Dem reporters (BusOff / CarConfig) — SWC-kind events, no CanSM Dem yet
+ * Platform Dem: BusOff mirrored from CanSM (native Dem BSW); CarConfig via Dem_SetEventStatus (SWC)
  *********************************************************************************************************************/
 #ifndef APPL_DEM_PLATFORM_H
 #define APPL_DEM_PLATFORM_H

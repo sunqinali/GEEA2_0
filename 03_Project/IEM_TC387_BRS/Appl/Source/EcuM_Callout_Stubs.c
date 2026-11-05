@@ -73,6 +73,7 @@
  * DO NOT CHANGE THIS COMMENT!           <USERBLOCK User Includes>                          DO NOT CHANGE THIS COMMENT!
  *********************************************************************************************************************/
 #include "Det.h"
+#include "BswM.h"
 #include "Mcu.h"
 #include "Port.h"
 #include "Spi.h"
@@ -248,6 +249,13 @@ FUNC(void, ECUM_CODE) EcuM_AL_DriverInitZero(void)
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           <USERBLOCK EcuM_AL_DriverInitZero>                 DO NOT CHANGE THIS COMMENT!
  *********************************************************************************************************************/
+  /* Ecuc lists BswM_InitMemory / BswM_PreInit but callout stubs never invoke the
+   * generated init tables — without PreInit, EcuM_StartupTwo→BswM_Init fails
+   * (BSWM_E_NO_PREINIT) and Trusted BswM_EcuM_CurrentState Det 42 / EnterRun never runs. */
+  if (GetCoreID() == ECUM_CORE_ID_BSW)
+  {
+    BswM_InitMemory();
+  }
   Det_Init(NULL_PTR);
   return;
 /**********************************************************************************************************************
@@ -268,30 +276,27 @@ FUNC(void, ECUM_CODE) EcuM_AL_DriverInitOne(void)
  * DO NOT CHANGE THIS COMMENT!           <USERBLOCK EcuM_AL_DriverInitOne>                  DO NOT CHANGE THIS COMMENT!
  *********************************************************************************************************************/
   /* MCAL + CAN path (CanSM EnterRun -> CanIf Trcv -> Tja1145). PLL may already be set by BRS. */
+  extern volatile uint8 Appl_Os_InitPhase;
   if (GetCoreID() == ECUM_CORE_ID_BSW)
   {
+    /* Ecuc InitPhase=INIT_ONE for BswM_PreInit — required before StartupTwo BswM_Init. */
+    BswM_PreInit(NULL_PTR);
+
+    Appl_Os_InitPhase = 1u;
     Mcu_Init(&Mcu_Config);
+    /* fMCAN / CCUCON already set by BrsHw PLL (Group B). Do not re-run Mcu_InitClock here —
+     * Can_Init hang was Safety-EndInit on MCMCAN CLC (Appl_UnlockEndinit), not missing InitClock. */
     Port_Init(&Port_Config);
+    /* P22.11 TSTM init HIGH in Port_PBcfg — disables TLF35584 WD for bring-up. */
     Spi_Init(&Spi_Config);
 
+    Appl_Os_InitPhase = 2u;
     CanTrcv_30_Tja1145_Init(NULL_PTR);
     Appl_CanTrcv_Smoke_AfterInit(); /* SPI GetOpMode probe → Appl_CanTrcv_* globals */
-    Can_Init(NULL_PTR);
-    CanIf_Init(NULL_PTR);
-    CanSM_Init(NULL_PTR);
 
-    ComM_Init();
-    Nm_Init();
-    CanNm_Init(NULL_PTR);
-    CanTp_Init(NULL_PTR);
-    PduR_Init(NULL_PTR);
-    Com_Init(NULL_PTR);
-    Appl_Com_StartIpduGroups_ForBswM(); /* BswM EnterRun has no Com_IpduGroupStart yet */
-    Dem_PreInit(NULL_PTR);
-    /* Fls→Fee→NvM + timed ReadAll before Dem_Init so Admin/Status/Primary RAM is loaded. */
-    Appl_NvM_InitStackAndReadAll();
-    Dem_Init(NULL_PTR);
-    Dcm_Init(NULL_PTR);
+    /* Can→Dcm deferred to Appl_Bsw_InitAfterOs() (Default_Init_Task after StartOS).
+     * Pre-OS Can_Init stuck at InitPhase=31 (MCMCAN CCCR / fMCAN). */
+    Appl_Os_InitPhase = 20u; /* DriverInitOne minimal done — ready for StartOS */
   }
   return;
 /**********************************************************************************************************************
@@ -328,24 +333,80 @@ FUNC(void, ECUM_CODE) EcuM_StartOS(AppModeType appMode)
  * DO NOT CHANGE THIS COMMENT!           <USERBLOCK EcuM_StartOS>                           DO NOT CHANGE THIS COMMENT!
  *********************************************************************************************************************/
   /* Add implementation of EcuM_StartOS() */
-#if ( ECUM_NUMBER_OF_CORES > 1 )
-  uint8 coreId;
-  StatusType status;
-  if(GetCoreID()==ECUM_CORE_ID_STARTUP)
+  extern volatile uint8 Appl_Os_StartOsEntered;
+  extern volatile uint8 Appl_Os_StartCoreMask;
+  extern volatile StatusType Appl_Os_StartCoreStatus[4];
+  extern volatile uint8 Appl_Os_SlavePhase[4];
+  extern volatile uint8 Appl_Os_StartOsMask;
+  uint8 thisCore = (uint8)GetCoreID();
+
+  Appl_Os_StartOsEntered = 1u;
+  if (thisCore < 4u)
   {
-    for(coreId=0; coreId < ECUM_NUMBER_OF_CORES; coreId++)
+    Appl_Os_SlavePhase[thisCore] = 5u; /* entered EcuM_StartOS */
+  }
+#if ( ECUM_NUMBER_OF_CORES > 1 )
+  {
+    uint8 coreId;
+    StatusType status;
+    if(thisCore==ECUM_CORE_ID_STARTUP)
     {
-      if(coreId!=ECUM_CORE_ID_STARTUP)
+      for(coreId=0; coreId < ECUM_NUMBER_OF_CORES; coreId++)
       {
-        StartCore(coreId, &status); /* SBSW_ECUM_ADRESSPARAMETER_TOOS */
+        if(coreId!=ECUM_CORE_ID_STARTUP)
+        {
+          status = E_NOT_OK;
+          StartCore(coreId, &status); /* SBSW_ECUM_ADRESSPARAMETER_TOOS */
+          if (coreId < 4u)
+          {
+            Appl_Os_StartCoreStatus[coreId] = status;
+            if (status == E_OK)
+            {
+              Appl_Os_StartCoreMask |= (uint8)(1u << coreId);
+            }
+          }
+        }
       }
     }
   }
 #endif
+  Appl_Os_StartOsEntered = 2u;
+  if (thisCore < 4u)
+  {
+    Appl_Os_SlavePhase[thisCore] = 6u; /* about to call StartOS */
+    Appl_Os_StartOsMask |= (uint8)(1u << thisCore);
+  }
+
+  /* Probe/enable STM2 from boot core only — Core2 FrtInit uses RAM shim (see Os_Hal_Timer_Lcfg). */
+  if (thisCore == ECUM_CORE_ID_STARTUP)
+  {
+    extern void Appl_UnlockEndinit(void);
+    extern void Appl_LockEndinit(void);
+    extern volatile uint32 Appl_Os_Stm2ClcBefore;
+    extern volatile uint32 Appl_Os_Stm2Tim0Probe;
+    uint32 n;
+    Appl_UnlockEndinit();
+    *(volatile uint32 *)0xF0001000uL = 0uL; /* STM0_CLC */
+    *(volatile uint32 *)0xF0001100uL = 0uL; /* STM1_CLC */
+    *(volatile uint32 *)0xF0001200uL = 0uL; /* STM2_CLC */
+    *(volatile uint32 *)0xF0001300uL = 0uL; /* STM3_CLC */
+    for (n = 0u; n < 10000u; n++)
+    {
+      if ((*(volatile uint32 *)0xF0001200uL & 0x2uL) == 0uL) /* DISS cleared */
+      {
+        break;
+      }
+    }
+    *(volatile uint32 *)0xF00012FCuL = 0xFFFFFFFFuL; /* STM2_ACCEN0 all masters */
+    Appl_Os_Stm2ClcBefore = *(volatile uint32 *)0xF0001200uL;
+    Appl_Os_Stm2Tim0Probe = *(volatile uint32 *)0xF0001210uL;
+    Appl_LockEndinit();
+  }
 
   /* Start OS must be called for each core */
   StartOS(appMode);
 
+  Appl_Os_StartOsEntered = 3u; /* unreachable if StartOS schedules */
   return;
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           </USERBLOCK>                                       DO NOT CHANGE THIS COMMENT!

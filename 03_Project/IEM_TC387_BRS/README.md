@@ -5,7 +5,7 @@ Delivery: **CBD2000642** · Tool: **DaVinci Configurator 5.22.45** · Compiler: 
 
 ## Status (2026-11-04) — DemUseNvm + NvM stack amk green
 
-Latest no-board ELF: **`generate_regen22_demnvm` + NvM startup hooks + amk** (`Tasking/Debug/IEM_TC387_BRS.elf`). Fls→Fee→MemIf→NvM (+Crc); **`DemUseNvm=true`**; EcuM **ReadAll before Dem_Init** / **WriteAll on GoOff**.
+Latest no-board ELF: **amk + Appl_ComShell v0.5**（`Tasking/Debug/IEM_TC387_BRS.elf`）。SWC↔COM **41 路**标量（22 RX + 19 TX，SystemExtract 标量全覆盖）；清单 `Tasking/Developer_Swc_Com_Inventory.md`。
 
 | Item | State |
 |------|--------|
@@ -89,7 +89,7 @@ Tasking\AfterGenerate.bat
 4. ~~**NvM + Fee + Fls Rte/amk**~~ **done** (`regen20`).
 5. ~~**DemUseNvm + Dem NvRAM**~~ **done** (`regen22`).
 6. ~~**EcuM NvM ReadAll/WriteAll hooks**~~ **done** (`Appl_NvM_*`, timed so virgin/no-board cannot hang). Board: confirm `Appl_NvM_ReadAllDone` / T8 persist.
-7. **Board tests** still deferred. CCP table / DID `0xE103` / CanSM native BusOff still open.
+7. ~~阶段4无板 + F120 + RID0206/Security 桩~~ **done**。~~阶段5 SystemExtract 标量 SWC↔COM~~ **done**（`Appl_ComShell` v0.5，41 路）。组信号 / CCP DB / T1–T8 等板。
 
 ## Board bring-up (TJA1145 / QSPI3)
 

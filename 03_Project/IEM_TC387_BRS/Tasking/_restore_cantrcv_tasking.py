@@ -134,6 +134,14 @@ def main() -> None:
     runpy.run_path(str(ROOT / "_add_progrequest_makefile.py"), run_name="__main__")
     runpy.run_path(str(ROOT / "_add_dem_platform_makefile.py"), run_name="__main__")
     runpy.run_path(str(ROOT / "_add_carconfig_makefile.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_gen_did_e103.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_add_did_e103_makefile.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_gen_did_f120.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_add_did_f120_makefile.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_gen_diag_bringup.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_add_diag_bringup_makefile.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_add_comshell_makefile.py"), run_name="__main__")
+    runpy.run_path(str(ROOT / "_gen_rte_unconnected_inventory.py"), run_name="__main__")
     print("restore done — rebuild: cd Tasking\\Debug && amk all")
 
 

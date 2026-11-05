@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: CanSM_Cfg.h
- *   Generation Time: 2026-11-03 13:59:00
+ *   Generation Time: 2026-11-04 20:58:03
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -38,6 +38,7 @@
  **********************************************************************************************************************/
 
 #include "CanSM_Int.h"
+#include "Dem.h"
 
 
 
@@ -114,7 +115,6 @@
  /* \trace SPEC-634 */
 
 
-# define  CanSM_Dem_ReportErrorEvent(Index, eventStatus )
 
 
 /** 
@@ -169,7 +169,6 @@
 */ 
 #define CanSM_IsBor_Tx_Confirmation_PollingOfChannelConfig(Index)       /**< Deactivateable: 'CanSM_ChannelConfig.Bor_Tx_Confirmation_Polling' Reason: 'the value of CanSM_Bor_Tx_Confirmation_PollingOfChannelConfig is always 'false' due to this, the array is deactivated.' */
 #define CanSM_IsPartial_Network_Wakeup_FilterOfChannelConfig(Index)     /**< Deactivateable: 'CanSM_ChannelConfig.Partial_Network_Wakeup_Filter' Reason: 'the value of CanSM_Partial_Network_Wakeup_FilterOfChannelConfig is always 'false' due to this, the array is deactivated.' */
-#define CanSM_IsProdErrorDetect_BusOff_OfChannelConfig(Index)           /**< Deactivateable: 'CanSM_ChannelConfig.ProdErrorDetect_BusOff_' Reason: 'the value of CanSM_ProdErrorDetect_BusOff_OfChannelConfig is always 'false' due to this, the array is deactivated.' */
 #define CanSM_IsProdErrorDetect_ModeRequest_OfChannelConfig(Index)      /**< Deactivateable: 'CanSM_ChannelConfig.ProdErrorDetect_ModeRequest_' Reason: 'the value of CanSM_ProdErrorDetect_ModeRequest_OfChannelConfig is always 'false' due to this, the array is deactivated.' */
 #define CanSM_GetChannelVarRecord(Index)                              (CanSM_GetChannelVarRecordOfPCConfig()[(Index)])
 /** 
@@ -186,10 +185,11 @@
 #define CanSM_GetBorTimeL2OfChannelConfig(Index)                      300u
 #define CanSM_GetBorTimeTxEnsuredOfChannelConfig(Index)               500u
 #define CanSM_GetControllerIdOfChannelConfig(Index)                   0u
-#define CanSM_GetDemEventId_BusOff_OfChannelConfig(Index)             FALSE
+#define CanSM_GetDemEventId_BusOff_OfChannelConfig(Index)             DemConf_DemEventParameter_COM_Busoff
 #define CanSM_GetDemEventId_ModeRequest_OfChannelConfig(Index)        FALSE
 #define CanSM_GetNetworkHandleOfChannelConfig(Index)                  0u
 #define CanSM_IsPartial_Network_Trcv_SupportOfChannelConfig(Index)    (((TRUE)) != FALSE)  /**< Config feature which (de)acivates channel specific the PartialNetork shut down sequence */
+#define CanSM_IsProdErrorDetect_BusOff_OfChannelConfig(Index)         (((TRUE)) != FALSE)
 #define CanSM_GetTransceiverIdOfChannelConfig(Index)                  0u
 #define CanSM_IsTransceiver_Channel_SupportOfChannelConfig(Index)     (((TRUE)) != FALSE)
 #define CanSM_IsTrcv_InActive_AtAll_NonPNCannelsOfChannelConfig(Index) (((TRUE)) != FALSE)  /**< Config feature which determines if Trvc is active at a Non PN channel */
@@ -240,7 +240,7 @@
 #define CanSM_HasNetworkHandleOfChannelConfig()                       (TRUE != FALSE)
 #define CanSM_HasPartial_Network_Trcv_SupportOfChannelConfig()        (TRUE != FALSE)
 #define CanSM_HasPartial_Network_Wakeup_FilterOfChannelConfig()         /**< Deactivateable: 'CanSM_ChannelConfig.Partial_Network_Wakeup_Filter' Reason: 'the value of CanSM_Partial_Network_Wakeup_FilterOfChannelConfig is always 'false' due to this, the array is deactivated.' */
-#define CanSM_HasProdErrorDetect_BusOff_OfChannelConfig()               /**< Deactivateable: 'CanSM_ChannelConfig.ProdErrorDetect_BusOff_' Reason: 'the value of CanSM_ProdErrorDetect_BusOff_OfChannelConfig is always 'false' due to this, the array is deactivated.' */
+#define CanSM_HasProdErrorDetect_BusOff_OfChannelConfig()             (TRUE != FALSE)
 #define CanSM_HasProdErrorDetect_ModeRequest_OfChannelConfig()          /**< Deactivateable: 'CanSM_ChannelConfig.ProdErrorDetect_ModeRequest_' Reason: 'the value of CanSM_ProdErrorDetect_ModeRequest_OfChannelConfig is always 'false' due to this, the array is deactivated.' */
 #define CanSM_HasTransceiverIdOfChannelConfig()                       (TRUE != FALSE)
 #define CanSM_HasTransceiver_Channel_SupportOfChannelConfig()         (TRUE != FALSE)
@@ -317,7 +317,7 @@
 #define CANSM_NETWORKHANDLEOFCHANNELCONFIG                            STD_ON
 #define CANSM_PARTIAL_NETWORK_TRCV_SUPPORTOFCHANNELCONFIG             STD_ON
 #define CANSM_PARTIAL_NETWORK_WAKEUP_FILTEROFCHANNELCONFIG            STD_OFF  /**< Deactivateable: 'CanSM_ChannelConfig.Partial_Network_Wakeup_Filter' Reason: 'the value of CanSM_Partial_Network_Wakeup_FilterOfChannelConfig is always 'false' due to this, the array is deactivated.' */
-#define CANSM_PRODERRORDETECT_BUSOFF_OFCHANNELCONFIG                  STD_OFF  /**< Deactivateable: 'CanSM_ChannelConfig.ProdErrorDetect_BusOff_' Reason: 'the value of CanSM_ProdErrorDetect_BusOff_OfChannelConfig is always 'false' due to this, the array is deactivated.' */
+#define CANSM_PRODERRORDETECT_BUSOFF_OFCHANNELCONFIG                  STD_ON
 #define CANSM_PRODERRORDETECT_MODEREQUEST_OFCHANNELCONFIG             STD_OFF  /**< Deactivateable: 'CanSM_ChannelConfig.ProdErrorDetect_ModeRequest_' Reason: 'the value of CanSM_ProdErrorDetect_ModeRequest_OfChannelConfig is always 'false' due to this, the array is deactivated.' */
 #define CANSM_TRANSCEIVERIDOFCHANNELCONFIG                            STD_ON
 #define CANSM_TRANSCEIVER_CHANNEL_SUPPORTOFCHANNELCONFIG              STD_ON
@@ -374,7 +374,7 @@
 #define CANSM_ISDEF_NETWORKHANDLEOFCHANNELCONFIG                      STD_ON
 #define CANSM_ISDEF_PARTIAL_NETWORK_TRCV_SUPPORTOFCHANNELCONFIG       STD_ON
 #define CANSM_ISDEF_PARTIAL_NETWORK_WAKEUP_FILTEROFCHANNELCONFIG      STD_OFF
-#define CANSM_ISDEF_PRODERRORDETECT_BUSOFF_OFCHANNELCONFIG            STD_OFF
+#define CANSM_ISDEF_PRODERRORDETECT_BUSOFF_OFCHANNELCONFIG            STD_ON
 #define CANSM_ISDEF_PRODERRORDETECT_MODEREQUEST_OFCHANNELCONFIG       STD_OFF
 #define CANSM_ISDEF_TRANSCEIVERIDOFCHANNELCONFIG                      STD_ON
 #define CANSM_ISDEF_TRANSCEIVER_CHANNEL_SUPPORTOFCHANNELCONFIG        STD_ON
@@ -398,12 +398,12 @@
 #define CANSM_EQ2_BORTIMETXENSUREDOFCHANNELCONFIG                     500u
 #define CANSM_EQ2_BOR_TX_CONFIRMATION_POLLINGOFCHANNELCONFIG          
 #define CANSM_EQ2_CONTROLLERIDOFCHANNELCONFIG                         0u
-#define CANSM_EQ2_DEMEVENTID_BUSOFF_OFCHANNELCONFIG                   FALSE
+#define CANSM_EQ2_DEMEVENTID_BUSOFF_OFCHANNELCONFIG                   DemConf_DemEventParameter_COM_Busoff
 #define CANSM_EQ2_DEMEVENTID_MODEREQUEST_OFCHANNELCONFIG              FALSE
 #define CANSM_EQ2_NETWORKHANDLEOFCHANNELCONFIG                        0u
 #define CANSM_EQ2_PARTIAL_NETWORK_TRCV_SUPPORTOFCHANNELCONFIG         TRUE
 #define CANSM_EQ2_PARTIAL_NETWORK_WAKEUP_FILTEROFCHANNELCONFIG        
-#define CANSM_EQ2_PRODERRORDETECT_BUSOFF_OFCHANNELCONFIG              
+#define CANSM_EQ2_PRODERRORDETECT_BUSOFF_OFCHANNELCONFIG              TRUE
 #define CANSM_EQ2_PRODERRORDETECT_MODEREQUEST_OFCHANNELCONFIG         
 #define CANSM_EQ2_TRANSCEIVERIDOFCHANNELCONFIG                        0u
 #define CANSM_EQ2_TRANSCEIVER_CHANNEL_SUPPORTOFCHANNELCONFIG          TRUE
@@ -507,6 +507,9 @@ typedef uint8 CanSM_NetworkHandleOfChannelConfigType;
 
 /**   \brief  value based type definition for CanSM_Partial_Network_Trcv_SupportOfChannelConfig */
 typedef boolean CanSM_Partial_Network_Trcv_SupportOfChannelConfigType;
+
+/**   \brief  value based type definition for CanSM_ProdErrorDetect_BusOff_OfChannelConfig */
+typedef boolean CanSM_ProdErrorDetect_BusOff_OfChannelConfigType;
 
 /**   \brief  value based type definition for CanSM_TransceiverIdOfChannelConfig */
 typedef uint8 CanSM_TransceiverIdOfChannelConfigType;
@@ -639,6 +642,17 @@ extern VAR(CanSM_ChannelVarRecordType, CANSM_VAR_NOINIT) CanSM_ChannelVarRecord[
 
 
 
+/* -----------------------------------------------------------------------------
+   Lcfg Function Prototypes
+ ----------------------------------------------------------------------------- */
+
+#define CANSM_START_SEC_CODE
+#include "MemMap.h"  /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+extern FUNC(void, CANSM_CODE) CanSM_Dem_ReportErrorEvent(Dem_EventIdType CanSM_EventID, Dem_EventStatusType CanSM_EventStatus);
+
+#define CANSM_STOP_SEC_CODE
+#include "MemMap.h"  /* PRQA S 5087 */ /* MD_MSR_MemMap */
 
 
 

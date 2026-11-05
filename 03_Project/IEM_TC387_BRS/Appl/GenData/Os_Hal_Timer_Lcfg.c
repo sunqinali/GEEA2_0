@@ -105,17 +105,25 @@ CONST(Os_Hal_TimerPitConfigType, OS_CONST) OsCfg_Hal_TimerPit_SystemTimer =
 #define OS_START_SEC_CORE2_CONST_UNSPECIFIED
 #include "Os_MemMap_OsSections.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
 
+/* Bring-up: Core2 StartOS hangs in Os_Hal_TimerFrtInit on real STM2 MMIO (SlavePhase[2]=6).
+ * Point FRT data regs at RAM shim; keep real SRC so init still programs the interrupt line.
+ * Soft-tick Task_Appl_100ms from Core0 until a working HW counter is restored. */
+extern volatile uint32 Appl_Os_FrtShim_TIM0;
+extern volatile uint32 Appl_Os_FrtShim_CMP0;
+extern volatile uint32 Appl_Os_FrtShim_CMCON;
+extern volatile uint32 Appl_Os_FrtShim_ICR;
+
 /*! HAL timer configuration data: SystemTimer_Core2 */
 CONST(Os_Hal_TimerFrtConfigType, OS_CONST) OsCfg_Hal_TimerFrt_SystemTimer_Core2 =
 
 {
-  /* CounterRegisterAddress            = */ OS_HAL_TIMER_STM2_BASE + OS_HAL_TIMER_STM_TIM0_OFFSET,
-  /* CompareRegisterAddress            = */ OS_HAL_TIMER_STM2_BASE + OS_HAL_TIMER_STM_CMP0_OFFSET,
-  /* CMCONRegisterAddress              = */ OS_HAL_TIMER_STM2_BASE + OS_HAL_TIMER_STM_CMCON_OFFSET,
+  /* CounterRegisterAddress            = */ (uint32)&Appl_Os_FrtShim_TIM0, /* PRQA S 0306 */ /* MD_Os_Hal_Rule11.4_0306 */
+  /* CompareRegisterAddress            = */ (uint32)&Appl_Os_FrtShim_CMP0, /* PRQA S 0306 */ /* MD_Os_Hal_Rule11.4_0306 */
+  /* CMCONRegisterAddress              = */ (uint32)&Appl_Os_FrtShim_CMCON, /* PRQA S 0306 */ /* MD_Os_Hal_Rule11.4_0306 */
   /* CMCONMask                         = */ OS_HAL_TIMER_STM_CMCON_USE_CMP0_MASK,
   /* CMCONValue                        = */ OS_HAL_TIMER_STM_CMCON_USE_CMP0_VALUE,
   /* InterruptSRCRegisterAddress       = */ OS_HAL_INT_SRC_BASE + OS_HAL_INT_SRC_STM2_CH0_OFFSET,
-  /* ICRRegisterAddress                = */ OS_HAL_TIMER_STM2_BASE + OS_HAL_TIMER_STM_ICR_OFFSET,
+  /* ICRRegisterAddress                = */ (uint32)&Appl_Os_FrtShim_ICR, /* PRQA S 0306 */ /* MD_Os_Hal_Rule11.4_0306 */
   /* ICRMask                           = */ OS_HAL_TIMER_STM_ICR_USE_CMP0_MASK,
   /* ICRValue                          = */ OS_HAL_TIMER_STM_ICR_USE_CMP0_VALUE,
   /* ReloadValue                       = */ 0

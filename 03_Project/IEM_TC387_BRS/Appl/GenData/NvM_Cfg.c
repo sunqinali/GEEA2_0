@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: NvM_Cfg.c
- *   Generation Time: 2026-11-04 18:36:42
+ *   Generation Time: 2026-11-04 21:04:08
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -71,6 +71,7 @@
 
 /* include list of the callback definitions */
 #include "Dem_Cbk.h" 
+
 
 /* include configured file declaring or defining resource (un)locking service(s) */
 #include "SchM_NvM.h"
@@ -564,6 +565,41 @@ CONST(NvM_BlockDescriptorType, NVM_CONFIG_CONST) NvM_BlockDescriptorTable_at[NVM
          | NVM_SELECT_BLOCK_FOR_WRITEALL_ON
          | NVM_INVOKE_CALLBACKS_FOR_READALL_ON
          | NVM_INVOKE_CALLBACKS_FOR_WRITEALL_ON
+         | NVM_BLOCK_USE_SET_RAM_BLOCK_STATUS_ON
+        ) /*  Flags  */ , 
+        STD_OFF /*  NvMBswMBlockStatusInformation  */ 
+      }, 
+      { /*  NvMBlock_CarConfig  */ 
+        (NvM_RamAddressType)&Appl_CarConfig_NvMRam /*  NvMRamBlockDataAddress  */ , 
+        NULL_PTR /*  NvMRomBlockDataAddress  */ , 
+        NULL_PTR /*  NvMInitBlockCallback  */ , 
+        NULL_PTR /*  NvMInitBlockCallback (extended)  */ , 
+        NULL_PTR /*  NvMSingleBlockCallback  */ , 
+        NULL_PTR /*  NvMSingleBlockCallback (extended)  */ , 
+        NULL_PTR /*  NvMReadRamBlockFromNvCallback  */ , 
+        NULL_PTR /*  NvMWriteRamBlockToNvCallback  */ , 
+        NULL_PTR /*  NvMBlockPreWriteTransformCallback  */ , 
+        NULL_PTR /*  NvMBlockPostReadTransformCallback  */ , 
+        NULL_PTR /*  RamBlockCRC data buffer (defined by NvM)  */ , 
+        NULL_PTR /*  CRCCompMechanism CRC data (defined by NvM)  */ , 
+        0x001Au /*  NV block Base number (defined by FEE/EA)  */ , 
+        16u /*  NvMNvBlockLength  */ , 
+        0u /*  CsmJobArrayIndex  */ , 
+        16u /*  NvMNvBlockNVRAMDataLength  */ , 
+        1u /*  NvMNvBlockNum  */ , 
+        1u /*  NvMBlockJobPriority  */ , 
+        MEMIF_Fee /*  Device Id (defined by MemIf)  */ , 
+        NVM_BLOCK_NATIVE /*  NvMBlockManagementType  */ , 
+        NVM_BLOCK_USE_CRC_OFF /*  NvMBlockCrcType  */ , 
+        (
+           NVM_CALC_RAM_BLOCK_CRC_OFF
+         | NVM_BLOCK_WRITE_PROT_OFF
+         | NVM_BLOCK_WRITE_BLOCK_ONCE_OFF
+         | NVM_RESISTANT_TO_CHANGED_SW_ON
+         | NVM_SELECT_BLOCK_FOR_READALL_ON
+         | NVM_SELECT_BLOCK_FOR_WRITEALL_ON
+         | NVM_INVOKE_CALLBACKS_FOR_READALL_OFF
+         | NVM_INVOKE_CALLBACKS_FOR_WRITEALL_OFF
          | NVM_BLOCK_USE_SET_RAM_BLOCK_STATUS_ON
         ) /*  Flags  */ , 
         STD_OFF /*  NvMBswMBlockStatusInformation  */ 

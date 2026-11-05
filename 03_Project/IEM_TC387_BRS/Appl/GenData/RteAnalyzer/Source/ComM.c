@@ -93,7 +93,6 @@ static void ComM_TestDefines(void);
  * NetworkHandleType: Integer in interval [0...255]
  * boolean: Boolean (standard type)
  * uint16: Integer in interval [0...65535] (standard type)
- * uint8: Integer in interval [0...255] (standard type)
  *
  * Enumeration Types:
  * ==================
@@ -101,6 +100,7 @@ static void ComM_TestDefines(void);
  *   COMM_NO_COMMUNICATION (0U)
  *   COMM_SILENT_COMMUNICATION (1U)
  *   COMM_FULL_COMMUNICATION (2U)
+ * uint8: Enumeration of integer in interval [0...255] with enumerators
  *
  *********************************************************************************************************************/
 

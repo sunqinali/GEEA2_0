@@ -9,16 +9,52 @@ Appl_Bringup_Ok           expect 1  (Stack + Smoke + samples)
 Appl_Bringup_FailFlags    bits: 0=Stack 1=Smoke 2=Sample 3=Nm 4=ComIpdu
 Appl_Can_SampleCnt        must increment (~100 ms, Core0)
 Appl_Core2_Tick100ms      must increment (Core2 alive; StartCore 1..3 OK)
+=== Multicore StartOS barrier (Core0 waits until all call StartOS) ===
+Appl_Os_StartCoreMask     14=0xE means StartCore(1..3) E_OK
+Appl_Os_StartOsEntered    2=master called StartOS (barrier); 3=sched (unlikely)
+Appl_Os_StartOsMask       bits of cores that reached StartOS() — expect 0xF
+Appl_Os_SlavePhase[0..3]  1=BIV 2=PreMain 3=main/Os_Init 4=Os_Init done 5=EcuM_StartOS 6=StartOS
+                          8=Default_Init_Task (barrier released). Stuck at 6 = MPU/barrier write fail
+Appl_Os_FwStamp           MUST be 0x260B051E (GC=INIT + EraseAll + no early ReadAll)
+Appl_NvM_FeeMainJob       1=INITGC then →0; stuck=erase/Fls issue
+Appl_NvM_FeeInitGCState   7=virgin prep, 1=INVALID→erase, 6=FAIL
+Appl_NvM_FeePendReq       1=no pend; 3=READ hung (051D bug)
+Appl_NvM_FlsStatus        2 during erase, then 1
+Appl_Os_InitPhase         9
+Appl_Bringup_Ok / StackOk 1
+Appl_Os_ErrorHookCnt      should stop rising (051A burst → E_OS_LIMIT)
+Appl_NvM_FeeStatus        →1 IDLE (0=UNINIT 2=BUSY 3=BUSY_INTERNAL)
+Appl_NvM_FlsStatus / FeeJobResult / FlsJobResult
+Appl_NvM_ReadAllIssued    1 after Fee IDLE
+Appl_NvM_ReadAllDone      1 (virgin DF0: wait BgPollCnt thousands / ~few sec)
+Appl_NvM_DemDeferred      →0 after ReadAll
+Det 53                    Dcm MF before Dcm_Init — clears after DemDeferred=0
+Appl_Os_SlavePhase[2]     9
+Appl_Can_Ccucon1          0x21210012 = fMCAN OK
+Appl_NvM_ReadAllDone      0 + Det20=NvM/Fee OK for bring-up
+Appl_Os_RstStat           SCU_RSTSTAT latch; SMU≈bit3, PORST=bit16 sticky — SMU means app reset
+                          If PC snaps to 0xA0000000: SMU reset; check RstStat then DisableSMU path
 Appl_Com_IpduStarted      1 after Com_Init and/or BswM AL_EnterRun
 Appl_Can_PduMode          1 = CANIF_GET_ONLINE (with StackOk)
 Appl_ProgRequestFlag      0 normal; 1 if AL_ProgReset / Dcm SetProgConditions
 Appl_ProgMagic            0x50524F47 when handover valid
-Appl_Dem_BusOffActive     1 while CanSM BusOffCnt>0 (Dem COM_Busoff)
+Appl_Dem_BusOffActive     1 while CanSM BusOffCnt>0 (mirror; Dem via CanSM native COM_Busoff BSW)
 Appl_Dem_CarConfigErrActive  via Dem COM_CarConfigErr (CDD E300-56)
 Appl_CarConfig_State         0 Bulk / 1 Valid / 2 Error
 Appl_CarConfig_LastBlkId     VehCfgPrm BlockID (nonzero when RX)
 Appl_CarConfig_PassedOnce    1 after first good BlkID (Dem PASSED)
+Appl_CarConfig_FaultCount    DID 0xE103 invalid-CCP count (0..10)
+Appl_CarConfig_NvMLoaded     1 if NvM magic 0xCC after ReadAll
+Appl_CarConfig_NvMRam[0..3]  magic/state/BlkID/faultCnt (Fee#26 NvM#13)
 Manual: Appl_CarConfig_InjectError()
+Manual: Appl_CarConfig_RecordFault(ccpNum, invalidVal) / ClearFaults()
+UDS 0x22 E103: count + up to 10×(CCP# BE 2B + invalid 1B); providers in Appl_Did_E103.c
+UDS 0x22 F120: PartNumber Main="IEM1"(4B) + Variant="001"(3B); Appl_Did_F120.c
+UDS 0x31 RID 0206: Check_programming_pre_conditions → Appl_Diag_Bringup
+  Appl_ProgPrecond_Allow 1=允许进编程 / 0=条件不满足（仍正响应）
+UDS 0x27 L3/L4: GetSeed 有响应；CompareKey 明确失败（非超时）
+UDS 0x34 RequestDownload: not in Dcm table → NRC 0x11
+RTE UNCONNECTED inventory: Tasking/Rte_Unconnected_Inventory.md (regen after RTE)
 
 === NvM / Fee / Dem NvRAM (ELF: regen22 + Appl_NvM_* hooks; DemUseNvm=true) ===
 Fls/Fee DF0 @ 0xAF000000; MemIf→Fee; NvM on Task_Bsw_10ms (BSW+SWC Timer None)

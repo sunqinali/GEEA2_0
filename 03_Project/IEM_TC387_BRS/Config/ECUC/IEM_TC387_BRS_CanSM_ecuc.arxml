@@ -63,6 +63,16 @@
                     </ECUC-REFERENCE-VALUE>
                   </REFERENCE-VALUES>
                   <SUB-CONTAINERS>
+                    <ECUC-CONTAINER-VALUE UUID="f8df878f-65ee-4345-b329-25227ae91a56">
+                      <SHORT-NAME>CanSMDemEventParameterRefs</SHORT-NAME>
+                      <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/CanSM/CanSMConfiguration/CanSMManagerNetwork/CanSMDemEventParameterRefs</DEFINITION-REF>
+                      <REFERENCE-VALUES>
+                        <ECUC-REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="ECUC-SYMBOLIC-NAME-REFERENCE-DEF">/MICROSAR/CanSM/CanSMConfiguration/CanSMManagerNetwork/CanSMDemEventParameterRefs/CANSM_E_BUS_OFF</DEFINITION-REF>
+                          <VALUE-REF DEST="ECUC-CONTAINER-VALUE">/ActiveEcuC/Dem/DemConfigSet/COM_Busoff</VALUE-REF>
+                        </ECUC-REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                    </ECUC-CONTAINER-VALUE>
                     <ECUC-CONTAINER-VALUE UUID="2433acdf-8d00-33a1-9367-1f7d9a3b93fe">
                       <SHORT-NAME>PropulsionCAN_2f5e3e32</SHORT-NAME>
                       <LONG-NAME>
