@@ -2,15 +2,17 @@
 
 范围：按 `01_Requirements` 中的 IEM SDB / CDD，落实 `Base Tech SWRS-IEM-V02-GEEA2.0` 对通信、诊断、网络管理和 ECU 平台的底层要求。工具为 DaVinci Configurator、DaVinci Developer。本阶段只做 AUTOSAR 底层和可编译的多核骨架，不实现电机控制算法，也不把 GEEA4.0 IGM2 需求并入本工程。
 
-**进度快照（2026-11-04）— 无板 SW 冻结**
+**进度快照（2026-11-06）— 板测主线恢复**
 
 | 项 | 状态 |
 | --- | --- |
 | 当前主工程 | `03_Project/IEM_TC387_BRS`（Tasking + vBRS），SIP **CBD2000642** |
 | 基线工程 | `03_Project/IEM_TC387`（CBD1900078）仍保留作对照，不再作为 bring-up 主线 |
-| Generate / ELF | `generate_regen22_demnvm` 0 Fatal/0 Errors；`Tasking/Debug/IEM_TC387_BRS.elf` 链接 OK（含 DemUseNvm） |
+| 板测固件 | **`0x260B052E`**：`Bringup_Ok=1` / `StackOk=1` / `InitPhase=9` / `StartOsMask=0xF`（UDE2022） |
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
-| 当前停点 | **板测挂起**（等板）；无板阶段 4 存储栈已闭合 |
+| TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
+| BswM vs Appl | **模式/请求走 BswM**（EnterRun / PduGroupSwitch / ProgReset）；**观测/Smoke 留 Appl**；不把整套 bring-up 改成 BswM |
+| 当前停点 | **D + 诊断冒烟已过**（ZCANPRO：`3E`/`10`/`22 F120`/`22 E103`）；下一站组信号/CCP / T2 细项 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
@@ -131,7 +133,7 @@ DaVinci 工程名以 BRS 为准：`IEM_TC387_BRS`，ECU Instance 选提取中的
 - OS：只建 Core 0–Core 3；BRS `ECUM_NUMBER_OF_CORES=4`，`EcuM_StartOS` StartCore(1..3)。
 - 任务：`Task_Com_5ms`、`Task_Bsw_10ms`（Core 0）；`Task_Appl_10ms` / `100ms`（Core 2）。**注意**：BSW 观测采样放 Core0（`Spi_MainFunction_Handling` 旁路），勿在 Core2 调 BSW API。
 - EcuM：DriverInitOne 含 Mcu→Port→Spi→CanTrcv→Can→CanIf→CanSM→ComM…；Com_Init 后启动 IPDU 组。
-- BswM：`AL_EnterRun` = Allow + ComM FULL + `Appl_Com_StartIpduGroups_ForBswM()`；`AL_ProgReset` = `Appl_BswM_ProgRequest()` + SelectReset + GoDown。
+- BswM：`AL_EnterRun` = Allow + ComM FULL + `BswMPduGroupSwitch` + DM；`AL_ProgReset` = `Appl_BswM_ProgRequest()` + SelectReset + GoDown。
 - 启动预算 / 0x3E < 2.5 s：配置已铺，**到板用 T2 验证**。
 
 出口：四核 Idle + 5 ms 抖动 < 1 ms — **软件可跑，出口测量待板。**
@@ -143,7 +145,7 @@ DaVinci 工程名以 BRS 为准：`IEM_TC387_BRS`，ECU Instance 选提取中的
 - Mcu / Can：500 kbit/s 经典 CAN，关 FD；控制器 **M_CAN3 @ 0xF0208F00**，`CanIOPort=b_001`。
 - PropulsionCAN：TX **P32.3 ALT5** / RX **P32.2**；QSPI3：CS P10.5 SLSO8，SCLK/MOSI/MISO 按 Port ECUC。
 - P00.8 双 CS 不启用。
-- QSPI4 / TLF35584、Gpt 喂狗窗口、Fls/Fee 分区：工程侧有基础；**Fee/NvM ReadAll 板级已通（051E）**；**TLF 正式喂狗仍用 TSTM=HIGH 旁路，Wdg_30_TLF35584 待接入**。
+- QSPI4 / TLF35584：**板测暂停**。SPI/GPT 路径曾验证过，但放狗前复位环未闭环；当前固件不链 Wdg bring-up，**TSTM 保持 HIGH**。正式喂狗另开任务，不挡通信/诊断出口。
 - Adc / Pwm / Icu / Dsadc：仍不启用。
 
 出口：MCAL 生成通过，总线隐性 — **生成/链接已过；总线隐性/CANoe 待台架。**
@@ -223,9 +225,10 @@ Developer 中：
 | --- | --- | --- |
 | A | 阶段 0–1：DPA + 四核空工程可编 | **已完成**（现主线 BRS） |
 | B | 阶段 2–3：MCAL 通信最小集 + CanTrcv/Can 栈无板可观测 | **已完成**（`generate_regen11_bswm` / ELF） |
-| C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、Fee/NvM ReadAll | **已完成（051E；TSTM 旁路狗；Rx=`CarTiGlb` 待总线）** |
-| D | 阶段 3 出口：CANoe NM `0x51C` + 周期帧；T1/T3–T5/T7 | **进行中（等 CANoe）** |
-| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | 无板+板级 NvM 闭合；组信号/CCP DB / T2 `0x3E` 等 CANoe |
+| C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、Fee/NvM ReadAll | **已完成（052E 板测确认；TSTM 旁路狗）** |
+| D | 阶段 3 出口：CANoe/ZCANPRO NM `0x51C` + 周期帧；T1/T3–T5/T7 | **已完成（2026-11-06 ZCANPRO：TX+RX）** |
+| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | **物理诊断冒烟已过**（2026-11-06：`3E`/`10 01|03`/`22 F120|E103`）；组信号/CCP / 完整 T2 仍开 |
 | F | 阶段 6：完整台架 T1–T8 记录 | 挂起（等台架） |
+| G | TLF 正式喂狗（先 feed 再放 TSTM） | **暂停**，不挡 D/E |
 
 ZCANPRO/CANoe 接 **ACAN**（U600 TJA1145）；波特率先按 SDB **500 kbit/s**。Generate 后执行 `IEM_TC387_BRS/Tasking/AfterGenerate.bat`（LSL + BswM callout 补丁 + CanTrcv Tasking 接线恢复 + amk）。
