@@ -12,7 +12,7 @@
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
 | BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
-| 当前停点 | **CCP demo 校验 OK**；下一站正式 CCP DB / RTE 组壳 / T1–T8 |
+| 当前停点 | **CCP demo OK**；跑 `ZCANPRO_IEM_Bench_T246.py`（T6 OBD）；正式 CCP DB / RTE 组壳 / T3·T5·T7·T8 仍开 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
@@ -228,7 +228,7 @@ Developer 中：
 | C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、Fee/NvM ReadAll | **已完成（052E 板测确认；TSTM 旁路狗）** |
 | D | 阶段 3 出口：CANoe/ZCANPRO NM `0x51C` + 周期帧；T1/T3–T5/T7 | **已完成（2026-11-06 ZCANPRO：TX+RX）** |
 | E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | **主路径+组 Cntr+CCP demo 已过**（0538 HitMask；0539 E103 合法/非法）；正式 CCP DB / 全量 RTE 组壳仍开 |
-| F | 阶段 6：完整台架 T1–T8 记录 | 挂起（等台架） |
+| F | 阶段 6：完整台架 T1–T8 记录 | 清单 `Tasking/BoardArrival_T1_T8.md`；脚本 `ZCANPRO_IEM_Bench_T246.py`（T2/T4/T6）；T3·T5·T7·T8 待仪 |
 | G | TLF 正式喂狗（先 feed 再放 TSTM） | **暂停**，不挡 D/E |
 
 ZCANPRO/CANoe 接 **ACAN**（U600 TJA1145）；波特率先按 SDB **500 kbit/s**。Generate 后执行 `IEM_TC387_BRS/Tasking/AfterGenerate.bat`（LSL + BswM callout 补丁 + CanTrcv Tasking 接线恢复 + amk）。
