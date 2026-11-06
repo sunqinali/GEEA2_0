@@ -17,7 +17,7 @@ Latest no-board ELF: **amk + Appl_ComShell v0.5**（`Tasking/Debug/IEM_TC387_BRS
 | Smoke auto AfterInit + DeferredTick | OK |
 | Can stack + CanNm sample | OK @ Core0 (~100 ms) |
 | `Appl_Bringup_Ok` aggregate | OK (Stack∧Smoke∧Sample) |
-| Com I-PDU start | after `Com_Init` **and** BswM `AL_EnterRun` → `Appl_Com_StartIpduGroups_ForBswM()` |
+| Com I-PDU start | BswM `AL_EnterRun` → `ACT_ComIpduStart` (`BswMPduGroupSwitch` → `Com_IpduGroupControl`) |
 | CanIf PDU mode in StackOk | ONLINE required |
 | BswM ProgReset | `AL_ProgReset` → `Appl_BswM_ProgRequest()` + SelectReset + GoDown |
 | Core2 heartbeat / 4-core EcuM | `Appl_Core2_Tick100ms`; `ECUM_NUMBER_OF_CORES=4` |
@@ -75,7 +75,7 @@ Tasking\AfterGenerate.bat
 |--------|------|
 | `FixVbrsFourCoresAndCan.dvgroovy` | vBRS CAN channels + PLL |
 | `PostGenerate_IEM_TC387_BRS.bat` | Patch LSL + `BswM_Lcfg` UserCallout includes/`()` |
-| `AddComIpduStartToEnterRun.dvgroovy` | Durable BswM `AL_EnterRun` Com IPDU callout (already applied) |
+| `ReplaceComIpduCalloutWithPduGroupSwitch.dvgroovy` | BswM native IPDU/DM start (replaces Appl UserCallout) |
 | `PatchBswM_Lcfg_Callouts.py` | Keep `Appl_*()` + Appl headers in `BswM_Lcfg.c` |
 | `PortCanTrcv_Tja1145_ToCbd20.ps1` | Copy Tja1145 component into CBD20 SIP |
 | `ActivateCanTrcvTja1145.dvgroovy` | Module / channel / SPI / CanIf Trcv refs |
@@ -162,7 +162,7 @@ python Tasking\_offline_tja_check.py
 **Runtime chain**  
 `EcuM_AL_DriverInitOne` (BSW core): `Mcu`→`Port`→`Spi`→`CanTrcv`→`Can`→`CanIf`→`CanSM`→`ComM`(+Nm/CanNm/CanTp/PduR/Com/Dem/Dcm)  
 → `EcuM_StartupTwo`: `SchM_Init` + `BswM_Init`  
-→ BswM `AL_EnterRun`: Allow + `ComM_RequestComMode(FULL)` + `Appl_Com_StartIpduGroups_ForBswM()`  
+→ BswM `AL_EnterRun`: Allow + `ComM_RequestComMode(FULL)` + `BswMPduGroupSwitch` + DM enable  
 → CanSM requests CanIf Trcv / Ctrl modes → `CanTrcv_30_Tja1145_SetOpMode`  
 → ProgReset path: `Appl_BswM_ProgRequest()` → `Appl_ProgRequestFlag=1` then EcuM reset
 

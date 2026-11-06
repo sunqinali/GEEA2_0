@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: BswM_Private_Cfg.h
- *   Generation Time: 2026-10-30 22:11:24
+ *   Generation Time: 2026-11-06 09:19:26
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -38,6 +38,7 @@
     &&&~ INCLUDE
  ----------------------------------------------------------------------------- */
 #include "BswM_Cfg.h"
+#include "Com.h" 
 
 
 
@@ -74,6 +75,10 @@
 # define BSWM_NO_ACTIONLIST(partition) 255
 #endif
 
+#define BSWM_GROUPCONTROL_IDLE   (uint8)0x00u
+#define BSWM_GROUPCONTROL_NORMAL (uint8)0x01u
+#define BSWM_GROUPCONTROL_REINIT (uint8)0x02u
+#define BSWM_GROUPCONTROL_DM     (uint8)0x04u
 
 #if BSWM_NVMJOBSTATE == STD_ON
 #define NVM_SERVICE_ID_READALL   (uint8)0x0Cu
@@ -118,6 +123,7 @@
 #define BswM_GetEcuMModeStateOfPCPartitionConfig(partitionIndex)                                    (&(BswM_EcuMModeState))  /**< the pointer to BswM_EcuMModeState */
 #define BswM_GetForcedActionListPriorityOfPCPartitionConfig(partitionIndex)                         (&(BswM_ForcedActionListPriority))  /**< the pointer to BswM_ForcedActionListPriority */
 #define BswM_GetImmediateUserOfPCPartitionConfig(partitionIndex)                                    BswM_ImmediateUser  /**< the pointer to BswM_ImmediateUser */
+#define BswM_GetInitGenVarAndInitALOfPCPartitionConfig(partitionIndex)                              BswM_InitGenVarAndInitAL  /**< the pointer to BswM_InitGenVarAndInitAL */
 #define BswM_GetInitializedOfPCPartitionConfig(partitionIndex)                                      (&(BswM_Initialized))  /**< the pointer to BswM_Initialized */
 #define BswM_GetModeRequestQueueOfPCPartitionConfig(partitionIndex)                                 BswM_ModeRequestQueue  /**< the pointer to BswM_ModeRequestQueue */
 #define BswM_GetQueueSemaphoreOfPCPartitionConfig(partitionIndex)                                   (&(BswM_QueueSemaphore))  /**< the pointer to BswM_QueueSemaphore */
@@ -130,6 +136,7 @@
 #define BswM_GetSizeOfDeferredRulesOfPCPartitionConfig(partitionIndex)                              1u  /**< the number of accomplishable value elements in BswM_DeferredRules */
 #define BswM_GetSizeOfEcuMModeMappingOfPCPartitionConfig(partitionIndex)                            1u  /**< the number of accomplishable value elements in BswM_EcuMModeMapping */
 #define BswM_GetSizeOfImmediateUserOfPCPartitionConfig(partitionIndex)                              1u  /**< the number of accomplishable value elements in BswM_ImmediateUser */
+#define BswM_GetSizeOfInitGenVarAndInitALOfPCPartitionConfig(partitionIndex)                        1u  /**< the number of accomplishable value elements in BswM_InitGenVarAndInitAL */
 #define BswM_GetSizeOfRuleStatesOfPCPartitionConfig(partitionIndex)                                 2u  /**< the number of accomplishable value elements in BswM_RuleStates */
 #define BswM_GetSizeOfRulesIndOfPCPartitionConfig(partitionIndex)                                   1u  /**< the number of accomplishable value elements in BswM_RulesInd */
 #define BswM_GetSizeOfRulesOfPCPartitionConfig(partitionIndex)                                      2u  /**< the number of accomplishable value elements in BswM_Rules */
@@ -158,6 +165,7 @@
 #define BswM_GetDcmApplUpdateState(partitionIndex)                                                  ((*(BswM_GetDcmApplUpdateStateOfPCPartitionConfig(partitionIndex))))
 #define BswM_GetEcuMModeState(partitionIndex)                                                       ((*(BswM_GetEcuMModeStateOfPCPartitionConfig(partitionIndex))))
 #define BswM_GetForcedActionListPriority(partitionIndex)                                            ((*(BswM_GetForcedActionListPriorityOfPCPartitionConfig(partitionIndex))))
+#define BswM_GetInitGenVarAndInitAL(Index, partitionIndex)                                          (BswM_GetInitGenVarAndInitALOfPCPartitionConfig(partitionIndex)[(Index)])
 #define BswM_IsInitialized(partitionIndex)                                                          (((*(BswM_GetInitializedOfPCPartitionConfig(partitionIndex)))) != FALSE)
 #define BswM_GetModeRequestQueue(Index, partitionIndex)                                             (BswM_GetModeRequestQueueOfPCPartitionConfig(partitionIndex)[(Index)])
 #define BswM_GetPCPartitionConfigIdxOfPartitionIdentifiers(Index)                                   (BswM_GetPartitionIdentifiersOfPCConfig()[(Index)].PCPartitionConfigIdxOfPartitionIdentifiers)
@@ -196,6 +204,7 @@
 #define BswM_GetSizeOfDeferredRules(partitionIndex)                                                 BswM_GetSizeOfDeferredRulesOfPCPartitionConfig(partitionIndex)
 #define BswM_GetSizeOfEcuMModeMapping(partitionIndex)                                               BswM_GetSizeOfEcuMModeMappingOfPCPartitionConfig(partitionIndex)
 #define BswM_GetSizeOfImmediateUser(partitionIndex)                                                 BswM_GetSizeOfImmediateUserOfPCPartitionConfig(partitionIndex)
+#define BswM_GetSizeOfInitGenVarAndInitAL(partitionIndex)                                           BswM_GetSizeOfInitGenVarAndInitALOfPCPartitionConfig(partitionIndex)
 #define BswM_GetSizeOfModeRequestQueue(partitionIndex)                                              BswM_GetSizeOfModeRequestQueueOfPCPartitionConfig(partitionIndex)
 #define BswM_GetSizeOfPartitionIdentifiers()                                                        BswM_GetSizeOfPartitionIdentifiersOfPCConfig()
 #define BswM_GetSizeOfRuleStates(partitionIndex)                                                    BswM_GetSizeOfRuleStatesOfPCPartitionConfig(partitionIndex)
@@ -249,6 +258,7 @@
 #define BswM_HasRulesIndEndIdxOfImmediateUser(partitionIndex)                                       (TRUE != FALSE)
 #define BswM_HasRulesIndStartIdxOfImmediateUser(partitionIndex)                                     (TRUE != FALSE)
 #define BswM_HasRulesIndUsedOfImmediateUser(partitionIndex)                                         (TRUE != FALSE)
+#define BswM_HasInitGenVarAndInitAL(partitionIndex)                                                 (TRUE != FALSE)
 #define BswM_HasInitialized(partitionIndex)                                                         (TRUE != FALSE)
 #define BswM_HasModeRequestQueue(partitionIndex)                                                    (TRUE != FALSE)
 #define BswM_HasPartitionIdentifiers()                                                              (TRUE != FALSE)
@@ -269,6 +279,7 @@
 #define BswM_HasSizeOfDeferredRules(partitionIndex)                                                 (TRUE != FALSE)
 #define BswM_HasSizeOfEcuMModeMapping(partitionIndex)                                               (TRUE != FALSE)
 #define BswM_HasSizeOfImmediateUser(partitionIndex)                                                 (TRUE != FALSE)
+#define BswM_HasSizeOfInitGenVarAndInitAL(partitionIndex)                                           (TRUE != FALSE)
 #define BswM_HasSizeOfModeRequestQueue(partitionIndex)                                              (TRUE != FALSE)
 #define BswM_HasSizeOfPartitionIdentifiers()                                                        (TRUE != FALSE)
 #define BswM_HasSizeOfRuleStates(partitionIndex)                                                    (TRUE != FALSE)
@@ -288,6 +299,7 @@
 #define BswM_HasEcuMModeStateOfPCPartitionConfig(partitionIndex)                                    (TRUE != FALSE)
 #define BswM_HasForcedActionListPriorityOfPCPartitionConfig(partitionIndex)                         (TRUE != FALSE)
 #define BswM_HasImmediateUserOfPCPartitionConfig(partitionIndex)                                    (TRUE != FALSE)
+#define BswM_HasInitGenVarAndInitALOfPCPartitionConfig(partitionIndex)                              (TRUE != FALSE)
 #define BswM_HasInitializedOfPCPartitionConfig(partitionIndex)                                      (TRUE != FALSE)
 #define BswM_HasModeRequestQueueOfPCPartitionConfig(partitionIndex)                                 (TRUE != FALSE)
 #define BswM_HasQueueSemaphoreOfPCPartitionConfig(partitionIndex)                                   (TRUE != FALSE)
@@ -301,6 +313,7 @@
 #define BswM_HasSizeOfDeferredRulesOfPCPartitionConfig(partitionIndex)                              (TRUE != FALSE)
 #define BswM_HasSizeOfEcuMModeMappingOfPCPartitionConfig(partitionIndex)                            (TRUE != FALSE)
 #define BswM_HasSizeOfImmediateUserOfPCPartitionConfig(partitionIndex)                              (TRUE != FALSE)
+#define BswM_HasSizeOfInitGenVarAndInitALOfPCPartitionConfig(partitionIndex)                        (TRUE != FALSE)
 #define BswM_HasSizeOfModeRequestQueueOfPCPartitionConfig(partitionIndex)                           (TRUE != FALSE)
 #define BswM_HasSizeOfRuleStatesOfPCPartitionConfig(partitionIndex)                                 (TRUE != FALSE)
 #define BswM_HasSizeOfRulesIndOfPCPartitionConfig(partitionIndex)                                   (TRUE != FALSE)
@@ -375,6 +388,16 @@
 
 #define BswM_GetPartitionContext() 0u
 
+#define BswM_SetIpduGroup(pduId, bitVal)
+/* PRQA S 3453 1 */ /* MD_BswM_3453 */
+#define BswM_SetIpduReinitGroup(pduId, bitVal) Com_SetIpduGroup(BswM_ComIPduGroupReinitState, (pduId), (bitVal))
+/* PRQA S 3453 1 */ /* MD_BswM_3453 */
+#define BswM_SetIpduDMGroup(pduId, bitVal) Com_SetIpduGroup(BswM_ComRxIPduGroupDMState, (pduId), (bitVal))
+
+/* PRQA S 3453 1 */ /* MD_BswM_3453 */
+#define BswM_MarkPduGroupControlInvocation(control) BswM_PduGroupControlInvocation |= (control)
+#define BswM_MarkDmControlInvocation() BswM_PduGroupControlInvocation |= BSWM_GROUPCONTROL_DM
+
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -398,6 +421,19 @@
 #include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
 /*lint -restore */
 extern CONST(BswM_ActionListsType, BSWM_CONST) BswM_ActionLists[2];
+#define BSWM_STOP_SEC_CONST_UNSPECIFIED
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+
+/**********************************************************************************************************************
+  BswM_InitGenVarAndInitAL
+**********************************************************************************************************************/
+#define BSWM_START_SEC_CONST_UNSPECIFIED
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+extern CONST(BswM_InitGenVarAndInitALType, BSWM_CONST) BswM_InitGenVarAndInitAL[1];
 #define BSWM_STOP_SEC_CONST_UNSPECIFIED
 /*lint -save -esym(961, 19.1) */
 #include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
@@ -603,9 +639,21 @@ extern  P2CONST(BswM_ConfigType, AUTOMATIC, BSWM_PBCFG) BswM_ConfigPtr;
 #include "BswM_vMemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
 
 
+#define BSWM_START_SEC_VAR_NOINIT_8BIT
+#include "BswM_vMemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+extern VAR(uint8, BSWM_VAR_NOINIT) BswM_PduGroupControlInvocation;
+
+#define BSWM_STOP_SEC_VAR_NOINIT_8BIT
+#include "BswM_vMemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+
 #define BSWM_START_SEC_VAR_NOINIT_UNSPECIFIED
 #include "BswM_vMemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
 
+/* PRQA S 3218 3 */ /* MD_BswM_3218 */
+extern VAR(Com_IpduGroupVector, BSWM_VAR_NOINIT) BswM_ComIPduGroupReinitState;
+extern VAR(Com_IpduGroupVector, BSWM_VAR_NOINIT) BswM_ComRxIPduGroupDMState;
 
 #define BSWM_STOP_SEC_VAR_NOINIT_UNSPECIFIED
 #include "BswM_vMemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
@@ -676,6 +724,20 @@ extern FUNC(Std_ReturnType, BSWM_CODE) BswM_Action_ActionListHandler(BswM_Handle
  */
 extern FUNC(BswM_SizeOfActionListsType, BSWM_CODE) BswM_ArbitrateRule(BswM_HandleType ruleId, BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx);
 #endif
+
+/**********************************************************************************************************************
+ *  BswM_ExecuteIpduGroupControl()
+ **********************************************************************************************************************/
+/*!
+ * \brief       Enabes and disables PDU Groups and DeadlineMonitoring in Com.
+ * \details     Forwards the changes to the local Com_IpduGroupVector caused by executed actions to the corresponding 
+ *              Com APIS.
+ * \pre         -
+ * \context     ANY
+ * \reentrant   TRUE
+ * \synchronous TRUE
+ */
+extern FUNC(void, BSWM_CODE) BswM_ExecuteIpduGroupControl(void);
 
 #if(BSWM_IMMEDIATEUSER == STD_ON)
 # if (BSWM_DEV_ERROR_REPORT == STD_ON)

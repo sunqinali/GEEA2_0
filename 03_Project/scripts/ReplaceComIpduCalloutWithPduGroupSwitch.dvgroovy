@@ -1,0 +1,102 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.BswM
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmmodecontrol.bswmactionlist.bswmactionlistexecution.EBswMActionListExecution
+import com.vector.cfg.automation.model.ecuc.microsar.com.Com
+
+/**
+ * Replace AL_EnterRun UserCallout Appl_Com_StartIpduGroups_ForBswM with native
+ * BswMPduGroupSwitch (+ Reception DM). COM_IPDUGROUPINFO=OFF needs Com_IpduGroupControl
+ * which BswMPduGroupSwitch emits — Com_IpduGroupStart is a DET-only no-op.
+ *
+ * Baseline groups (not PNC_*): RxMPG, RxSPG, TxMPG, TxSPG.
+ */
+daVinci {
+    scriptDescription "BswM AL_EnterRun: native Com I-PDU group switch instead of Appl callout"
+
+    scriptTask("ReplaceComIpduCalloutWithPduGroupSwitch", DV_PROJECT) {
+        taskDescription "ACT_ComIpduStart -> BswMPduGroupSwitch; ACT_ComDmEnable; drop UserCallout"
+        code {
+            transaction {
+                def bswM = bswmdModel(BswM.DefRef).single
+                def com = bswmdModel(Com.DefRef).single
+                def cfg = bswM.bswMConfig.byName("BswMConfig")
+                def ctrl = cfg.bswMModeControlOrCreate
+                def comCfg = com.comConfig
+
+                def ensure = { list, String name ->
+                    list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+                }
+                def linkOnce = { list, target ->
+                    boolean linked = false
+                    list.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == target.shortname) {
+                            linked = true
+                        }
+                    }
+                    if (!linked) {
+                        list.createAndAdd().setRefTarget(target)
+                    }
+                }
+
+                def rxMpg = comCfg.comIPduGroup.byName("RxMPG_PropulsionCAN_aad5aa75")
+                def rxSpg = comCfg.comIPduGroup.byName("RxSPG_PropulsionCAN_fca0cb9e")
+                def txMpg = comCfg.comIPduGroup.byName("TxMPG_PropulsionCAN_3709a166")
+                def txSpg = comCfg.comIPduGroup.byName("TxSPG_PropulsionCAN_617cc08d")
+
+                def actIpdu = ensure(ctrl.bswMAction, "ACT_ComIpduStart")
+                def pduSwitch = actIpdu.bswMAvailableActionsOrCreate.bswMPduGroupSwitchOrCreate
+                pduSwitch.bswMPduGroupSwitchReinitOrCreate.value = true
+                // Drop any prior enable refs then re-link baseline set
+                def enRefs = pduSwitch.bswMEnabledPduGroupRef
+                while (enRefs.size() > 0) {
+                    enRefs.get(0).remove()
+                }
+                def disRefs = pduSwitch.bswMDisabledPduGroupRef
+                while (disRefs.size() > 0) {
+                    disRefs.get(0).remove()
+                }
+                [rxMpg, rxSpg, txMpg, txSpg].each { g ->
+                    enRefs.createAndAdd().setRefTarget(g)
+                }
+
+                def actDm = ensure(ctrl.bswMAction, "ACT_ComDmEnable")
+                def dm = actDm.bswMAvailableActionsOrCreate.bswMDeadlineMonitoringControlOrCreate
+                def dmEn = dm.bswMEnabledDMPduGroupRef
+                while (dmEn.size() > 0) {
+                    dmEn.get(0).remove()
+                }
+                def dmDis = dm.bswMDisabledDMPduGroupRef
+                while (dmDis.size() > 0) {
+                    dmDis.get(0).remove()
+                }
+                [rxMpg, rxSpg].each { g ->
+                    dmEn.createAndAdd().setRefTarget(g)
+                }
+
+                def listRun = ensure(ctrl.bswMActionList, "AL_EnterRun")
+                listRun.bswMActionListExecutionOrCreate.value = EBswMActionListExecution.BSWM_TRIGGER
+
+                // Keep AL item short-name ACT_ComIpduStart (already index 2)
+                def itemIpdu = ensure(listRun.bswMActionListItem, "ACT_ComIpduStart")
+                itemIpdu.bswMActionListItemIndexOrCreate.value = 2
+                itemIpdu.bswMAbortOnFailOrCreate.value = false
+                itemIpdu.bswMActionListItemRefOrCreate.setRefTargetMdf(actIpdu.mdfObject)
+
+                def itemDm = ensure(listRun.bswMActionListItem, "ACT_ComDmEnable")
+                itemDm.bswMActionListItemIndexOrCreate.value = 3
+                itemDm.bswMAbortOnFailOrCreate.value = false
+                itemDm.bswMActionListItemRefOrCreate.setRefTargetMdf(actDm.mdfObject)
+
+                // Remove legacy list item name from older script if present
+                if (listRun.bswMActionListItem.exists("AL_EnterRun_ComIpdu")) {
+                    listRun.bswMActionListItem.byName("AL_EnterRun_ComIpdu").remove()
+                }
+
+                scriptLogger.info("AL_EnterRun: ACT_ComIpduStart=BswMPduGroupSwitch(reinit), ACT_ComDmEnable=DM RxMPG/RxSPG")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved — generate BswM next")
+        }
+    }
+}

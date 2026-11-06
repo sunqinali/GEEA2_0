@@ -22,7 +22,6 @@
 #include "Com.h"
 #include "Dem.h"
 #include "Dcm.h"
-#include "Appl_Com_Bringup.h"
 #include "Appl_NvM_Buffers.h"
 
 extern volatile uint8 Appl_Os_InitPhase;
@@ -41,7 +40,7 @@ extern boolean BswM_PreInitialized;
 extern void Appl_UnlockEndinit(void);
 extern void Appl_LockEndinit(void);
 
-volatile uint32 Appl_Os_FwStamp = 0x260B052DuL;
+volatile uint32 Appl_Os_FwStamp = 0x260B052EuL;
 volatile uint8 Appl_Rte_StartRet = 0xFFu;
 volatile uint8 Appl_Rte_InitState = 0u;
 volatile uint8 Appl_Can_InitSkipped = 0u;
@@ -110,9 +109,9 @@ static void Appl_Can_EnableMcmcan(void)
 
 void Appl_Bsw_InitAfterOs(void)
 {
-  if (Appl_Os_FwStamp != 0x260B052DuL)
+  if (Appl_Os_FwStamp != 0x260B052EuL)
   {
-    Appl_Os_FwStamp = 0x260B052DuL;
+    Appl_Os_FwStamp = 0x260B052EuL;
   }
 
   /* Ensure BswM PreInit even if DriverInitZero/One GetCoreID path was skipped.
@@ -147,8 +146,8 @@ void Appl_Bsw_InitAfterOs(void)
   Appl_Os_InitPhase = 52u;
   Com_Init(NULL_PTR);
 
+  /* IPDU groups: BswM AL_EnterRun ACT_ComIpduStart (BswMPduGroupSwitch), not Appl. */
   Appl_Os_InitPhase = 6u;
-  Appl_Com_StartIpduGroups_ForBswM();
 
   Appl_Os_InitPhase = 7u;
   Dem_PreInit(NULL_PTR);

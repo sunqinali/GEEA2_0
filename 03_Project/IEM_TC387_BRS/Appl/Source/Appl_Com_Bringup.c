@@ -1,9 +1,8 @@
 /**********************************************************************************************************************
- * Appl_Com_Bringup.c — start baseline Com I-PDU groups + RX observe
+ * Appl_Com_Bringup.c — RX observe only (IPDU groups owned by BswM AL_EnterRun)
  *
- * BswM AL_EnterRun currently only does ComM Allow/FULL — no Com_IpduGroupStart.
- * Call Appl_Com_StartIpduGroups_ForBswM() after Com_Init (and optionally from BswM UserCallout).
- * PNC SPG groups are left stopped until PNC is requested.
+ * BswM ACT_ComIpduStart = BswMPduGroupSwitch → Com_IpduGroupControl (required when
+ * COM_IPDUGROUPINFO=OFF). Appl only mirrors group-active into flags + samples isCarTiGlb.
  *********************************************************************************************************************/
 #include "Appl_Com_Bringup.h"
 #include "Com.h"
@@ -20,27 +19,14 @@ volatile Std_ReturnType Appl_Com_RxRet = E_NOT_OK;
 static uint8 s_havePrev = 0u;
 static uint32 s_prev = 0u;
 
-void Appl_Com_StartIpduGroups_ForBswM(void)
+void Appl_Com_SyncIpduGroupFlags(void)
 {
-  Com_IpduGroupVector ipduGroupVector;
-
-  if (Appl_Com_IpduStarted != 0u)
+  /* VDDMPropSignalIPDU17 / isCarTiGlb → ComIPdu handle 21 */
+  if (Com_IsRxPduGrpActive(ComConf_ComIPdu_VDDMPropSignalIPDU17_1ed85da7_Rx) != FALSE)
   {
-    return;
+    Appl_Com_IpduStarted = 1u;
+    Appl_Com_IpduOk = 1u;
   }
-
-  /* COM_IPDUGROUPINFO=OFF (non-optimized) → Com_IpduGroupStart/EnableReceptionDM are DET-only no-ops.
-   * Use vector API: isCarTiGlb (IPDU17 / 0x162) needs RxMPG bit0 OR RxSPG bit9. */
-  Com_ClearIpduGroupVector(ipduGroupVector);
-  Com_SetIpduGroup(ipduGroupVector, ComConf_ComIPduGroup_RxMPG_PropulsionCAN_aad5aa75, TRUE);
-  Com_SetIpduGroup(ipduGroupVector, ComConf_ComIPduGroup_RxSPG_PropulsionCAN_fca0cb9e, TRUE);
-  Com_SetIpduGroup(ipduGroupVector, ComConf_ComIPduGroup_TxMPG_PropulsionCAN_3709a166, TRUE);
-  Com_SetIpduGroup(ipduGroupVector, ComConf_ComIPduGroup_TxSPG_PropulsionCAN_617cc08d, TRUE);
-  Com_IpduGroupControl(ipduGroupVector, TRUE);
-  Com_ReceptionDMControl(ipduGroupVector);
-
-  Appl_Com_IpduStarted = 1u;
-  Appl_Com_IpduOk = 1u;
 }
 
 void Appl_Com_Bringup_OnSample(uint8 stackOk)
@@ -48,7 +34,7 @@ void Appl_Com_Bringup_OnSample(uint8 stackOk)
   uint32 value = 0u;
 
   (void)stackOk;
-  Appl_Com_StartIpduGroups_ForBswM();
+  Appl_Com_SyncIpduGroupFlags();
 
   if (Appl_Com_IpduStarted == 0u)
   {

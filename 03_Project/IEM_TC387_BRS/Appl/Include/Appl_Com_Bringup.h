@@ -1,5 +1,5 @@
 /**********************************************************************************************************************
- * Appl_Com_Bringup.h — Com I-PDU group start + RX observe (BswM EnterRun gap)
+ * Appl_Com_Bringup.h — Com RX observe (IPDU groups started by BswM)
  *********************************************************************************************************************/
 #ifndef APPL_COM_BRINGUP_H
 #define APPL_COM_BRINGUP_H
@@ -14,10 +14,10 @@ extern volatile uint16 Appl_Com_RxChangeCnt;
 extern volatile uint32 Appl_Com_RxLastValue;
 extern volatile Std_ReturnType Appl_Com_RxRet;
 
-/* Start Rx/Tx MPG + base SPG (+ Reception DM). Safe to call more than once. */
-void Appl_Com_StartIpduGroups_ForBswM(void);
+/** Mirror Com_RxPduGrpActive into Appl_Com_IpduStarted/Ok (BswM owns the real start). */
+void Appl_Com_SyncIpduGroupFlags(void);
 
-/* ~100 ms Core0 sample: ensure groups started, observe isCarTiGlb. */
+/** ~100 ms Core0 sample: sync flags, observe isCarTiGlb. */
 void Appl_Com_Bringup_OnSample(uint8 stackOk);
 
 #endif /* APPL_COM_BRINGUP_H */

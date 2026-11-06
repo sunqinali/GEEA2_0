@@ -90,7 +90,6 @@
 #include "Dem.h"
 #include "Dcm.h"
 #include "Appl_CanTrcv_Smoke.h"
-#include "Appl_Com_Bringup.h"
 #include "Appl_NvM_Buffers.h"
 /**********************************************************************************************************************
  * DO NOT CHANGE THIS COMMENT!           </USERBLOCK>                                       DO NOT CHANGE THIS COMMENT!

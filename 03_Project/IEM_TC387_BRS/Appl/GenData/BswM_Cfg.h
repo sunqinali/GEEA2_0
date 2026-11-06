@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: BswM_Cfg.h
- *   Generation Time: 2026-11-04 14:25:49
+ *   Generation Time: 2026-11-06 09:19:26
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -136,8 +136,9 @@
 #define BSWM_COMM_INITIATE_RESET             STD_OFF
 #define BSWM_CHANNEL_COUNT                   1u
 #define BSWM_WAKEUP_SOURCE_COUNT             6u
-#define BSWM_IPDU_GROUP_CONTROL              STD_OFF
+#define BSWM_IPDU_GROUP_CONTROL              STD_ON
 #define BSWM_ECUM_MODE_HANDLING              STD_ON
+#define BSWM_IPDUGROUPVECTORSIZE             3u
 #define BSWM_MULTIPARTITION                  STD_OFF
 
 
@@ -281,7 +282,7 @@
 #define BSWM_RULESINDSTARTIDXOFIMMEDIATEUSER                                                        STD_ON
 #define BSWM_RULESINDUSEDOFIMMEDIATEUSER                                                            STD_ON
 #define BSWM_INITDATAHASHCODE                                                                       STD_OFF  /**< Deactivateable: 'BswM_InitDataHashCode' Reason: 'the module configuration does not support flashing of data.' */
-#define BSWM_INITGENVARANDINITAL                                                                    STD_OFF  /**< Deactivateable: 'BswM_InitGenVarAndInitAL' Reason: 'the array is deactivated because the size is 0 and the piece of data is in the configuration class: PRE_COMPILE' */
+#define BSWM_INITGENVARANDINITAL                                                                    STD_ON
 #define BSWM_INITIALIZED                                                                            STD_ON
 #define BSWM_J1939DCMMAPPING                                                                        STD_OFF  /**< Deactivateable: 'BswM_J1939DcmMapping' Reason: 'No Mode Request for BswMJ1939DcmBroadcastStatus configured.' */
 #define BSWM_IMMEDIATEUSERENDIDXOFJ1939DCMMAPPING                                                   STD_OFF  /**< Deactivateable: 'BswM_J1939DcmMapping.ImmediateUserEndIdx' Reason: 'No Mode Request for BswMJ1939DcmBroadcastStatus configured.' */
@@ -451,6 +452,7 @@
 #define BSWM_SIZEOFDEFERREDRULES                                                                    STD_ON
 #define BSWM_SIZEOFECUMMODEMAPPING                                                                  STD_ON
 #define BSWM_SIZEOFIMMEDIATEUSER                                                                    STD_ON
+#define BSWM_SIZEOFINITGENVARANDINITAL                                                              STD_ON
 #define BSWM_SIZEOFMODEREQUESTQUEUE                                                                 STD_ON
 #define BSWM_SIZEOFPARTITIONIDENTIFIERS                                                             STD_ON
 #define BSWM_SIZEOFRULESTATES                                                                       STD_ON
@@ -482,6 +484,7 @@
 #define BSWM_ECUMMODESTATEOFPCPARTITIONCONFIG                                                       STD_ON
 #define BSWM_FORCEDACTIONLISTPRIORITYOFPCPARTITIONCONFIG                                            STD_ON
 #define BSWM_IMMEDIATEUSEROFPCPARTITIONCONFIG                                                       STD_ON
+#define BSWM_INITGENVARANDINITALOFPCPARTITIONCONFIG                                                 STD_ON
 #define BSWM_INITIALIZEDOFPCPARTITIONCONFIG                                                         STD_ON
 #define BSWM_MODEREQUESTQUEUEOFPCPARTITIONCONFIG                                                    STD_ON
 #define BSWM_QUEUESEMAPHOREOFPCPARTITIONCONFIG                                                      STD_ON
@@ -495,6 +498,7 @@
 #define BSWM_SIZEOFDEFERREDRULESOFPCPARTITIONCONFIG                                                 STD_ON
 #define BSWM_SIZEOFECUMMODEMAPPINGOFPCPARTITIONCONFIG                                               STD_ON
 #define BSWM_SIZEOFIMMEDIATEUSEROFPCPARTITIONCONFIG                                                 STD_ON
+#define BSWM_SIZEOFINITGENVARANDINITALOFPCPARTITIONCONFIG                                           STD_ON
 #define BSWM_SIZEOFMODEREQUESTQUEUEOFPCPARTITIONCONFIG                                              STD_ON
 #define BSWM_SIZEOFRULESTATESOFPCPARTITIONCONFIG                                                    STD_ON
 #define BSWM_SIZEOFRULESINDOFPCPARTITIONCONFIG                                                      STD_ON
@@ -577,6 +581,7 @@
 #define BSWM_ISDEF_RULESINDENDIDXOFIMMEDIATEUSER                                                    STD_ON
 #define BSWM_ISDEF_RULESINDSTARTIDXOFIMMEDIATEUSER                                                  STD_ON
 #define BSWM_ISDEF_RULESINDUSEDOFIMMEDIATEUSER                                                      STD_ON
+#define BSWM_ISDEF_INITGENVARANDINITAL                                                              STD_OFF
 #define BSWM_ISDEF_PCPARTITIONCONFIGIDXOFPARTITIONIDENTIFIERS                                       STD_OFF
 #define BSWM_ISDEF_PARTITIONSNVOFPARTITIONIDENTIFIERS                                               STD_OFF
 #define BSWM_ISDEF_FCTPTROFRULES                                                                    STD_OFF
@@ -595,6 +600,7 @@
 #define BSWM_ISDEF_ECUMMODESTATEOFPCPARTITIONCONFIG                                                 STD_ON
 #define BSWM_ISDEF_FORCEDACTIONLISTPRIORITYOFPCPARTITIONCONFIG                                      STD_ON
 #define BSWM_ISDEF_IMMEDIATEUSEROFPCPARTITIONCONFIG                                                 STD_ON
+#define BSWM_ISDEF_INITGENVARANDINITALOFPCPARTITIONCONFIG                                           STD_ON
 #define BSWM_ISDEF_INITIALIZEDOFPCPARTITIONCONFIG                                                   STD_ON
 #define BSWM_ISDEF_MODEREQUESTQUEUEOFPCPARTITIONCONFIG                                              STD_ON
 #define BSWM_ISDEF_QUEUESEMAPHOREOFPCPARTITIONCONFIG                                                STD_ON
@@ -623,6 +629,7 @@
 #define BSWM_EQ2_RULESINDENDIDXOFIMMEDIATEUSER                                                      1u
 #define BSWM_EQ2_RULESINDSTARTIDXOFIMMEDIATEUSER                                                    0u
 #define BSWM_EQ2_RULESINDUSEDOFIMMEDIATEUSER                                                        TRUE
+#define BSWM_EQ2_INITGENVARANDINITAL                                                                
 #define BSWM_EQ2_PCPARTITIONCONFIGIDXOFPARTITIONIDENTIFIERS                                         
 #define BSWM_EQ2_PARTITIONSNVOFPARTITIONIDENTIFIERS                                                 
 #define BSWM_EQ2_FCTPTROFRULES                                                                      
@@ -641,6 +648,7 @@
 #define BSWM_EQ2_ECUMMODESTATEOFPCPARTITIONCONFIG                                                   (&(BswM_EcuMModeState))
 #define BSWM_EQ2_FORCEDACTIONLISTPRIORITYOFPCPARTITIONCONFIG                                        (&(BswM_ForcedActionListPriority))
 #define BSWM_EQ2_IMMEDIATEUSEROFPCPARTITIONCONFIG                                                   BswM_ImmediateUser
+#define BSWM_EQ2_INITGENVARANDINITALOFPCPARTITIONCONFIG                                             BswM_InitGenVarAndInitAL
 #define BSWM_EQ2_INITIALIZEDOFPCPARTITIONCONFIG                                                     (&(BswM_Initialized))
 #define BSWM_EQ2_MODEREQUESTQUEUEOFPCPARTITIONCONFIG                                                BswM_ModeRequestQueue
 #define BSWM_EQ2_QUEUESEMAPHOREOFPCPARTITIONCONFIG                                                  (&(BswM_QueueSemaphore))
@@ -736,6 +744,9 @@ typedef uint8_least BswM_EcuMModeMappingIterType;
 
 /**   \brief  type used to iterate BswM_ImmediateUser */
 typedef uint8_least BswM_ImmediateUserIterType;
+
+/**   \brief  type used to iterate BswM_InitGenVarAndInitAL */
+typedef uint8_least BswM_InitGenVarAndInitALIterType;
 
 /**   \brief  type used to iterate BswM_PartitionIdentifiers */
 typedef uint8_least BswM_PartitionIdentifiersIterType;
@@ -871,6 +882,9 @@ typedef uint8 BswM_SizeOfEcuMModeMappingType;
 
 /**   \brief  value based type definition for BswM_SizeOfImmediateUser */
 typedef uint8 BswM_SizeOfImmediateUserType;
+
+/**   \brief  value based type definition for BswM_SizeOfInitGenVarAndInitAL */
+typedef uint8 BswM_SizeOfInitGenVarAndInitALType;
 
 /**   \brief  value based type definition for BswM_SizeOfModeRequestQueue */
 typedef uint8 BswM_SizeOfModeRequestQueueType;
@@ -1042,6 +1056,9 @@ typedef P2VAR(BswM_ForcedActionListPriorityType, TYPEDEF, BSWM_VAR_NOINIT) BswM_
 
 /**   \brief  type used to point to BswM_ImmediateUser */
 typedef P2CONST(BswM_ImmediateUserType, TYPEDEF, BSWM_CONST) BswM_ImmediateUserPtrType;
+
+/**   \brief  type used to point to BswM_InitGenVarAndInitAL */
+typedef P2CONST(BswM_InitGenVarAndInitALType, TYPEDEF, BSWM_CONST) BswM_InitGenVarAndInitALPtrType;
 
 /**   \brief  type used to point to BswM_Initialized */
 typedef P2VAR(BswM_InitializedType, TYPEDEF, BSWM_VAR_NOINIT) BswM_InitializedPtrType;
