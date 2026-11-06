@@ -8,11 +8,11 @@
 | --- | --- |
 | 当前主工程 | `03_Project/IEM_TC387_BRS`（Tasking + vBRS），SIP **CBD2000642** |
 | 基线工程 | `03_Project/IEM_TC387`（CBD1900078）仍保留作对照，不再作为 bring-up 主线 |
-| 板测固件 | **`0x260B0534`**：`Dcm_Init` 后补 `Dcm_ComM_FullComModeEntered`；ZCANPRO UDS **ALL PASS** |
+| 板测固件 | **`0x260B0535`**：CarConfig BlkID + T2≈**500 ms**（≪2500）；UDS 冒烟仍 PASS |
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
 | BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
-| 当前停点 | **D+E 再确认过**；下一站组信号/CCP / T2 细项 |
+| 当前停点 | **E 主路径板测过**；下一站 CCP 值表（待 DB）/ 23 组信号进壳 / 台架 T1–T8 细记 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
@@ -227,7 +227,7 @@ Developer 中：
 | B | 阶段 2–3：MCAL 通信最小集 + CanTrcv/Can 栈无板可观测 | **已完成**（`generate_regen11_bswm` / ELF） |
 | C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、Fee/NvM ReadAll | **已完成（052E 板测确认；TSTM 旁路狗）** |
 | D | 阶段 3 出口：CANoe/ZCANPRO NM `0x51C` + 周期帧；T1/T3–T5/T7 | **已完成（2026-11-06 ZCANPRO：TX+RX）** |
-| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | **物理诊断冒烟已过**（2026-11-06：`3E`/`10 01|03`/`22 F120|E103`）；组信号/CCP / 完整 T2 仍开 |
+| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | **主路径已过**（UDS；CarConfig BlkID；T2≈500 ms）；CCP 值表/23 组信号壳仍开 |
 | F | 阶段 6：完整台架 T1–T8 记录 | 挂起（等台架） |
 | G | TLF 正式喂狗（先 feed 再放 TSTM） | **暂停**，不挡 D/E |
 

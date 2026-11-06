@@ -15,7 +15,7 @@ Appl_Os_StartOsEntered    2=master called StartOS (barrier); 3=sched (unlikely)
 Appl_Os_StartOsMask       bits of cores that reached StartOS() — expect 0xF
 Appl_Os_SlavePhase[0..3]  1=BIV 2=PreMain 3=main/Os_Init 4=Os_Init done 5=EcuM_StartOS 6=StartOS
                           8=Default_Init_Task (barrier released). Stuck at 6 = MPU/barrier write fail
-Appl_Os_FwStamp           MUST be 0x260B0534 (Dcm ComM FULL resync after deferred Init)
+Appl_Os_FwStamp           MUST be 0x260B0535 (CarConfig ReceiveSignalGroup + BlkID smoke)
 Appl_Diag_DcmInited       1
 Appl_Diag_DcmComMFullNotified  1 (else UDS RX dropped: FULL notified before Dcm_Init)
 Appl_Diag_DcmConfCnt      rises on response confirm
@@ -57,11 +57,15 @@ Appl_ProgMagic            0x50524F47 when handover valid
 Appl_Dem_BusOffActive     1 while CanSM BusOffCnt>0 (mirror; Dem via CanSM native COM_Busoff BSW)
 Appl_Dem_CarConfigErrActive  via Dem COM_CarConfigErr (CDD E300-56)
 Appl_CarConfig_State         0 Bulk / 1 Valid / 2 Error
-Appl_CarConfig_LastBlkId     VehCfgPrm BlockID (nonzero when RX)
+Appl_CarConfig_LastBlkId     VehCfgPrm BlockID (nonzero when RX) — expect 0x01 after ZCANPRO smoke
+Appl_CarConfig_LastExtBlkId  VehCfgPrmExt BlockID — expect 0x02 after smoke
+Appl_CarConfig_RxCnt / ExtRxCnt  bump on new BlkID
 Appl_CarConfig_PassedOnce    1 after first good BlkID (Dem PASSED)
+Appl_CarConfig_BlkRet/ExtRet E_OK(0) after ReceiveSignalGroup+ReceiveSignal
 Appl_CarConfig_FaultCount    DID 0xE103 invalid-CCP count (0..10)
 Appl_CarConfig_NvMLoaded     1 if NvM magic 0xCC after ReadAll
 Appl_CarConfig_NvMRam[0..3]  magic/state/BlkID/faultCnt (Fee#26 NvM#13)
+ZCANPRO: Tasking/ZCANPRO_IEM_CarConfig_Smoke.py — TX 0x235/0x236 then 0x22 E103
 Manual: Appl_CarConfig_InjectError()
 Manual: Appl_CarConfig_RecordFault(ccpNum, invalidVal) / ClearFaults()
 UDS 0x22 E103: count + up to 10×(CCP# BE 2B + invalid 1B); providers in Appl_Did_E103.c

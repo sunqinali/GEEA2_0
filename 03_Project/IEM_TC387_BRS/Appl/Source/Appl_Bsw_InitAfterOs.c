@@ -47,7 +47,7 @@ extern boolean BswM_PreInitialized;
 extern void Appl_UnlockEndinit(void);
 extern void Appl_LockEndinit(void);
 
-volatile uint32 Appl_Os_FwStamp = 0x260B0534uL;
+volatile uint32 Appl_Os_FwStamp = 0x260B0535uL;
 volatile uint8 Appl_Rte_StartRet = 0xFFu;
 volatile uint8 Appl_Rte_InitState = 0u;
 volatile uint8 Appl_Can_InitSkipped = 0u;
@@ -116,9 +116,9 @@ static void Appl_Can_EnableMcmcan(void)
 
 void Appl_Bsw_InitAfterOs(void)
 {
-  if (Appl_Os_FwStamp != 0x260B0534uL)
+  if (Appl_Os_FwStamp != 0x260B0535uL)
   {
-    Appl_Os_FwStamp = 0x260B0534uL;
+    Appl_Os_FwStamp = 0x260B0535uL;
   }
 
   /* Same as 052E: re-PreInit here so StartupTwo→BswM_Init always sees PreInitialized. */

@@ -100,19 +100,34 @@ void Appl_CarConfig_Bringup_OnSample(void)
 {
   uint8 blkId = 0u;
 
-  Appl_CarConfig_BlkRet = Com_ReceiveSignal(
-      ComConf_ComGroupSignal_isVehCfgPrmBlkIDBytePosn1_16ee2fa8_Rx, &blkId);
-  if ((Appl_CarConfig_BlkRet == E_OK) && (blkId != 0u))
+  /* Group signals: shadow → app via ReceiveSignalGroup then ReceiveSignal. */
+  if (Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igVehCfgPrm_eee11443_Rx) == E_OK)
   {
-    Appl_CarConfig_AcceptBlock(blkId, 0u);
+    Appl_CarConfig_BlkRet = Com_ReceiveSignal(
+        ComConf_ComGroupSignal_isVehCfgPrmBlkIDBytePosn1_16ee2fa8_Rx, &blkId);
+    if ((Appl_CarConfig_BlkRet == E_OK) && (blkId != 0u))
+    {
+      Appl_CarConfig_AcceptBlock(blkId, 0u);
+    }
+  }
+  else
+  {
+    Appl_CarConfig_BlkRet = E_NOT_OK;
   }
 
   blkId = 0u;
-  Appl_CarConfig_ExtRet = Com_ReceiveSignal(
-      ComConf_ComGroupSignal_isVehCfgPrmExtBlkIDBytePosn1_6585aabf_Rx, &blkId);
-  if ((Appl_CarConfig_ExtRet == E_OK) && (blkId != 0u))
+  if (Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igVehCfgPrmExt_b2e1e62e_Rx) == E_OK)
   {
-    Appl_CarConfig_AcceptBlock(blkId, 1u);
+    Appl_CarConfig_ExtRet = Com_ReceiveSignal(
+        ComConf_ComGroupSignal_isVehCfgPrmExtBlkIDBytePosn1_6585aabf_Rx, &blkId);
+    if ((Appl_CarConfig_ExtRet == E_OK) && (blkId != 0u))
+    {
+      Appl_CarConfig_AcceptBlock(blkId, 1u);
+    }
+  }
+  else
+  {
+    Appl_CarConfig_ExtRet = E_NOT_OK;
   }
 }
 
