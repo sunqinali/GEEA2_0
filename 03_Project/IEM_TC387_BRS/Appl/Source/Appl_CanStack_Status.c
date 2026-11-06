@@ -6,6 +6,7 @@
 #include "Appl_Com_Bringup.h"
 #include "Appl_Dem_Platform.h"
 #include "Appl_CarConfig_Bringup.h"
+#include "Appl_ComGroup_Bringup.h"
 #include "ComM.h"
 #include "ComM_Cfg.h"
 #include "CanSM_ComM.h"
@@ -120,6 +121,7 @@ void Appl_CanStack_Status_Sample(void)
   Appl_Com_Bringup_OnSample(Appl_Can_StackOk);
   Appl_Dem_Platform_OnSample(Appl_Can_BusOffCnt, Appl_Can_StackOk);
   Appl_CarConfig_Bringup_OnSample();
+  Appl_ComGroup_Bringup_OnSample();
 
   if (Appl_Com_IpduOk == 0u)
   {

@@ -58,7 +58,9 @@
 
 ## SystemExtract 组映射（仍未进壳）
 
-共 **23** 条组信号（含 `VehCfgPrm` / `VehCfgPrmExt`）。CarConfig BlkID 已由 `Appl_CarConfig_Bringup` 直接 `Com_ReceiveSignal`；CCP 值表待 DB。组端口进 RTE 壳可后续扩。
+共 **23** 条组信号（含 `VehCfgPrm` / `VehCfgPrmExt`）。CarConfig BlkID 已由 `Appl_CarConfig_Bringup` 直接 `Com_ReceiveSignalGroup`；CCP 值表待 DB。
+
+**0536 直读观测（非 RTE 壳）**：`Appl_ComGroup_Bringup` 采样 `igVehSpdLgt` / `igVehModMngtGlbSafe1` / `igWhlMotSysTqAllwd`；脚本 `ZCANPRO_IEM_ComGroup_Smoke.py`。其余组端口进 `Appl_ComShell` 仍需 Developer/RTE regen。
 
 ## 运行时（已 amk）
 
