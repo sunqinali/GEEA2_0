@@ -15,7 +15,7 @@ Appl_Os_StartOsEntered    2=master called StartOS (barrier); 3=sched (unlikely)
 Appl_Os_StartOsMask       bits of cores that reached StartOS() — expect 0xF
 Appl_Os_SlavePhase[0..3]  1=BIV 2=PreMain 3=main/Os_Init 4=Os_Init done 5=EcuM_StartOS 6=StartOS
                           8=Default_Init_Task (barrier released). Stuck at 6 = MPU/barrier write fail
-Appl_Os_FwStamp           MUST be 0x260B0539 (CCP byte shadow + demo whitelist validate)
+Appl_Os_FwStamp           MUST be 0x260B053B (T8 NvM WriteAll via Appl_NvM_T8_WriteReq)
 Appl_Diag_DcmInited       1
 Appl_Diag_DcmComMFullNotified  1 (else UDS RX dropped: FULL notified before Dcm_Init)
 Appl_Diag_DcmConfCnt      rises on response confirm
@@ -69,7 +69,10 @@ Appl_CarConfig_FaultCount    DID 0xE103 invalid-CCP count (0 after good; >=1 aft
 Appl_CarConfig_State         1 VALID after good; 2 ERROR after bad CCP
 Appl_CarConfig_NvMLoaded     1 if NvM magic 0xCC after ReadAll
 Appl_CarConfig_NvMRam[0..3]  magic/state/BlkID/faultCnt (Fee#26 NvM#13)
+Appl_NvM_T8_WriteReq         T8: set 1 → Background WriteAll; clears when done
+Appl_NvM_WriteAllDone        1 after T8 WriteAll OK
 ZCANPRO: Tasking/ZCANPRO_IEM_CarConfig_Smoke.py — good CCP then CCP#1=0xFF + 0x22 E103
+T8: see BoardArrival_T1_T8.md (WriteReq → power cycle → NvMLoaded)
 Appl_ComGroup_AnyOk / OkCnt     1 / rising after ZCANPRO_IEM_ComGroup_Smoke
 Appl_ComGroup_HitMask           expect 0x3FF (bits0..9 = Crash..TqAllwd)
 Appl_ComGroup_Cntr[0..9]        live counters; aliases VehSpdLgtCntr/VehModCntr/TqAllwdCntr

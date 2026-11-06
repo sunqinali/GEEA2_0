@@ -44,6 +44,8 @@ uint8 Appl_NvM_FeePendReq = 0xFFu;
 /* T2 helper: ~ms from first CanStack sample to Dem/Dcm ready (SampleCnt*100). */
 volatile uint16 Appl_Diag_ReadySampleCnt = 0u;
 volatile uint32 Appl_Diag_ReadyApproxMs = 0u;
+/* T8: request Fee/NvM WriteAll from UDE without ProgReset. */
+volatile uint8 Appl_NvM_T8_WriteReq = 0u;
 
 extern volatile uint16 Appl_Can_SampleCnt;
 
@@ -163,6 +165,12 @@ void Appl_NvM_Background(void)
         Appl_Diag_ReadySampleCnt = Appl_Can_SampleCnt;
         Appl_Diag_ReadyApproxMs = ((uint32)Appl_Can_SampleCnt) * 100uL;
       }
+    }
+    if (Appl_NvM_T8_WriteReq != 0u)
+    {
+      Appl_CarConfig_MarkNvMDirty();
+      Appl_NvM_WriteAllSync();
+      Appl_NvM_T8_WriteReq = 0u;
     }
     return;
   }
