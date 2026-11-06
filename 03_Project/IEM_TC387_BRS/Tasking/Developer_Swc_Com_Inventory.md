@@ -60,7 +60,9 @@
 
 共 **23** 条组信号（含 `VehCfgPrm` / `VehCfgPrmExt`）。CarConfig BlkID 已由 `Appl_CarConfig_Bringup` 直接 `Com_ReceiveSignalGroup`；CCP 值表待 DB。
 
-**0536 直读观测（非 RTE 壳）**：`Appl_ComGroup_Bringup` 采样 `igVehSpdLgt` / `igVehModMngtGlbSafe1` / `igWhlMotSysTqAllwd`；脚本 `ZCANPRO_IEM_ComGroup_Smoke.py`。其余组端口进 `Appl_ComShell` 仍需 Developer/RTE regen。
+**0538 直读观测（非 RTE 壳）**：`Appl_ComGroup_Bringup` 10 路 Cntr HitMask=`0x3FF` 已板测；脚本 `ZCANPRO_IEM_ComGroup_Smoke.py`。其余组端口进 `Appl_ComShell` 仍需 Developer/RTE regen。
+
+**0539 CCP**：`Appl_CarConfig` 影子 Posn2..8 + demo 白名单 CCP#1..7；正式 DB 到位后替换 `Appl_CarConfig_CcpTable[]`。
 
 ## 运行时（已 amk）
 
