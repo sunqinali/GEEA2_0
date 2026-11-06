@@ -84,6 +84,10 @@ def raw_probe(bus_id):
     """Send ISO-TP SF TesterPresent padded to DLC=8; expect 0x637 response.
     CanIf diag Rx has DLC-Check=8 — unpadded short frames are dropped by ECU.
     """
+    # Drain RX so we only count frames after our TX
+    for _ in range(5):
+        zcanpro.receive(bus_id)
+
     tx = [{
         "can_id": PHYS_REQ,
         "is_canfd": 0,
@@ -91,22 +95,43 @@ def raw_probe(bus_id):
         "data": [0x02, 0x3E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],
     }]
     zcanpro.write_log("RAW Tx 0x%03X: %s" % (PHYS_REQ, _hex_list(tx[0]["data"])))
-    if not zcanpro.transmit(bus_id, tx):
+    tx_ret = zcanpro.transmit(bus_id, tx)
+    zcanpro.write_log("transmit()=%s (1=ok) — NOW check Trace for TX 0x737" % str(tx_ret))
+    if not tx_ret:
         zcanpro.write_log("FAIL  raw transmit()")
         return False
 
     deadline = time.time() + 1.0
+    saw_any = 0
+    saw_nm = 0
+    saw_echo = 0
+    id_sample = []
     while time.time() < deadline and not stopTask:
         ok, frms = zcanpro.receive(bus_id)
         if not ok:
+            time.sleep(0.01)
             continue
         for f in frms:
+            saw_any += 1
             cid = f.get("can_id", 0) & 0x7FF
+            if len(id_sample) < 12 and cid not in id_sample:
+                id_sample.append(cid)
             if cid == PHYS_RES:
                 zcanpro.write_log("RAW Rx 0x%03X: %s" % (cid, _hex_list(f.get("data") or [])))
                 return True
+            if cid == PHYS_REQ:
+                saw_echo += 1
+            if cid == 0x51C:
+                saw_nm += 1
         time.sleep(0.01)
-    zcanpro.write_log("FAIL  raw probe: no 0x%03X within 1s (check Trace for 0x737)" % PHYS_RES)
+    zcanpro.write_log(
+        "FAIL  raw probe: no 0x%03X within 1s (rx_any=%d echo737=%d nm51C=%d ids=%s)"
+        % (PHYS_RES, saw_any, saw_echo, saw_nm, ",".join("0x%03X" % i for i in id_sample))
+    )
+    zcanpro.write_log(
+        "HINT: ECU(0534): FwStamp=0x260B0534; Appl_Diag_DcmInited=1; "
+        "Appl_Diag_DcmComMFullNotified=1; DcmConfCnt rises if Dcm built a response."
+    )
     return False
 
 

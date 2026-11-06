@@ -3,6 +3,7 @@
  *********************************************************************************************************************/
 #include "Appl_BswM_ProgRequest.h"
 #include "Appl_NvM_Buffers.h"
+#include "Appl_Diag_RxProbe.h"
 #include "Appl_CarConfig_Bringup.h"
 #include "Dcm.h"
 #include "Dem.h"
@@ -155,6 +156,7 @@ void Appl_NvM_Background(void)
     {
       Dem_Init(NULL_PTR);
       Dcm_Init(NULL_PTR);
+      Appl_Diag_AfterDcmInit();
       Appl_NvM_DemDeferred = 0u;
       if (Appl_Diag_ReadyApproxMs == 0u)
       {
@@ -197,6 +199,7 @@ void Appl_NvM_Background(void)
       {
         Dem_Init(NULL_PTR);
         Dcm_Init(NULL_PTR);
+        Appl_Diag_AfterDcmInit();
         Appl_NvM_DemDeferred = 0u;
         if (Appl_Diag_ReadyApproxMs == 0u)
         {

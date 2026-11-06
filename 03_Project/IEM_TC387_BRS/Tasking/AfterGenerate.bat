@@ -21,6 +21,10 @@ echo === Core2 FRT: RAM shim (STM2 MMIO stalls StartOS) ===
 python "%TASKING%_patch_core2_frt_shim.py"
 if errorlevel 1 exit /b 1
 
+echo === CanIf: diag RX probe wrapper (0x737 count) ===
+python "%TASKING%_patch_canif_diag_rxprobe.py"
+if errorlevel 1 exit /b 1
+
 echo === Offline TJA check ===
 python "%TASKING%_offline_tja_check.py"
 if errorlevel 1 exit /b 1

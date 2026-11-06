@@ -1,8 +1,14 @@
 /**********************************************************************************************************************
- * Appl_Bsw_InitAfterOs.c — COM/DEM/DCM + Can after StartOS
+ * Appl_Bsw_InitAfterOs.c — post-StartOS BSW init (Default_Init_Task)
  *
- * MCMCAN CLC/MCR are Safety-EndInit protected. Enable CLC (wait DISS) before Can_Init MMIO.
- * fMCAN via CCUCON1 forced first (SCU-only, always safe).
+ * Ownership (board-proven 052E; keep Can/PduR/Dem PreInit post-OS — do not pre-OS move):
+ *   BswM     — AL_EnterRun / ComM FULL / BswMPduGroupSwitch / AL_ProgReset
+ *   EcuM     — DriverInitZero/One: Det, Mcu, Port, Spi, CanTrcv, BswM_PreInit
+ *   This file— Can→Com + PduR/Dem PreInit + Dem_Init/Dcm after OS
+ *   Appl     — NvM ReadAll deferral, Rte_Start kick, bring-up watches
+ *
+ * MCMCAN CLC/MCR are Safety-EndInit protected. Force fMCAN (CCUCON1) then enable CLC
+ * (wait DISS) before Can_Init MMIO.
  *********************************************************************************************************************/
 #include "Appl_Bsw_InitAfterOs.h"
 #include "Os.h"
@@ -23,6 +29,7 @@
 #include "Dem.h"
 #include "Dcm.h"
 #include "Appl_NvM_Buffers.h"
+#include "Appl_Diag_RxProbe.h"
 
 extern volatile uint8 Appl_Os_InitPhase;
 extern volatile uint8 Appl_BswM_PreInitOk;
@@ -40,7 +47,7 @@ extern boolean BswM_PreInitialized;
 extern void Appl_UnlockEndinit(void);
 extern void Appl_LockEndinit(void);
 
-volatile uint32 Appl_Os_FwStamp = 0x260B052EuL;
+volatile uint32 Appl_Os_FwStamp = 0x260B0534uL;
 volatile uint8 Appl_Rte_StartRet = 0xFFu;
 volatile uint8 Appl_Rte_InitState = 0u;
 volatile uint8 Appl_Can_InitSkipped = 0u;
@@ -109,13 +116,12 @@ static void Appl_Can_EnableMcmcan(void)
 
 void Appl_Bsw_InitAfterOs(void)
 {
-  if (Appl_Os_FwStamp != 0x260B052EuL)
+  if (Appl_Os_FwStamp != 0x260B0534uL)
   {
-    Appl_Os_FwStamp = 0x260B052EuL;
+    Appl_Os_FwStamp = 0x260B0534uL;
   }
 
-  /* Ensure BswM PreInit even if DriverInitZero/One GetCoreID path was skipped.
-   * StartupTwo→BswM_Init requires PreInitialized==TRUE. */
+  /* Same as 052E: re-PreInit here so StartupTwo→BswM_Init always sees PreInitialized. */
   BswM_InitMemory();
   BswM_PreInit(NULL_PTR);
   Appl_BswM_PreInitOk = (BswM_PreInitialized != FALSE) ? 1u : 0u;
@@ -162,6 +168,7 @@ void Appl_Bsw_InitAfterOs(void)
   {
     Dem_Init(NULL_PTR);
     Dcm_Init(NULL_PTR);
+    Appl_Diag_AfterDcmInit();
   }
   /* else: Appl_NvM_DemDeferred — Background runs Dem/Dcm after ReadAll */
   Appl_Os_InitPhase = 9u;
@@ -169,6 +176,7 @@ void Appl_Bsw_InitAfterOs(void)
 
 void Appl_BswM_NotifyRunAndEnter(uint8 kickPhase)
 {
+  /* StartupTwo owns BswM_Init; fallback only if that path skipped PreInit/Init. */
   if (BswM_Initialized == FALSE)
   {
     if (BswM_PreInitialized == FALSE)
@@ -182,6 +190,7 @@ void Appl_BswM_NotifyRunAndEnter(uint8 kickPhase)
   }
 
   Appl_BswM_Initialized = (BswM_Initialized != FALSE) ? 1u : 0u;
+  /* Kick after Can stack (InitAfterOs) so AL_EnterRun ComM FULL / PduGroup can succeed. */
   BswM_EcuM_CurrentState(ECUM_STATE_RUN);
   BswM_MainFunction();
   Appl_BswM_EcuMMode = BswM_EcuMModeState;

@@ -8,6 +8,7 @@
 #include "Appl_CanTrcv_Smoke.h"
 #include "Appl_CanStack_Status.h"
 #include "Appl_NvM_Buffers.h"
+#include "Appl_Diag_RxProbe.h"
 #include "SchM_Fls_17_Dmu.h"
 #include "SchM_Fee.h"
 /* Dcm_Set/GetProgConditions live in Appl_BswM_ProgRequest.c */
@@ -69,7 +70,8 @@ FUNC(void, DCM_CALLOUT_CODE) Dcm_Confirmation(
 {
   (void)idContext;
   (void)dcmRxPduId;
-  (void)status;
+  Appl_Diag_DcmConfCnt++;
+  Appl_Diag_DcmConfStatus = (uint8)status;
 }
 
 /* Core2 Appl 100ms — unused while SystemTimer_Core2 is RAM-shimmed. */

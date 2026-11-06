@@ -8,11 +8,11 @@
 | --- | --- |
 | 当前主工程 | `03_Project/IEM_TC387_BRS`（Tasking + vBRS），SIP **CBD2000642** |
 | 基线工程 | `03_Project/IEM_TC387`（CBD1900078）仍保留作对照，不再作为 bring-up 主线 |
-| 板测固件 | **`0x260B052E`**：`Bringup_Ok=1` / `StackOk=1` / `InitPhase=9` / `StartOsMask=0xF`（UDE2022） |
+| 板测固件 | **`0x260B0534`**：`Dcm_Init` 后补 `Dcm_ComM_FullComModeEntered`；ZCANPRO UDS **ALL PASS** |
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
-| BswM vs Appl | **模式/请求走 BswM**（EnterRun / PduGroupSwitch / ProgReset）；**观测/Smoke 留 Appl**；不把整套 bring-up 改成 BswM |
-| 当前停点 | **D + 诊断冒烟已过**（ZCANPRO：`3E`/`10`/`22 F120`/`22 E103`）；下一站组信号/CCP / T2 细项 |
+| BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
+| 当前停点 | **D+E 再确认过**；下一站组信号/CCP / T2 细项 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
