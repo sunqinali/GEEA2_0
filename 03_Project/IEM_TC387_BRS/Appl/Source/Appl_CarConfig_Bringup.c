@@ -29,22 +29,7 @@ volatile uint16 Appl_CarConfig_ValidateFailCnt = 0u;
 volatile uint8 Appl_CarConfig_ClearFaultsReq = 0u;
 volatile uint8 Appl_CarConfig_SuppressFault = 0u;
 
-/*
- * Bring-up demo whitelist (BlkID=1 → CCP#1..7). Replace with official Car Config DB.
- * Smoke good payload uses 0x10..0x70; 0xFF trips E103 for CCP#1.
- */
-const Appl_CarConfig_CcpEntryType Appl_CarConfig_CcpTable[] =
-{
-  { 1u, 0x00u, 0x7Fu },
-  { 2u, 0x00u, 0x7Fu },
-  { 3u, 0x00u, 0x7Fu },
-  { 4u, 0x00u, 0x7Fu },
-  { 5u, 0x00u, 0x7Fu },
-  { 6u, 0x00u, 0x7Fu },
-  { 7u, 0x00u, 0x7Fu }
-};
-const uint16 Appl_CarConfig_CcpTableLen =
-    (uint16)(sizeof(Appl_CarConfig_CcpTable) / sizeof(Appl_CarConfig_CcpTable[0]));
+/* Appl_CarConfig_CcpTable[] / Len: generated from Appl/Config CSV via Tasking/gen_ccp_table.py */
 
 static Appl_CarConfig_FaultEntryType Appl_CarConfig_Faults[APPL_CARCFG_E103_MAX_FAULTS];
 

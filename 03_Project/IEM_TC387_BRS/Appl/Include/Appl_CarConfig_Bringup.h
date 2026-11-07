@@ -2,9 +2,9 @@
  * Appl_CarConfig_Bringup.h — VehCfgPrm 观测 + Dem COM_CarConfigErr (CDD E300-56)
  *
  * CCP 映射（DBC）：VehCfgPrmCCPBytePosn(N) → CCP# = (BlkID-1)*7 + (N-1), N=2..8
- * 白名单：Appl_CarConfig_CcpTable[]；表空则只影子字节、不报 E103
+ * 白名单：Appl_CarConfig_CcpTable[]（CSV→gen_ccp_table.py；正式源为 CCdB）
  * DID 0xE103：最多 10 条故障槽；Rte 由 Appl_Did_E103.c 提供
- * NvM：状态壳 Appl_CarConfig_NvMRam（Bulk/Valid/Error + BlkID）；全量合法 CCP 值仍待正式 DB
+ * NvM：状态壳 Appl_CarConfig_NvMRam；合法 CCP 值表等 CCdB 导出替换 CSV
  *********************************************************************************************************************/
 #ifndef APPL_CARCONFIG_BRINGUP_H
 #define APPL_CARCONFIG_BRINGUP_H

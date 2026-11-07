@@ -8,11 +8,11 @@
 | --- | --- |
 | 当前主工程 | `03_Project/IEM_TC387_BRS`（Tasking + vBRS），SIP **CBD2000642** |
 | 基线工程 | `03_Project/IEM_TC387`（CBD1900078）仍保留作对照，不再作为 bring-up 主线 |
-| 板测固件 | **`0x260B053F` 板测过**：TX 组 `TxOkCnt`↑ + Trace `0x110`/`0x189`/`0x4C`；T8/标量 TX 此前已过 |
+| 板测固件 | **`0x260B0540`**：CCP 表白名单改 CSV→`gen_ccp_table.py`（正式源 CCdB；053F TX 组已板测） |
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
 | BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
-| 当前停点 | **RX/TX 组直读+直发已过**；下一站 T7 短接 / T3·T5 / Developer 全组壳 / 正式 CCP DB |
+| 当前停点 | **CCP 导入壳已就绪**（等 CCdB 导出填 CSV）；T7 短接 / T3·T5 / Developer 全组壳仍开 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
@@ -214,7 +214,7 @@ Developer 中：
 | 396 复位不拉显性 | Port 复位电平 + Can 初始化顺序 |
 | DoCAN 时序 | CanTp，对照 4.3.3 和 CDD |
 | UDS 会话 / DID / DTC | Dcm + Dem，数据来自 CDD |
-| Car Config 订阅、0xE103、E300-56 | 应用壳 + Dem；BlkID/状态 NvM 壳 + E103；合法 CCP 值表仍待 DB |
+| Car Config 订阅、0xE103、E300-56 | 应用壳 + Dem；BlkID/状态 NvM + E103；白名单 `Appl/Config/Appl_CarConfig_CcpTable.csv`（CCdB 到位后替换） |
 | SWDL / PBL / SBL | 不做，只留交接标志 |
 | QF 语义 | 应用，COM 只搬运 |
 | 30% 资源余量 | 链接后记录，不挡阶段 6 |
