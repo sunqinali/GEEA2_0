@@ -12,7 +12,7 @@
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
 | BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
-| 当前停点 | **① CCdB→CSV 灌表**（见 `Appl/Config/README_CcpTable.md`）或 **② T3/T5 仪测**（`BoardArrival_T1_T8.md`）；组壳 0541 已板过 |
+| 当前停点 | CCdB / T3·T5 **暂缓**；组壳 0541 已板过并已 push；下一步另定 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 组壳（2026-11-07） | v0.6 **已板过**：HitMask=`0x3FF`；`GrpRxOkCnt`↑；壳/Com `*_Cntr` 同步；`ComGroup_Smoke` ALL PASS |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
