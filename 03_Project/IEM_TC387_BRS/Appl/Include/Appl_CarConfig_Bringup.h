@@ -51,6 +51,11 @@ extern volatile uint16 Appl_CarConfig_LastExtCcpNum[APPL_CARCFG_CCP_BYTES];
 extern volatile uint16 Appl_CarConfig_ValidateOkCnt;
 extern volatile uint16 Appl_CarConfig_ValidateFailCnt;
 
+/* UDE: set 1 → OnSample clears faults then self-clears (no Call Function needed) */
+extern volatile uint8 Appl_CarConfig_ClearFaultsReq;
+/* 1 after ClearFaultsReq until next good Prm validate (blocks stale Com 0xFF re-fault) */
+extern volatile uint8 Appl_CarConfig_SuppressFault;
+
 extern const Appl_CarConfig_CcpEntryType Appl_CarConfig_CcpTable[];
 extern const uint16 Appl_CarConfig_CcpTableLen;
 

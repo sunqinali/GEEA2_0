@@ -26,6 +26,8 @@ volatile uint16 Appl_CarConfig_LastCcpNum[APPL_CARCFG_CCP_BYTES];
 volatile uint16 Appl_CarConfig_LastExtCcpNum[APPL_CARCFG_CCP_BYTES];
 volatile uint16 Appl_CarConfig_ValidateOkCnt = 0u;
 volatile uint16 Appl_CarConfig_ValidateFailCnt = 0u;
+volatile uint8 Appl_CarConfig_ClearFaultsReq = 0u;
+volatile uint8 Appl_CarConfig_SuppressFault = 0u;
 
 /*
  * Bring-up demo whitelist (BlkID=1 → CCP#1..7). Replace with official Car Config DB.
@@ -133,6 +135,8 @@ static void Appl_CarConfig_ValidateBytes(uint8 blkId, const uint8 *bytes, uint8 
   uint8 i;
   uint16 ccpNum;
   const Appl_CarConfig_CcpEntryType *ent;
+  uint8 checked = 0u;
+  uint8 allOk = 1u;
 
   for (i = 0u; i < APPL_CARCFG_CCP_BYTES; i++)
   {
@@ -153,15 +157,27 @@ static void Appl_CarConfig_ValidateBytes(uint8 blkId, const uint8 *bytes, uint8 
     {
       continue; /* not subscribed / no DB entry yet */
     }
+    checked = 1u;
     if ((bytes[i] < ent->minVal) || (bytes[i] > ent->maxVal))
     {
+      allOk = 0u;
       Appl_CarConfig_ValidateFailCnt++;
+      /* After ClearFaultsReq, ignore stale Com buffer until a good Prm frame arrives */
+      if ((isExt == 0u) && (Appl_CarConfig_SuppressFault != 0u))
+      {
+        continue;
+      }
       Appl_CarConfig_RecordFault(ccpNum, bytes[i]);
     }
     else
     {
       Appl_CarConfig_ValidateOkCnt++;
     }
+  }
+
+  if ((isExt == 0u) && (checked != 0u) && (allOk != 0u))
+  {
+    Appl_CarConfig_SuppressFault = 0u;
   }
 }
 
@@ -205,6 +221,13 @@ void Appl_CarConfig_Bringup_OnSample(void)
   uint8 blkId = 0u;
   uint8 bytes[APPL_CARCFG_CCP_BYTES];
   uint8 i;
+
+  if (Appl_CarConfig_ClearFaultsReq != 0u)
+  {
+    Appl_CarConfig_ClearFaults();
+    Appl_CarConfig_SuppressFault = 1u; /* hold VALID until next good Prm CCP */
+    Appl_CarConfig_ClearFaultsReq = 0u;
+  }
 
   /* Group signals: shadow → app via ReceiveSignalGroup then ReceiveSignal. */
   if (Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igVehCfgPrm_eee11443_Rx) == E_OK)

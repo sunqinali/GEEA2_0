@@ -146,7 +146,9 @@ def run_cases(bus_id):
     expect_e103(bus_id, 1, 10, "after-bad")
     zcanpro.uds_deinit()
 
-    zcanpro.write_log("HINT: ClearFaults() then re-run good to restore State=1")
+    zcanpro.write_log("=== restore VALID for T8 (UDE: ClearFaults then good TX) ===")
+    zcanpro.write_log("WATCH next: Appl_CarConfig_ClearFaults(); then re-TX good OR set State via ClearFaults")
+    zcanpro.write_log("T8: after State=1 — Appl_NvM_T8_WriteReq=1 → WriteAllDone=1 → power cycle → NvMLoaded=1")
     zcanpro.write_log("=== DONE pass=%d fail=%d ===" % (pass_cnt, fail_cnt))
     return fail_cnt == 0
 

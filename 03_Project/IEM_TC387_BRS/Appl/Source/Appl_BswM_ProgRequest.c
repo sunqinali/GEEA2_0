@@ -44,8 +44,14 @@ uint8 Appl_NvM_FeePendReq = 0xFFu;
 /* T2 helper: ~ms from first CanStack sample to Dem/Dcm ready (SampleCnt*100). */
 volatile uint16 Appl_Diag_ReadySampleCnt = 0u;
 volatile uint32 Appl_Diag_ReadyApproxMs = 0u;
-/* T8: request Fee/NvM WriteAll from UDE without ProgReset. */
+/* T8: async WriteAll driven by Background (not short spin). */
 volatile uint8 Appl_NvM_T8_WriteReq = 0u;
+volatile uint8 Appl_NvM_T8_Phase = 0u;
+volatile uint32 Appl_NvM_T8_PollCnt = 0u;
+
+#ifndef APPL_NVM_T8_POLL_MAX
+#define APPL_NVM_T8_POLL_MAX (3000uL) /* ~30s @ Task_Bsw_10ms */
+#endif
 
 extern volatile uint16 Appl_Can_SampleCnt;
 
@@ -166,11 +172,33 @@ void Appl_NvM_Background(void)
         Appl_Diag_ReadyApproxMs = ((uint32)Appl_Can_SampleCnt) * 100uL;
       }
     }
-    if (Appl_NvM_T8_WriteReq != 0u)
+    /* T8 async WriteAll: Rte already pumps Fls/Fee/NvM each 10ms — do not spin. */
+    if ((Appl_NvM_T8_WriteReq != 0u) && (Appl_NvM_T8_Phase == 0u))
     {
       Appl_CarConfig_MarkNvMDirty();
-      Appl_NvM_WriteAllSync();
-      Appl_NvM_T8_WriteReq = 0u;
+      Appl_NvM_WriteAllDone = 0u;
+      Appl_NvM_WriteAllTimedOut = 0u;
+      Appl_NvM_T8_PollCnt = 0u;
+      (void)NvM_WriteAll();
+      Appl_NvM_T8_Phase = 1u;
+    }
+    if (Appl_NvM_T8_Phase == 1u)
+    {
+      Appl_NvM_T8_PollCnt++;
+      (void)NvM_GetErrorStatus(NvMConf___MultiBlockRequest, &st);
+      Appl_NvM_MultiBlockResult = (uint8)st;
+      if (st != NVM_REQ_PENDING)
+      {
+        Appl_NvM_WriteAllDone = 1u;
+        Appl_NvM_T8_Phase = 0u;
+        Appl_NvM_T8_WriteReq = 0u;
+      }
+      else if (Appl_NvM_T8_PollCnt >= APPL_NVM_T8_POLL_MAX)
+      {
+        Appl_NvM_WriteAllTimedOut = 1u;
+        Appl_NvM_T8_Phase = 0u;
+        Appl_NvM_T8_WriteReq = 0u;
+      }
     }
     return;
   }

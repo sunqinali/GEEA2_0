@@ -38,7 +38,12 @@ void Appl_NvM_Background(void);
 /* Timed WriteAll for EcuM GoOff / ProgReset path. */
 void Appl_NvM_WriteAllSync(void);
 
-/* T8: UDE sets Appl_NvM_T8_WriteReq=1 → Background runs WriteAllSync then clears. */
+/*
+ * T8: UDE sets Appl_NvM_T8_WriteReq=1 → Background issues NvM_WriteAll (async).
+ * Stays 1 while Fee/NvM busy; clears to 0 when done. Watch WriteAllDone / TimedOut / T8_PollCnt.
+ */
 extern volatile uint8 Appl_NvM_T8_WriteReq;
+extern volatile uint8 Appl_NvM_T8_Phase;   /* 0 idle 1 WriteAll pending */
+extern volatile uint32 Appl_NvM_T8_PollCnt;
 
 #endif /* APPL_NVM_BUFFERS_H */
