@@ -1,7 +1,8 @@
 /**********************************************************************************************************************
- * Appl_ComGroup_Bringup.h — all Com RX signal-groups with E2E Cntr (pre-RTE shell)
+ * Appl_ComGroup_Bringup.h — Com signal-group bring-up (RX observe + TX Cntr poke)
  *
- * VehCfgPrm/Ext stay in Appl_CarConfig. Imob/VehBatt have no Cntr — not in HitMask.
+ * RX: 10 Cntr groups HitMask. VehCfg→CarConfig; Imob/VehBatt no Cntr.
+ * TX: 3 Cntr groups (DmcStsRear / SpdActSafe / TqEst) via Com_Send* (pre-RTE shell).
  *********************************************************************************************************************/
 #ifndef APPL_COMGROUP_BRINGUP_H
 #define APPL_COMGROUP_BRINGUP_H
@@ -9,6 +10,7 @@
 #include "Std_Types.h"
 
 #define APPL_COMGROUP_RX_N ((uint8)10u)
+#define APPL_COMGROUP_TX_N ((uint8)3u)
 
 /* HitMask bits (expect 0x3FF after full smoke): */
 #define APPL_COMGROUP_BIT_Crash   ((uint16)(1u << 0))
@@ -34,6 +36,12 @@ extern volatile Std_ReturnType Appl_ComGroup_GrpRet[APPL_COMGROUP_RX_N];
 extern volatile uint8 Appl_ComGroup_VehSpdLgtCntr;
 extern volatile uint8 Appl_ComGroup_VehModCntr;
 extern volatile uint8 Appl_ComGroup_TqAllwdCntr;
+
+/* TX Cntr poke: [0]=Dmc@0x110 [1]=SpdActSafe@0x189 [2]=TqEst@0x4C */
+extern volatile uint8 Appl_ComGroup_TxEnable; /* 1=send (default) */
+extern volatile uint8 Appl_ComGroup_TxCntr[APPL_COMGROUP_TX_N];
+extern volatile uint16 Appl_ComGroup_TxOkCnt;
+extern volatile Std_ReturnType Appl_ComGroup_TxRet[APPL_COMGROUP_TX_N];
 
 void Appl_ComGroup_Bringup_OnSample(void);
 

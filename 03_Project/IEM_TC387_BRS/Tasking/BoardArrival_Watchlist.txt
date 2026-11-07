@@ -15,7 +15,10 @@ Appl_Os_StartOsEntered    2=master called StartOS (barrier); 3=sched (unlikely)
 Appl_Os_StartOsMask       bits of cores that reached StartOS() — expect 0xF
 Appl_Os_SlavePhase[0..3]  1=BIV 2=PreMain 3=main/Os_Init 4=Os_Init done 5=EcuM_StartOS 6=StartOS
                           8=Default_Init_Task (barrier released). Stuck at 6 = MPU/barrier write fail
-Appl_Os_FwStamp           MUST be 0x260B053E (T8 async WriteAll; board PASS NvMLoaded)
+Appl_Os_FwStamp           MUST be 0x260B053F (TX group Cntr poke Dmc/SpdActSafe/TqEst)
+Appl_ComGroup_TxEnable    1=send TX Cntr groups
+Appl_ComGroup_TxOkCnt     rises when SendSignalGroup OK
+Appl_ComGroup_TxCntr[0..2] living 0..15 — Trace 0x110 / 0x189 / 0x4C
 Appl_Diag_DcmInited       1
 Appl_Diag_DcmComMFullNotified  1 (else UDS RX dropped: FULL notified before Dcm_Init)
 Appl_Diag_DcmConfCnt      rises on response confirm

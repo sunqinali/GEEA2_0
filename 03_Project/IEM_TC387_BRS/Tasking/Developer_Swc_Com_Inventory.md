@@ -63,11 +63,12 @@
 | RX | CrashStsSafe / EngSt1WdSts / EscVariantToDmc / HvSysRlySts / PtTqAtAxleMaxReq / StcStsToDmc / VehModMngtGlbSafe1 / VehMtnSt / VehSpdLgt / WhlMotSysTqAllwd | **0538 Com 直读 Cntr** |
 | RX | ImobEngMgrReq2 / VehBattU | 无 Cntr；未进 HitMask |
 | RX | VehCfgPrm / VehCfgPrmExt | **CarConfig 直连**（0539/053E CCP+NvM） |
-| TX | DmcStsRearToEsc / IEMTestFr1..3 / IemGeneric / ImobEngChk2 / WhlMotSysSpdActSafe / WhlMotSysTqAvl / WhlMotSysTqEst | 待 RTE 组壳 |
+| TX | DmcStsRearToEsc / WhlMotSysSpdActSafe / WhlMotSysTqEst | **053F Com 直发 Cntr**（Trace `0x110`/`0x189`/`0x4C`） |
+| TX | IEMTestFr1..3 / IemGeneric / ImobEngChk2 / WhlMotSysTqAvl | 待 RTE 组壳（无/非 Cntr） |
 
 **0538**：10 路 Cntr HitMask；脚本 `ZCANPRO_IEM_ComGroup_Smoke.py`。  
 **0539/053E**：CCP demo + T8 NvM。  
-**标量 TX**：`ZCANPRO_IEM_ComShell_TxSmoke.py`（Trace `0x51C`/`0x4C` + UDE `TxOkCnt`）。  
+**标量 TX**：**已板测**（2026-11-07 Trace `0x51C`/`0x4C`/`0x60`… + ComShell_TxSmoke ALL PASS）。  
 组端口进 `Appl_ComShell` 仍需 **Developer/RTE regen**（勿与标量 v0.5 混淆）。
 
 ## 运行时（已 amk）

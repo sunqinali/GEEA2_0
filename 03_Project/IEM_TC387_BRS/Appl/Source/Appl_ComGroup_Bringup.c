@@ -1,5 +1,5 @@
 /**********************************************************************************************************************
- * Appl_ComGroup_Bringup.c — table-driven RX signal-group Cntr observation
+ * Appl_ComGroup_Bringup.c — RX Cntr observe + TX Cntr poke (pre-RTE group shell)
  *********************************************************************************************************************/
 #include "Appl_ComGroup_Bringup.h"
 #include "Com.h"
@@ -16,12 +16,23 @@ volatile uint8 Appl_ComGroup_VehSpdLgtCntr = 0u;
 volatile uint8 Appl_ComGroup_VehModCntr = 0u;
 volatile uint8 Appl_ComGroup_TqAllwdCntr = 0u;
 
+volatile uint8 Appl_ComGroup_TxEnable = 1u;
+volatile uint8 Appl_ComGroup_TxCntr[APPL_COMGROUP_TX_N];
+volatile uint16 Appl_ComGroup_TxOkCnt = 0u;
+volatile Std_ReturnType Appl_ComGroup_TxRet[APPL_COMGROUP_TX_N];
+
 typedef struct
 {
   Com_SignalGroupIdType groupId;
   Com_SignalIdType cntrSigId;
   uint16 hitBit;
 } Appl_ComGroup_DescType;
+
+typedef struct
+{
+  Com_SignalGroupIdType groupId;
+  Com_SignalIdType cntrSigId;
+} Appl_ComGroup_TxDescType;
 
 static const Appl_ComGroup_DescType Appl_ComGroup_Desc[APPL_COMGROUP_RX_N] =
 {
@@ -37,9 +48,52 @@ static const Appl_ComGroup_DescType Appl_ComGroup_Desc[APPL_COMGROUP_RX_N] =
   { ComConf_ComSignalGroup_igWhlMotSysTqAllwd_20f5846f_Rx,   ComConf_ComGroupSignal_isWhlMotSysTqAllwdCntr_e287795e_Rx,   APPL_COMGROUP_BIT_TqAllwd }
 };
 
+static const Appl_ComGroup_TxDescType Appl_ComGroup_TxDesc[APPL_COMGROUP_TX_N] =
+{
+  { ComConf_ComSignalGroup_igDmcStsRearToEsc_5d8e0053_Tx,     ComConf_ComGroupSignal_isDmcStsRearToEscCntr_b6c7ae3c_Tx },
+  { ComConf_ComSignalGroup_igWhlMotSysSpdActSafe_58c9c55b_Tx, ComConf_ComGroupSignal_isWhlMotSysSpdActSafeCntr_307aefc1_Tx },
+  { ComConf_ComSignalGroup_igWhlMotSysTqEst_02b3fb8d_Tx,      ComConf_ComGroupSignal_isWhlMotSysTqEstCntr_73285af8_Tx }
+};
+
 static uint8 Appl_ComGroup_Last[APPL_COMGROUP_RX_N];
-static uint8 Appl_ComGroup_Armed[APPL_COMGROUP_RX_N]; /* 1 after first E_OK sample (no Hit yet) */
+static uint8 Appl_ComGroup_Armed[APPL_COMGROUP_RX_N];
 static uint8 Appl_ComGroup_LastInit = 0u;
+
+static void Appl_ComGroup_TxPoke(void)
+{
+  uint8 i;
+  uint8 cntr;
+  uint8 ok = 0u;
+
+  if (Appl_ComGroup_TxEnable == 0u)
+  {
+    return;
+  }
+
+  /* Advance once per CanStack sample (~100 ms). */
+  cntr = (uint8)((Appl_ComGroup_SampleCnt) & 0x0Fu);
+
+  for (i = 0u; i < APPL_COMGROUP_TX_N; i++)
+  {
+    Appl_ComGroup_TxCntr[i] = cntr;
+    Appl_ComGroup_TxRet[i] = Com_SendSignal(Appl_ComGroup_TxDesc[i].cntrSigId, &cntr);
+    if (Appl_ComGroup_TxRet[i] == E_OK)
+    {
+      if (Com_SendSignalGroup(Appl_ComGroup_TxDesc[i].groupId) == E_OK)
+      {
+        ok = 1u;
+      }
+      else
+      {
+        Appl_ComGroup_TxRet[i] = E_NOT_OK;
+      }
+    }
+  }
+  if (ok != 0u)
+  {
+    Appl_ComGroup_TxOkCnt++;
+  }
+}
 
 void Appl_ComGroup_Bringup_OnSample(void)
 {
@@ -57,6 +111,11 @@ void Appl_ComGroup_Bringup_OnSample(void)
       Appl_ComGroup_Cntr[i] = 0u;
       Appl_ComGroup_GrpRet[i] = E_NOT_OK;
     }
+    for (i = 0u; i < APPL_COMGROUP_TX_N; i++)
+    {
+      Appl_ComGroup_TxCntr[i] = 0u;
+      Appl_ComGroup_TxRet[i] = E_NOT_OK;
+    }
     Appl_ComGroup_LastInit = 1u;
   }
 
@@ -71,7 +130,6 @@ void Appl_ComGroup_Bringup_OnSample(void)
         Appl_ComGroup_Cntr[i] = cntr;
         if (Appl_ComGroup_Armed[i] == 0u)
         {
-          /* Arm only — avoid HitMask false from init→0. */
           Appl_ComGroup_Last[i] = cntr;
           Appl_ComGroup_Armed[i] = 1u;
         }
@@ -89,7 +147,6 @@ void Appl_ComGroup_Bringup_OnSample(void)
     }
   }
 
-  /* Compat mirrors */
   Appl_ComGroup_VehModCntr = Appl_ComGroup_Cntr[6];
   Appl_ComGroup_VehSpdLgtCntr = Appl_ComGroup_Cntr[8];
   Appl_ComGroup_TqAllwdCntr = Appl_ComGroup_Cntr[9];
@@ -99,4 +156,6 @@ void Appl_ComGroup_Bringup_OnSample(void)
     Appl_ComGroup_OkCnt++;
     Appl_ComGroup_AnyOk = 1u;
   }
+
+  Appl_ComGroup_TxPoke();
 }

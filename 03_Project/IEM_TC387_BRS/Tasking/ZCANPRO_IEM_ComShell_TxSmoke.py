@@ -20,8 +20,10 @@ PHYS_RES = 0x637
 # Key IEM TX IDs (11-bit) for Trace checklist
 TX_EXPECT = [
     (0x51C, "NM IemPropNMFr"),
-    (0x04C, "IemEduPropFr01 WhlMotSysModSts"),
+    (0x04C, "IemEduPropFr01 ModSts+TqEst group (053F+ Cntr poke)"),
     (0x060, "IemEduPropFr02"),
+    (0x110, "IemPropdTCFr16 DmcStsRear Cntr (053F+)"),
+    (0x189, "IemPropFr12 SpdActSafe Cntr (053F+)"),
     (0x457, "IemPropFr01"),
     (0x465, "IemPropFr02"),
 ]

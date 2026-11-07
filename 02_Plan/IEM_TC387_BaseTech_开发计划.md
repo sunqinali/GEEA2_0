@@ -8,11 +8,11 @@
 | --- | --- |
 | 当前主工程 | `03_Project/IEM_TC387_BRS`（Tasking + vBRS），SIP **CBD2000642** |
 | 基线工程 | `03_Project/IEM_TC387`（CBD1900078）仍保留作对照，不再作为 bring-up 主线 |
-| 板测固件 | **`0x260B053E` 板测过**：T8 WriteAll 异步 + 掉电 `NvMLoaded=1` / `NvMRam=CC 01 01 00` |
+| 板测固件 | **`0x260B053F` 板测过**：TX 组 `TxOkCnt`↑ + Trace `0x110`/`0x189`/`0x4C`；T8/标量 TX 此前已过 |
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
 | BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
-| 当前停点 | **跑 `ComShell_TxSmoke`**（标量 TX）；下一站 T7 短接 / T3·T5 / Developer 组壳 / 正式 CCP DB |
+| 当前停点 | **RX/TX 组直读+直发已过**；下一站 T7 短接 / T3·T5 / Developer 全组壳 / 正式 CCP DB |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
