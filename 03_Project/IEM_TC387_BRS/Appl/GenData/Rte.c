@@ -149,6 +149,78 @@ volatile VAR(uint8, RTE_VAR_ZERO_INIT_NOCACHE) Rte_InitState_3 = RTE_STATE_UNINI
 
 #define RTE_STOP_SEC_VAR_GLOBALSHARED_NOCACHE_ZERO_INIT_8BIT
 #include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+
+/**********************************************************************************************************************
+ * Constants
+ *********************************************************************************************************************/
+
+#define RTE_START_SEC_CONST_UNSPECIFIED
+#include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(CrashStsSafe_1, RTE_CONST) Rte_C_CrashStsSafe_1_0 = {
+  0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(EngSt1WdSts_1, RTE_CONST) Rte_C_EngSt1WdSts_1_0 = {
+  0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(EscVariantToDmc_1, RTE_CONST) Rte_C_EscVariantToDmc_1_0 = {
+  0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(HvSysRlySts_1, RTE_CONST) Rte_C_HvSysRlySts_1_0 = {
+  0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(ImobEngMgrReq_2, RTE_CONST) Rte_C_ImobEngMgrReq_2_0 = {
+  0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(PtTqAtAxleReq_1, RTE_CONST) Rte_C_PtTqAtAxleReq_1_0 = {
+  0, 0, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(StcStsToDmc_1, RTE_CONST) Rte_C_StcStsToDmc_1_0 = {
+  0U, 0U, 0U, 0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(SysU_4, RTE_CONST) Rte_C_SysU_4_0 = {
+  0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(VehModMngtGlbSafe1_2, RTE_CONST) Rte_C_VehModMngtGlbSafe1_2_0 = {
+  0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(VehMtnStSafe1_2, RTE_CONST) Rte_C_VehMtnStSafe1_2_0 = {
+  0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(VehSpdLgtSafe1_3, RTE_CONST) Rte_C_VehSpdLgtSafe1_3_0 = {
+  0U, 0U, 0U, 0U
+};
+/* PRQA L:L1 */
+/* PRQA S 1514, 1533 L1 */ /* MD_Rte_1514, MD_Rte_1533 */
+CONST(WhlMotSysTqAllwd_3, RTE_CONST) Rte_C_WhlMotSysTqAllwd_3_0 = {
+  0U, 0U, 0U
+};
+/* PRQA L:L1 */
+
+#define RTE_STOP_SEC_CONST_UNSPECIFIED
+#include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
 /**********************************************************************************************************************
  * Defines for Rte_ComSendSignalProxy
  *********************************************************************************************************************/
@@ -569,6 +641,11 @@ FUNC(void, RTE_CODE) Rte_ComSendSignalProxyPeriodic(void)
    MD_Rte_1514:  MISRA rule: Rule8.9
      Reason:     Because of external definition, misra does not see the call.
      Risk:       No functional risk. There is no side effect.
+     Prevention: Not required.
+
+   MD_Rte_1533:  MISRA rule: Rule8.9
+     Reason:     Object is referenced by more than one function in different configurations.
+     Risk:       No functional risk.
      Prevention: Not required.
 
    MD_Rte_3408:  MISRA rule: Rule8.4

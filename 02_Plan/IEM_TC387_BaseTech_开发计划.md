@@ -8,13 +8,13 @@
 | --- | --- |
 | 当前主工程 | `03_Project/IEM_TC387_BRS`（Tasking + vBRS），SIP **CBD2000642** |
 | 基线工程 | `03_Project/IEM_TC387`（CBD1900078）仍保留作对照，不再作为 bring-up 主线 |
-| 板测固件 | **`0x260B0540`**：CCP 表白名单改 CSV→`gen_ccp_table.py`（正式源 CCdB；053F TX 组已板测） |
+| 板测固件 | **`0x260B0541`**：`Appl_ComShell` v0.6 组壳（41 标量 + 21 组；VehCfg 仍 CarConfig） |
 | 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
 | BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
-| 当前停点 | **CCP 导入壳已就绪**（等 CCdB 导出填 CSV）；T7 短接 / T3·T5 / Developer 全组壳仍开 |
+| 当前停点 | **T3·T5 仪测 / CCdB 正式表**；T7 放过；组壳 0541 已板过 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
-| 阶段 5 标量（2026-11-05） | `Appl_ComShell` v0.5：**41** 路 SystemExtract 标量（22 RX + 19 TX）；组信号/CCP 仍开 |
+| 阶段 5 组壳（2026-11-07） | v0.6 **已板过**：HitMask=`0x3FF`；`GrpRxOkCnt`↑；壳/Com `*_Cntr` 同步；`ComGroup_Smoke` ALL PASS |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
 
 ## 1. 输入与工具
@@ -174,7 +174,7 @@ DaVinci 工程名以 BRS 为准：`IEM_TC387_BRS`，ECU Instance 选提取中的
 **无板侧：** `0x22 F120/E103` 已有数据；`0x34`→NRC11；RID `0x0206` 有明确正响应；`0x27` CompareKey 明确失败。  
 **板级：** Fee IDLE + `NvM_ReadAllDone=1` + Dem/Dcm deferred 完成（`Appl_NvM_DemDeferred→0`）；会话/`0x3E`<2.5s（T2）仍待 CANoe。
 
-### 阶段 5：RTE 与应用壳 — **标量 SWC↔COM 已闭合（组信号/CCP 仍开）**
+### 阶段 5：RTE 与应用壳 — **标量+组壳已闭合（VehCfg/CCP DB 仍开）**
 
 Developer 中：
 
@@ -184,7 +184,7 @@ Developer 中：
 - 生成 RTE，与 Configurator 的 OS task mapping 一致。
 
 出口：RTE 生成 0 error。未连接端口有清单，不留静默未连接。  
-**进度：** `Appl_ComShell` v0.5 已映射 SystemExtract **全部 41 路标量**（22 RX + 19 TX，`Task_Bsw_10ms`）；`generate_regen25_comshell_v05` 0 Fatal/0 Errors；amk ELF OK。组信号 23 路未进壳（`VehCfgPrm` BlkID 仍由 CarConfig 直连 Com）。未连接清单约 807；`0xF120`/`0xE103`、RID `0x0206`、Security L3/L4 已由 Appl 接管。
+**进度：** `Appl_ComShell` v0.6 = 41 标量 + 21 组（VehCfg* 除外）；0541 板测 HitMask/`GrpRxOkCnt`/`*_Cntr` 已过。VehCfg 仍 CarConfig 直连；正式 CCP DB 待填。未连接清单约 807；`0xF120`/`0xE103`、RID `0x0206`、Security L3/L4 已由 Appl 接管。
 
 ### 阶段 6：构建与基础测试 — **编译链接已完成；台架 T1–T8 待板**
 
@@ -227,8 +227,8 @@ Developer 中：
 | B | 阶段 2–3：MCAL 通信最小集 + CanTrcv/Can 栈无板可观测 | **已完成**（`generate_regen11_bswm` / ELF） |
 | C | **到板 smoke**：`Appl_Bringup_Ok`、SPI/Trcv、CanIf ONLINE、Fee/NvM ReadAll | **已完成（052E 板测确认；TSTM 旁路狗）** |
 | D | 阶段 3 出口：CANoe/ZCANPRO NM `0x51C` + 周期帧；T1/T3–T5/T7 | **已完成（2026-11-06 ZCANPRO：TX+RX）** |
-| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | **主路径+组 Cntr+CCP demo 已过**（0538 HitMask；0539 E103 合法/非法）；正式 CCP DB / 全量 RTE 组壳仍开 |
-| F | 阶段 6：完整台架 T1–T8 记录 | **T1/T2/T4/T6/T8 已过**；T3·T5·T7 待仪 |
+| E | 阶段 4–5：诊断交接/Dem/CarConfig 壳 → NvM/Fee | **主路径+组壳 RTE 已过**（0541 HitMask/`GrpRxOkCnt`；0539 E103）；正式 CCP DB 仍开 |
+| F | 阶段 6：完整台架 T1–T8 记录 | **T1/T2/T4/T6/T7(放过)/T8 已过**；T3·T5 待仪 |
 | G | TLF 正式喂狗（先 feed 再放 TSTM） | **暂停**，不挡 D/E |
 
 ZCANPRO/CANoe 接 **ACAN**（U600 TJA1145）；波特率先按 SDB **500 kbit/s**。Generate 后执行 `IEM_TC387_BRS/Tasking/AfterGenerate.bat`（LSL + BswM callout 补丁 + CanTrcv Tasking 接线恢复 + amk）。

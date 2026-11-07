@@ -84,6 +84,200 @@ typedef uint8 Dcm_Data8ByteType[8];
 # define Rte_TypeDef_Dem_MaxDataValueType
 typedef uint8 Dem_MaxDataValueType[8];
 
+# define Rte_TypeDef_CrashStsSafe_1
+typedef struct
+{
+  uint8 Sts;
+  uint8 Chks;
+  uint8 Cntr;
+} CrashStsSafe_1;
+
+# define Rte_TypeDef_DevDataTyp64_2
+typedef struct
+{
+  uint8 Byte0;
+  uint8 Byte1;
+  uint8 Byte2;
+  uint8 Byte3;
+  uint8 Byte4;
+  uint8 Byte5;
+  uint8 Byte6;
+  uint8 Byte7;
+} DevDataTyp64_2;
+
+# define Rte_TypeDef_DmcStsToEsc_1
+typedef struct
+{
+  uint8 DmcSts;
+  sint16 DmcActAppTarTq;
+  uint8 Cntr;
+  uint8 Chks;
+  uint16 DmcSWInfo;
+} DmcStsToEsc_1;
+
+# define Rte_TypeDef_ElecDrvGen_4
+typedef struct
+{
+  uint8 EMQnty;
+  uint8 EMSeqNr;
+  uint8 DTCSts;
+  uint8 DTCLow;
+  uint8 DTCMid;
+  uint8 DTCHig;
+  uint8 TypeInfo;
+  uint8 MotTAlrmSt;
+  uint8 InvrtTAlrmSt;
+  uint8 FltAlrmSt;
+  uint8 SpdAlrmSt;
+  uint8 IacAlrmSt;
+  uint8 UDcAlrmSt;
+  uint8 RslAlrmSt;
+  uint8 ADAlrmSt;
+  uint8 ModStatusRms;
+} ElecDrvGen_4;
+
+# define Rte_TypeDef_EngSt1WdSts_1
+typedef struct
+{
+  uint8 EngSt1WdSts;
+  uint8 Chks;
+  uint8 Cntr;
+} EngSt1WdSts_1;
+
+# define Rte_TypeDef_EscVariantToDmc_1
+typedef struct
+{
+  uint8 EscVariantToDmc;
+  uint8 Chks;
+  uint8 Cntr;
+} EscVariantToDmc_1;
+
+# define Rte_TypeDef_HvSysRlySts_1
+typedef struct
+{
+  uint8 HvSysRlySts;
+  uint8 Cntr;
+  uint8 Chks;
+} HvSysRlySts_1;
+
+# define Rte_TypeDef_ImobEngChk_2
+typedef struct
+{
+  uint8 ImobEngChkSts;
+  uint8 ImobEngDataChk0;
+  uint8 ImobEngDataChk1;
+  uint8 ImobEngDataChk2;
+  uint8 ImobEngDataChk3;
+  uint8 ImobEngDataChk4;
+  uint8 ImobEngDataChk5;
+  uint8 ImobEngDataChk6;
+} ImobEngChk_2;
+
+# define Rte_TypeDef_ImobEngMgrReq_2
+typedef struct
+{
+  uint8 ImobEngMgrCmdTar1;
+  uint8 ImobEngDataMgrReq0;
+  uint8 ImobEngDataMgrReq1;
+  uint8 ImobEngDataMgrReq2;
+  uint8 ImobEngDataMgrReq3;
+  uint8 ImobEngDataMgrReq4;
+  uint8 ImobEngDataMgrReq5;
+  uint8 ImobEngDataMgrReq6;
+} ImobEngMgrReq_2;
+
+# define Rte_TypeDef_IsgTqActSafe2_4
+typedef struct
+{
+  uint8 Cntr;
+  uint8 Chks;
+  uint8 QualityFactor;
+  uint16 IsgTqAct;
+} IsgTqActSafe2_4;
+
+# define Rte_TypeDef_PtTqAtAxleReq_1
+typedef struct
+{
+  sint16 PtTqAtAxleFrntReq;
+  sint16 PtTqAtAxleReReq;
+  uint8 Chks;
+  uint8 Cntr;
+} PtTqAtAxleReq_1;
+
+# define Rte_TypeDef_SpdSgnSafe_1
+typedef struct
+{
+  sint16 IsgSpdWSgnTyp;
+  uint8 Chks;
+  uint8 Cntr;
+  uint8 Qf;
+} SpdSgnSafe_1;
+
+# define Rte_TypeDef_StcStsToDmc_1
+typedef struct
+{
+  uint8 StcStsToDmcFrnt;
+  uint8 StcStsToDmcRear;
+  uint16 EngRotTarSpdDMCFrnt;
+  uint16 EngRotTarSpdDMCRear;
+  uint8 Chks;
+  uint8 Cntr;
+} StcStsToDmc_1;
+
+# define Rte_TypeDef_SysU_4
+typedef struct
+{
+  uint8 SysU;
+  uint8 SysUQf;
+} SysU_4;
+
+# define Rte_TypeDef_VehModMngtGlbSafe1_2
+typedef struct
+{
+  uint8 UsgModSts;
+  uint8 CarModSts1;
+  uint8 CarModSubtypWdCarModSubtyp;
+  uint8 EgyLvlElecMai;
+  uint8 EgyLvlElecSubtyp;
+  uint8 PwrLvlElecMai;
+  uint8 PwrLvlElecSubtyp;
+  uint8 FltEgyCnsWdSts;
+  uint8 Chks;
+  uint8 Cntr;
+} VehModMngtGlbSafe1_2;
+
+# define Rte_TypeDef_VehMtnStSafe1_2
+typedef struct
+{
+  uint8 VehMtnSt;
+  uint8 VehMtnStChks;
+  uint8 VehMtnStCntr;
+} VehMtnStSafe1_2;
+
+# define Rte_TypeDef_VehSpdLgtSafe1_3
+typedef struct
+{
+  uint16 VehSpdLgtA;
+  uint8 VehSpdLgtQf;
+  uint8 VehSpdLgtCntr;
+  uint8 VehSpdLgtChks;
+} VehSpdLgtSafe1_3;
+
+# define Rte_TypeDef_WhlMotSysTqAllwd_3
+typedef struct
+{
+  uint8 WhlMotSysTqAllwd;
+  uint8 Chks;
+  uint8 Cntr;
+} WhlMotSysTqAllwd_3;
+
+# define Rte_TypeDef_WhlMotSysTqAvl_2
+typedef struct
+{
+  uint16 TqAvlMax;
+  uint16 TqAvlMin;
+} WhlMotSysTqAvl_2;
+
 # define Rte_TypeDef_ComM_InhibitionStatusType
 typedef uint8 ComM_InhibitionStatusType;
 
@@ -229,6 +423,41 @@ typedef uint8 NvM_RequestResultType;
 typedef uint8 NvM_ServiceIdType;
 
 # endif
+
+
+/**********************************************************************************************************************
+ * Constant value definitions
+ *********************************************************************************************************************/
+
+# define RTE_START_SEC_CONST_UNSPECIFIED
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
+
+extern CONST(CrashStsSafe_1, RTE_CONST) Rte_C_CrashStsSafe_1_0;
+
+extern CONST(EngSt1WdSts_1, RTE_CONST) Rte_C_EngSt1WdSts_1_0;
+
+extern CONST(EscVariantToDmc_1, RTE_CONST) Rte_C_EscVariantToDmc_1_0;
+
+extern CONST(HvSysRlySts_1, RTE_CONST) Rte_C_HvSysRlySts_1_0;
+
+extern CONST(ImobEngMgrReq_2, RTE_CONST) Rte_C_ImobEngMgrReq_2_0;
+
+extern CONST(PtTqAtAxleReq_1, RTE_CONST) Rte_C_PtTqAtAxleReq_1_0;
+
+extern CONST(StcStsToDmc_1, RTE_CONST) Rte_C_StcStsToDmc_1_0;
+
+extern CONST(SysU_4, RTE_CONST) Rte_C_SysU_4_0;
+
+extern CONST(VehModMngtGlbSafe1_2, RTE_CONST) Rte_C_VehModMngtGlbSafe1_2_0;
+
+extern CONST(VehMtnStSafe1_2, RTE_CONST) Rte_C_VehMtnStSafe1_2_0;
+
+extern CONST(VehSpdLgtSafe1_3, RTE_CONST) Rte_C_VehSpdLgtSafe1_3_0;
+
+extern CONST(WhlMotSysTqAllwd_3, RTE_CONST) Rte_C_WhlMotSysTqAllwd_3_0;
+
+# define RTE_STOP_SEC_CONST_UNSPECIFIED
+# include "MemMap.h" /* PRQA S 5087 */ /* MD_MSR_MemMap */
 # include "Rte_DataHandleType.h"
 
 /**********************************************************************************************************************

@@ -1744,13 +1744,86 @@
  *  Rte_ComHook_isCarTiGlb_7a3bdc75_Rx_SigRx
  *  Rte_ComHook_isCooltFlowForDtElec_89c7c93c_Rx_SigRx
  *  Rte_ComHook_isCooltTSigForDtElec_f43a3873_Rx_SigRx
+ *  Rte_ComHook_isCrashStsSafeChks_42d0b327_Rx_SigRx
+ *  Rte_ComHook_isCrashStsSafeCntr_fc00f19d_Rx_SigRx
+ *  Rte_ComHook_isCrashStsSafeSts_847c5d07_Rx_SigRx
  *  Rte_ComHook_isDCChrgnHndlSts_7439a8f3_Rx_SigRx
+ *  Rte_ComHook_isDmcStsRearToEscChks_0817ec86_Tx_SigTx
+ *  Rte_ComHook_isDmcStsRearToEscCntr_b6c7ae3c_Tx_SigTx
+ *  Rte_ComHook_isDmcStsRearToEscDmcActAppTarTq_eaa126f0_Tx_SigTx
+ *  Rte_ComHook_isDmcStsRearToEscDmcSWInfo_6d930900_Tx_SigTx
+ *  Rte_ComHook_isDmcStsRearToEscDmcSts_2fffc6c5_Tx_SigTx
  *  Rte_ComHook_isDrvgCyc_edb7d721_Rx_SigRx
+ *  Rte_ComHook_isEngSt1WdStsChks_75cf5b53_Rx_SigRx
+ *  Rte_ComHook_isEngSt1WdStsCntr_cb1f19e9_Rx_SigRx
+ *  Rte_ComHook_isEngSt1WdStsEngSt1WdSts_21868fa0_Rx_SigRx
+ *  Rte_ComHook_isEscVariantToDmcChks_9a33bac6_Rx_SigRx
+ *  Rte_ComHook_isEscVariantToDmcCntr_24e3f87c_Rx_SigRx
+ *  Rte_ComHook_isEscVariantToDmcEscVariantToDmc_daa2c955_Rx_SigRx
  *  Rte_ComHook_isGearLvrIndcn_bb4b951e_Rx_SigRx
  *  Rte_ComHook_isHvBattSoc_ce242c3f_Rx_SigRx
  *  Rte_ComHook_isHvBattUDc_bcd9ade4_Rx_SigRx
  *  Rte_ComHook_isHvBattUDynMaxLim_6d11df88_Rx_SigRx
  *  Rte_ComHook_isHvBattUDynMinLim_28139c0a_Rx_SigRx
+ *  Rte_ComHook_isHvSysRlyStsChks_b1dd6f20_Rx_SigRx
+ *  Rte_ComHook_isHvSysRlyStsCntr_0f0d2d9a_Rx_SigRx
+ *  Rte_ComHook_isHvSysRlyStsHvSysRlySts_5b219bea_Rx_SigRx
+ *  Rte_ComHook_isIEMTestFr1Byte0_eb2525b1_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr1Byte1_9c221527_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr1Byte2_052b449d_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr1Byte3_722c740b_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr1Byte4_ec48e1a8_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr1Byte5_9b4fd13e_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr1Byte6_02468084_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr1Byte7_7541b012_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte0_6db1571f_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte1_1ab66789_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte2_83bf3633_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte3_f4b806a5_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte4_6adc9306_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte5_1ddba390_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte6_84d2f22a_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr2Byte7_f3d5c2bc_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte0_a6ed84ba_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte1_d1eab42c_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte2_48e3e596_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte3_3fe4d500_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte4_a18040a3_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte5_d6877035_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte6_4f8e218f_Tx_SigTx
+ *  Rte_ComHook_isIEMTestFr3Byte7_38891119_Tx_SigTx
+ *  Rte_ComHook_isIemGenericADAlrmSt_2216fde0_Tx_SigTx
+ *  Rte_ComHook_isIemGenericDTCHig_6365ed22_Tx_SigTx
+ *  Rte_ComHook_isIemGenericDTCLow_2f81f21c_Tx_SigTx
+ *  Rte_ComHook_isIemGenericDTCMid_fca77e73_Tx_SigTx
+ *  Rte_ComHook_isIemGenericDTCSts_96a019d2_Tx_SigTx
+ *  Rte_ComHook_isIemGenericEMQnty_067a3f4d_Tx_SigTx
+ *  Rte_ComHook_isIemGenericEMSeqNr_5f6f0e31_Tx_SigTx
+ *  Rte_ComHook_isIemGenericFltAlrmSt_094332cf_Tx_SigTx
+ *  Rte_ComHook_isIemGenericIacAlrmSt_ef864a8f_Tx_SigTx
+ *  Rte_ComHook_isIemGenericInvrtTAlrmSt_ad103698_Tx_SigTx
+ *  Rte_ComHook_isIemGenericModStatusRms_527fb71c_Tx_SigTx
+ *  Rte_ComHook_isIemGenericMotTAlrmSt_e29bb0dd_Tx_SigTx
+ *  Rte_ComHook_isIemGenericRslAlrmSt_09c5d09c_Tx_SigTx
+ *  Rte_ComHook_isIemGenericSpdAlrmSt_a3de8d5b_Tx_SigTx
+ *  Rte_ComHook_isIemGenericTypeInfo_10f77ae7_Tx_SigTx
+ *  Rte_ComHook_isIemGenericUDcAlrmSt_14e497d8_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngChkSts_8e88c5e4_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngDataChk0_fba6858b_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngDataChk1_8ca1b51d_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngDataChk2_15a8e4a7_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngDataChk3_62afd431_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngDataChk4_fccb4192_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngDataChk5_8bcc7104_Tx_SigTx
+ *  Rte_ComHook_isImobEngChk2ImobEngDataChk6_12c520be_Tx_SigTx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngDataMgrReq0_9c0677f3_Rx_SigRx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngDataMgrReq1_eb014765_Rx_SigRx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngDataMgrReq2_720816df_Rx_SigRx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngDataMgrReq3_050f2649_Rx_SigRx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngDataMgrReq4_9b6bb3ea_Rx_SigRx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngDataMgrReq5_ec6c837c_Rx_SigRx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngDataMgrReq6_7565d2c6_Rx_SigRx
+ *  Rte_ComHook_isImobEngMgrReq2ImobEngMgrCmdTar1_817e486b_Rx_SigRx
  *  Rte_ComHook_isImobEngSts2_5f8745c8_Tx_SigTx
  *  Rte_ComHook_isOnBdChrgrHndlSts1_677311c9_Rx_SigRx
  *  Rte_ComHook_isPLockFltIndcRe_f756fd30_Tx_SigTx
@@ -1758,9 +1831,38 @@
  *  Rte_ComHook_isPLockParkReq_5b6f1b96_Rx_SigRx
  *  Rte_ComHook_isPLockParkStsRe_8fb3cac5_Tx_SigTx
  *  Rte_ComHook_isPrpsnFbLimnIndcn_5674da6b_Rx_SigRx
+ *  Rte_ComHook_isPtTqAtAxleMaxReqChks_6ad4cf82_Rx_SigRx
+ *  Rte_ComHook_isPtTqAtAxleMaxReqCntr_d4048d38_Rx_SigRx
+ *  Rte_ComHook_isPtTqAtAxleMaxReqPtTqAtAxleFrntReq_8c330c00_Rx_SigRx
+ *  Rte_ComHook_isPtTqAtAxleMaxReqPtTqAtAxleReReq_449843f2_Rx_SigRx
  *  Rte_ComHook_isRearHeatModEnad_a110df41_Rx_SigRx
  *  Rte_ComHook_isRearHeatPwrAllwd_c919804a_Rx_SigRx
  *  Rte_ComHook_isSpdRotlForWhlsAtAxleRe_cda9e459_Rx_SigRx
+ *  Rte_ComHook_isStcStsToDmcChks_7f830d10_Rx_SigRx
+ *  Rte_ComHook_isStcStsToDmcCntr_c1534faa_Rx_SigRx
+ *  Rte_ComHook_isStcStsToDmcEngRotTarSpdDMCFrnt_46c9d05b_Rx_SigRx
+ *  Rte_ComHook_isStcStsToDmcEngRotTarSpdDMCRear_ee201c9c_Rx_SigRx
+ *  Rte_ComHook_isStcStsToDmcFrnt_baffba62_Rx_SigRx
+ *  Rte_ComHook_isStcStsToDmcRear_121676a5_Rx_SigRx
+ *  Rte_ComHook_isVehBattUSysUQf_f605b03a_Rx_SigRx
+ *  Rte_ComHook_isVehBattUSysU_9501cb8f_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1CarModSts1_a7324f03_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1CarModSubtypWdCarModSubtyp_e21ae44e_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1Chks_5333fc0b_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1Cntr_ede3beb1_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1EgyLvlElecMai_47690dfe_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1EgyLvlElecSubtyp_47668699_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1FltEgyCnsWdSts_c45a6bde_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1PwrLvlElecMai_c178728f_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1PwrLvlElecSubtyp_d042c1b3_Rx_SigRx
+ *  Rte_ComHook_isVehModMngtGlbSafe1UsgModSts_8ea1ac37_Rx_SigRx
+ *  Rte_ComHook_isVehMtnStChks_46ae48d7_Rx_SigRx
+ *  Rte_ComHook_isVehMtnStCntr_f87e0a6d_Rx_SigRx
+ *  Rte_ComHook_isVehMtnStVehMtnSt_e696b713_Rx_SigRx
+ *  Rte_ComHook_isVehSpdLgtA_668ad5e3_Rx_SigRx
+ *  Rte_ComHook_isVehSpdLgtChks_060f2c10_Rx_SigRx
+ *  Rte_ComHook_isVehSpdLgtCntr_b8df6eaa_Rx_SigRx
+ *  Rte_ComHook_isVehSpdLgtQf_057400a6_Rx_SigRx
  *  Rte_ComHook_isWhlMotClrRdyReq_189c9369_Tx_SigTx
  *  Rte_ComHook_isWhlMotCooltFlowMinReq_102e8fa4_Tx_SigTx
  *  Rte_ComHook_isWhlMotSysActvDampgModReq_1c578291_Rx_SigRx
@@ -1778,7 +1880,20 @@
  *  Rte_ComHook_isWhlMotSysMotT_54e003b6_Tx_SigTx
  *  Rte_ComHook_isWhlMotSysPwrLimMax_45b5505a_Rx_SigRx
  *  Rte_ComHook_isWhlMotSysPwrLimMin_79b86f03_Rx_SigRx
+ *  Rte_ComHook_isWhlMotSysSpdActSafeChks_8eaaad7b_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysSpdActSafeCntr_307aefc1_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysSpdActSafeIsgSpdWSgnTyp_9d8822c6_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysSpdActSafeQf_b9719ecc_Tx_SigTx
  *  Rte_ComHook_isWhlMotSysSpdAct_e26fc666_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysTqAllwdChks_5c573be4_Rx_SigRx
+ *  Rte_ComHook_isWhlMotSysTqAllwdCntr_e287795e_Rx_SigRx
+ *  Rte_ComHook_isWhlMotSysTqAllwdWhlMotSysTqAllwd_0ecd7abd_Rx_SigRx
+ *  Rte_ComHook_isWhlMotSysTqAvlTqAvlMax_bb518dba_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysTqAvlTqAvlMin_875cb2e3_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysTqEstChks_cdf81842_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysTqEstCntr_73285af8_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysTqEstIsgTqAct_70852206_Tx_SigTx
+ *  Rte_ComHook_isWhlMotSysTqEstQualityFactor_cb4e64ff_Tx_SigTx
  *  Rte_ComHook_isWhlMotSysTqReq_f0fdb022_Rx_SigRx
  *  Rte_ComHook_isWhlMotSysUdc_432c4140_Tx_SigTx
  *  Rte_ReadHook_Appl_ComShell_BkpOfDstTrvld_BkpOfDstTrvld_Return
@@ -1789,10 +1904,16 @@
  *  Rte_ReadHook_Appl_ComShell_CooltFlowForDtElec_CooltFlowForDtElec_Start
  *  Rte_ReadHook_Appl_ComShell_CooltTSigForDtElec_CooltTSigForDtElec_Return
  *  Rte_ReadHook_Appl_ComShell_CooltTSigForDtElec_CooltTSigForDtElec_Start
+ *  Rte_ReadHook_Appl_ComShell_CrashStsSafe_CrashStsSafe_Return
+ *  Rte_ReadHook_Appl_ComShell_CrashStsSafe_CrashStsSafe_Start
  *  Rte_ReadHook_Appl_ComShell_DCChrgnHndlSts_DCChrgnHndlSts_Return
  *  Rte_ReadHook_Appl_ComShell_DCChrgnHndlSts_DCChrgnHndlSts_Start
  *  Rte_ReadHook_Appl_ComShell_DrvgCyc_DrvgCyc_Return
  *  Rte_ReadHook_Appl_ComShell_DrvgCyc_DrvgCyc_Start
+ *  Rte_ReadHook_Appl_ComShell_EngSt1WdSts_EngSt1WdSts_Return
+ *  Rte_ReadHook_Appl_ComShell_EngSt1WdSts_EngSt1WdSts_Start
+ *  Rte_ReadHook_Appl_ComShell_EscVariantToDmc_EscVariantToDmc_Return
+ *  Rte_ReadHook_Appl_ComShell_EscVariantToDmc_EscVariantToDmc_Start
  *  Rte_ReadHook_Appl_ComShell_GearLvrIndcn_GearLvrIndcn_Return
  *  Rte_ReadHook_Appl_ComShell_GearLvrIndcn_GearLvrIndcn_Start
  *  Rte_ReadHook_Appl_ComShell_HvBattSoc_HvBattSoc_Return
@@ -1803,18 +1924,34 @@
  *  Rte_ReadHook_Appl_ComShell_HvBattUDynMaxLim_HvBattUDynMaxLim_Start
  *  Rte_ReadHook_Appl_ComShell_HvBattUDynMinLim_HvBattUDynMinLim_Return
  *  Rte_ReadHook_Appl_ComShell_HvBattUDynMinLim_HvBattUDynMinLim_Start
+ *  Rte_ReadHook_Appl_ComShell_HvSysRlySts_HvSysRlySts_Return
+ *  Rte_ReadHook_Appl_ComShell_HvSysRlySts_HvSysRlySts_Start
+ *  Rte_ReadHook_Appl_ComShell_ImobEngMgrReq2_ImobEngMgrReq2_Return
+ *  Rte_ReadHook_Appl_ComShell_ImobEngMgrReq2_ImobEngMgrReq2_Start
  *  Rte_ReadHook_Appl_ComShell_OnBdChrgrHndlSts1_OnBdChrgrHndlSts1_Return
  *  Rte_ReadHook_Appl_ComShell_OnBdChrgrHndlSts1_OnBdChrgrHndlSts1_Start
  *  Rte_ReadHook_Appl_ComShell_PLockParkReq_PLockParkReq_Return
  *  Rte_ReadHook_Appl_ComShell_PLockParkReq_PLockParkReq_Start
  *  Rte_ReadHook_Appl_ComShell_PrpsnFbLimnIndcn_PrpsnFbLimnIndcn_Return
  *  Rte_ReadHook_Appl_ComShell_PrpsnFbLimnIndcn_PrpsnFbLimnIndcn_Start
+ *  Rte_ReadHook_Appl_ComShell_PtTqAtAxleMaxReq_PtTqAtAxleMaxReq_Return
+ *  Rte_ReadHook_Appl_ComShell_PtTqAtAxleMaxReq_PtTqAtAxleMaxReq_Start
  *  Rte_ReadHook_Appl_ComShell_RearHeatModEnad_RearHeatModEnad_Return
  *  Rte_ReadHook_Appl_ComShell_RearHeatModEnad_RearHeatModEnad_Start
  *  Rte_ReadHook_Appl_ComShell_RearHeatPwrAllwd_RearHeatPwrAllwd_Return
  *  Rte_ReadHook_Appl_ComShell_RearHeatPwrAllwd_RearHeatPwrAllwd_Start
  *  Rte_ReadHook_Appl_ComShell_SpdRotlForWhlsAtAxleRe_SpdRotlForWhlsAtAxleRe_Return
  *  Rte_ReadHook_Appl_ComShell_SpdRotlForWhlsAtAxleRe_SpdRotlForWhlsAtAxleRe_Start
+ *  Rte_ReadHook_Appl_ComShell_StcStsToDmc_StcStsToDmc_Return
+ *  Rte_ReadHook_Appl_ComShell_StcStsToDmc_StcStsToDmc_Start
+ *  Rte_ReadHook_Appl_ComShell_VehBattU_VehBattU_Return
+ *  Rte_ReadHook_Appl_ComShell_VehBattU_VehBattU_Start
+ *  Rte_ReadHook_Appl_ComShell_VehModMngtGlbSafe1_VehModMngtGlbSafe1_Return
+ *  Rte_ReadHook_Appl_ComShell_VehModMngtGlbSafe1_VehModMngtGlbSafe1_Start
+ *  Rte_ReadHook_Appl_ComShell_VehMtnSt_VehMtnSt_Return
+ *  Rte_ReadHook_Appl_ComShell_VehMtnSt_VehMtnSt_Start
+ *  Rte_ReadHook_Appl_ComShell_VehSpdLgt_VehSpdLgt_Return
+ *  Rte_ReadHook_Appl_ComShell_VehSpdLgt_VehSpdLgt_Start
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysActvDampgModReq_WhlMotSysActvDampgModReq_Return
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysActvDampgModReq_WhlMotSysActvDampgModReq_Start
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysModReq_WhlMotSysModReq_Return
@@ -1823,6 +1960,8 @@
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysPwrLimMax_WhlMotSysPwrLimMax_Start
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysPwrLimMin_WhlMotSysPwrLimMin_Return
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysPwrLimMin_WhlMotSysPwrLimMin_Start
+ *  Rte_ReadHook_Appl_ComShell_WhlMotSysTqAllwd_WhlMotSysTqAllwd_Return
+ *  Rte_ReadHook_Appl_ComShell_WhlMotSysTqAllwd_WhlMotSysTqAllwd_Start
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysTqReq_WhlMotSysTqReq_Return
  *  Rte_ReadHook_Appl_ComShell_WhlMotSysTqReq_WhlMotSysTqReq_Start
  *  Rte_Runnable_Appl_ComShell_Appl_ComShell_Step_Return
@@ -1987,6 +2126,18 @@
  *  Rte_SwitchHook_EcuM_currentMode_currentMode_Start
  *  Rte_Task_Dispatch
  *  Rte_Task_Terminate
+ *  Rte_WriteHook_Appl_ComShell_DmcStsRearToEsc_DmcStsRearToEsc_Return
+ *  Rte_WriteHook_Appl_ComShell_DmcStsRearToEsc_DmcStsRearToEsc_Start
+ *  Rte_WriteHook_Appl_ComShell_IEMTestFr1_IEMTestFr1_Return
+ *  Rte_WriteHook_Appl_ComShell_IEMTestFr1_IEMTestFr1_Start
+ *  Rte_WriteHook_Appl_ComShell_IEMTestFr2_IEMTestFr2_Return
+ *  Rte_WriteHook_Appl_ComShell_IEMTestFr2_IEMTestFr2_Start
+ *  Rte_WriteHook_Appl_ComShell_IEMTestFr3_IEMTestFr3_Return
+ *  Rte_WriteHook_Appl_ComShell_IEMTestFr3_IEMTestFr3_Start
+ *  Rte_WriteHook_Appl_ComShell_IemGeneric_IemGeneric_Return
+ *  Rte_WriteHook_Appl_ComShell_IemGeneric_IemGeneric_Start
+ *  Rte_WriteHook_Appl_ComShell_ImobEngChk2_ImobEngChk2_Return
+ *  Rte_WriteHook_Appl_ComShell_ImobEngChk2_ImobEngChk2_Start
  *  Rte_WriteHook_Appl_ComShell_ImobEngSts2_ImobEngSts2_Return
  *  Rte_WriteHook_Appl_ComShell_ImobEngSts2_ImobEngSts2_Start
  *  Rte_WriteHook_Appl_ComShell_PLockFltIndcRe_PLockFltIndcRe_Return
@@ -2021,8 +2172,14 @@
  *  Rte_WriteHook_Appl_ComShell_WhlMotSysModSts_WhlMotSysModSts_Start
  *  Rte_WriteHook_Appl_ComShell_WhlMotSysMotT_WhlMotSysMotT_Return
  *  Rte_WriteHook_Appl_ComShell_WhlMotSysMotT_WhlMotSysMotT_Start
+ *  Rte_WriteHook_Appl_ComShell_WhlMotSysSpdActSafe_WhlMotSysSpdActSafe_Return
+ *  Rte_WriteHook_Appl_ComShell_WhlMotSysSpdActSafe_WhlMotSysSpdActSafe_Start
  *  Rte_WriteHook_Appl_ComShell_WhlMotSysSpdAct_WhlMotSysSpdAct_Return
  *  Rte_WriteHook_Appl_ComShell_WhlMotSysSpdAct_WhlMotSysSpdAct_Start
+ *  Rte_WriteHook_Appl_ComShell_WhlMotSysTqAvl_WhlMotSysTqAvl_Return
+ *  Rte_WriteHook_Appl_ComShell_WhlMotSysTqAvl_WhlMotSysTqAvl_Start
+ *  Rte_WriteHook_Appl_ComShell_WhlMotSysTqEst_WhlMotSysTqEst_Return
+ *  Rte_WriteHook_Appl_ComShell_WhlMotSysTqEst_WhlMotSysTqEst_Start
  *  Rte_WriteHook_Appl_ComShell_WhlMotSysUdc_WhlMotSysUdc_Return
  *  Rte_WriteHook_Appl_ComShell_WhlMotSysUdc_WhlMotSysUdc_Start
  *  SchM_EnterHook_BswM_BSWM_EXCLUSIVE_AREA_0_Return

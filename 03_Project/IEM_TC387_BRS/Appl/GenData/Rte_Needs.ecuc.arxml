@@ -13,6 +13,1324 @@
                             <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig</DEFINITION-REF>
                             <SUB-CONTAINERS>
                                 <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igCrashStsSafe_0a09c5f2_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isCrashStsSafeChks_42d0b327_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isCrashStsSafeCntr_fc00f19d_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isCrashStsSafeSts_847c5d07_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igDmcStsRearToEsc_5d8e0053_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isDmcStsRearToEscChks_0817ec86_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isDmcStsRearToEscCntr_b6c7ae3c_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isDmcStsRearToEscDmcActAppTarTq_eaa126f0_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>SINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isDmcStsRearToEscDmcSWInfo_6d930900_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isDmcStsRearToEscDmcSts_2fffc6c5_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igEngSt1WdSts_adcf75d2_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isEngSt1WdStsChks_75cf5b53_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isEngSt1WdStsCntr_cb1f19e9_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isEngSt1WdStsEngSt1WdSts_21868fa0_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igEscVariantToDmc_3c205019_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isEscVariantToDmcChks_9a33bac6_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isEscVariantToDmcCntr_24e3f87c_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isEscVariantToDmcEscVariantToDmc_daa2c955_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igHvSysRlySts_760c5326_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isHvSysRlyStsChks_b1dd6f20_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isHvSysRlyStsCntr_0f0d2d9a_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isHvSysRlyStsHvSysRlySts_5b219bea_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igIEMTestFr1_f9c0b06a_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte0_eb2525b1_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte1_9c221527_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte2_052b449d_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte3_722c740b_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte4_ec48e1a8_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte5_9b4fd13e_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte6_02468084_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr1Byte7_7541b012_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igIEMTestFr2_60c9e1d0_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte0_6db1571f_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte1_1ab66789_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte2_83bf3633_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte3_f4b806a5_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte4_6adc9306_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte5_1ddba390_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte6_84d2f22a_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr2Byte7_f3d5c2bc_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igIEMTestFr3_17ced146_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte0_a6ed84ba_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte1_d1eab42c_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte2_48e3e596_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte3_3fe4d500_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte4_a18040a3_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte5_d6877035_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte6_4f8e218f_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIEMTestFr3Byte7_38891119_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igIemGeneric_ab95030b_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericADAlrmSt_2216fde0_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericDTCHig_6365ed22_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericDTCLow_2f81f21c_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericDTCMid_fca77e73_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericDTCSts_96a019d2_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericEMQnty_067a3f4d_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericEMSeqNr_5f6f0e31_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericFltAlrmSt_094332cf_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericIacAlrmSt_ef864a8f_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericInvrtTAlrmSt_ad103698_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericModStatusRms_527fb71c_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericMotTAlrmSt_e29bb0dd_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericRslAlrmSt_09c5d09c_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericSpdAlrmSt_a3de8d5b_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericTypeInfo_10f77ae7_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isIemGenericUDcAlrmSt_14e497d8_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igImobEngChk2_35eae3c1_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngChkSts_8e88c5e4_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngDataChk0_fba6858b_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngDataChk1_8ca1b51d_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngDataChk2_15a8e4a7_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngDataChk3_62afd431_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngDataChk4_fccb4192_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngDataChk5_8bcc7104_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngChk2ImobEngDataChk6_12c520be_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igImobEngMgrReq2_1df0559d_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngDataMgrReq0_9c0677f3_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngDataMgrReq1_eb014765_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngDataMgrReq2_720816df_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngDataMgrReq3_050f2649_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngDataMgrReq4_9b6bb3ea_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngDataMgrReq5_ec6c837c_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngDataMgrReq6_7565d2c6_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isImobEngMgrReq2ImobEngMgrCmdTar1_817e486b_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igPtTqAtAxleMaxReq_e1a6f04e_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isPtTqAtAxleMaxReqChks_6ad4cf82_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isPtTqAtAxleMaxReqCntr_d4048d38_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isPtTqAtAxleMaxReqPtTqAtAxleFrntReq_8c330c00_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>SINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isPtTqAtAxleMaxReqPtTqAtAxleReReq_449843f2_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>SINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igStcStsToDmc_cb036148_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isStcStsToDmcChks_7f830d10_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isStcStsToDmcCntr_c1534faa_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isStcStsToDmcEngRotTarSpdDMCFrnt_46c9d05b_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isStcStsToDmcEngRotTarSpdDMCRear_ee201c9c_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isStcStsToDmcFrnt_baffba62_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isStcStsToDmcRear_121676a5_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igVehBattU_0a2a47a4_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehBattUSysUQf_f605b03a_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehBattUSysU_9501cb8f_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igVehModMngtGlbSafe1_d1f2be1a_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1CarModSts1_a7324f03_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1CarModSubtypWdCarModSubtyp_e21ae44e_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1Chks_5333fc0b_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1Cntr_ede3beb1_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1EgyLvlElecMai_47690dfe_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1EgyLvlElecSubtyp_47668699_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1FltEgyCnsWdSts_c45a6bde_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1PwrLvlElecMai_c178728f_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1PwrLvlElecSubtyp_d042c1b3_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehModMngtGlbSafe1UsgModSts_8ea1ac37_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igVehMtnSt_68a0f345_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehMtnStChks_46ae48d7_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehMtnStCntr_f87e0a6d_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehMtnStVehMtnSt_e696b713_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igVehSpdLgt_56c0cfd4_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehSpdLgtA_668ad5e3_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehSpdLgtChks_060f2c10_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehSpdLgtCntr_b8df6eaa_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isVehSpdLgtQf_057400a6_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igWhlMotSysSpdActSafe_58c9c55b_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysSpdActSafeChks_8eaaad7b_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysSpdActSafeCntr_307aefc1_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysSpdActSafeIsgSpdWSgnTyp_9d8822c6_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>SINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysSpdActSafeQf_b9719ecc_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igWhlMotSysTqAllwd_20f5846f_Rx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqAllwdChks_5c573be4_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqAllwdCntr_e287795e_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqAllwdWhlMotSysTqAllwd_0ecd7abd_Rx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igWhlMotSysTqAvl_6ba13f42_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqAvlTqAvlMax_bb518dba_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqAvlTqAvlMin_875cb2e3_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
+                                    <SHORT-NAME>igWhlMotSysTqEst_02b3fb8d_Tx</SHORT-NAME>
+                                    <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup</DEFINITION-REF>
+                                    <PARAMETER-VALUES>
+                                    </PARAMETER-VALUES>
+                                    <SUB-CONTAINERS>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqEstChks_cdf81842_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqEstCntr_73285af8_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqEstIsgTqAct_70852206_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT16</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                        <ECUC-CONTAINER-VALUE>
+                                            <SHORT-NAME>isWhlMotSysTqEstQualityFactor_cb4e64ff_Tx</SHORT-NAME>
+                                            <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal</DEFINITION-REF>
+                                            <PARAMETER-VALUES>
+                                                <ECUC-TEXTUAL-PARAM-VALUE>
+                                                    <DEFINITION-REF DEST="ECUC-ENUMERATION-PARAM-DEF">/MICROSAR/Com/ComConfig/ComSignalGroup/ComGroupSignal/ComSignalType</DEFINITION-REF>
+                                                    <VALUE>UINT8</VALUE>
+                                                </ECUC-TEXTUAL-PARAM-VALUE>
+                                            </PARAMETER-VALUES>
+                                        </ECUC-CONTAINER-VALUE>
+                                    </SUB-CONTAINERS>
+                                </ECUC-CONTAINER-VALUE>
+                                <ECUC-CONTAINER-VALUE>
                                     <SHORT-NAME>isBkpOfDstTrvld_1c9ea633_Rx</SHORT-NAME>
                                     <DEFINITION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/MICROSAR/Com/ComConfig/ComSignal</DEFINITION-REF>
                                     <PARAMETER-VALUES>
@@ -804,7 +2122,7 @@
                             <PARAMETER-VALUES>
                                 <ECUC-NUMERICAL-PARAM-VALUE>
                                     <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Os/OsTask/OsTaskActivation</DEFINITION-REF>
-                                    <VALUE>1</VALUE>
+                                    <VALUE>5</VALUE>
                                 </ECUC-NUMERICAL-PARAM-VALUE>
                                 <ECUC-NUMERICAL-PARAM-VALUE>
                                     <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Os/OsTask/OsTaskPriority</DEFINITION-REF>
@@ -836,7 +2154,7 @@
                             <PARAMETER-VALUES>
                                 <ECUC-NUMERICAL-PARAM-VALUE>
                                     <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Os/OsTask/OsTaskActivation</DEFINITION-REF>
-                                    <VALUE>1</VALUE>
+                                    <VALUE>5</VALUE>
                                 </ECUC-NUMERICAL-PARAM-VALUE>
                                 <ECUC-NUMERICAL-PARAM-VALUE>
                                     <DEFINITION-REF DEST="ECUC-INTEGER-PARAM-DEF">/MICROSAR/Os/OsTask/OsTaskPriority</DEFINITION-REF>

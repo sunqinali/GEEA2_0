@@ -1,5 +1,5 @@
 /**********************************************************************************************************************
- * Appl_ComShell.c v0.5 — Task_Bsw_10ms, Rte↔COM (22 RX + 19 TX)
+ * Appl_ComShell.c v0.6 — Task_Bsw_10ms, Rte↔COM (scalars + groups)
  *********************************************************************************************************************/
 #include "Rte_Appl_ComShell.h"
 #include "Appl_ComShell.h"
@@ -8,7 +8,8 @@ volatile uint8 Appl_ComShell_InitDone = 0u;
 volatile uint16 Appl_ComShell_StepCnt = 0u;
 volatile uint16 Appl_ComShell_RxOkCnt = 0u;
 volatile uint16 Appl_ComShell_TxOkCnt = 0u;
-
+volatile uint16 Appl_ComShell_GrpRxOkCnt = 0u;
+volatile uint16 Appl_ComShell_GrpTxOkCnt = 0u;
 volatile uint32 Appl_ComShell_CarTiGlb = 0u;
 volatile uint32 Appl_ComShell_BkpOfDstTrvld = 0u;
 volatile uint8 Appl_ComShell_ModReq = 0u;
@@ -50,6 +51,40 @@ volatile uint8 Appl_ComShell_ActvDampgModReq = 0u;
 volatile uint8 Appl_ComShell_HeatFdBck = 0u;
 volatile uint8 Appl_ComShell_HeatPwrAct = 0u;
 volatile uint8 Appl_ComShell_HeatPwrMax = 0u;
+volatile CrashStsSafe_1 Appl_ComShell_CrashStsSafe;
+volatile uint8 Appl_ComShell_CrashStsSafe_Cntr = 0u;
+volatile EngSt1WdSts_1 Appl_ComShell_EngSt1WdSts;
+volatile uint8 Appl_ComShell_EngSt1WdSts_Cntr = 0u;
+volatile EscVariantToDmc_1 Appl_ComShell_EscVariantToDmc;
+volatile uint8 Appl_ComShell_EscVariantToDmc_Cntr = 0u;
+volatile HvSysRlySts_1 Appl_ComShell_HvSysRlySts;
+volatile uint8 Appl_ComShell_HvSysRlySts_Cntr = 0u;
+volatile PtTqAtAxleReq_1 Appl_ComShell_PtTqAtAxleMaxReq;
+volatile uint8 Appl_ComShell_PtTqAtAxleMaxReq_Cntr = 0u;
+volatile StcStsToDmc_1 Appl_ComShell_StcStsToDmc;
+volatile uint8 Appl_ComShell_StcStsToDmc_Cntr = 0u;
+volatile VehModMngtGlbSafe1_2 Appl_ComShell_VehModMngtGlbSafe1;
+volatile uint8 Appl_ComShell_VehModMngtGlbSafe1_Cntr = 0u;
+volatile VehMtnStSafe1_2 Appl_ComShell_VehMtnSt;
+volatile uint8 Appl_ComShell_VehMtnSt_Cntr = 0u;
+volatile VehSpdLgtSafe1_3 Appl_ComShell_VehSpdLgt;
+volatile uint8 Appl_ComShell_VehSpdLgt_Cntr = 0u;
+volatile WhlMotSysTqAllwd_3 Appl_ComShell_WhlMotSysTqAllwd;
+volatile uint8 Appl_ComShell_WhlMotSysTqAllwd_Cntr = 0u;
+volatile ImobEngMgrReq_2 Appl_ComShell_ImobEngMgrReq2;
+volatile SysU_4 Appl_ComShell_VehBattU;
+volatile DmcStsToEsc_1 Appl_ComShell_DmcStsRearToEsc;
+volatile uint8 Appl_ComShell_DmcStsRearToEsc_Cntr = 0u;
+volatile SpdSgnSafe_1 Appl_ComShell_WhlMotSysSpdActSafe;
+volatile uint8 Appl_ComShell_WhlMotSysSpdActSafe_Cntr = 0u;
+volatile IsgTqActSafe2_4 Appl_ComShell_WhlMotSysTqEst;
+volatile uint8 Appl_ComShell_WhlMotSysTqEst_Cntr = 0u;
+volatile DevDataTyp64_2 Appl_ComShell_IEMTestFr1;
+volatile DevDataTyp64_2 Appl_ComShell_IEMTestFr2;
+volatile DevDataTyp64_2 Appl_ComShell_IEMTestFr3;
+volatile ElecDrvGen_4 Appl_ComShell_IemGeneric;
+volatile ImobEngChk_2 Appl_ComShell_ImobEngChk2;
+volatile WhlMotSysTqAvl_2 Appl_ComShell_WhlMotSysTqAvl;
 
 void Appl_ComShell_Init(void)
 {
@@ -64,6 +99,18 @@ FUNC(void, Appl_ComShell_CODE) Appl_ComShell_Step(void) /* PRQA S 0624, 3206 */ 
   uint16 tmp_uint16;
   uint32 tmp_uint32;
   uint8 tmp_uint8;
+  CrashStsSafe_1 tmp_CrashStsSafe;
+  EngSt1WdSts_1 tmp_EngSt1WdSts;
+  EscVariantToDmc_1 tmp_EscVariantToDmc;
+  HvSysRlySts_1 tmp_HvSysRlySts;
+  PtTqAtAxleReq_1 tmp_PtTqAtAxleMaxReq;
+  StcStsToDmc_1 tmp_StcStsToDmc;
+  VehModMngtGlbSafe1_2 tmp_VehModMngtGlbSafe1;
+  VehMtnStSafe1_2 tmp_VehMtnSt;
+  VehSpdLgtSafe1_3 tmp_VehSpdLgt;
+  WhlMotSysTqAllwd_3 tmp_WhlMotSysTqAllwd;
+  ImobEngMgrReq_2 tmp_ImobEngMgrReq2;
+  SysU_4 tmp_VehBattU;
 
   if (Appl_ComShell_InitDone == 0u)
   {
@@ -160,6 +207,65 @@ FUNC(void, Appl_ComShell_CODE) Appl_ComShell_Step(void) /* PRQA S 0624, 3206 */ 
   {
     Appl_ComShell_ActvDampgModReq = tmp_uint8;
   }
+  if (Rte_Read_CrashStsSafe_CrashStsSafe(&tmp_CrashStsSafe) == RTE_E_OK)
+  {
+    Appl_ComShell_CrashStsSafe = tmp_CrashStsSafe;
+    Appl_ComShell_CrashStsSafe_Cntr = tmp_CrashStsSafe.Cntr;
+    Appl_ComShell_GrpRxOkCnt++;
+  }
+  if (Rte_Read_EngSt1WdSts_EngSt1WdSts(&tmp_EngSt1WdSts) == RTE_E_OK)
+  {
+    Appl_ComShell_EngSt1WdSts = tmp_EngSt1WdSts;
+    Appl_ComShell_EngSt1WdSts_Cntr = tmp_EngSt1WdSts.Cntr;
+  }
+  if (Rte_Read_EscVariantToDmc_EscVariantToDmc(&tmp_EscVariantToDmc) == RTE_E_OK)
+  {
+    Appl_ComShell_EscVariantToDmc = tmp_EscVariantToDmc;
+    Appl_ComShell_EscVariantToDmc_Cntr = tmp_EscVariantToDmc.Cntr;
+  }
+  if (Rte_Read_HvSysRlySts_HvSysRlySts(&tmp_HvSysRlySts) == RTE_E_OK)
+  {
+    Appl_ComShell_HvSysRlySts = tmp_HvSysRlySts;
+    Appl_ComShell_HvSysRlySts_Cntr = tmp_HvSysRlySts.Cntr;
+  }
+  if (Rte_Read_PtTqAtAxleMaxReq_PtTqAtAxleMaxReq(&tmp_PtTqAtAxleMaxReq) == RTE_E_OK)
+  {
+    Appl_ComShell_PtTqAtAxleMaxReq = tmp_PtTqAtAxleMaxReq;
+    Appl_ComShell_PtTqAtAxleMaxReq_Cntr = tmp_PtTqAtAxleMaxReq.Cntr;
+  }
+  if (Rte_Read_StcStsToDmc_StcStsToDmc(&tmp_StcStsToDmc) == RTE_E_OK)
+  {
+    Appl_ComShell_StcStsToDmc = tmp_StcStsToDmc;
+    Appl_ComShell_StcStsToDmc_Cntr = tmp_StcStsToDmc.Cntr;
+  }
+  if (Rte_Read_VehModMngtGlbSafe1_VehModMngtGlbSafe1(&tmp_VehModMngtGlbSafe1) == RTE_E_OK)
+  {
+    Appl_ComShell_VehModMngtGlbSafe1 = tmp_VehModMngtGlbSafe1;
+    Appl_ComShell_VehModMngtGlbSafe1_Cntr = tmp_VehModMngtGlbSafe1.Cntr;
+  }
+  if (Rte_Read_VehMtnSt_VehMtnSt(&tmp_VehMtnSt) == RTE_E_OK)
+  {
+    Appl_ComShell_VehMtnSt = tmp_VehMtnSt;
+    Appl_ComShell_VehMtnSt_Cntr = tmp_VehMtnSt.VehMtnStCntr;
+  }
+  if (Rte_Read_VehSpdLgt_VehSpdLgt(&tmp_VehSpdLgt) == RTE_E_OK)
+  {
+    Appl_ComShell_VehSpdLgt = tmp_VehSpdLgt;
+    Appl_ComShell_VehSpdLgt_Cntr = tmp_VehSpdLgt.VehSpdLgtCntr;
+  }
+  if (Rte_Read_WhlMotSysTqAllwd_WhlMotSysTqAllwd(&tmp_WhlMotSysTqAllwd) == RTE_E_OK)
+  {
+    Appl_ComShell_WhlMotSysTqAllwd = tmp_WhlMotSysTqAllwd;
+    Appl_ComShell_WhlMotSysTqAllwd_Cntr = tmp_WhlMotSysTqAllwd.Cntr;
+  }
+  if (Rte_Read_ImobEngMgrReq2_ImobEngMgrReq2(&tmp_ImobEngMgrReq2) == RTE_E_OK)
+  {
+    Appl_ComShell_ImobEngMgrReq2 = tmp_ImobEngMgrReq2;
+  }
+  if (Rte_Read_VehBattU_VehBattU(&tmp_VehBattU) == RTE_E_OK)
+  {
+    Appl_ComShell_VehBattU = tmp_VehBattU;
+  }
 
   Appl_ComShell_ModSts = (uint8)((Appl_ComShell_StepCnt >> 4) & 0x0Fu);
   if (Rte_Write_WhlMotSysModSts_WhlMotSysModSts(Appl_ComShell_ModSts) == RTE_E_OK)
@@ -193,6 +299,51 @@ FUNC(void, Appl_ComShell_CODE) Appl_ComShell_Step(void) /* PRQA S 0624, 3206 */ 
   (void)Rte_Write_WhlMotSysHeatFdBck_WhlMotSysHeatFdBck(Appl_ComShell_HeatFdBck);
   (void)Rte_Write_WhlMotSysHeatPwrAct_WhlMotSysHeatPwrAct(Appl_ComShell_HeatPwrAct);
   (void)Rte_Write_WhlMotSysHeatPwrMax_WhlMotSysHeatPwrMax(Appl_ComShell_HeatPwrMax);
+  Appl_ComShell_DmcStsRearToEsc.Cntr = (uint8)(Appl_ComShell_StepCnt & 0x0Fu);
+  Appl_ComShell_DmcStsRearToEsc_Cntr = Appl_ComShell_DmcStsRearToEsc.Cntr;
+  {
+    DmcStsToEsc_1 tx_DmcStsRearToEsc = Appl_ComShell_DmcStsRearToEsc;
+    if (Rte_Write_DmcStsRearToEsc_DmcStsRearToEsc(&tx_DmcStsRearToEsc) == RTE_E_OK)
+    {
+      Appl_ComShell_GrpTxOkCnt++;
+    }
+  }
+  Appl_ComShell_WhlMotSysSpdActSafe.Cntr = (uint8)(Appl_ComShell_StepCnt & 0x0Fu);
+  Appl_ComShell_WhlMotSysSpdActSafe_Cntr = Appl_ComShell_WhlMotSysSpdActSafe.Cntr;
+  {
+    SpdSgnSafe_1 tx_WhlMotSysSpdActSafe = Appl_ComShell_WhlMotSysSpdActSafe;
+    (void)Rte_Write_WhlMotSysSpdActSafe_WhlMotSysSpdActSafe(&tx_WhlMotSysSpdActSafe);
+  }
+  Appl_ComShell_WhlMotSysTqEst.Cntr = (uint8)(Appl_ComShell_StepCnt & 0x0Fu);
+  Appl_ComShell_WhlMotSysTqEst_Cntr = Appl_ComShell_WhlMotSysTqEst.Cntr;
+  {
+    IsgTqActSafe2_4 tx_WhlMotSysTqEst = Appl_ComShell_WhlMotSysTqEst;
+    (void)Rte_Write_WhlMotSysTqEst_WhlMotSysTqEst(&tx_WhlMotSysTqEst);
+  }
+  {
+    DevDataTyp64_2 tx_IEMTestFr1 = Appl_ComShell_IEMTestFr1;
+    (void)Rte_Write_IEMTestFr1_IEMTestFr1(&tx_IEMTestFr1);
+  }
+  {
+    DevDataTyp64_2 tx_IEMTestFr2 = Appl_ComShell_IEMTestFr2;
+    (void)Rte_Write_IEMTestFr2_IEMTestFr2(&tx_IEMTestFr2);
+  }
+  {
+    DevDataTyp64_2 tx_IEMTestFr3 = Appl_ComShell_IEMTestFr3;
+    (void)Rte_Write_IEMTestFr3_IEMTestFr3(&tx_IEMTestFr3);
+  }
+  {
+    ElecDrvGen_4 tx_IemGeneric = Appl_ComShell_IemGeneric;
+    (void)Rte_Write_IemGeneric_IemGeneric(&tx_IemGeneric);
+  }
+  {
+    ImobEngChk_2 tx_ImobEngChk2 = Appl_ComShell_ImobEngChk2;
+    (void)Rte_Write_ImobEngChk2_ImobEngChk2(&tx_ImobEngChk2);
+  }
+  {
+    WhlMotSysTqAvl_2 tx_WhlMotSysTqAvl = Appl_ComShell_WhlMotSysTqAvl;
+    (void)Rte_Write_WhlMotSysTqAvl_WhlMotSysTqAvl(&tx_WhlMotSysTqAvl);
+  }
 }
 
 #define Appl_ComShell_STOP_SEC_CODE

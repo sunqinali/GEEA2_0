@@ -163,6 +163,113 @@ FUNC(void, RTE_CODE) Rte_InitMemory_OsApplication(void)
  * Internal/External Tx connections
  *********************************************************************************************************************/
 
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_DmcStsRearToEsc_DmcStsRearToEsc(P2CONST(DmcStsToEsc_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isDmcStsRearToEscChks_0817ec86_Tx, &(*(data)).Chks); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isDmcStsRearToEscCntr_b6c7ae3c_Tx, &(*(data)).Cntr); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isDmcStsRearToEscDmcActAppTarTq_eaa126f0_Tx, &(*(data)).DmcActAppTarTq); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isDmcStsRearToEscDmcSWInfo_6d930900_Tx, &(*(data)).DmcSWInfo); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isDmcStsRearToEscDmcSts_2fffc6c5_Tx, &(*(data)).DmcSts); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igDmcStsRearToEsc_5d8e0053_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_IEMTestFr1_IEMTestFr1(P2CONST(DevDataTyp64_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte0_eb2525b1_Tx, &(*(data)).Byte0); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte1_9c221527_Tx, &(*(data)).Byte1); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte2_052b449d_Tx, &(*(data)).Byte2); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte3_722c740b_Tx, &(*(data)).Byte3); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte4_ec48e1a8_Tx, &(*(data)).Byte4); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte5_9b4fd13e_Tx, &(*(data)).Byte5); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte6_02468084_Tx, &(*(data)).Byte6); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr1Byte7_7541b012_Tx, &(*(data)).Byte7); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igIEMTestFr1_f9c0b06a_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_IEMTestFr2_IEMTestFr2(P2CONST(DevDataTyp64_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte0_6db1571f_Tx, &(*(data)).Byte0); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte1_1ab66789_Tx, &(*(data)).Byte1); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte2_83bf3633_Tx, &(*(data)).Byte2); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte3_f4b806a5_Tx, &(*(data)).Byte3); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte4_6adc9306_Tx, &(*(data)).Byte4); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte5_1ddba390_Tx, &(*(data)).Byte5); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte6_84d2f22a_Tx, &(*(data)).Byte6); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr2Byte7_f3d5c2bc_Tx, &(*(data)).Byte7); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igIEMTestFr2_60c9e1d0_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_IEMTestFr3_IEMTestFr3(P2CONST(DevDataTyp64_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte0_a6ed84ba_Tx, &(*(data)).Byte0); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte1_d1eab42c_Tx, &(*(data)).Byte1); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte2_48e3e596_Tx, &(*(data)).Byte2); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte3_3fe4d500_Tx, &(*(data)).Byte3); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte4_a18040a3_Tx, &(*(data)).Byte4); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte5_d6877035_Tx, &(*(data)).Byte5); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte6_4f8e218f_Tx, &(*(data)).Byte6); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIEMTestFr3Byte7_38891119_Tx, &(*(data)).Byte7); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igIEMTestFr3_17ced146_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_IemGeneric_IemGeneric(P2CONST(ElecDrvGen_4, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericADAlrmSt_2216fde0_Tx, &(*(data)).ADAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericDTCHig_6365ed22_Tx, &(*(data)).DTCHig); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericDTCLow_2f81f21c_Tx, &(*(data)).DTCLow); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericDTCMid_fca77e73_Tx, &(*(data)).DTCMid); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericDTCSts_96a019d2_Tx, &(*(data)).DTCSts); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericEMQnty_067a3f4d_Tx, &(*(data)).EMQnty); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericEMSeqNr_5f6f0e31_Tx, &(*(data)).EMSeqNr); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericFltAlrmSt_094332cf_Tx, &(*(data)).FltAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericIacAlrmSt_ef864a8f_Tx, &(*(data)).IacAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericInvrtTAlrmSt_ad103698_Tx, &(*(data)).InvrtTAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericModStatusRms_527fb71c_Tx, &(*(data)).ModStatusRms); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericMotTAlrmSt_e29bb0dd_Tx, &(*(data)).MotTAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericRslAlrmSt_09c5d09c_Tx, &(*(data)).RslAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericSpdAlrmSt_a3de8d5b_Tx, &(*(data)).SpdAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericTypeInfo_10f77ae7_Tx, &(*(data)).TypeInfo); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isIemGenericUDcAlrmSt_14e497d8_Tx, &(*(data)).UDcAlrmSt); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igIemGeneric_ab95030b_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_ImobEngChk2_ImobEngChk2(P2CONST(ImobEngChk_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngChkSts_8e88c5e4_Tx, &(*(data)).ImobEngChkSts); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngDataChk0_fba6858b_Tx, &(*(data)).ImobEngDataChk0); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngDataChk1_8ca1b51d_Tx, &(*(data)).ImobEngDataChk1); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngDataChk2_15a8e4a7_Tx, &(*(data)).ImobEngDataChk2); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngDataChk3_62afd431_Tx, &(*(data)).ImobEngDataChk3); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngDataChk4_fccb4192_Tx, &(*(data)).ImobEngDataChk4); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngDataChk5_8bcc7104_Tx, &(*(data)).ImobEngDataChk5); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isImobEngChk2ImobEngDataChk6_12c520be_Tx, &(*(data)).ImobEngDataChk6); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igImobEngChk2_35eae3c1_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_ImobEngSts2_ImobEngSts2(uint8 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
 {
   Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
@@ -325,6 +432,43 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysSpdAct_WhlMotSys
   return ret;
 } /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
 
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysSpdActSafe_WhlMotSysSpdActSafe(P2CONST(SpdSgnSafe_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysSpdActSafeChks_8eaaad7b_Tx, &(*(data)).Chks); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysSpdActSafeCntr_307aefc1_Tx, &(*(data)).Cntr); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysSpdActSafeIsgSpdWSgnTyp_9d8822c6_Tx, &(*(data)).IsgSpdWSgnTyp); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysSpdActSafeQf_b9719ecc_Tx, &(*(data)).Qf); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igWhlMotSysSpdActSafe_58c9c55b_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysTqAvl_WhlMotSysTqAvl(P2CONST(WhlMotSysTqAvl_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysTqAvlTqAvlMax_bb518dba_Tx, &(*(data)).TqAvlMax); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysTqAvlTqAvlMin_875cb2e3_Tx, &(*(data)).TqAvlMin); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igWhlMotSysTqAvl_6ba13f42_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysTqEst_WhlMotSysTqEst(P2CONST(IsgTqActSafe2_4, AUTOMATIC, RTE_APPL_COMSHELL_APPL_DATA) data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysTqEstChks_cdf81842_Tx, &(*(data)).Chks); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysTqEstCntr_73285af8_Tx, &(*(data)).Cntr); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysTqEstIsgTqAct_70852206_Tx, &(*(data)).IsgTqAct); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignal(ComConf_ComGroupSignal_isWhlMotSysTqEstQualityFactor_cb4e64ff_Tx, &(*(data)).QualityFactor); /* PRQA S 0315, 1340, 2986 */ /* MD_Rte_0315, MD_Rte_1340, MD_MSR_RetVal */
+  ret |= Com_SendSignalGroup(ComConf_ComSignalGroup_igWhlMotSysTqEst_02b3fb8d_Tx); /* PRQA S 0315, 2986 */ /* MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysUdc_WhlMotSysUdc(uint16 data) /* PRQA S 1505, 2982 */ /* MD_MSR_Rule8.7, MD_Rte_2982 */
 {
   Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
@@ -333,6 +477,171 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Write_Appl_ComShell_WhlMotSysUdc_WhlMotSysUdc
 
   return ret;
 } /* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+
+/**********************************************************************************************************************
+ * Internal/External Rx connections
+ *********************************************************************************************************************/
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_CrashStsSafe_CrashStsSafe(P2VAR(CrashStsSafe_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igCrashStsSafe_0a09c5f2_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isCrashStsSafeChks_42d0b327_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isCrashStsSafeCntr_fc00f19d_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isCrashStsSafeSts_847c5d07_Rx, &(*(data)).Sts); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_EngSt1WdSts_EngSt1WdSts(P2VAR(EngSt1WdSts_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igEngSt1WdSts_adcf75d2_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isEngSt1WdStsChks_75cf5b53_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isEngSt1WdStsCntr_cb1f19e9_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isEngSt1WdStsEngSt1WdSts_21868fa0_Rx, &(*(data)).EngSt1WdSts); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_EscVariantToDmc_EscVariantToDmc(P2VAR(EscVariantToDmc_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igEscVariantToDmc_3c205019_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isEscVariantToDmcChks_9a33bac6_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isEscVariantToDmcCntr_24e3f87c_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isEscVariantToDmcEscVariantToDmc_daa2c955_Rx, &(*(data)).EscVariantToDmc); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_HvSysRlySts_HvSysRlySts(P2VAR(HvSysRlySts_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igHvSysRlySts_760c5326_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isHvSysRlyStsChks_b1dd6f20_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isHvSysRlyStsCntr_0f0d2d9a_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isHvSysRlyStsHvSysRlySts_5b219bea_Rx, &(*(data)).HvSysRlySts); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_ImobEngMgrReq2_ImobEngMgrReq2(P2VAR(ImobEngMgrReq_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igImobEngMgrReq2_1df0559d_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngDataMgrReq0_9c0677f3_Rx, &(*(data)).ImobEngDataMgrReq0); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngDataMgrReq1_eb014765_Rx, &(*(data)).ImobEngDataMgrReq1); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngDataMgrReq2_720816df_Rx, &(*(data)).ImobEngDataMgrReq2); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngDataMgrReq3_050f2649_Rx, &(*(data)).ImobEngDataMgrReq3); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngDataMgrReq4_9b6bb3ea_Rx, &(*(data)).ImobEngDataMgrReq4); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngDataMgrReq5_ec6c837c_Rx, &(*(data)).ImobEngDataMgrReq5); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngDataMgrReq6_7565d2c6_Rx, &(*(data)).ImobEngDataMgrReq6); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isImobEngMgrReq2ImobEngMgrCmdTar1_817e486b_Rx, &(*(data)).ImobEngMgrCmdTar1); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_PtTqAtAxleMaxReq_PtTqAtAxleMaxReq(P2VAR(PtTqAtAxleReq_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igPtTqAtAxleMaxReq_e1a6f04e_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isPtTqAtAxleMaxReqChks_6ad4cf82_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isPtTqAtAxleMaxReqCntr_d4048d38_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isPtTqAtAxleMaxReqPtTqAtAxleFrntReq_8c330c00_Rx, &(*(data)).PtTqAtAxleFrntReq); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isPtTqAtAxleMaxReqPtTqAtAxleReReq_449843f2_Rx, &(*(data)).PtTqAtAxleReReq); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_StcStsToDmc_StcStsToDmc(P2VAR(StcStsToDmc_1, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igStcStsToDmc_cb036148_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isStcStsToDmcChks_7f830d10_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isStcStsToDmcCntr_c1534faa_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isStcStsToDmcEngRotTarSpdDMCFrnt_46c9d05b_Rx, &(*(data)).EngRotTarSpdDMCFrnt); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isStcStsToDmcEngRotTarSpdDMCRear_ee201c9c_Rx, &(*(data)).EngRotTarSpdDMCRear); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isStcStsToDmcFrnt_baffba62_Rx, &(*(data)).StcStsToDmcFrnt); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isStcStsToDmcRear_121676a5_Rx, &(*(data)).StcStsToDmcRear); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_VehBattU_VehBattU(P2VAR(SysU_4, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igVehBattU_0a2a47a4_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehBattUSysU_9501cb8f_Rx, &(*(data)).SysU); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehBattUSysUQf_f605b03a_Rx, &(*(data)).SysUQf); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_VehModMngtGlbSafe1_VehModMngtGlbSafe1(P2VAR(VehModMngtGlbSafe1_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igVehModMngtGlbSafe1_d1f2be1a_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1CarModSts1_a7324f03_Rx, &(*(data)).CarModSts1); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1CarModSubtypWdCarModSubtyp_e21ae44e_Rx, &(*(data)).CarModSubtypWdCarModSubtyp); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1Chks_5333fc0b_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1Cntr_ede3beb1_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1EgyLvlElecMai_47690dfe_Rx, &(*(data)).EgyLvlElecMai); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1EgyLvlElecSubtyp_47668699_Rx, &(*(data)).EgyLvlElecSubtyp); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1FltEgyCnsWdSts_c45a6bde_Rx, &(*(data)).FltEgyCnsWdSts); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1PwrLvlElecMai_c178728f_Rx, &(*(data)).PwrLvlElecMai); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1PwrLvlElecSubtyp_d042c1b3_Rx, &(*(data)).PwrLvlElecSubtyp); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehModMngtGlbSafe1UsgModSts_8ea1ac37_Rx, &(*(data)).UsgModSts); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_VehMtnSt_VehMtnSt(P2VAR(VehMtnStSafe1_2, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igVehMtnSt_68a0f345_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehMtnStVehMtnSt_e696b713_Rx, &(*(data)).VehMtnSt); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehMtnStChks_46ae48d7_Rx, &(*(data)).VehMtnStChks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehMtnStCntr_f87e0a6d_Rx, &(*(data)).VehMtnStCntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_VehSpdLgt_VehSpdLgt(P2VAR(VehSpdLgtSafe1_3, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igVehSpdLgt_56c0cfd4_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehSpdLgtA_668ad5e3_Rx, &(*(data)).VehSpdLgtA); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehSpdLgtChks_060f2c10_Rx, &(*(data)).VehSpdLgtChks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehSpdLgtCntr_b8df6eaa_Rx, &(*(data)).VehSpdLgtCntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isVehSpdLgtQf_057400a6_Rx, &(*(data)).VehSpdLgtQf); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_Appl_ComShell_WhlMotSysTqAllwd_WhlMotSysTqAllwd(P2VAR(WhlMotSysTqAllwd_3, AUTOMATIC, RTE_APPL_COMSHELL_APPL_VAR) data) /* PRQA S 3673, 1505, 3206 */ /* MD_Rte_Qac, MD_MSR_Rule8.7, MD_Rte_3206 */
+{
+  Std_ReturnType ret = RTE_E_OK; /* PRQA S 2981 */ /* MD_MSR_RetVal */
+
+  ret = Com_ReceiveSignalGroup(ComConf_ComSignalGroup_igWhlMotSysTqAllwd_20f5846f_Rx); /* PRQA S 3453, 0315 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315 */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isWhlMotSysTqAllwdChks_5c573be4_Rx, &(*(data)).Chks); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isWhlMotSysTqAllwdCntr_e287795e_Rx, &(*(data)).Cntr); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+  ret |= Com_ReceiveSignal(ComConf_ComGroupSignal_isWhlMotSysTqAllwdWhlMotSysTqAllwd_0ecd7abd_Rx, &(*(data)).WhlMotSysTqAllwd); /* PRQA S 3453, 0315, 2986 */ /* MD_MSR_FctLikeMacro, MD_Rte_0315, MD_MSR_RetVal */
+
+  return ret;
+} /* PRQA S 6010, 6030, 6050, 6080 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL, MD_MSR_STMIF */
 
 
 /**********************************************************************************************************************

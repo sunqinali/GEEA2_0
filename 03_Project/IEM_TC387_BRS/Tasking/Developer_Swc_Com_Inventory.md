@@ -3,82 +3,50 @@
 ## 现状
 
 - `Config/Developer`：`IEM` 组合 = `IEMHOST` + `IEMDTCS`（仅端口壳，无原子 runnable）
-- IEMHOST：P-Port **27** / R-Port **34**
-- `SystemExtract`：已有 IEM 端口 → SystemSignal / SignalGroup 的 DATA-MAPPING
-- `FlatExtract` COMPOSITIONTYPE：原先只有 BSW Service SWC；本补丁加入最小应用壳 `Appl_ComShell`
-- ECU Projects `ECU_Composition`：空（未同步 System Extract 应用到 Flat）
+- `Appl_ComShell` v0.6：**41** 标量 + **21** 组（VehCfg* 仍 CarConfig 直连）
 
-## 壳 `Appl_ComShell`（v0.5，41 路标量 = 全部 SystemExtract 标量）
-
-| 方向 | Port | SystemSignal |
-|------|------|--------------|
-| RX | CarTiGlb | CarTiGlb |
-| RX | BkpOfDstTrvld | BkpOfDstTrvld |
-| RX | WhlMotSysModReq | WhlMotSysModReq |
-| RX | WhlMotSysTqReq | WhlMotSysTqReq |
-| RX | CooltTSigForDtElec | CooltTSigForDtElec |
-| RX | CooltFlowForDtElec | CooltFlowForDtElec |
-| RX | SpdRotlForWhlsAtAxleRe | SpdRotlForWhlsAtAxleRe |
-| RX | WhlMotSysPwrLimMax | WhlMotSysPwrLimMax |
-| RX | WhlMotSysPwrLimMin | WhlMotSysPwrLimMin |
-| TX | WhlMotSysModSts | WhlMotSysModSts |
-| TX | WhlMotSysSpdAct | WhlMotSysSpdAct |
-| TX | WhlMotSysUdc | WhlMotSysUdc |
-| TX | WhlMotSysMotT | WhlMotSysMotT |
-| TX | WhlMotSysInvrT | WhlMotSysInvrT |
-| TX | WhlMotSysCooltT | WhlMotSysCooltT |
-| TX | WhlMotSysIdc | WhlMotSysIdc |
-| TX | WhlMotSysLimnIndcn | WhlMotSysLimnIndcn |
-| TX | WhlMotSysCoolgReq | WhlMotSysCoolgReq |
-| TX | WhlMotSysErrIndcnReq | WhlMotSysErrIndcnReq |
-| RX | DCChrgnHndlSts | DCChrgnHndlSts |
-| RX | DrvgCyc | DrvgCyc |
-| RX | GearLvrIndcn | GearLvrIndcn |
-| RX | HvBattSoc | HvBattSoc |
-| RX | HvBattUDc | HvBattUDc |
-| RX | HvBattUDynMaxLim | HvBattUDynMaxLim |
-| RX | HvBattUDynMinLim | HvBattUDynMinLim |
-| TX | ImobEngSts2 | ImobEngSts2 |
-| RX | OnBdChrgrHndlSts1 | OnBdChrgrHndlSts1 |
-| TX | PLockFltIndcRe | PLockFltIndcRe |
-| TX | PLockFltLvlRe | PLockFltLvlRe |
-| RX | PLockParkReq | PLockParkReq |
-| TX | PLockParkStsRe | PLockParkStsRe |
-| RX | PrpsnFbLimnIndcn | PrpsnFbLimnIndcn |
-| RX | RearHeatModEnad | RearHeatModEnad |
-| RX | RearHeatPwrAllwd | RearHeatPwrAllwd |
-| TX | WhlMotClrRdyReq | WhlMotClrRdyReq |
-| TX | WhlMotCooltFlowMinReq | WhlMotCooltFlowMinReq |
-| RX | WhlMotSysActvDampgModReq | WhlMotSysActvDampgModReq |
-| TX | WhlMotSysHeatFdBck | WhlMotSysHeatFdBck |
-| TX | WhlMotSysHeatPwrAct | WhlMotSysHeatPwrAct |
-| TX | WhlMotSysHeatPwrMax | WhlMotSysHeatPwrMax |
+## 壳标量（v0.5 保留，41）
 
 - RX **22** / TX **19**
 
-## SystemExtract 组映射（仍未进壳）— 23 = 14 RX + 9 TX
+## 壳组端口（v0.6，21；VehCfg 除外）
 
-| 方向 | Com SignalGroup | 现状 |
-|------|-----------------|------|
-| RX | CrashStsSafe / EngSt1WdSts / EscVariantToDmc / HvSysRlySts / PtTqAtAxleMaxReq / StcStsToDmc / VehModMngtGlbSafe1 / VehMtnSt / VehSpdLgt / WhlMotSysTqAllwd | **0538 Com 直读 Cntr** |
-| RX | ImobEngMgrReq2 / VehBattU | 无 Cntr；未进 HitMask |
-| RX | VehCfgPrm / VehCfgPrmExt | **CarConfig 直连**（0539/053E CCP+NvM） |
-| TX | DmcStsRearToEsc / WhlMotSysSpdActSafe / WhlMotSysTqEst | **053F Com 直发 Cntr**（Trace `0x110`/`0x189`/`0x4C`） |
-| TX | IEMTestFr1..3 / IemGeneric / ImobEngChk2 / WhlMotSysTqAvl | 待 RTE 组壳（无/非 Cntr） |
+| 方向 | Port | SignalGroup | ADT |
+|------|------|-------------|-----|
+| RX | CrashStsSafe | CrashStsSafe | CrashStsSafe_1 |
+| RX | EngSt1WdSts | EngSt1WdSts | EngSt1WdSts_1 |
+| RX | EscVariantToDmc | EscVariantToDmc | EscVariantToDmc_1 |
+| RX | HvSysRlySts | HvSysRlySts | HvSysRlySts_1 |
+| RX | PtTqAtAxleMaxReq | PtTqAtAxleMaxReq | PtTqAtAxleReq_1 |
+| RX | StcStsToDmc | StcStsToDmc | StcStsToDmc_1 |
+| RX | VehModMngtGlbSafe1 | VehModMngtGlbSafe1 | VehModMngtGlbSafe1_2 |
+| RX | VehMtnSt | VehMtnSt | VehMtnStSafe1_2 |
+| RX | VehSpdLgt | VehSpdLgt | VehSpdLgtSafe1_3 |
+| RX | WhlMotSysTqAllwd | WhlMotSysTqAllwd | WhlMotSysTqAllwd_3 |
+| RX | ImobEngMgrReq2 | ImobEngMgrReq2 | ImobEngMgrReq_2 |
+| RX | VehBattU | VehBattU | SysU_4 |
+| TX | DmcStsRearToEsc | DmcStsRearToEsc | DmcStsToEsc_1 |
+| TX | WhlMotSysSpdActSafe | WhlMotSysSpdActSafe | SpdSgnSafe_1 |
+| TX | WhlMotSysTqEst | WhlMotSysTqEst | IsgTqActSafe2_4 |
+| TX | IEMTestFr1 | IEMTestFr1 | DevDataTyp64_2 |
+| TX | IEMTestFr2 | IEMTestFr2 | DevDataTyp64_2 |
+| TX | IEMTestFr3 | IEMTestFr3 | DevDataTyp64_2 |
+| TX | IemGeneric | IemGeneric | ElecDrvGen_4 |
+| TX | ImobEngChk2 | ImobEngChk2 | ImobEngChk_2 |
+| TX | WhlMotSysTqAvl | WhlMotSysTqAvl | WhlMotSysTqAvl_2 |
 
-**0538**：10 路 Cntr HitMask；脚本 `ZCANPRO_IEM_ComGroup_Smoke.py`。  
-**0539/053E**：CCP demo + T8 NvM。  
-**标量 TX**：**已板测**（2026-11-07 Trace `0x51C`/`0x4C`/`0x60`… + ComShell_TxSmoke ALL PASS）。  
-组端口进 `Appl_ComShell` 仍需 **Developer/RTE regen**（勿与标量 v0.5 混淆）。
+## 观测
 
-## 运行时（已 amk）
+- 标量：`Appl_ComShell_*` / `RxOkCnt` / `TxOkCnt`
+- 组：`Appl_ComShell_<Port>` 整包 + `Appl_ComShell_<Port>_Cntr`（有 Cntr 时）
+- `GrpRxOkCnt` / `GrpTxOkCnt`
 
-- Rte：`Rte_Read_*` / `Rte_Write_*` → Com；Step 在 **`Task_Bsw_10ms`**
-- 观测：`Appl_ComShell_*` 与 `RxOkCnt`/`TxOkCnt`
-- `generate_regen25_comshell_v05`：0 Fatal / 0 Errors；ELF `Tasking/Debug/IEM_TC387_BRS.elf`
+## 板测（2026-11-07，`0x260B0541`）
+
+- `ZCANPRO_IEM_ComGroup_Smoke`：**ALL PASS**（28 cycles）
+- UDE：`HitMask=0x3FF`；`GrpRxOkCnt` 上升；`VehSpdLgt_Cntr` 壳与 Com 直读一致；`DmcStsRearToEsc_Cntr` 活；Bringup Ok
 
 ## 后续
 
-1. Developer：9 TX + 剩余 RX 组进 `Appl_ComShell`（VehCfg 可继续直连）
-2. 正式 CCP DB 替换 demo 白名单
-3. T3 / T5 / T7 仪测（见 `BoardArrival_T1_T8.md`）
+1. 正式 CCP DB（CCdB→CSV）
+2. T3 / T5 仪测

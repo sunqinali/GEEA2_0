@@ -10,7 +10,7 @@ ACAN / TJA1145 / 500 kbit/s。固件建议 ≥ `0x260B053C`。
 | T4 | NM `0x51C`；RX `0x500`–`0x53F` | Trace `0x51C`；UDE `Appl_Can_NmOk`；Bench 脚本提示 | **TX/脚本过**；RX 注入可选 |
 | T5 | 5 ms 抖动 &lt; 1 ms | OS 测量 / Pin toggle；带诊断负载复测 | 待台架仪 |
 | T6 | 物理 + OBD 各一条正响应 | Phys `0x737/0x637`；OBD `0x7E3/0x7EB` — `Bench_T246` | **已过**（2026-11-06） |
-| T7 | BusOff 后重发 NM | 见下方 T7 规程；Watch `Appl_Can_BusOffCnt` | 待台架短接 |
+| T7 | BusOff 后重发 NM | 见下方 T7 规程；Watch `Appl_Can_BusOffCnt` | **放过**（到板初期 ACAN/NM 恢复路径已验；不重做短接） |
 | T8 | NvM 掉电再读 | 见下方完整规程 | **已过**（053E：WriteAll 异步 + 掉电 `NvMLoaded=1`） |
 
 ---

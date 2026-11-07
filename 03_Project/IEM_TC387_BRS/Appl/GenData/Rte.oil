@@ -40,7 +40,7 @@
    }:"@RO@@NR@";
 
    TASK Task_Bsw_10ms {
-      ACTIVATION = 1:"@RO@";
+      ACTIVATION = 5:"@RO@";
       PRIORITY = 20:"@RO@";
       SCHEDULE = FULL:"@RO@";
 // TIMING_PROTECTION = FALSE|TRUE; (AUTOSAR OS only)
@@ -51,7 +51,7 @@
    }:"@RO@@NR@";
 
    TASK Task_Com_5ms {
-      ACTIVATION = 1:"@RO@";
+      ACTIVATION = 5:"@RO@";
       PRIORITY = 40:"@RO@";
       SCHEDULE = FULL:"@RO@";
 // TIMING_PROTECTION = FALSE|TRUE; (AUTOSAR OS only)

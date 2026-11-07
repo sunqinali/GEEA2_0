@@ -50,6 +50,11 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Read_CooltTSigForDtElec_CooltTSigForDtElec(
   return Rte_Read_CooltTSigForDtElec_CooltTSigForDtElec(data);
 }
 
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_CrashStsSafe_CrashStsSafe(CrashStsSafe_1 *data)
+{
+  return Rte_Read_CrashStsSafe_CrashStsSafe(data);
+}
+
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_DCChrgnHndlSts_DCChrgnHndlSts(uint8 *data)
 {
   return Rte_Read_DCChrgnHndlSts_DCChrgnHndlSts(data);
@@ -58,6 +63,16 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Read_DCChrgnHndlSts_DCChrgnHndlSts(uint8 *d
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_DrvgCyc_DrvgCyc(uint8 *data)
 {
   return Rte_Read_DrvgCyc_DrvgCyc(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_EngSt1WdSts_EngSt1WdSts(EngSt1WdSts_1 *data)
+{
+  return Rte_Read_EngSt1WdSts_EngSt1WdSts(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_EscVariantToDmc_EscVariantToDmc(EscVariantToDmc_1 *data)
+{
+  return Rte_Read_EscVariantToDmc_EscVariantToDmc(data);
 }
 
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_GearLvrIndcn_GearLvrIndcn(uint8 *data)
@@ -85,6 +100,16 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Read_HvBattUDynMinLim_HvBattUDynMinLim(uint
   return Rte_Read_HvBattUDynMinLim_HvBattUDynMinLim(data);
 }
 
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_HvSysRlySts_HvSysRlySts(HvSysRlySts_1 *data)
+{
+  return Rte_Read_HvSysRlySts_HvSysRlySts(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_ImobEngMgrReq2_ImobEngMgrReq2(ImobEngMgrReq_2 *data)
+{
+  return Rte_Read_ImobEngMgrReq2_ImobEngMgrReq2(data);
+}
+
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_OnBdChrgrHndlSts1_OnBdChrgrHndlSts1(uint8 *data)
 {
   return Rte_Read_OnBdChrgrHndlSts1_OnBdChrgrHndlSts1(data);
@@ -100,6 +125,11 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Read_PrpsnFbLimnIndcn_PrpsnFbLimnIndcn(uint
   return Rte_Read_PrpsnFbLimnIndcn_PrpsnFbLimnIndcn(data);
 }
 
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_PtTqAtAxleMaxReq_PtTqAtAxleMaxReq(PtTqAtAxleReq_1 *data)
+{
+  return Rte_Read_PtTqAtAxleMaxReq_PtTqAtAxleMaxReq(data);
+}
+
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_RearHeatModEnad_RearHeatModEnad(uint8 *data)
 {
   return Rte_Read_RearHeatModEnad_RearHeatModEnad(data);
@@ -113,6 +143,31 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Read_RearHeatPwrAllwd_RearHeatPwrAllwd(uint
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_SpdRotlForWhlsAtAxleRe_SpdRotlForWhlsAtAxleRe(uint16 *data)
 {
   return Rte_Read_SpdRotlForWhlsAtAxleRe_SpdRotlForWhlsAtAxleRe(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_StcStsToDmc_StcStsToDmc(StcStsToDmc_1 *data)
+{
+  return Rte_Read_StcStsToDmc_StcStsToDmc(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_VehBattU_VehBattU(SysU_4 *data)
+{
+  return Rte_Read_VehBattU_VehBattU(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_VehModMngtGlbSafe1_VehModMngtGlbSafe1(VehModMngtGlbSafe1_2 *data)
+{
+  return Rte_Read_VehModMngtGlbSafe1_VehModMngtGlbSafe1(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_VehMtnSt_VehMtnSt(VehMtnStSafe1_2 *data)
+{
+  return Rte_Read_VehMtnSt_VehMtnSt(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_VehSpdLgt_VehSpdLgt(VehSpdLgtSafe1_3 *data)
+{
+  return Rte_Read_VehSpdLgt_VehSpdLgt(data);
 }
 
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_WhlMotSysActvDampgModReq_WhlMotSysActvDampgModReq(uint8 *data)
@@ -135,6 +190,11 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Read_WhlMotSysPwrLimMin_WhlMotSysPwrLimMin(
   return Rte_Read_WhlMotSysPwrLimMin_WhlMotSysPwrLimMin(data);
 }
 
+Std_ReturnType TSC_Appl_ComShell_Rte_Read_WhlMotSysTqAllwd_WhlMotSysTqAllwd(WhlMotSysTqAllwd_3 *data)
+{
+  return Rte_Read_WhlMotSysTqAllwd_WhlMotSysTqAllwd(data);
+}
+
 Std_ReturnType TSC_Appl_ComShell_Rte_Read_WhlMotSysTqReq_WhlMotSysTqReq(uint16 *data)
 {
   return Rte_Read_WhlMotSysTqReq_WhlMotSysTqReq(data);
@@ -142,6 +202,36 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Read_WhlMotSysTqReq_WhlMotSysTqReq(uint16 *
 
 
 
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_DmcStsRearToEsc_DmcStsRearToEsc(const DmcStsToEsc_1 *data)
+{
+  return Rte_Write_DmcStsRearToEsc_DmcStsRearToEsc(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_IEMTestFr1_IEMTestFr1(const DevDataTyp64_2 *data)
+{
+  return Rte_Write_IEMTestFr1_IEMTestFr1(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_IEMTestFr2_IEMTestFr2(const DevDataTyp64_2 *data)
+{
+  return Rte_Write_IEMTestFr2_IEMTestFr2(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_IEMTestFr3_IEMTestFr3(const DevDataTyp64_2 *data)
+{
+  return Rte_Write_IEMTestFr3_IEMTestFr3(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_IemGeneric_IemGeneric(const ElecDrvGen_4 *data)
+{
+  return Rte_Write_IemGeneric_IemGeneric(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_ImobEngChk2_ImobEngChk2(const ImobEngChk_2 *data)
+{
+  return Rte_Write_ImobEngChk2_ImobEngChk2(data);
+}
 
 Std_ReturnType TSC_Appl_ComShell_Rte_Write_ImobEngSts2_ImobEngSts2(uint8 data)
 {
@@ -231,6 +321,21 @@ Std_ReturnType TSC_Appl_ComShell_Rte_Write_WhlMotSysMotT_WhlMotSysMotT(uint8 dat
 Std_ReturnType TSC_Appl_ComShell_Rte_Write_WhlMotSysSpdAct_WhlMotSysSpdAct(sint16 data)
 {
   return Rte_Write_WhlMotSysSpdAct_WhlMotSysSpdAct(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_WhlMotSysSpdActSafe_WhlMotSysSpdActSafe(const SpdSgnSafe_1 *data)
+{
+  return Rte_Write_WhlMotSysSpdActSafe_WhlMotSysSpdActSafe(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_WhlMotSysTqAvl_WhlMotSysTqAvl(const WhlMotSysTqAvl_2 *data)
+{
+  return Rte_Write_WhlMotSysTqAvl_WhlMotSysTqAvl(data);
+}
+
+Std_ReturnType TSC_Appl_ComShell_Rte_Write_WhlMotSysTqEst_WhlMotSysTqEst(const IsgTqActSafe2_4 *data)
+{
+  return Rte_Write_WhlMotSysTqEst_WhlMotSysTqEst(data);
 }
 
 Std_ReturnType TSC_Appl_ComShell_Rte_Write_WhlMotSysUdc_WhlMotSysUdc(uint16 data)

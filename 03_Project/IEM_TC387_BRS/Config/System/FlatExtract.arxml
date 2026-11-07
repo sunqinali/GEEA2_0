@@ -1393,6 +1393,781 @@
                                       </DATA-ELEMENT-IREF>
                                       <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysHeatPwrMax</SYSTEM-SIGNAL-REF>
                                     </SENDER-RECEIVER-TO-SIGNAL-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/CrashStsSafe</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/CrashStsSafe_2/CrashStsSafe</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/CrashStsSafe</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/CrashStsSafe_1/Sts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/CrashStsSafeSts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/CrashStsSafe_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/CrashStsSafeChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/CrashStsSafe_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/CrashStsSafeCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/EngSt1WdSts</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/EngSt1WdSts_4/EngSt1WdSts</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/EngSt1WdSts</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/EngSt1WdSts_1/EngSt1WdSts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/EngSt1WdStsEngSt1WdSts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/EngSt1WdSts_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/EngSt1WdStsChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/EngSt1WdSts_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/EngSt1WdStsCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/EscVariantToDmc</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/EscVariantToDmc_1/EscVariantToDmc</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/EscVariantToDmc</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/EscVariantToDmc_1/EscVariantToDmc</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/EscVariantToDmcEscVariantToDmc</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/EscVariantToDmc_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/EscVariantToDmcChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/EscVariantToDmc_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/EscVariantToDmcCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/HvSysRlySts</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/HvSysRlySts_8/HvSysRlySts</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/HvSysRlySts</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/HvSysRlySts_1/HvSysRlySts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/HvSysRlyStsHvSysRlySts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/HvSysRlySts_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/HvSysRlyStsCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/HvSysRlySts_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/HvSysRlyStsChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/PtTqAtAxleMaxReq</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PtTqAtAxleMaxReq_2/PtTqAtAxleMaxReq</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/PtTqAtAxleMaxReq</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/PtTqAtAxleReq_1/PtTqAtAxleFrntReq</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/PtTqAtAxleMaxReqPtTqAtAxleFrntReq</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/PtTqAtAxleReq_1/PtTqAtAxleReReq</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/PtTqAtAxleMaxReqPtTqAtAxleReReq</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/PtTqAtAxleReq_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/PtTqAtAxleMaxReqChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/PtTqAtAxleReq_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/PtTqAtAxleMaxReqCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/StcStsToDmc</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/StcStsToDmc_3/StcStsToDmc</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/StcStsToDmc</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/StcStsToDmc_1/StcStsToDmcFrnt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/StcStsToDmcFrnt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/StcStsToDmc_1/StcStsToDmcRear</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/StcStsToDmcRear</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/StcStsToDmc_1/EngRotTarSpdDMCFrnt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/StcStsToDmcEngRotTarSpdDMCFrnt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/StcStsToDmc_1/EngRotTarSpdDMCRear</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/StcStsToDmcEngRotTarSpdDMCRear</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/StcStsToDmc_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/StcStsToDmcChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/StcStsToDmc_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/StcStsToDmcCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/VehModMngtGlbSafe1</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehModMngtGlbSafe1_7/VehModMngtGlbSafe1</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/VehModMngtGlbSafe1</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/UsgModSts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1UsgModSts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/CarModSts1</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1CarModSts1</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/CarModSubtypWdCarModSubtyp</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1CarModSubtypWdCarModSubtyp</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/EgyLvlElecMai</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1EgyLvlElecMai</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/EgyLvlElecSubtyp</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1EgyLvlElecSubtyp</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/PwrLvlElecMai</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1PwrLvlElecMai</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/PwrLvlElecSubtyp</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1PwrLvlElecSubtyp</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/FltEgyCnsWdSts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1FltEgyCnsWdSts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1Chks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehModMngtGlbSafe1_2/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehModMngtGlbSafe1Cntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/VehMtnSt</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehMtnSt_10/VehMtnSt</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/VehMtnSt</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehMtnStSafe1_2/VehMtnSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehMtnStVehMtnSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehMtnStSafe1_2/VehMtnStChks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehMtnStChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehMtnStSafe1_2/VehMtnStCntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehMtnStCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/VehSpdLgt</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehSpdLgt_15/VehSpdLgt</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/VehSpdLgt</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehSpdLgtSafe1_3/VehSpdLgtA</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehSpdLgtA</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehSpdLgtSafe1_3/VehSpdLgtQf</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehSpdLgtQf</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehSpdLgtSafe1_3/VehSpdLgtCntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehSpdLgtCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/VehSpdLgtSafe1_3/VehSpdLgtChks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehSpdLgtChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysTqAllwd</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqAllwd_7/WhlMotSysTqAllwd</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/WhlMotSysTqAllwd</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/WhlMotSysTqAllwd_3/WhlMotSysTqAllwd</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqAllwdWhlMotSysTqAllwd</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/WhlMotSysTqAllwd_3/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqAllwdChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/WhlMotSysTqAllwd_3/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqAllwdCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/ImobEngMgrReq2</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/ImobEngMgrReq2_4/ImobEngMgrReq2</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/ImobEngMgrReq2</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngMgrCmdTar1</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngMgrCmdTar1</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngDataMgrReq0</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngDataMgrReq0</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngDataMgrReq1</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngDataMgrReq1</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngDataMgrReq2</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngDataMgrReq2</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngDataMgrReq3</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngDataMgrReq3</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngDataMgrReq4</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngDataMgrReq4</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngDataMgrReq5</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngDataMgrReq5</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngMgrReq_2/ImobEngDataMgrReq6</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngMgrReq2ImobEngDataMgrReq6</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/VehBattU</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/VehBattU_8/VehBattU</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/VehBattU</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/SysU_4/SysU</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehBattUSysU</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/SysU_4/SysUQf</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/VehBattUSysUQf</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/DmcStsRearToEsc</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/DmcStsRearToEsc_2/DmcStsRearToEsc</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/DmcStsRearToEsc</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DmcStsToEsc_1/DmcSts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/DmcStsRearToEscDmcSts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DmcStsToEsc_1/DmcActAppTarTq</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/DmcStsRearToEscDmcActAppTarTq</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DmcStsToEsc_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/DmcStsRearToEscCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DmcStsToEsc_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/DmcStsRearToEscChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DmcStsToEsc_1/DmcSWInfo</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/DmcStsRearToEscDmcSWInfo</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysSpdActSafe</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysSpdActSafe_1/WhlMotSysSpdActSafe</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/WhlMotSysSpdActSafe</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/SpdSgnSafe_1/IsgSpdWSgnTyp</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysSpdActSafeIsgSpdWSgnTyp</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/SpdSgnSafe_1/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysSpdActSafeChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/SpdSgnSafe_1/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysSpdActSafeCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/SpdSgnSafe_1/Qf</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysSpdActSafeQf</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysTqEst</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqEst_10/WhlMotSysTqEst</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/WhlMotSysTqEst</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/IsgTqActSafe2_4/Cntr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqEstCntr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/IsgTqActSafe2_4/Chks</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqEstChks</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/IsgTqActSafe2_4/QualityFactor</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqEstQualityFactor</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/IsgTqActSafe2_4/IsgTqAct</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqEstIsgTqAct</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/IEMTestFr1</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IEMTestFr1_1/IEMTestFr1</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/IEMTestFr1</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte0</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte0</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte1</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte1</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte2</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte2</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte3</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte3</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte4</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte4</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte5</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte5</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte6</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte6</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte7</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr1Byte7</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/IEMTestFr2</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IEMTestFr2_1/IEMTestFr2</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/IEMTestFr2</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte0</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte0</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte1</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte1</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte2</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte2</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte3</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte3</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte4</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte4</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte5</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte5</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte6</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte6</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte7</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr2Byte7</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/IEMTestFr3</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IEMTestFr3_3/IEMTestFr3</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/IEMTestFr3</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte0</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte0</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte1</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte1</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte2</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte2</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte3</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte3</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte4</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte4</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte5</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte5</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte6</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte6</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/DevDataTyp64_2/Byte7</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IEMTestFr3Byte7</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/IemGeneric</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/IemGeneric_12/IemGeneric</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/IemGeneric</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/EMQnty</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericEMQnty</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/EMSeqNr</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericEMSeqNr</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/DTCSts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericDTCSts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/DTCLow</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericDTCLow</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/DTCMid</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericDTCMid</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/DTCHig</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericDTCHig</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/TypeInfo</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericTypeInfo</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/MotTAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericMotTAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/InvrtTAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericInvrtTAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/FltAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericFltAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/SpdAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericSpdAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/IacAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericIacAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/UDcAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericUDcAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/RslAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericRslAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/ADAlrmSt</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericADAlrmSt</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ElecDrvGen_4/ModStatusRms</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/IemGenericModStatusRms</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/ImobEngChk2</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/ImobEngChk2_4/ImobEngChk2</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/ImobEngChk2</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngChkSts</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngChkSts</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngDataChk0</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngDataChk0</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngDataChk1</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngDataChk1</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngDataChk2</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngDataChk2</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngDataChk3</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngDataChk3</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngDataChk4</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngDataChk4</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngDataChk5</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngDataChk5</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/ImobEngChk_2/ImobEngDataChk6</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/ImobEngChk2ImobEngDataChk6</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                    <SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
+                                      <DATA-ELEMENT-IREF>
+                                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/COMPOSITIONTYPE/Appl_ComShell</CONTEXT-COMPONENT-REF>
+                                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/COM/VECTOR/CFG/WORKFLOW/SYSDESC/SYNC/SYSTEM/COMPOSITIONTYPE</CONTEXT-COMPOSITION-REF>
+                                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/Appl_ComShell/ComponentTypes/Appl_ComShell/WhlMotSysTqAvl</CONTEXT-PORT-REF>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/WhlMotSysTqAvl_4/WhlMotSysTqAvl</TARGET-DATA-PROTOTYPE-REF>
+                                      </DATA-ELEMENT-IREF>
+                                      <SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/SignalGroup/WhlMotSysTqAvl</SIGNAL-GROUP-REF>
+                                      <TYPE-MAPPING>
+                                        <SENDER-REC-RECORD-TYPE-MAPPING>
+                                          <RECORD-ELEMENT-MAPPINGS>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/WhlMotSysTqAvl_2/TqAvlMax</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqAvlTqAvlMax</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                            <SENDER-REC-RECORD-ELEMENT-MAPPING>
+                              <APPLICATION-RECORD-ELEMENT-REF DEST="APPLICATION-RECORD-ELEMENT">/ApplicationDataTypes/WhlMotSysTqAvl_2/TqAvlMin</APPLICATION-RECORD-ELEMENT-REF>
+                              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WhlMotSysTqAvlTqAvlMin</SYSTEM-SIGNAL-REF>
+                            </SENDER-REC-RECORD-ELEMENT-MAPPING>
+                                          </RECORD-ELEMENT-MAPPINGS>
+                                        </SENDER-REC-RECORD-TYPE-MAPPING>
+                                      </TYPE-MAPPING>
+                                    </SENDER-RECEIVER-TO-SIGNAL-GROUP-MAPPING>
                                   </DATA-MAPPINGS>
                                 </SYSTEM-MAPPING>
                               </MAPPINGS>

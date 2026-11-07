@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """IEM TC387 BRS — ZCANPRO Com RX signal-group smoke (10 Cntr groups)
 
-FwStamp 0x260B0536+: Appl_ComGroup_HitMask expect 0x3FF after burst.
-UDE: Appl_ComGroup_HitMask, Appl_ComGroup_Cntr[0..9], AnyOk, OkCnt
+FwStamp 0x260B0541+: group shell + legacy ComGroup.
+UDE legacy: Appl_ComGroup_HitMask==0x3FF, Cntr[0..9], AnyOk, OkCnt
+UDE shell:  Appl_ComShell_GrpRxOkCnt rising; VehSpdLgt_Cntr / VehModMngtGlbSafe1_Cntr / …
 """
 
 from __future__ import print_function
@@ -72,16 +73,20 @@ def burst(bus_id, seconds=3.0, period_s=0.1):
 
 def run_cases(bus_id):
     zcanpro.write_log("=== ComGroup RX full Cntr set ===")
-    zcanpro.write_log("WATCH: HitMask==0x3FF; Cntr[3]/[7] also live; FwStamp=0x260B0538")
+    zcanpro.write_log(
+        "WATCH: HitMask==0x3FF; GrpRxOkCnt↑; VehSpdLgt_Cntr live; FwStamp=0x260B0541"
+    )
     if not burst(bus_id):
         zcanpro.write_log("FAIL  TX burst")
         return False
-    zcanpro.write_log("PASS  TX burst — confirm UDE Appl_ComGroup_HitMask=0x3FF")
+    zcanpro.write_log(
+        "PASS  TX burst — UDE: HitMask=0x3FF and/or Appl_ComShell_GrpRxOkCnt + *_Cntr"
+    )
     return True
 
 
 def z_main():
-    zcanpro.write_log("IEM_TC387_BRS ZCANPRO_IEM_ComGroup_Smoke start")
+    zcanpro.write_log("IEM_TC387_BRS ZCANPRO_IEM_ComGroup_Smoke start (0541 group shell)")
     buses = zcanpro.get_buses()
     zcanpro.write_log("buses=" + str(buses))
     if not buses:
