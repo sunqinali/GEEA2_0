@@ -10,7 +10,7 @@ ACAN / TJA1145 / 500 kbit/s。固件建议 ≥ `0x260B053C`。
 | T4 | NM `0x51C`；RX `0x500`–`0x53F` | Trace `0x51C`；UDE `Appl_Can_NmOk`；Bench 脚本提示 | **TX/脚本过**；RX 注入可选 |
 | T5 | 5 ms 抖动 &lt; 1 ms | OS 测量 / Pin toggle；带诊断负载复测 | 待台架仪 |
 | T6 | 物理 + OBD 各一条正响应 | Phys `0x737/0x637`；OBD `0x7E3/0x7EB` — `Bench_T246` | **已过**（2026-11-06） |
-| T7 | BusOff 后重发 NM | 短路/工具造 BusOff → `0x51C` 恢复 | 待台架 |
+| T7 | BusOff 后重发 NM | 见下方 T7 规程；Watch `Appl_Can_BusOffCnt` | 待台架短接 |
 | T8 | NvM 掉电再读 | 见下方完整规程 | **已过**（053E：WriteAll 异步 + 掉电 `NvMLoaded=1`） |
 
 ---
@@ -133,9 +133,17 @@ ACAN / TJA1145 / 500 kbit/s。固件建议 ≥ `0x260B053C`。
 
 ---
 
+## T7 规程（BusOff → NM 恢复）— 需人为扰总线
+
+1. 正常：Trace 见 `0x51C`；`Appl_Can_NmOk=1`；`Appl_Can_BusOffCnt` 稳定  
+2. 短接 CAN_H–CAN_L（或拔掉终端）约 1–2 s → `Appl_Can_BusOffCnt` 应升高，`Appl_Dem_BusOffActive` 可能为 1  
+3. 恢复接线 → 数秒内 Trace 再出现 `0x51C`；`NmOk` 回到 1  
+4. PASS：BusOff 计数曾增加且 NM 恢复发送  
+
 ## 脚本索引
 
 - `ZCANPRO_IEM_Diag_Smoke.py` — 物理 UDS  
 - `ZCANPRO_IEM_CarConfig_Smoke.py` — CCP / E103（T8 前若跑完需 ClearFaultsReq）  
 - `ZCANPRO_IEM_ComGroup_Smoke.py` — 10 路 Cntr  
 - `ZCANPRO_IEM_Bench_T246.py` — T2/T4 提示 + T6 物理/OBD  
+- `ZCANPRO_IEM_ComShell_TxSmoke.py` — 标量壳 TX 存活（`0x51C`/`0x4C` + `TxOkCnt`）  

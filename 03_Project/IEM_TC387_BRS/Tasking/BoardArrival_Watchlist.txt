@@ -30,8 +30,11 @@ Flash: python Tasking\_elf2ihex.py then MemtoolCli PROGRAM *.hex (mass-erase fir
 MPU: AfterGenerate _patch_mpu_barrier_write.py opens Region0-3 R/W on all PS
 Appl_Diag_ReadyApproxMs   after DemDeferred=0; expect <<2500 for T2
 Appl_Can_NmOk / NmState   1 / NORMAL_OPERATION (ZCANPRO on ACAN 500k: NM 0x51C; pins P32.3/P32.2)
+Appl_ComShell_StepCnt / TxOkCnt  rising = ComShell Step+TX alive (053E+)
+Appl_ComShell_ModSts / Udc       living TX pattern → Trace 0x4C
 Appl_ComShell_RxOkCnt     rises when CarTiGlb received (needs bus)
 Appl_ComShell_CarTiGlb    live global time from COM
+ZCANPRO: Tasking/ZCANPRO_IEM_ComShell_TxSmoke.py
 Appl_NvM_FeeMainJob       1=INITGC then →0; stuck=erase/Fls issue
 Appl_NvM_FeeInitGCState   7=virgin prep, 1=INVALID→erase, 6=FAIL
 Appl_NvM_FeePendReq       1=no pend; 3=READ hung (051D bug)

@@ -56,13 +56,19 @@
 
 - RX **22** / TX **19**
 
-## SystemExtract 组映射（仍未进壳）
+## SystemExtract 组映射（仍未进壳）— 23 = 14 RX + 9 TX
 
-共 **23** 条组信号（含 `VehCfgPrm` / `VehCfgPrmExt`）。CarConfig BlkID 已由 `Appl_CarConfig_Bringup` 直接 `Com_ReceiveSignalGroup`；CCP 值表待 DB。
+| 方向 | Com SignalGroup | 现状 |
+|------|-----------------|------|
+| RX | CrashStsSafe / EngSt1WdSts / EscVariantToDmc / HvSysRlySts / PtTqAtAxleMaxReq / StcStsToDmc / VehModMngtGlbSafe1 / VehMtnSt / VehSpdLgt / WhlMotSysTqAllwd | **0538 Com 直读 Cntr** |
+| RX | ImobEngMgrReq2 / VehBattU | 无 Cntr；未进 HitMask |
+| RX | VehCfgPrm / VehCfgPrmExt | **CarConfig 直连**（0539/053E CCP+NvM） |
+| TX | DmcStsRearToEsc / IEMTestFr1..3 / IemGeneric / ImobEngChk2 / WhlMotSysSpdActSafe / WhlMotSysTqAvl / WhlMotSysTqEst | 待 RTE 组壳 |
 
-**0538 直读观测（非 RTE 壳）**：`Appl_ComGroup_Bringup` 10 路 Cntr HitMask=`0x3FF` 已板测；脚本 `ZCANPRO_IEM_ComGroup_Smoke.py`。其余组端口进 `Appl_ComShell` 仍需 Developer/RTE regen。
-
-**0539 CCP**：`Appl_CarConfig` 影子 Posn2..8 + demo 白名单 CCP#1..7；正式 DB 到位后替换 `Appl_CarConfig_CcpTable[]`。
+**0538**：10 路 Cntr HitMask；脚本 `ZCANPRO_IEM_ComGroup_Smoke.py`。  
+**0539/053E**：CCP demo + T8 NvM。  
+**标量 TX**：`ZCANPRO_IEM_ComShell_TxSmoke.py`（Trace `0x51C`/`0x4C` + UDE `TxOkCnt`）。  
+组端口进 `Appl_ComShell` 仍需 **Developer/RTE regen**（勿与标量 v0.5 混淆）。
 
 ## 运行时（已 amk）
 
@@ -72,5 +78,6 @@
 
 ## 后续
 
-1. 组信号（`VehCfgPrm` 等）进壳或保持 CarConfig 直连
-2. 板测 RX/TX；CCP DB / T1–T8 等板
+1. Developer：9 TX + 剩余 RX 组进 `Appl_ComShell`（VehCfg 可继续直连）
+2. 正式 CCP DB 替换 demo 白名单
+3. T3 / T5 / T7 仪测（见 `BoardArrival_T1_T8.md`）
