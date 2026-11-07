@@ -8,11 +8,11 @@
 | --- | --- |
 | 当前主工程 | `03_Project/IEM_TC387_BRS`（Tasking + vBRS），SIP **CBD2000642** |
 | 基线工程 | `03_Project/IEM_TC387`（CBD1900078）仍保留作对照，不再作为 bring-up 主线 |
-| 板测固件 | **`0x260B0541`**：`Appl_ComShell` v0.6 组壳（41 标量 + 21 组；VehCfg 仍 CarConfig） |
-| 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
+| 板测固件 | **`0x260B0542` 已板过**：BswM 扩展（ComM/CanSM MRP + RULE_ComM_Full + ProgReset IPDU stop）；组壳基线 0541 |
+| 无板完成 | 4 核 OS/EcuM、MCAL 通信最小集、CanTrcv TJA1145、Can 栈观测、Com IPDU 启动、BswM EnterRun/ProgReset/**ComM FULL 重同步**、DET/Smoke、NvM/Fee/Fls、**DemUseNvm** |
 | TLF Wdg | **暂停**：053A 路径曾触发 PORST\|STBYR 复位环；维持 Port **TSTM HIGH**，不启用 `Wdg_30_TLF35584` 正式喂狗 |
 | BswM vs Appl | **模式/请求走 BswM**；**观测/Smoke 留 Appl**；`InitAfterOs` 持 Can→Dem_Init/Dcm（不整包搬 BswM） |
-| 当前停点 | CCdB / T3·T5 **暂缓**；组壳 0541 已板过并已 push；下一步另定 |
+| 当前停点 | BswM 扩展 **PASS**（`OnComMFullCnt=2`，Diag_Smoke 5/5）；CCdB / T3·T5 仍暂缓 |
 | 阶段 4 SW（2026-11-04） | ProgConditions；CanSM BusOff→Dem；CarConfig/E103；**CarConfig 状态 NvM**；DemUseNvm；EcuM ReadAll/WriteAll；0x34→NRC11 |
 | 阶段 5 组壳（2026-11-07） | v0.6 **已板过**：HitMask=`0x3FF`；`GrpRxOkCnt`↑；壳/Com `*_Cntr` 同步；`ComGroup_Smoke` ALL PASS |
 | 详档 | `03_Project/IEM_TC387_BRS/README.md` |
@@ -133,7 +133,7 @@ DaVinci 工程名以 BRS 为准：`IEM_TC387_BRS`，ECU Instance 选提取中的
 - OS：只建 Core 0–Core 3；BRS `ECUM_NUMBER_OF_CORES=4`，`EcuM_StartOS` StartCore(1..3)。
 - 任务：`Task_Com_5ms`、`Task_Bsw_10ms`（Core 0）；`Task_Appl_10ms` / `100ms`（Core 2）。**注意**：BSW 观测采样放 Core0（`Spi_MainFunction_Handling` 旁路），勿在 Core2 调 BSW API。
 - EcuM：DriverInitOne 含 Mcu→Port→Spi→CanTrcv→Can→CanIf→CanSM→ComM…；Com_Init 后启动 IPDU 组。
-- BswM：`AL_EnterRun` = Allow + ComM FULL + `BswMPduGroupSwitch` + DM；`AL_ProgReset` = `Appl_BswM_ProgRequest()` + SelectReset + GoDown。
+- BswM：`AL_EnterRun` = Allow + ComM FULL + `BswMPduGroupSwitch` + DM；`RULE_ComM_Full` → `Appl_BswM_OnComMFull`；`AL_ProgReset` = IPDU stop + `Appl_BswM_ProgRequest()` + SelectReset + GoDown；MRP ComM/CanSM。
 - 启动预算 / 0x3E < 2.5 s：配置已铺，**到板用 T2 验证**。
 
 出口：四核 Idle + 5 ms 抖动 < 1 ms — **软件可跑，出口测量待板。**

@@ -1,0 +1,138 @@
+import static com.vector.cfg.automation.api.ScriptApi.*
+
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.BswM
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmarbitration.bswmmodecondition.bswmconditiontype.EBswMConditionType
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmarbitration.bswmmoderequestport.bswmrequestprocessing.EBswMRequestProcessing
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmarbitration.bswmrule.bswmruleinitstate.EBswMRuleInitState
+import com.vector.cfg.automation.model.ecuc.microsar.bswm.bswmconfig.bswmmodecontrol.bswmactionlist.bswmactionlistexecution.EBswMActionListExecution
+import com.vector.cfg.automation.model.ecuc.microsar.comm.ComM
+import com.vector.cfg.automation.model.ecuc.microsar.com.Com
+
+/**
+ * Expand BswM beyond EnterRun/ProgReset:
+ *  - MRP ComM + CanSM indications (PropulsionCAN)
+ *  - RULE_ComM_Full → Appl_BswM_OnComMFull (Dcm ComM re-sync after late Dcm_Init)
+ *  - AL_ProgReset: stop baseline Com I-PDU groups before ProgRequest/GoDown
+ *
+ * Keeps Can/Dem/Dcm module Init in Appl_Bsw_InitAfterOs (board-proven timing).
+ */
+daVinci {
+    scriptDescription "BswM: ComM/CanSM indications, ComM FULL Dcm resync, ProgReset IPDU stop"
+
+    scriptTask("ExpandBswM", DV_PROJECT) {
+        taskDescription "Wire ComM/CanSM ports + ComM FULL callout + ProgReset ComIpduStop"
+        code {
+            transaction {
+                def bswM = bswmdModel(BswM.DefRef).single
+                def comm = bswmdModel(ComM.DefRef).single
+                def com = bswmdModel(Com.DefRef).single
+
+                def channel = comm.comMConfigSet.comMChannel.byName("PropulsionCAN_IEM_19020f5a")
+                def comCfg = com.comConfig
+                def rxMpg = comCfg.comIPduGroup.byName("RxMPG_PropulsionCAN_aad5aa75")
+                def rxSpg = comCfg.comIPduGroup.byName("RxSPG_PropulsionCAN_fca0cb9e")
+                def txMpg = comCfg.comIPduGroup.byName("TxMPG_PropulsionCAN_3709a166")
+                def txSpg = comCfg.comIPduGroup.byName("TxSPG_PropulsionCAN_617cc08d")
+
+                def cfg = bswM.bswMConfig.byName("BswMConfig")
+                def arb = cfg.bswMArbitrationOrCreate
+                def ctrl = cfg.bswMModeControlOrCreate
+
+                def ensure = { list, String name ->
+                    list.exists(name) ? list.byName(name) : list.createAndAdd(name)
+                }
+                def linkOnce = { list, target ->
+                    boolean linked = false
+                    list.each { ref ->
+                        if (ref.refTarget != null && ref.refTarget.shortname == target.shortname) {
+                            linked = true
+                        }
+                    }
+                    if (!linked) {
+                        list.createAndAdd().setRefTargetMdf(target.mdfObject)
+                    }
+                }
+                def clearAndLink = { list, targets ->
+                    while (list.size() > 0) {
+                        list.get(0).remove()
+                    }
+                    targets.each { t ->
+                        list.createAndAdd().setRefTarget(t)
+                    }
+                }
+
+                // --- Mode request ports ---
+                def portComM = ensure(arb.bswMModeRequestPort, "MRP_ComM_PropulsionCAN")
+                portComM.bswMRequestProcessingOrCreate.value = EBswMRequestProcessing.BSWM_IMMEDIATE
+                portComM.bswMArbitrateOnInitOrCreate.value = true
+                def srcComM = portComM.bswMModeRequestSourceOrCreate.bswMComMIndicationOrCreate
+                srcComM.bswMComMChannelRefOrCreate.setRefTarget(channel)
+                def initComM = portComM.bswMModeInitValueOrCreate.bswMBswModeInitValueOrCreate
+                initComM.bswMBswModeInitValueModeOrCreate.value = "COMM_NO_COMMUNICATION"
+
+                def portCanSM = ensure(arb.bswMModeRequestPort, "MRP_CanSM_PropulsionCAN")
+                portCanSM.bswMRequestProcessingOrCreate.value = EBswMRequestProcessing.BSWM_DEFERRED
+                portCanSM.bswMArbitrateOnInitOrCreate.value = true
+                def srcCanSM = portCanSM.bswMModeRequestSourceOrCreate.bswMCanSMIndicationOrCreate
+                srcCanSM.bswMCanSMChannelRefOrCreate.setRefTarget(channel)
+                def initCanSM = portCanSM.bswMModeInitValueOrCreate.bswMBswModeInitValueOrCreate
+                initCanSM.bswMBswModeInitValueModeOrCreate.value = "CANSM_BSWM_NO_COMMUNICATION"
+
+                // --- ComM FULL → Dcm resync ---
+                def condFull = ensure(arb.bswMModeCondition, "COND_ComM_FULL")
+                condFull.bswMConditionTypeOrCreate.value = EBswMConditionType.BSWM_EQUALS
+                condFull.bswMConditionModeOrCreate.setRefTarget(portComM)
+                condFull.bswMConditionValueOrCreate.bswMBswModeOrCreate.bswMBswRequestedModeOrCreate.value = "COMM_FULL_COMMUNICATION"
+
+                def exprFull = ensure(arb.bswMLogicalExpression, "EXP_ComM_FULL")
+                linkOnce(exprFull.bswMArgumentRef, condFull)
+
+                def actDcmResync = ensure(ctrl.bswMAction, "ACT_DcmComMResync")
+                def callout = actDcmResync.bswMAvailableActionsOrCreate.bswMUserCalloutOrCreate
+                callout.bswMUserCalloutFunctionOrCreate.value = "Appl_BswM_OnComMFull"
+                callout.bswMCreateCalloutOrCreate.value = false
+
+                def listFull = ensure(ctrl.bswMActionList, "AL_ComMFullEntered")
+                listFull.bswMActionListExecutionOrCreate.value = EBswMActionListExecution.BSWM_TRIGGER
+                def itemResync = ensure(listFull.bswMActionListItem, "ACT_DcmComMResync")
+                itemResync.bswMActionListItemIndexOrCreate.value = 0
+                itemResync.bswMAbortOnFailOrCreate.value = false
+                itemResync.bswMActionListItemRefOrCreate.setRefTargetMdf(actDcmResync.mdfObject)
+
+                def ruleFull = ensure(arb.bswMRule, "RULE_ComM_Full")
+                ruleFull.bswMRuleIdOrCreate.value = 2
+                ruleFull.bswMRuleInitStateOrCreate.value = EBswMRuleInitState.BSWM_FALSE
+                ruleFull.bswMNestedExecutionOnlyOrCreate.value = false
+                ruleFull.bswMRuleExpressionRefOrCreate.setRefTargetMdf(exprFull.mdfObject)
+                ruleFull.bswMRuleTrueActionListOrCreate.setRefTargetMdf(listFull.mdfObject)
+
+                // --- ProgReset: stop IPDU groups first ---
+                def actIpduStop = ensure(ctrl.bswMAction, "ACT_ComIpduStop")
+                def pduStop = actIpduStop.bswMAvailableActionsOrCreate.bswMPduGroupSwitchOrCreate
+                pduStop.bswMPduGroupSwitchReinitOrCreate.value = false
+                clearAndLink(pduStop.bswMEnabledPduGroupRef, [])
+                clearAndLink(pduStop.bswMDisabledPduGroupRef, [rxMpg, rxSpg, txMpg, txSpg])
+
+                def listProg = ensure(ctrl.bswMActionList, "AL_ProgReset")
+                listProg.bswMActionListExecutionOrCreate.value = EBswMActionListExecution.BSWM_TRIGGER
+
+                def itemStop = ensure(listProg.bswMActionListItem, "ACT_ComIpduStop")
+                itemStop.bswMActionListItemIndexOrCreate.value = 0
+                itemStop.bswMAbortOnFailOrCreate.value = false
+                itemStop.bswMActionListItemRefOrCreate.setRefTargetMdf(actIpduStop.mdfObject)
+
+                // Re-index existing ProgReset items (ProgRequest/SelectReset/GoDown)
+                def itemProg = ensure(listProg.bswMActionListItem, "ACT_ProgRequest")
+                itemProg.bswMActionListItemIndexOrCreate.value = 1
+                def itemReset = ensure(listProg.bswMActionListItem, "ACT_SelectReset")
+                itemReset.bswMActionListItemIndexOrCreate.value = 2
+                def itemDown = ensure(listProg.bswMActionListItem, "ACT_GoDown")
+                itemDown.bswMActionListItemIndexOrCreate.value = 3
+
+                scriptLogger.info("ExpandBswM: MRP ComM/CanSM, RULE_ComM_Full→Appl_BswM_OnComMFull, AL_ProgReset+ComIpduStop")
+            }
+            activeProject().saveProject()
+            scriptLogger.info("Project saved — generate BswM next")
+        }
+    }
+}

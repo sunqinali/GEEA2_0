@@ -21,7 +21,7 @@
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
  *              File: BswM_Lcfg.c
- *   Generation Time: 2026-11-06 09:19:26
+ *   Generation Time: 2026-11-07 16:14:26
  *           Project: IEM_TC387_BRS - Version 1
  *          Delivery: CBD2000642_D01
  *      Tool Version: DaVinci Configurator  5.22.45 SP3
@@ -42,6 +42,9 @@
 /* PRQA S 0857 EOF */ /* MD_MSR_1.1_857 */
 #include "BswM.h"
 #include "BswM_Private_Cfg.h"
+#include "Appl_Com_Bringup.h"
+#include "Appl_BswM_ProgRequest.h"
+#include "Appl_BswM_OnComMFull.h"
 #include "SchM_BswM.h"
 
 #if !defined (BSWM_LOCAL)
@@ -127,6 +130,7 @@ BSWM_LOCAL FUNC(void, BSWM_CODE) BswM_InitGenVarAndInitAL_BSWM_SINGLEPARTITION(B
  */
 BSWM_LOCAL FUNC(Std_ReturnType, BSWM_CODE) BswM_ActionList_AL_EnterRun(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx);
 BSWM_LOCAL FUNC(Std_ReturnType, BSWM_CODE) BswM_ActionList_AL_ProgReset(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx);
+BSWM_LOCAL FUNC(Std_ReturnType, BSWM_CODE) BswM_ActionList_AL_ComMFullEntered(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx);
 /*! \} */ /* End of sharing description for BswMActionListFunctions */
 /*! \} */ /* End of group BswMActionListFunctions */
 
@@ -150,6 +154,7 @@ BSWM_LOCAL FUNC(Std_ReturnType, BSWM_CODE) BswM_ActionList_AL_ProgReset(BswM_PCP
  */
 BSWM_LOCAL FUNC(BswM_HandleType, BSWM_CODE) BswM_Rule_RULE_EnterRun(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx);
 BSWM_LOCAL FUNC(BswM_HandleType, BSWM_CODE) BswM_Rule_RULE_ProgReset(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx);
+BSWM_LOCAL FUNC(BswM_HandleType, BSWM_CODE) BswM_Rule_RULE_ComM_Full(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx);
 /*! \} */ /* End of sharing description for BswMRuleFunctions */
 /*! \} */ /* End of group BswMRuleFunctions */
 /* PRQA L:FUNCTIONDECLARATIONS */
@@ -183,6 +188,7 @@ VAR(uint8, BSWM_VAR_NOINIT) BswM_PduGroupControlInvocation;
 #include "BswM_vMemMap.h"
 
 /* PRQA S 3218 3 */ /* MD_BswM_3218 */
+VAR(Com_IpduGroupVector, BSWM_VAR_NOINIT) BswM_ComIPduGroupState;
 VAR(Com_IpduGroupVector, BSWM_VAR_NOINIT) BswM_ComIPduGroupReinitState;
 VAR(Com_IpduGroupVector, BSWM_VAR_NOINIT) BswM_ComRxIPduGroupDMState;
 
@@ -234,10 +240,37 @@ VAR(Com_IpduGroupVector, BSWM_VAR_NOINIT) BswM_ComRxIPduGroupDMState;
 /*lint -save -esym(961, 19.1) */
 #include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
 /*lint -restore */
-CONST(BswM_ActionListsType, BSWM_CONST) BswM_ActionLists[2] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
-    /* Index    FctPtr                              Comment                   Referable Keys */
-  { /*     0 */ BswM_ActionList_AL_EnterRun  },  /* [Priority: 0] */  /* [AL_AL_EnterRun] */
-  { /*     1 */ BswM_ActionList_AL_ProgReset }   /* [Priority: 0] */  /* [AL_AL_ProgReset] */
+CONST(BswM_ActionListsType, BSWM_CONST) BswM_ActionLists[3] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
+    /* Index    FctPtr                                    Comment                   Referable Keys */
+  { /*     0 */ BswM_ActionList_AL_EnterRun        },  /* [Priority: 0] */  /* [AL_AL_EnterRun] */
+  { /*     1 */ BswM_ActionList_AL_ProgReset       },  /* [Priority: 0] */  /* [AL_AL_ProgReset] */
+  { /*     2 */ BswM_ActionList_AL_ComMFullEntered }   /* [Priority: 0] */  /* [AL_AL_ComMFullEntered] */
+};
+#define BSWM_STOP_SEC_CONST_UNSPECIFIED
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+
+/**********************************************************************************************************************
+  BswM_ImmediateUser
+**********************************************************************************************************************/
+/** 
+  \var    BswM_ImmediateUser
+  \brief  Contains all immediate request ports.
+  \details
+  Element             Description
+  MaskedBits          contains bitcoded the boolean data of BswM_ForcedOfImmediateUser, BswM_OnInitOfImmediateUser, BswM_RulesIndUsedOfImmediateUser
+  RulesIndEndIdx      the end index of the 0:n relation pointing to BswM_RulesInd
+  RulesIndStartIdx    the start index of the 0:n relation pointing to BswM_RulesInd
+*/ 
+#define BSWM_START_SEC_CONST_UNSPECIFIED
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+CONST(BswM_ImmediateUserType, BSWM_CONST) BswM_ImmediateUser[2] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
+    /* Index    MaskedBits  RulesIndEndIdx  RulesIndStartIdx        Comment                                       Referable Keys */
+  { /*     0 */      0x03u,             1u,               0u },  /* [Name: MRP_ComM_PropulsionCAN]    */  /* [MRP_MRP_ComM_PropulsionCAN, COMM_CHANNEL_0] */
+  { /*     1 */      0x05u,             2u,               1u }   /* [Name: MRP_DcmApplicationUpdated] */  /* [MRP_MRP_DcmApplicationUpdated, DCM_APPL_UPDATE_0] */
 };
 #define BSWM_STOP_SEC_CONST_UNSPECIFIED
 /*lint -save -esym(961, 19.1) */
@@ -299,12 +332,34 @@ CONST(BswM_PartitionIdentifiersType, BSWM_CONST) BswM_PartitionIdentifiers[1] = 
 /*lint -save -esym(961, 19.1) */
 #include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
 /*lint -restore */
-CONST(BswM_RulesType, BSWM_CONST) BswM_Rules[2] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
+CONST(BswM_RulesType, BSWM_CONST) BswM_Rules[3] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
     /* Index    Id  RuleStatesIdx  FctPtr                          Referable Keys */
   { /*     0 */ 0u,            0u, BswM_Rule_RULE_EnterRun  },  /* [R_RULE_EnterRun, MRP_MRP_EcuMIndication] */
-  { /*     1 */ 1u,            1u, BswM_Rule_RULE_ProgReset }   /* [R_RULE_ProgReset, MRP_MRP_DcmApplicationUpdated] */
+  { /*     1 */ 1u,            1u, BswM_Rule_RULE_ProgReset },  /* [R_RULE_ProgReset, MRP_MRP_DcmApplicationUpdated] */
+  { /*     2 */ 2u,            2u, BswM_Rule_RULE_ComM_Full }   /* [R_RULE_ComM_Full, MRP_MRP_ComM_PropulsionCAN] */
 };
 #define BSWM_STOP_SEC_CONST_UNSPECIFIED
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+
+/**********************************************************************************************************************
+  BswM_RulesInd
+**********************************************************************************************************************/
+/** 
+  \var    BswM_RulesInd
+  \brief  the indexes of the 1:1 sorted relation pointing to BswM_Rules
+*/ 
+#define BSWM_START_SEC_CONST_8BIT
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+CONST(BswM_RulesIndType, BSWM_CONST) BswM_RulesInd[2] = {  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
+  /* Index     RulesInd      Referable Keys */
+  /*     0 */        2u,  /* [MRP_MRP_ComM_PropulsionCAN] */
+  /*     1 */        1u   /* [MRP_MRP_DcmApplicationUpdated] */
+};
+#define BSWM_STOP_SEC_CONST_8BIT
 /*lint -save -esym(961, 19.1) */
 #include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
 /*lint -restore */
@@ -324,8 +379,29 @@ VAR(BswM_ActionListQueueUType, BSWM_VAR_NOINIT) BswM_ActionListQueue;  /* PRQA S
   /* Index        Referable Keys */
   /*     0 */  /* [AL_AL_EnterRun] */
   /*     1 */  /* [AL_AL_ProgReset] */
+  /*     2 */  /* [AL_AL_ComMFullEntered] */
 
 #define BSWM_STOP_SEC_VAR_NOINIT_8BIT
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+
+/**********************************************************************************************************************
+  BswM_ComMChannelState
+**********************************************************************************************************************/
+/** 
+  \var    BswM_ComMChannelState
+  \brief  Variable to store current mode of BswMComMIndication mode request ports.
+*/ 
+#define BSWM_START_SEC_VAR_NOINIT_UNSPECIFIED
+/*lint -save -esym(961, 19.1) */
+#include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
+/*lint -restore */
+VAR(ComM_ModeType, BSWM_VAR_NOINIT) BswM_ComMChannelState[1];  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
+  /* Index        Referable Keys */
+  /*     0 */  /* [COMM_CHANNEL_0, MRP_MRP_ComM_PropulsionCAN] */
+
+#define BSWM_STOP_SEC_VAR_NOINIT_UNSPECIFIED
 /*lint -save -esym(961, 19.1) */
 #include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
 /*lint -restore */
@@ -401,9 +477,10 @@ VAR(BswM_InitializedType, BSWM_VAR_NOINIT) BswM_Initialized;  /* PRQA S 1514, 15
 /*lint -save -esym(961, 19.1) */
 #include "BswM_vMemMap.h"  /* PRQA S 5087 */  /* MD_MSR_MemMap */
 /*lint -restore */
-VAR(BswM_ModeRequestQueueType, BSWM_VAR_NOINIT) BswM_ModeRequestQueue[1];  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
+VAR(BswM_ModeRequestQueueType, BSWM_VAR_NOINIT) BswM_ModeRequestQueue[2];  /* PRQA S 1514, 1533 */  /* MD_CSL_ObjectOnlyAccessedOnce */
   /* Index        Referable Keys */
-  /*     0 */  /* [MRP_MRP_DcmApplicationUpdated, DCM_APPL_UPDATE_0] */
+  /*     0 */  /* [MRP_MRP_ComM_PropulsionCAN, COMM_CHANNEL_0] */
+  /*     1 */  /* [MRP_MRP_DcmApplicationUpdated, DCM_APPL_UPDATE_0] */
 
 #define BSWM_STOP_SEC_VAR_NOINIT_8BIT
 /*lint -save -esym(961, 19.1) */
@@ -451,6 +528,7 @@ VAR(BswM_RuleStatesUType, BSWM_VAR_NOINIT) BswM_RuleStates;  /* PRQA S 0759, 151
   /* Index        Referable Keys */
   /*     0 */  /* [R_RULE_EnterRun] */
   /*     1 */  /* [R_RULE_ProgReset] */
+  /*     2 */  /* [R_RULE_ComM_Full] */
 
 #define BSWM_STOP_SEC_VAR_NOINIT_8BIT
 /*lint -save -esym(961, 19.1) */
@@ -487,6 +565,7 @@ VAR(boolean, BSWM_VAR_NOINIT) BswM_PreInitialized;
 FUNC(void, BSWM_CODE) BswM_ExecuteIpduGroupControl(void)
 {
   Com_IpduGroupVector ipduGroupReinitState;
+  Com_IpduGroupVector ipduGroupState;
   Com_IpduGroupVector dmState;
   uint16 iCnt;
   uint8 controlInvocation = BSWM_GROUPCONTROL_IDLE;
@@ -504,6 +583,15 @@ FUNC(void, BSWM_CODE) BswM_ExecuteIpduGroupControl(void)
     }
     /* Check if also PDU control actions without reinitialization flag were performed.
      * If yes, execute them too and update BswM_ComIPduGroupReinitState */
+    if((BswM_PduGroupControlInvocation & BSWM_GROUPCONTROL_NORMAL) != 0u)
+    {
+      iCnt = BSWM_IPDUGROUPVECTORSIZE;
+      while(iCnt-- > (uint16)0x0000) /* PRQA S 3440 */ /* MD_BswM_3440 */
+      {
+        ipduGroupState[iCnt] = BswM_ComIPduGroupState[iCnt]; /* SBSW_BSWM_SETIPDUGROUPVECTOR */
+        BswM_ComIPduGroupReinitState[iCnt] = BswM_ComIPduGroupState[iCnt]; /* SBSW_BSWM_SETIPDUGROUPVECTOR */
+      }
+    }
     if((BswM_PduGroupControlInvocation & BSWM_GROUPCONTROL_DM) != 0u)
     {
       iCnt = BSWM_IPDUGROUPVECTORSIZE;
@@ -522,6 +610,10 @@ FUNC(void, BSWM_CODE) BswM_ExecuteIpduGroupControl(void)
     if((controlInvocation & BSWM_GROUPCONTROL_REINIT) != 0u)
     {
       Com_IpduGroupControl(ipduGroupReinitState, TRUE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+    }
+    if((controlInvocation & BSWM_GROUPCONTROL_NORMAL) != 0u)
+    {
+      Com_IpduGroupControl(ipduGroupState, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
     }
     if((controlInvocation & BSWM_GROUPCONTROL_DM) != 0u)
     {
@@ -556,6 +648,7 @@ BSWM_LOCAL FUNC(void, BSWM_CODE) BswM_InitGenVarAndInitAL_BSWM_SINGLEPARTITION(B
   BswM_PduGroupControlInvocation = BSWM_GROUPCONTROL_IDLE;
 
   /* PRQA S 3109 COMCLEARIPDU */ /* MD_BswM_3109 */
+  Com_ClearIpduGroupVector(BswM_ComIPduGroupState); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
   Com_ClearIpduGroupVector(BswM_ComIPduGroupReinitState); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
   Com_ClearIpduGroupVector(BswM_ComRxIPduGroupDMState); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
   /* PRQA L:COMCLEARIPDU */
@@ -626,11 +719,48 @@ BSWM_LOCAL FUNC(Std_ReturnType, BSWM_CODE) BswM_ActionList_AL_EnterRun(BswM_PCPa
  *********************************************************************************************************************/
 BSWM_LOCAL FUNC(Std_ReturnType, BSWM_CODE) BswM_ActionList_AL_ProgReset(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx)
 {
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduGroup(ComConf_ComIPduGroup_RxMPG_PropulsionCAN_aad5aa75, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduDMGroup(ComConf_ComIPduGroup_RxMPG_PropulsionCAN_aad5aa75, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduGroup(ComConf_ComIPduGroup_RxSPG_PropulsionCAN_fca0cb9e, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduDMGroup(ComConf_ComIPduGroup_RxSPG_PropulsionCAN_fca0cb9e, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduGroup(ComConf_ComIPduGroup_TxMPG_PropulsionCAN_3709a166, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduDMGroup(ComConf_ComIPduGroup_TxMPG_PropulsionCAN_3709a166, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduGroup(ComConf_ComIPduGroup_TxSPG_PropulsionCAN_617cc08d, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  /* PRQA S 0277, 3109, 3201, 3325 COMSETIPDU */ /* MD_BswM_0277, MD_BswM_3109, MD_BswM_3201, MD_BswM_3325 */ /*lint -e506 -e572 */
+  BswM_SetIpduDMGroup(ComConf_ComIPduGroup_TxSPG_PropulsionCAN_617cc08d, FALSE); /* SBSW_BSWM_IPDUGROUPVECTORCALL */
+  /* PRQA L:COMSETIPDU */ /*lint +e506 +e572 */
+  BswM_MarkPduGroupControlInvocation(BSWM_GROUPCONTROL_NORMAL);
   /*lint -save -e534 *//* PRQA S 3109, 3200 1 */ /* MD_MSR_14.3, MD_BSWM_3200 */
   Appl_BswM_ProgRequest();
   /*lint -restore */
   (void)EcuM_SelectShutdownTarget(ECUM_STATE_RESET, EcuMConf_EcuMResetMode_ECUM_RESET_MCU);
   (void)EcuM_GoDown(BSWM_MODULE_ID);
+  BSWM_DUMMY_STATEMENT(partitionIdx); /* PRQA S 1338, 2983, 3112 */ /* MD_MSR_DummyStmt */
+  return E_OK;
+}/* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
+
+/**********************************************************************************************************************
+ *  BswM_ActionList_AL_ComMFullEntered
+ *********************************************************************************************************************/
+BSWM_LOCAL FUNC(Std_ReturnType, BSWM_CODE) BswM_ActionList_AL_ComMFullEntered(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx)
+{
+  /*lint -save -e534 *//* PRQA S 3109, 3200 1 */ /* MD_MSR_14.3, MD_BSWM_3200 */
+  Appl_BswM_OnComMFull();
+  /*lint -restore */
   BSWM_DUMMY_STATEMENT(partitionIdx); /* PRQA S 1338, 2983, 3112 */ /* MD_MSR_DummyStmt */
   return E_OK;
 }/* PRQA S 6010, 6030, 6050 */ /* MD_MSR_STPTH, MD_MSR_STCYC, MD_MSR_STCAL */
@@ -683,6 +813,31 @@ BSWM_LOCAL FUNC(BswM_HandleType, BSWM_CODE) BswM_Rule_RULE_ProgReset(BswM_PCPart
   else
   {
     BswM_UpdateRuleStates(BSWM_ID_RULE_RULE_ProgReset, BSWM_FALSE, partitionIdx);
+    /* No false action list configured. */
+  }
+  BSWM_DUMMY_STATEMENT(partitionIdx); /* PRQA S 1338, 2983, 3112 */ /* MD_MSR_DummyStmt */
+  return retVal;
+}
+
+/**********************************************************************************************************************
+ *  BswM_Rule_RULE_ComM_Full
+ *********************************************************************************************************************/
+BSWM_LOCAL FUNC(BswM_HandleType, BSWM_CODE) BswM_Rule_RULE_ComM_Full(BswM_PCPartitionConfigIdxOfPartitionIdentifiersType partitionIdx)
+{
+  BswM_HandleType retVal = BSWM_NO_ACTIONLIST(partitionIdx);
+  /* Evaluate logical expression EXP_ComM_FULL. */
+  if(BswM_GetComMChannelState(0, 0u) == COMM_FULL_COMMUNICATION)
+  {
+    if( BswM_GetRuleStates(BSWM_ID_RULE_RULE_ComM_Full, partitionIdx) != BSWM_TRUE ) /* COV_BSWM_TRIGGEREDRULEEXECUTION */
+    {
+      BswM_UpdateRuleStates(BSWM_ID_RULE_RULE_ComM_Full, BSWM_TRUE, partitionIdx);
+      /* Return triggered action list BswM_ActionList_AL_ComMFullEntered. */
+      retVal = BSWM_ID_AL_AL_ComMFullEntered;
+    }
+  }
+  else
+  {
+    BswM_UpdateRuleStates(BSWM_ID_RULE_RULE_ComM_Full, BSWM_FALSE, partitionIdx);
     /* No false action list configured. */
   }
   BSWM_DUMMY_STATEMENT(partitionIdx); /* PRQA S 1338, 2983, 3112 */ /* MD_MSR_DummyStmt */

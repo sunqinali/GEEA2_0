@@ -391,6 +391,9 @@
                 <Settings Name="|MICROSAR|Wdg_30_TLE4278G|Wdg">
                     <Setting Value="4.1.0" Name="BswImplSwVersion"/>
                 </Settings>
+                <Settings Name="|MICROSAR|Wdg_30_Tlf35584|Wdg">
+                    <Setting Value="1.2.2" Name="BswImplSwVersion"/>
+                </Settings>
                 <Settings Name="|MICROSAR|Xcp">
                     <Setting Value="6.0.1" Name="BswImplSwVersion"/>
                 </Settings>

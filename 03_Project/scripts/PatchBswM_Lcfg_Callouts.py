@@ -12,6 +12,7 @@ orig = t
 # Vector sometimes emits "Appl_Foo;" instead of "Appl_Foo();"
 replacements = [
     ("  Appl_BswM_ProgRequest;\n", "  Appl_BswM_ProgRequest();\n"),
+    ("  Appl_BswM_OnComMFull;\n", "  Appl_BswM_OnComMFull();\n"),
     ("  Appl_Com_StartIpduGroups_ForBswM;\n", "  Appl_Com_StartIpduGroups_ForBswM();\n"),
 ]
 for a, b in replacements:
@@ -21,12 +22,21 @@ include_block = (
     '#include "BswM_Private_Cfg.h"\n'
     '#include "Appl_Com_Bringup.h"\n'
     '#include "Appl_BswM_ProgRequest.h"\n'
+    '#include "Appl_BswM_OnComMFull.h"\n'
 )
-if '#include "Appl_Com_Bringup.h"' not in t:
+if '#include "Appl_BswM_OnComMFull.h"' not in t:
     needle = '#include "BswM_Private_Cfg.h"\n'
     if needle not in t:
         raise SystemExit("BswM_Private_Cfg include not found")
-    t = t.replace(needle, include_block, 1)
+    # Prefer rewrite of known include block; else inject after Private_Cfg.
+    if '#include "Appl_Com_Bringup.h"' in t and '#include "Appl_BswM_ProgRequest.h"' in t:
+        t = t.replace(
+            '#include "Appl_BswM_ProgRequest.h"\n',
+            '#include "Appl_BswM_ProgRequest.h"\n#include "Appl_BswM_OnComMFull.h"\n',
+            1,
+        )
+    else:
+        t = t.replace(needle, include_block, 1)
 
 if t == orig:
     print("BswM_Lcfg: no callout patch needed (or already patched)")
