@@ -1,17 +1,18 @@
 # 台架 T1–T8 清单（阶段 6）
 
-ACAN / TJA1145 / 500 kbit/s。固件建议 ≥ `0x260B053C`。
+ACAN / TJA1145 / 500 kbit/s。固件建议 ≥ `0x260B0541`。
 
 | ID | 内容 | 方法 | 现状 |
 | --- | --- | --- | --- |
 | T1 | 四核启动 | UDE：`Appl_Os_StartOsMask==0xF`；`Appl_Core2_Tick100ms` 递增 | **已过**（Core2 tick） |
 | T2 | `0x3E` &lt; 2.5 s | UDE：`Appl_Diag_ReadyApproxMs`≈500；`Bench_T246` phys `0x3E` | **已过** |
-| T3 | 500k / 复位非显性 | 示波器 / CANoe；复位时勿 ACK 显性 | 待台架仪 |
+| T3 | 500k / 复位非显性 | 示波器 / CANoe；见下方 T3 规程 | **待仪** |
 | T4 | NM `0x51C`；RX `0x500`–`0x53F` | Trace `0x51C`；UDE `Appl_Can_NmOk`；Bench 脚本提示 | **TX/脚本过**；RX 注入可选 |
-| T5 | 5 ms 抖动 &lt; 1 ms | OS 测量 / Pin toggle；带诊断负载复测 | 待台架仪 |
+| T5 | 5 ms 抖动 &lt; 1 ms | 示波器 / OS；见下方 T5 规程；带诊断负载复测 | **待仪** |
 | T6 | 物理 + OBD 各一条正响应 | Phys `0x737/0x637`；OBD `0x7E3/0x7EB` — `Bench_T246` | **已过**（2026-11-06） |
 | T7 | BusOff 后重发 NM | 见下方 T7 规程；Watch `Appl_Can_BusOffCnt` | **放过**（到板初期 ACAN/NM 恢复路径已验；不重做短接） |
 | T8 | NvM 掉电再读 | 见下方完整规程 | **已过**（053E：WriteAll 异步 + 掉电 `NvMLoaded=1`） |
+| 组壳 | RTE SignalGroup | `ZCANPRO_IEM_ComGroup_Smoke` + UDE `GrpRxOkCnt`/`*_Cntr` | **已过**（0541） |
 
 ---
 
@@ -132,6 +133,28 @@ ACAN / TJA1145 / 500 kbit/s。固件建议 ≥ `0x260B053C`。
 ```
 
 ---
+
+## T3 规程（500 kbit/s · 采样点 · 复位非显性）— 需示波器/CANoe
+
+1. ACAN 接示波器或 CANoe 物理层分析：确认 **500 kbit/s**，采样点按 Base Tech / 台架规范（通常 ~75–80%）。  
+2. 正常运行：显性/隐性边沿干净；Trace 有 `0x51C` + 周期帧。  
+3. **复位瞬间**：复位 ECU，观察 CAN_H/CAN_L **不得长时间卡在显性**（无 ACK 时亦然）。  
+4. PASS：速率/采样点合格 + 复位窗口无异常显性锁死。  
+
+## T5 规程（`Task_Com_5ms` 抖动 &lt; 1 ms）— 需示波器或 OS 计时
+
+1. 对象：`Alarm_Com_5ms` → `Task_Com_5ms`（Fls MF 等，周期 5 ms）。  
+2. 方法 A（仪）：空闲 GPIO 翻转挂在 Com_5ms 路径（若已布 pin）→ 示波器测周期，峰-峰抖动 **&lt; 1 ms**。  
+3. 方法 B（UDE）：在 5 ms 任务链上采样 STM/计时差（后续可加 `Appl_Com5ms_*` 观测变量）。  
+4. **复测**：ZCANPRO 同时打物理 `0x3E`/`0x22` 诊断负载，抖动仍 &lt; 1 ms。  
+5. PASS：空载 + 诊断负载均满足。  
+
+## 下一步优先（软件可进 / 仪测并行）
+
+| 优先级 | 项 | 前置 |
+| --- | --- | --- |
+| 1 | **CCdB → CSV 灌表** | 正式 CCP 导出；见 `Appl/Config/README_CcpTable.md` |
+| 2 | T3 / T5 | 示波器或 CANoe 物理分析 |
 
 ## T7 规程（BusOff → NM 恢复）— 需人为扰总线
 
